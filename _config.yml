@@ -62,9 +62,9 @@ permalink: /:year/:month/:day/:title.html
 version: v1.0.0
 
 # Set the Sass partials directory, as we're using @imports
-sass:
-  sass_dir: _scss
-  style: :expanded # You might prefer to minify using :compressed
+#sass:
+#  sass_dir: _scss
+#  style: :compressed # You might prefer to minify using :compressed
 
 # Exclude these files from your production _site
 exclude:
@@ -81,3 +81,16 @@ authors:
         email: iamzhoutao92@gmail.com
         web: http://zzgary.info
         github: taoalpha
+
+
+# plugins
+assets:
+  dirname: assets
+  baseurl: /blog/assets/
+  sources:
+    - _assets/images
+    - _assets/javascripts
+    - _assets/stylesheets
+  js_compressor: uglifier
+  css_compressor: sass
+  gzip: [ text/css, application/javascript ]

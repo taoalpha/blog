@@ -11,10 +11,10 @@
     document.createElement("article");
   </script>
   <![endif]-->
-  {% include lsidebar.html %}
+  {% include lsidebar.html pname=page.pname%}
 
   {{ content }}
 
-<script type="text/javascript" src="/blog/js/default.js"></script>
+{% javascript default %}
 </body>
 </html>

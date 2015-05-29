@@ -1,19 +1,19 @@
 <section class="home-menu">
-    <nav class="home-icon-con upside">
-        <a class="home-menu-icon brand active" href="/blog">涛</a>
-        <a class="home-menu-icon" href="/blog/tech"><i class="fa fa-wrench fa-1x"></i></a>
-        <a class="home-menu-icon" href="/blog/dandp"><i class="fa fa-heartbeat fa-1x"></i></a>
-        <a class="home-menu-icon" href="/blog/mylinks"><i class="fa fa-anchor fa-1x"></i></a>
-        <a class="home-menu-icon follow" href="#" title="Contact Me">+</a>
-    </nav>
-    <div class="home-contact">
-        <a href="http://facebook.com/taoalpha/" target="_blank"><img src="http://www.weibo.com/favicon.ico" alt="" width="25"/></a>
-        <a href="http://www.douban.com/people//" target="_blank" ><img src="http://www.douban.com/favicon.ico" alt="" width="22"/></a>
-        <a href="http://instagram.com//" target="_blank"><img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/00c6602/images/ico/favicon.ico" alt="" width="22"/></a>
-    </div>
+  <nav class="home-icon-con upside">
+  <a class="home-menu-icon brand {% if include.pname == 'blog' %}active{% endif %}" href="/blog">涛</a>
+    <a class="home-menu-icon {% if include.pname == 'tech' %}active{% endif %}" href="/blog/tech"><i class="fa fa-wrench fa-1x"></i></a>
+    <a class="home-menu-icon {% if include.pname == 'dandp' %}active{% endif %}" href="/blog/dandp"><i class="fa fa-heartbeat fa-1x"></i></a>
+    <a class="home-menu-icon {% if include.pname == 'mylinks' %}active{% endif %}" href="/blog/mylinks"><i class="fa fa-anchor fa-1x"></i></a>
+    <a class="home-menu-icon follow" href="#" title="Contact Me">+</a>
+  </nav>
+  <div class="home-contact">
+    <a href="http://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="" width="25"/></a>
+    <a href="http://zzgary.info" target="something" ><img src="http://zzgary.info/static/images/favicon.ico" alt="" width="25"/></a>
+    <a href="http://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="" width="25"/></a>
+  </div>
 
-    <nav class="home-icon-con downside">
-        <a class="home-menu-icon" href="https://github.com/taoalpha/taoalpha.github.com/tree/master/blog/_posts/blog"><i class="fa fa-pencil fa-1x"></i></a>
-        <a class="home-menu-icon" href="/blog"><i class="fa fa-sign-in fa-1x"></i></a>
-    </nav >
+  <nav class="home-icon-con downside">
+    <a class="home-menu-icon" href="https://github.com/taoalpha/taoalpha.github.com/tree/master/blog/_posts/blog"><i class="fa fa-pencil fa-1x"></i></a>
+    <a class="home-menu-icon" href="/blog"><i class="fa fa-sign-in fa-1x"></i></a>
+  </nav >
 </section>

@@ -1,3 +1,5 @@
+//= require prettify/prettify
+
 $(document).ready(function(){
 
     var isMobile = {
@@ -37,7 +39,10 @@ $(document).ready(function(){
     });
 
     (function(){
-        var ie6 = ($.browser.msie && $.browser.version=="6.0") ? true : false;
+        var ie6 = false;
+        if($.browser){
+          var ie6 = ($.browser.msie && $.browser.version=="6.0") ? true : false;
+        }
 
         function initHeading(){
             var h2 = [];
@@ -189,16 +194,5 @@ $(document).ready(function(){
         }
     })();
 
-    $.getScript('/js/prettify/prettify.js',function(){
-        prettyPrint();
-    });
-
-    if(/\#comment/.test(location.hash)){
-        $('#disqus_container .comment').trigger('click');
-    }
-
-    if(/css3-animation/.test(location.href)){
-        $("head").append("<link rel='stylesheet' type='text/css' href='/css/css3-ani.css'/>");
-        $.getScript('/js/css3-ani.js',function(){});
-    }
+    prettyPrint();
 });

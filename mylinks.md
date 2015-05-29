@@ -1,5 +1,7 @@
 ---
 layout: default 
+pname: mylinks
+permalink: /mylinks/
 ---
 
 <section class="index-content mylinks" style="padding-left:50px;">
