@@ -1,0 +1,55 @@
+---
+layout:           default
+---
+
+
+{% include aside.html %}
+
+<section class="index-content blog">
+
+  <nav>
+    <ul class="article-cate">
+      <li {% if page.pname == 'blog' %}class="on"{% endif %}><a href="/blog"><span>All</span></a></li>
+      <li {% if page.pname == 'tech' %}class="on"{% endif %}><a href="/tech"><span>Tech</span></a></li>
+      <li {% if page.pname == 'danp' %}class="on"{% endif %}><a href="/dandp"><span>D&amp;P</span></a></li>
+    </ul>
+  </nav>
+
+  <nav class="cate-bar">
+    {% assign tags = "all" %}
+    {% for post in site.categories[page.pname]%}
+      {% for tag in post.tags %}
+        {% unless tags contains tag %}
+          {% capture tags %}{{ tags }}|{{ tag }}{% endcapture %}
+        {% endunless %}
+      {% endfor %}
+    {% endfor %}
+    {% assign alltags = tags | split: '|' %}
+    <ul class="tags">
+    {% for tag in alltags %}
+        <a href="javascript:;" data-rel="{{ tag }}" class="filter tag {% if tag == 'all'  %}active{% endif %}" >{{ tag|replace:"-"," " }}</a>
+    {% endfor %}
+    </ul>
+  </nav>
+
+  <article>
+    <ul class="article-list">
+      {% for post in site.categories[page.pname]%}
+      <li class="post" data-filter="{{ post.tags|join:' ' }}">
+        <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+        <div class="title-excerpt">{{ post.content | strip_html | truncatewords:20 | markdownify }}</div>
+      </li>
+      {% endfor %}
+    </ul>
+  </article>
+
+</section>
+
+{{ content }}
+
+<script type="text/javascript">
+  getLocation()
+  randomTags("")
+</script>
+
+<script type="text/javascript" src="/js/home.js"></script>

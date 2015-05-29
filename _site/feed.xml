@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>TaoAlpha&#39;s Blog</title>
+    <description>Driven by Passion</description>
+    <link>http://taoalpha.github.io/</link>
+    <atom:link href="http://taoalpha.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 29 May 2015 15:58:53 +0800</pubDate>
+    <lastBuildDate>Fri, 29 May 2015 15:58:53 +0800</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+      <item>
+        <title>利用TM进行系统二进制文件恢复</title>
+        <description>&lt;p&gt;对于很多喜欢折腾电脑而又刚接触命令行的人而言, 经常会犯的的一个错误就是误删重要文件… 比如类似&lt;code&gt;/usr/bin/&lt;/code&gt;啊,’/usr/local/bin’之类的, 一不小心, 一激动, 就sudo rm -rf了…&lt;/p&gt;
+
+&lt;p&gt;在mac下, 通常用户级别的二进制文件, 也就是那些你在命令行下输入的各类指令的源文件, 都是存在于系统环境变量之中的&lt;code&gt;$PATH = /usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin&lt;/code&gt;(冒号分割路径).&lt;/p&gt;
+
+&lt;p&gt;那么一旦删除这些文件夹, 那么对应的常用指令就会失效, 比如你要是误删了&lt;code&gt;/bin&lt;/code&gt;路径, 那么你在bash下输入&lt;code&gt;ls&lt;/code&gt;等命令时就会提示你 &lt;code&gt;ls: command not found&lt;/code&gt;了. 当然, 出现这一错误的另一种可能就是你无意中修改了$PATH变量, 导致系统没有进入到正确的路径中. 这种情况一般还是比较好解决的, 只需要重新设定以下环境变量, 通常设置为上述的即可.&lt;/p&gt;
+
+&lt;p&gt;那么, 如果你真是不幸误删了(或者像我一样莫名其妙的就丢失了…), 那么你可以有以下三种选择:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;重装系统恢复;&lt;/li&gt;
+  &lt;li&gt;从友军同版本电脑中copy;&lt;/li&gt;
+  &lt;li&gt;从time machine中尝试恢复;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;这里主要介绍第三种方法, 比较适用于有经常性备份习惯的人, 或者是丢失操作发生在不久之前的(根据TM的自动备份设定时间间隔而定).&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;一旦找到丢失的路径后, 那么就可以进入到相应的丢失路径下(一直打开到最近路径), 比如我丢失的&lt;code&gt;/usr/bin&lt;/code&gt;, 我就进入到&lt;code&gt;/usr&lt;/code&gt;路径下;&lt;/li&gt;
+  &lt;li&gt;唤出TM, 回滚到未丢失前的时间节点(或者希望恢复的节点), 比如我确定自己上午时还是正常的, 所以就直接恢复到早上的一个时间节点;&lt;/li&gt;
+  &lt;li&gt;恢复即可;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;通过上述操作, 基本上绝大多数时候问题都能够得到解决. 但是对于有一些有特殊权限的文件而言, 上述操作也会遇到新的问题. 还是以&lt;code&gt;/usr/bin&lt;/code&gt;为例: 其中的&lt;code&gt;sudo&lt;/code&gt;二进制文件就是一个有着特殊读写权限的文件, 以我目前admin的用户权限也是无法还原这一文件的. 这个时候就需要更换root账户来解决问题了:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;首先通过系统设定中的users &amp;amp; groups -&amp;gt; login options -&amp;gt; join -&amp;gt; disk utility -&amp;gt; 开启root账户 -&amp;gt; 设定账户密码;&lt;/li&gt;
+  &lt;li&gt;开启root账户后, 就可以通过切换账户, 登录到root账户之中, 重新上述恢复的操作了, 这一次, 就不会提示你有权限问题了;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;详细的开启root账户的方法可以参考stackExchange的一个回答:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;From the Apple menu choose System Preferences....
+From the View menu choose Users &amp;amp; Groups.
+Click the lock and authenticate as an administrator account.
+Click Login Options....
+Click the &quot;Edit...&quot; or &quot;Join...&quot; button at the bottom right.
+Click the &quot;Open Directory Utility...&quot; button.
+Click the lock in the Directory Utility window.
+Enter an administrator account name and password, then click OK.
+Choose Enable Root User from the Edit menu.
+Enter the root password you wish to use in both the Password and Verify fields, then click OK.
+
+Or from Terminal when logged in as an admin user -
+dsenableroot to enable,
+dsenableroot -d to disable
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;虽然问题已经解决, 不过到现在我都不知道我是如何把&lt;code&gt;/usr/bin&lt;/code&gt;路径搞丢的… 我记忆中丢失前的操作如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;删除了iphoto等一些应用;&lt;/li&gt;
+  &lt;li&gt;利用gem装了guard和guard-jekyll-plus来实现jekyll和livereload的链接;&lt;/li&gt;
+  &lt;li&gt;试了几次jekyll import模块来试图导入wordpress的数据, 以及rss的导入;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;但感觉都和&lt;code&gt;/usr/bin&lt;/code&gt;八杆子打不着啊… 奇怪… 如有人知晓求务必告知! 提前拜谢!&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 26 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/26/filesystem-recovery-from-time-machine.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/26/filesystem-recovery-from-time-machine.html</guid>
+        
+        <category>Time-Machine</category>
+        
+        <category>Mac</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>更换DNS解析</title>
+        <description>&lt;p&gt;回家啦回家啦~ 天南海北, 不如家好啊~!!!&lt;/p&gt;
+
+&lt;p&gt;刚回来一天就发现家里网络似乎很诡异… 最开始是经常出现css样式错误或者图片加载不出来的问题, console中冒出来的错误也是net::ERR_CONNECTION_RESET的错误, 于是google了一下, 说是http和https的问题, 就装了一个&lt;a href=&quot;https://www.eff.org/https-everywhere&quot;&gt;https everywhere的插件&lt;/a&gt;, 但是console中还是冒出来一些http资源无法在https下访问的错误… 就觉得有些奇怪, 应该是没找对问题的根本…&lt;/p&gt;
+
+&lt;p&gt;虽然我起初开始怀疑是不是家里网络的问题, 但尚不确定是网络速度的问题还是地处偏僻角落… 被伟大互联网鄙视了的原因…亦或者是其他的问题…&lt;/p&gt;
+
+&lt;p&gt;但是, 突然发现浏览过程中遇到了莫名跳转… 而且还是个广告跳转… 就基本确定自己是遇到的DNS拦截了… 于是正好想起来很多月前百度出了一个公共的DNS解析服务, 果断拿来用了一下… 效果极佳啊~哈哈&lt;/p&gt;
+
+&lt;p&gt;感觉上面的话语充满了百度DNS软文的感觉… 所以这里介绍下DNS解析的设定方法以及贡献以下百度, 阿里和google几家的DNS解析服务哈哈 (考虑到天朝内, 度娘的优势还是很明显的)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;要设置DNS解析, 自然需要进入到网络设置中, 这个根据操作系统的区别自然是有着很大的区别;&lt;/li&gt;
+  &lt;li&gt;找到DNS的设定部分, 修改默认的DNS为你需要的DNS;&lt;/li&gt;
+  &lt;li&gt;应用修改, DONE.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://dudns.baidu.com/useDoc.html&quot;&gt;Baidu DNS官网有一篇很全的设定贴&lt;/a&gt;, 小白可以围观之.&lt;/p&gt;
+
+&lt;p&gt;当然, 附加一些阿里和google的DNS:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;http://www.alidns.com/&quot;&gt;阿里DNS&lt;/a&gt;: 223.5.5.5&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;223.6.6.6&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;https://developers.google.com/speed/public-dns/&quot;&gt;Google DNS&lt;/a&gt;: 8.8.8.8&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;8.8.4.4&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://dudns.baidu.com/&quot;&gt;百度DNS&lt;/a&gt;: 180.76.76.76&lt;/li&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;&lt;a href=&quot;http://www.114dns.com/&quot;&gt;114DNS-&lt;/a&gt;: 114.114.114.114&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;114.114.115.115&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;恩, 我们要坚持和万恶的恶意DNS作战到底!!!&lt;/p&gt;
+
+</description>
+        <pubDate>Mon, 25 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/25/dns-parse.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/25/dns-parse.html</guid>
+        
+        <category>DNS</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Cookie中path规则介绍</title>
+        <description>&lt;p&gt;cookie这个东西经历了多次风波后, 很多人应该都有所耳闻了, 简单来说就是浏览器用来记录一些小型信息以待之后访问使用的一种机制. 一个标准cookie有几个基本的域: name, value, Domain, Path, Expires, Size, HTTP, Secure. 下面一一介绍.&lt;/p&gt;
+
+&lt;h2 id=&quot;cookie&quot;&gt;cookie各项属性&lt;/h2&gt;
+
+&lt;h3 id=&quot;name&quot;&gt;Name&lt;/h3&gt;
+
+&lt;p&gt;作为cookie的名称, 在赋值时必填的, 同时也是获取的凭证;&lt;/p&gt;
+
+&lt;h3 id=&quot;value&quot;&gt;Value&lt;/h3&gt;
+
+&lt;p&gt;具体的cookie内容存储所在. 通常不为空(为空无意义), 存储基本以文本形式或者数字形式存储, 你可以存储stringify的json, 但读取后还是需要parse才能还原为json. 直接试图储存json的话, 只会存储成&lt;code&gt;&quot;[object Object]&quot;&lt;/code&gt;的文本..&lt;/p&gt;
+
+&lt;h3 id=&quot;domain&quot;&gt;Domain&lt;/h3&gt;
+
+&lt;p&gt;cookie生效的域名, cookie只会在对应的domain下生效(直接表现为可获取), 而domain的层级是向下继承的, 所以下级域名可以获取到上级域名的cookie;&lt;/p&gt;
+
+&lt;p&gt;举个例子就是: inbox.google.com的cookie就只能被inbox.google.com下属的页面获取, 而不能被mail.google.com获取;&lt;/p&gt;
+
+&lt;p&gt;通常为cookie生成所属的域名;&lt;/p&gt;
+
+&lt;h3 id=&quot;path&quot;&gt;Path&lt;/h3&gt;
+
+&lt;p&gt;和Domain基本类似, 只是限制放在了路径上, 同样也是向下继承, 下级路径可以获取上级路径的cookie, 举个例子就是:&lt;/p&gt;
+
+&lt;p&gt;google.com的域名, /reader/的二级路径的话, 就只能在google.com/reader/及以下的路径下获取.&lt;/p&gt;
+
+&lt;p&gt;默认情况下为cookie赋予的当前路径.&lt;/p&gt;
+
+&lt;h3 id=&quot;expires&quot;&gt;Expires&lt;/h3&gt;
+
+&lt;p&gt;过期时间, 用于设置cookie过期的时间的. 过了这个时间后对应的cookie会自动销毁.&lt;/p&gt;
+
+&lt;p&gt;通常默认值为session, 寿命基本存在于浏览器的一次开关周期中, 基本属于关闭浏览器后, 就销毁了.&lt;/p&gt;
+
+&lt;h3 id=&quot;size&quot;&gt;Size&lt;/h3&gt;
+
+&lt;p&gt;表示cookie的大小, 属于浏览器计算的, 在我们赋值过程中没有体现. 值得一说的是, 根据HTTP的协议要求, 单个cookie的大小是不能超过&lt;strong&gt;4kb&lt;/strong&gt;的.&lt;/p&gt;
+
+&lt;p&gt;对于cookie的数量, 其实是有限制的, 但是这个因浏览器而有所不同, 通常来说, 大概在300个左右, 超过限制后, 会自动删除老旧的cookie来腾位置给新的cookie.&lt;/p&gt;
+
+&lt;h3 id=&quot;http&quot;&gt;HTTP&lt;/h3&gt;
+
+&lt;p&gt;一旦设定httpOnly的话, 那么浏览器会默认这一个cookie只能通过http协议来获取, 那么任何客户端的获取都会被阻止, 比如js.&lt;/p&gt;
+
+&lt;h3 id=&quot;secure&quot;&gt;Secure&lt;/h3&gt;
+
+&lt;p&gt;设定secure的话, cookie只会通过https来传输. 算是增强安全性的一种方法.&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;使用途径&lt;/h2&gt;
+
+&lt;p&gt;通常你可以使用&lt;code&gt;jQuery.cookie&lt;/code&gt;的库来进行cookie的赋予和获取以及销毁. 当然, 本身原生的js也是支持的, 而且语法也很简单, 完全可以使用.&lt;/p&gt;
+
+&lt;p&gt;HTTP以及Secure两个属性都属于基于安全性原则的考虑, 也通常需要服务器配合生成, js是无法直接完成的. 一般来说, 个人博客使用的话, 基本是不太需要的;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;参考资料:&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://code.tutsplus.com/tutorials/an-introduction-to-cookies--net-12482&quot;&gt;An Introduction to Cookies&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.cookielaw.org/introduction-to-cookies/&quot;&gt;What are Cookies?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.teamtreehouse.com/how-to-create-totally-secure-cookies&quot;&gt;How to Create Totally Secure Cookies&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Fri, 22 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/22/Cookie-path.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/22/Cookie-path.html</guid>
+        
+        <category>js</category>
+        
+        <category>cookie</category>
+        
+        
+        <category>tech</category>
+        
+      </item>
+    
+      <item>
+        <title>小米手环体验一周感受</title>
+        <description>&lt;p&gt;小米手环算是小米经典的低价破坏规则的又一力作! 相比市场上动辄几百上千的智能手环, 小米手环可以说简直不能更便宜… 而如今使用了一周多, 对其各方面的功能和特点都有所体验, 下面就简单结合我的体验介绍下:&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;记步&lt;/h3&gt;
+
+&lt;p&gt;步数记录算是手环主打功能之一. 这一周使用来看, 准确性上相对一般, 不比其他家强到哪里, 不过够用是肯定的. 设定好运动目标后就可以迈开步子往前走啦&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;查看目标完成情况:
+    &lt;ul&gt;
+      &lt;li&gt;可以蓝牙链接手机app查看;&lt;/li&gt;
+      &lt;li&gt;链接微信后可以通过微信公众号查看实时步数;&lt;/li&gt;
+      &lt;li&gt;可以用看表法查看完成目标情况(指示灯闪亮);&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;目标完成提醒: 手环会自动振动提醒;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;睡眠&lt;/h3&gt;
+
+&lt;p&gt;睡眠这一点还是比较有趣的, 统计的还算是比较准确的. 至少入睡时间和醒来时间算是比较准确的.&lt;/p&gt;
+
+&lt;p&gt;不过比较神奇的深度睡眠和浅睡眠的区分就比较神奇了… 也无法确定准确与否…&lt;/p&gt;
+
+&lt;p&gt;比较遗憾的是暂时不支持非晚上的睡眠检测, 所以午睡啥的都没有被计算在内.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;振动闹钟&lt;/h3&gt;
+
+&lt;p&gt;可以通过app设定最多三个闹钟, 闹钟采用振动手环方式, 不影响他人!!! 这一点很贴心! 而且唤醒效果极好~哈哈&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;来电提醒&lt;/h3&gt;
+
+&lt;p&gt;来电提醒的功能很赞, 尤其是像我这种常年手机静音的人哈哈, 可以设定振动次数. 不过如果手机和手环隔的太远也是没办法的…&lt;/p&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;社交分享&lt;/h3&gt;
+
+&lt;p&gt;这个功能很赞, 通过微信公众号: 小米手环, 就可以查看你的实时步数以及同时使用手环的好友的步数啦~ 有一种被人监督的感觉~ 而像我给爸妈都买了一个的, 就可以远程监督他们走路锻炼啦哈哈&lt;/p&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;电量&lt;/h3&gt;
+
+&lt;p&gt;手环本身的耗电能力还是比较弱的, 一个月的续航也是比较靠谱的!!! 厉害!!! 一周下来我这个也基本只用了20%-25%左右的电.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;防水&lt;/h3&gt;
+
+&lt;p&gt;亲测靠谱! 带着手环游了一个小时, 毫无压力!!! 可惜手环不支持检测游泳哈哈, 以后要是能增加运动模式检测就好了~ 跑步啊, 游泳啊, 打球啊~ 都加上~哈哈&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 21 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/21/mi-band.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/21/mi-band.html</guid>
+        
+        <category>手环</category>
+        
+        <category>产品评测</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>jekyll中如何做中文字数统计</title>
+        <description>&lt;p&gt;这两天又优化了以下blog, 首先是给天气部分加上了cookie和定位控制, 这样一方面能减少对openweather的请求次数, 同时优化加载的速度, 另一方面也能更加智能化的显示天气. 当然, 为了防止定位错误的问题, 我也同时增加了自定义位置的功能, 同样给予了cookie记录. 具体的实现方法, 这里就不多说了, 也很简单.&lt;/p&gt;
+
+&lt;p&gt;本文主要是介绍下jekyll中如何实现中文的字数统计. 为什么要做字数统计呢? 还是来源于&lt;a href=&quot;http://www.jianshu.com/p/613916eea37f&quot;&gt;简书-文章页&lt;/a&gt;, 里面详细的记录了作者的信息以及当前文章的字数. 再加上一个实时统计的阅读次数, 当然对我而言, 这个实时阅读次数意义不大, 我就顺着字数统计改成了阅读时间估计. 恩, 没错, 又是模仿&lt;a href=&quot;https://medium.com/&quot;&gt;medium&lt;/a&gt;的~ ಥ_ಥ&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;字数统计方法&lt;/h2&gt;
+
+&lt;p&gt;如何统计一段文本的字数是有很多种方法的, 但是因为语言文字的不同, 很多时候, 不同的方法对不同的语言文字适用性是不一样的. 目前来说, 通常有以下几种字数统计方案:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;根据常规的一个中文字符等于两个英文字母的概念, 通过获取整个文本的长度(比如js中的length), 除以2就可以获得一个粗略的值了, 如果要精确些, 可以在上述方法的基础上加入&lt;code&gt;charCodeAt()&lt;/code&gt;来判断字符属性是中文还是英文字母, 然后区分计算;&lt;/li&gt;
+  &lt;li&gt;如果是纯英文, 通常统计的都是词数而非字数, 而英文天然的空格分词, 也让统计其词数非常容易, 只需要按照空格切分获取长度即可;&lt;/li&gt;
+  &lt;li&gt;如果是纯中文, 我们统计的则多数是字数, 这种情况下, 因为中文缺少类似英文空格这种天然的切分符号, 就不能单纯的使用切分法来获取字数了, 可以借鉴第一种方法所述, 通过去除换行以及标签符号, 然后获取最后的数组大小来实现;&lt;/li&gt;
+  &lt;li&gt;如果是中英文混杂, 那么同样可以使用上述方法获得粗略数值, 当然, 如果你需要精确的话, 也需要对文本字符属性做判断来区分处理;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jekyll&quot;&gt;jekyll中的词数统计&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;number_of_words&lt;/code&gt;是jekyll中已有的一个词数统计过滤器, 可以很方便的统计出文本的英文词数, 但对中文就不适用了… 因为它本身是根据空格, 标点符号等来切分统计的, 有的时候甚至连英文都可能不准确…&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;取巧的统计方式&lt;/h3&gt;
+
+&lt;p&gt;jekyll支持的众多filter中, 有这么一个&lt;code&gt;size&lt;/code&gt;, 是可以返回一个数组的大小的, 而且能够正确的理解类似中文GBK的编码的. 于是我们可以使用类似:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;Approximate number of English words: &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+Approximate number of Chinese words: &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+// 可以看到都是近似值~ 如果你对精度要求没那么高, 那么基本是够用了~
+// 实际上, 因为本身size支持文本, 所以对中文这里可以不用split: &amp;quot;&amp;quot;的&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;那么回过头, 我们如果要统计content里面的中文字数就可以利用&lt;code&gt;size&lt;/code&gt;这个方法了. 不过考虑到content里面有很多html的tag, 我们为了更加接近真实数值, 可以借用&lt;code&gt;strip_html&lt;/code&gt;以及&lt;code&gt; strip_newlines&lt;/code&gt;两个过滤器来去除所有的html tag和空行. 那么最终的代码就是:&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;{ { content | strip_html | strip_newlines | size } }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;其实在jekyll的github issue中有人已经问过类似的问题&lt;a href=&quot;https://github.com/jekyll/jekyll/issues/1921&quot;&gt;jekyll的中文切分问题&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;阅读速度问题&lt;/h2&gt;
+
+&lt;p&gt;既然获得了字数, 那么想要获得阅读时间就很容易了, 通常英文单词的阅读速度在350wpm(词每分钟), 而中文也是基本接近的350字每分钟左右. 那么这次利用&lt;code&gt;divided_by&lt;/code&gt;以及&lt;code&gt;round&lt;/code&gt;两个函数就可以获得一个大致的分钟数了:
+(有兴趣的可以前往参考来源的第二条中看关于中文, 英文阅读速度的一篇文章)&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-liquid&quot; data-lang=&quot;liquid&quot;&gt;{ content | strip_html | strip_newlines | size | divided_by:350 | round}}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;参考来源&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/jekyll/jekyll/issues/1921&quot;&gt;jekyll的中文切分问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://persquaremile.com/2011/12/21/which-reads-faster-chinese-or-english/&quot;&gt;Which reads faster, Chinese or English?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 21 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/21/jekyll-count-of-chinese-characters.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/21/jekyll-count-of-chinese-characters.html</guid>
+        
+        <category>jekyll</category>
+        
+        
+        <category>tech</category>
+        
+      </item>
+    
+      <item>
+        <title>自动化WHV申请工具</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;大体思路&lt;/h2&gt;
+
+&lt;p&gt;对于WHV新西兰的申请官网而言, 想要试图利用程序来实现自动申请的话, 主要需要攻克几个问题, 分步如下:&lt;/p&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;登录&lt;/h4&gt;
+
+&lt;p&gt;我曾经试过很多种登录方式来试图登录whv的申请官网, 比如用常规的post请求, 以及后来使用mechanize, 甚至尝试过selenium+chrome的组合. 但最终都因为各种原因或失败或放弃了…&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;常规的post解包分析法:&lt;/p&gt;
+
+    &lt;p&gt;这个的主要难点在于登录. 因为不知道是不是因为asp的原因, 每次通过模拟post获取的cookie都是无效的… 无法用于登录;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;mechanize:&lt;/p&gt;
+
+    &lt;p&gt;mechanize是个很不错的python module, 对于常规的网站而言绝对足够, 其对表格提交的天然支持更是很多人脚本登录的最佳选择之一. 可惜此次依然不试用… 因为官网的form提交会经过一个js的函数验证, 而mechanize最悲剧的一点就是不支持js…ಥ_ಥ&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;selenium + chrome:&lt;/p&gt;
+
+    &lt;p&gt;可行. 但是非常慢! 不得不说, selenium和chrome的组合不愧是网页产品的自动化脚本测试神器啊. 写好运行然后就可以端碗饭在电脑前面坐等了哈哈&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;selenium + phantomjs:&lt;/p&gt;
+
+    &lt;p&gt;考虑到chrome在天朝的情况, 以及速度本身的恶心.. 我在了解selenium的时候发现了phantomjs, 这个没有界面的浏览器后台模拟器. 而selenium和phantomjs的合并就让我看到了突破登录的希望.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;cookie&quot;&gt;取cookie&lt;/h4&gt;
+
+&lt;p&gt;如上所说, 我通过selenium和phantomjs的结合, 利用其自带的webdriver的&lt;code&gt;get_cookies()&lt;/code&gt;函数成功的将登录后的cookie提取出来保存到了文件之中.  而通过这样”真实”的访问获取到的cookie也如愿以偿的让我成功实现了后来的环节.&lt;/p&gt;
+
+&lt;p&gt;这里的大体思路很简单, 就是通过phantomjs来模拟浏览器行为, 修改其自带的headers为chrome的标准headers来增加混淆程度. 因为selenium和phantomjs的易上手性, 基本这里也就5行代码搞定的节奏…&lt;/p&gt;
+
+&lt;h4 id=&quot;cookiepost&quot;&gt;带cookie填表发post&lt;/h4&gt;
+
+&lt;p&gt;获取到cookie后, 为了节省时间, 我并没有继续选用selenium和phantomjs的组合来填表. 毕竟他们真的太慢了… 而是换用了带cookie直接post的方式. 主要思路和步骤如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;利用urllib2,cookielib来制作opener并装上cookie;&lt;/li&gt;
+  &lt;li&gt;首先进行一次试探性访问, 获取到页面状态值:viewstate,viewstategenerator,eventvalidation; 有些页面存在只有两个或者更多个的情况, 可以根据页面进行修正;&lt;/li&gt;
+  &lt;li&gt;组合页面状态参数以及需要post的信息数据, 进行post;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;基本来说, 只要确保post的时候key-value对好,那么, 在cookie有效期内是不会有啥问题的. 而想要做的更好更流畅, 在面对各种错误的情况下更抗压, 就得看容错这一步的做法了.&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;容错&lt;/h4&gt;
+
+&lt;p&gt;一旦实现了cookie的获取和post, 那么想让工具正式能够使用就基本靠细心的容错了. 毕竟无论是页面超时, post失败, 是否已经有表格, 表格完整性验证等等, 都需要根据具体情况逐步完善, 下面也主要介绍下我的思路.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;cookie有无以及是否失效问题;&lt;/li&gt;
+  &lt;li&gt;登录失败重试问题;&lt;/li&gt;
+  &lt;li&gt;流畅填表和中断单表填写(区分了正常情况下一张张表填和单独填某张表的情况, whv一共6个信息表要填写的);&lt;/li&gt;
+  &lt;li&gt;有无表格(无表格创建表格, 有表格获取表格id);&lt;/li&gt;
+  &lt;li&gt;表格完整性检验;&lt;/li&gt;
+  &lt;li&gt;表格所处状态检验(提交以及付款状态);&lt;/li&gt;
+  &lt;li&gt;表格post失败重试问题;&lt;/li&gt;
+  &lt;li&gt;超时问题;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;基本以上就构成了一个基本完整, 有着自动重试功能的自动化whv脚本了.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;测试情况&lt;/h2&gt;
+
+&lt;p&gt;在名额开放前使用ireland名额测试情况如下:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;无cookie文件:&lt;/p&gt;
+
+    &lt;p&gt;登录获取cookie耗时: normal: 20s, min:13s, max: time-out;
+  填表时间: normal: 5s-10s/表, min: 5s/表, max: time-out;
+  全程时间: normal: 100s, min: 90s, max: time-out;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;有cookie文件:&lt;/p&gt;
+
+    &lt;p&gt;登录获取cookie耗时: normal: 0.000003s;
+  填表时间: normal: 5s-10s/表, min: 5s/表, max: time-out;
+  全程时间: normal: 80, min: 60s, max: time-out;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;细节补充&lt;/h2&gt;
+
+&lt;p&gt;看起来还是很简单的, 不过真的写起来挺恶心的… 尤其是你在测试中会遇到各种奇葩问题…&lt;/p&gt;
+
+&lt;p&gt;因为本文本来是10号写的, 但是后来一直拖到了20号才写完.. 昨天用脚本实况演练了下.. 发现真正开放名额这一天, 还是太恐怖… 登录都无法登录不上去… 一直处于不断重试的过程中… 居然还没我浏览器手动来的快… 最后把浏览器登录后的cookie放进去试了下, 
+因为本文本来是10号写的, 但是后来一直拖到了20号才写完.. 昨天用脚本实况演练了下.. 发现真正开放名额这一天, 还是太恐怖… 登录都无法登录不上去… 一直处于不断重试的过程中… 居然还没我浏览器手动来的快… 最后把浏览器登录后的cookie放进去试了下, 发现后面, 
+因为本文本来是10号写的, 但是后来一直拖到了20号才写完.. 昨天用脚本实况演练了下.. 发现真正开放名额这一天, 还是太恐怖… 登录都无法登录不上去… 一直处于不断重试的过程中… 居然还没我浏览器手动来的快… 最后把浏览器登录后的cookie放进去试了下
+看起来还是很简单的, 不过真的写起来挺恶心的… 尤其是你在测试中会遇到各种奇葩问题…&lt;/p&gt;
+
+&lt;p&gt;看起来还是很简单的, 不过真的写起来挺恶心的… 尤其是你在测试中会遇到各种奇葩问题… 
+, 
+因为本文本来是10号写的, 但是后来一直拖到了20号才写完.. 昨天用脚本实况演练了下.. 发现真正开放名额这一天, 还是太恐怖… 登录都无法登录不上去… 一直处于不断重试的过程中… 居然还没我浏览器手动来的快… 最后把浏览器登录后的cookie放进去试了下, 发现后面的容错做的还算可以, 基本能保证程序不会意外退出… 不过因为体检的原因, 我也没等到程序跑完就走了…&lt;/p&gt;
+
+&lt;p&gt;和朋友讨论说到似乎cookie是可以计算出来的, 而计算方法在页面的js里面可以看到, 以后有时间可以去看看.&lt;/p&gt;
+
+&lt;h2 id=&quot;module&quot;&gt;Module列表&lt;/h2&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;selenium&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;webdriver&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;json&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;re&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;time&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;urllib2&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;urllib&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;cookielib&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;以及需要把phantomjs的二进制文件放入到合适的路径中去, 为了便于移植, 我是放到了当前路径下…&lt;/p&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;结语&lt;/h2&gt;
+
+&lt;p&gt;如上, 基本就能实现一个较为完整的自动脚本了~ 不过不解决cookie问题的话, 实际使用不会有多大帮助的… 毕竟那一天的网络太可怕…&lt;/p&gt;
+
+</description>
+        <pubDate>Wed, 20 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/20/automated-script-for-whv.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/20/automated-script-for-whv.html</guid>
+        
+        <category>WHV</category>
+        
+        <category>Python</category>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>JS实现中文日期的方法</title>
+        <description>&lt;p&gt;这是一篇草稿转正的文章, 一直忘记发布了.&lt;/p&gt;
+
+&lt;p&gt;当时为了让blog左侧随机图不至于太空, 所以加入了天气预报的彩蛋. 目前还没做太复杂的地理位置判定, 所以按照我所在位置给予的北京天气, 之后会考虑修改成地理位置相关的天气.&lt;/p&gt;
+
+&lt;p&gt;因为要显示天气和日期, 英文的比较好说, 只需要用默认的&lt;code&gt;toDateString()&lt;/code&gt;函数转换即可. 中文的则需要做一个简单的转换, 下述是我所使用的方法, 其实就是把日期数字和中文汉字对等起来而已~&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dcharacters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;一&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;二&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;三&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;四&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;五&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;六&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;七&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;八&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;九&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;十&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Mcharacters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;十&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;二十&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;三十&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 汉字对应的版本, 因为日月转换规则一致, 所以可以共用的~&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 设计的规则是分成十位和个位进行分别转换, 所以因为考虑到都有没有(十位/个位)的情况, 首个元素都给予的是空值&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ZdataM&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Mcharacters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Dcharacters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 月份的转换, 十位+个位&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ZdataD&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Mcharacters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Dcharacters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 日子转换: 十位+个位&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;没有做全部日期测试, 所以如果您发现任何问题请及时告诉我哈~&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 12 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/12/js-date-to-chinese.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/12/js-date-to-chinese.html</guid>
+        
+        <category>js</category>
+        
+        <category>日期转换</category>
+        
+        
+        <category>tech</category>
+        
+      </item>
+    
+      <item>
+        <title>设计心理学系列(1) - 网络心理学</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;什么是网络心理学?&lt;/h2&gt;
+
+&lt;p&gt;网络心理学是随着互联网等新技术出现以及发展而逐渐发展起来的一门新兴科学. 它所研究的领域就是网络与心理学的结合, Cyberpsychology本身由两个词合并而成, 前者Cyber是取自Cybernetics, 代表着对于机械控制和与之通信的研究, 代表着对新兴网络领域的研究, 而心理学则是对人脑和行为学的研究. 两者的集合即表明了Cyberpsychology的研究领域主要集中在了人与新兴机器系统(包含虚拟系统)的心理学研究.&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;网络心理学简介&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-2&quot;&gt;演化历史&lt;/h3&gt;
+
+&lt;p&gt;Cyberpsychology最开始是集中关注于人在操作机器以及与机器交互的过程中的心理学变化, 后来随着电脑的出现以及普及, 互联网的诞生以及发展, 加上新兴智能机器的出现和发展, 都使得Cyberpsychology的研究重点放到了互联网上面. 而随着虚拟现实技术的出现, Cyberpsychology的研究范围再一次的增广, 可以说, Cyberpsychology的研究范围基本会随着cyberspace的领域增长而延伸.&lt;/p&gt;
+
+&lt;p&gt;通常认为&lt;a href=&quot;http://www-usr.rider.edu/~suler/psycyber/suler.html&quot;&gt;John Suler&lt;/a&gt;, 来自Rider University的心理学教授, 是Cyberpsychology的奠基人. Suler教授是最早开始关注与网络对人们心理变化带来的影响, 其出版的The Psychology of Cyberspace一书也是被认为最早整合性的Cyberpsychology学术作品.&lt;/p&gt;
+
+&lt;p&gt;从1960年代, 计算机开始出现网络系统, 到1980年代世界性互联出现, 领域内专家, 极客作为初始用户. 又过了10年, 随着超链接的出现, 衍生了一个对普通人更友好的万维网. 全球互联网正式诞生.&lt;/p&gt;
+
+&lt;p&gt;随着人们对互联网的使用越来越频繁, 开始逐渐有心理学研究人员关注到这一领域, 慢慢促成了Cyberpsychology的诞生. 而随着互联网对人们生活的侵入越发全面, 这一领域也越来越收到人们的重视, 而随着互联网的发展, 新技术的出现, 这一领域也在不断的自我演进.&lt;/p&gt;
+
+&lt;p&gt;很多人都预言未来毫无疑问将会是网络的时代, 而随着智能设备, 智能家居以及虚拟现实的出现, 都让这一预言变的更加可信. 所以研究人与网络的交互过程对人类本身的影响反馈是非常重要而值得的.&lt;/p&gt;
+
+&lt;p&gt;参考视频: &lt;a href=&quot;https://www.youtube.com/watch?v=4C8qpN0Qafo&quot;&gt;The Birth of CyberPsychology&lt;/a&gt; - 需翻墙&lt;/p&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;包含方向&lt;/h3&gt;
+
+&lt;p&gt;目前人们对于Cyberpsychology的研究方向都还集中在那些因网络出现而造成的明显影响之中, 尤其是那些负面影响, 目前大体的一些主流热门话题都围绕在以下几个方面:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;网络成瘾问题;&lt;/li&gt;
+  &lt;li&gt;网络身份与自我认知问题;&lt;/li&gt;
+  &lt;li&gt;网络关系问题;&lt;/li&gt;
+  &lt;li&gt;网络与现实的表现差别问题;&lt;/li&gt;
+  &lt;li&gt;网络人格/性格问题;&lt;/li&gt;
+  &lt;li&gt;虚拟现实领域;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;网络心理学的研究&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;知名人士&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Dr. John Suler - The founder of the Cyber Psychology&lt;/li&gt;
+  &lt;li&gt;J. &amp;amp; Parker - The author of the Cyberpsychology&lt;/li&gt;
+  &lt;li&gt;Bernard Luskin - Launched the first MA/Ph.D program in Media Psychology&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;重要期刊&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jcmc.indiana.edu/&quot;&gt;Journal of Computer Mediated Communication&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.cyberpsychology.eu/&quot;&gt;Cyberpsychology: Journal of Psychosocial Research on Cyberspace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.liebertpub.com/publication.aspx?pub_id=10&quot;&gt;Cyberpsychology, Behavior, and Social Networking&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;[Journal of CyberTherapy &amp;amp; Rehabilitation](http://www.vrphobia.eu/]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;阅读书目&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www-usr.rider.edu/~suler/psycyber/psycyber.html&quot;&gt;The Psychology of Cyberspace by John Suler&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/Cyberpsychology-Alison-Attrill/dp/0198712588/ref=sr_1_1&quot;&gt;Cyberpsychology by Alison Attrill&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/Cyberpsychology-Introduction-Human-Computer-Kent-Norman/dp/0521687020/ref=sr_1_2&quot;&gt;Cyberpsychology: An introduction to Human-Computer Interaction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/Cyberspace-Romance-Psychology-Online-Relationships/dp/1403945144/ref=sr_1_10&quot;&gt;Cyberspace Romance: The Psychology of Online Relationships&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/Psychology-Menu-Selection-Designing-Interaction/dp/089391553X/ref=sr_1_1&quot;&gt;The Psychology of Menu Selection: Designing Cognitive Control at the Human/Computer Interface (Human/Computer Interaction)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-8&quot;&gt;参考文献&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Cyberpsychology&quot;&gt;Wikipedia of Cyberpsychology&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://users.rider.edu/~suler/psycyber/psycyber.html&quot;&gt;The psychology of cyberspace&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.academia.edu/2373472/Cyber_Psychology_and_Cyber_Sociology_-_Presentation_and_Overview&quot;&gt;Cyber Psychology &amp;amp; Cyber Sociology&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://w3.uqo.ca/cyberpsy/en/cyberpsy_en.htm&quot;&gt;Cyberpsychology and Vitrual Reality&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://psycyber.blogspot.com/2006/08/first-decade-of-cyberpsychology.html&quot;&gt;The first decade of CyberPsychology&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;2015-05-09 By TaoAlpha&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 08 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/08/design-psychology-1-cyber-psychology.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/08/design-psychology-1-cyber-psychology.html</guid>
+        
+        <category>设计心理学</category>
+        
+        <category>Cyber-Psychology</category>
+        
+        
+        <category>dandp</category>
+        
+      </item>
+    
+      <item>
+        <title>Jekyll 心得(2) - 筛选tag的实现</title>
+        <description>&lt;p&gt;对于blog而言, 利用categories和tags的筛选是非常方便的, 而在jekyll部署的静态博客中也能轻松的实现这一点的. 本文(也即本博客)中效果主要模仿&lt;a href=&quot;http://jianshu.com&quot;&gt;简书&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;categoriestags&quot;&gt;展现categories以及tags&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;首先我们需要设定了tags的post… 这样你的&lt;code&gt;site.tags&lt;/code&gt;才会有数据~ 具体的tags设定方法可以参照&lt;a href=&quot;/2015/05/07/jekyll-tips-1.html&quot;&gt;心得(1)&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;接着就是如何展现tags数据了~ 以本文为例, 我总计有三个category, 因为要实现不同category下的tag只出现在自己的category页面下方, 所以在展现tags的时候需要做一个category的判定.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;{% assign tags = &quot;all&quot; %}
+// 设置变量, 这里用all来表示默认的第一个tag, 代表全部tags的情况
+{% for post in site.posts %}
+    // 取所有的post出来逐一判定, 这里未来post很多的话, 会进行数量限制, 目前数量太少, 就糙着用啦
+    {% for tag in post.tags %}
+        // 取post自己的tags出来, 逐一进行判定是否已经在tags数组列表中了
+        {% unless tags contains tag %}
+            // 为了去掉重复的tag~
+            {% capture tags %}{{ tags }}|{{ tag }}{% endcapture %}
+            // 把所有不在tags数组中的tag都加到tags中
+        {% endunless %}
+    {% endfor %}
+{% endfor %}
+{% assign alltags = tags | split: &#39;|&#39; %}
+// 生成一个新的数组, 似乎本身liquid中没有直接append数组的方法... 看到此处的朋友有知道的请不吝告知~
+&amp;lt;ul class=&quot;tags&quot;&amp;gt;
+{% for tag in alltags %}
+// 展现tag
+&amp;lt;a href=&quot;javascript:;&quot; data-rel=&quot;{{ tag }}&quot; class=&quot;filter tag {% if tag == &#39;all&#39;  %}active{% endif %}&quot; &amp;gt;{{ tag }}&amp;lt;/a&amp;gt;
+// 这里的data-rel是为了筛选做的准备, 后文会介绍
+{% endfor %}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如此基本就实现了tags在特定category下的展现.&lt;/p&gt;
+
+&lt;h2 id=&quot;tag&quot;&gt;根据tag进行筛选&lt;/h2&gt;
+
+&lt;p&gt;有了tags之后, 就可以进一步做筛选了. 基本的思路是在不考虑分页的情况下, 筛选基本就是针对当前展现出来的文章列表做对应的展现隐藏控制.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;利用&lt;code&gt;data-rel&lt;/code&gt;(随意指定data后面的名称即可)存储要筛选的tag, 如上;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在post中加上tags的数据标签:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;li class=&quot;post&quot; data-filter=&quot;{{ post.tags|join:&#39; &#39; }}&quot;&amp;gt;
+// 因为post.tags本身就是一个array类型, 所以这里直接用空格链接填入一个`data-filter`中即可;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;利用js实现点击筛选的控制:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.filter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;click&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 由tag点击事件出发&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$this&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hasClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;active&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 排除当前已选tag, 新tag标记active&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.filter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;active&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;active&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// set the active tab&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;rel&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+        &lt;span class=&quot;c1&quot;&gt;// 获得要筛选的tag名称&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$filter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;all&amp;#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; 
+            &lt;span class=&quot;c1&quot;&gt;// 对all做单独判断, 基本就是全展现&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.post&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;not&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;:visible&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fadeIn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; 
+        &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 否则的话, 利用filter进行tag匹配的判断&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;.post&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fadeOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;c1&quot;&gt;// 判断post中是否包含此tag, 这里用array来判断而不是直接文本判断就是为了防止出现类似tag和tags这种局部包含的误判&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;filter&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;split&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot; &amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;indexOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!=-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+            &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fadeIn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// endif&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// endon&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;这里都用的是fadeIn,fadeOut的动效, 你当然可以修改成自己的~ 这里的实现主要参照了&lt;a href=&quot;http://www.jqueryrain.com/?http://www.picssel.com/demos/fboxfilteredgallery.html&quot;&gt;jQuery filter with fancybox&lt;/a&gt;, 不过原理其实很简单的~&lt;/p&gt;
+
+&lt;h2 id=&quot;tags&quot;&gt;tags限制&lt;/h2&gt;
+
+&lt;p&gt;随着post的增多, 你会发现自己的tags也越来越庞大, 如果全部展现的话, 一是太多, 二呢, 展现也不方便, 毕竟我目前的css样式只考虑了两行的情况, 所以呢, 还是需要对tags的展现做一些限制的.&lt;/p&gt;
+
+&lt;p&gt;有两种思路:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;利用jekyll的plugin直接在生成层控制, 每次随机出一些tag就行了;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;利用js在展现层控制, 所有tag都生成出来, 但是由js控制随机展现一部分;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最终我用的还是第二种思路, 第一种思路主要缺点是在编译生成的时候控制的话, 只有每次重新编译才会重新生成, 和我希望的访问随机需求不符合.&lt;/p&gt;
+
+&lt;p&gt;实现方法也很容易, 基本就是利用Math.random()来生成随机数即可.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;randomTags&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;originArray&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;ul.tags&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;a.tag&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;originArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 确保 all 每次都展现&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;){&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;floor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;originArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 没有做虑重处理, 所以很可能展现出来的tag没有10个; 想做的话也容易, 循环过程中加个是否显示了的判断即可, 这里就不做了~&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;originArray&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;eq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;如上, 对于jekyll的tags和categories的探索就先这样了~ 以后有什么更加有趣的想法或者发现了再补充~&lt;/p&gt;
+
+&lt;p&gt;See ya.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 07 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/07/jekyll-tips-2.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/07/jekyll-tips-2.html</guid>
+        
+        <category>tags</category>
+        
+        <category>tips</category>
+        
+        <category>jekyll</category>
+        
+        <category>js</category>
+        
+        
+        <category>tech</category>
+        
+      </item>
+    
+      <item>
+        <title>Jekyll 心得(1) - 简单介绍</title>
+        <description>&lt;h2 id=&quot;section&quot;&gt;环境部署&lt;/h2&gt;
+
+&lt;p&gt;Jekyll作为静态博客, 以简单易部署而出名, 尤其是随着github对于静态博客的支持, 更是发展势头极为良好, 很多人都从大而繁杂的wordpress转移到了小而轻巧的Jekyll, 也有很多人选择了另一款小而精的静态博客:&lt;a href=&quot;https://hexo.io/&quot;&gt;hexo&lt;/a&gt;, 至于他们之间的好坏, 孰优孰劣, 可以参考&lt;a href=&quot;http://www.zhihu.com/question/21981094&quot;&gt;知乎原文:arBox、Jekyll、Octopress、ghost、marboo、Hexo、Medium、Logdown、prose.io，这些博客程序有什么特点？&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;这里就简单介绍下github下如何部署Jekyll.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;首先, 你得有个github帐号…(废话)… 然后你需要新建一个yourname.github.com(或者io结尾也可以)的repo, 并且在设置中开启github pages;&lt;/li&gt;
+    &lt;li&gt;接下来就是组织Jekyll的文件结构了, 这部分推荐在本地环境中操作, 因为你可以在本地的jekyll环境下随时测试预览调整, 不用每次都上传到github上在线查看; 一般来说, 你不需要完全从头进行的, 完全可以在&lt;a href=&quot;https://github.com/jekyll/jekyll/wiki/Sites&quot;&gt;jekyll的示例网站&lt;/a&gt;中寻找自己喜欢的主题样式, 然后clone到本地后, 在其基础上修改完成, 比如我现在这个就是在我自己的设定基础上融合了&lt;a href=&quot;http://beiyuu.com&quot;&gt;beiyuu&lt;/a&gt;的一些结构和设置, 然后参照&lt;a href=&quot;http://www.jianshu.com/&quot;&gt;简书&lt;/a&gt;修改的;&lt;/li&gt;
+    &lt;li&gt;Jekyll是基于Ruby的, 所以如果想要搭建本地环境, 请确保你已经安装了Ruby~ 有了Ruby后, 你就可以参照&lt;a href=&quot;http://jekyllrb.com/docs/installation/&quot;&gt;官网的安装指南&lt;/a&gt;一步步操作了;&lt;/li&gt;
+    &lt;li&gt;在本地测试通过后, 你只需要push到github中, github就会自动帮你编译, 你就可以通过你的github page网址进行访问了;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;文件结构关系&lt;/h2&gt;
+
+&lt;p&gt;Jekyll的文档结构是非常简单的, Jekyll是基于Ruby的, 所以如果想要搭建本地环境, 请确保你已经安装了Ruby~ 有了Ruby后, 你就可以参照&lt;a href=&quot;http://jekyllrb.com/docs/installation/&quot;&gt;官网的安装指南&lt;/a&gt;一步步操作了;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;.
+├── _config.yml
+├── _drafts
+|   ├── begin-with-the-crazy-ideas.textile
+|   └── on-simplicity-in-technology.markdown
+├── _includes
+|   ├── footer.html
+|   └── header.html
+├── _layouts
+|   ├── default.html
+|   └── post.html
+├── _posts
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.textile
+|   └── 2009-04-26-barcamp-boston-4-roundup.textile
+├── _data
+|   └── members.yml
+├── _site
+├── .jekyll-metadata
+└── index.html   
+// from Jekyll documentation
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;如上, 一个完整而又基础的jekyll文档结构基本就是这样了. 其中&lt;code&gt;_config.yml&lt;/code&gt;是全局的配置文件, 你可以在这里配置你的固定链接, 插件, 高亮以及设定很多的默认值等等;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code&gt;_drafts和&lt;/code&gt;_posts&lt;code&gt;文件夹都是博文所在地, 区别在于&lt;/code&gt;_drafts&lt;code&gt;是存放草稿的地方, 除非在测试环境下加上&lt;/code&gt;–watch`的参数是不会出现在blog中的;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code&gt;_layouts&lt;/code&gt;以及&lt;code&gt;_includes&lt;/code&gt;分别是模板以及复用代码块所在, 基本上重复性代码都可以视情况放在这两个当中, 整页性的复用(模板)就放在&lt;code&gt;_layouts&lt;/code&gt;中, 块结构的复用则放在&lt;code&gt;_includes&lt;/code&gt;中;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code&gt;_site&lt;/code&gt;基本不用管, 因为它是jekyll编译后的产物, 也基本就是你所看到的网站的正常版本;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;code&gt;_data&lt;/code&gt;, 这个涉及比较高端的用法… 我目前都没有开始接触, 所以放在以后的系列中介绍吧;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;index.html, 作为blog的首页;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;需要注意的事情是:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;和正常的网站文件结构类似, jekyll对文件夹的解析也是类似的, 我们可以在根目录下随意的建立文件夹, 从而创造二级路径;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;如果你像我一样把blog整个放到二级路径下, 建立一个独立的首页的话, 请注意记得在&lt;code&gt;_config.yml&lt;/code&gt;中配好你的post页面地址(如果你希望所有的post页面都在你的&lt;code&gt;yoursite/blog/your-post&lt;/code&gt;的话), 且把&lt;code&gt;_posts&lt;/code&gt;转移到blog文件夹中, 但是诸如&lt;code&gt;_layouts&lt;/code&gt;等则不需要调整;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;tags--categories&quot;&gt;Tags 以及 Categories&lt;/h2&gt;
+
+&lt;p&gt;作为blog, 即便是简单的静态博客, 如果没有category和tag系统的, 也绝对不能算是一个好的博客系统,jekyll当然是一个好的博客系统啦~&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;strong&gt;Categories:&lt;/strong&gt; Jekyll的category关键字是内置的, 只需要在post的顶部定义号对应的category关键字, 多个的话用array的方式定义即可, 比如category: [cat1,cat2], 而在liquid语法中, 则完全可以通过 &lt;code&gt;site.categories.cat1&lt;/code&gt; 来访问对应的分类;&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Tags:&lt;/strong&gt; 基本和categories一样, 关键字是tags, 同样可以支持多个tag, 一样使用&lt;code&gt;site.tags.tagname&lt;/code&gt;来访问;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;liquid&quot;&gt;Liquid语法&lt;/h2&gt;
+
+&lt;p&gt;Liquid Template Language是一种非常常用的模板语言, 它的语法很有特点, 粗糙理解的话, 就是一种简单的替换语法, 识别特定的结构和模式, 做特定的行为.&lt;/p&gt;
+
+&lt;p&gt;Liquid 来自于shopify, 其代码也是由&lt;a href=&quot;https://github.com/Shopify/liquid&quot;&gt;Shopify在github上维护&lt;/a&gt;的, 如果想要详细了解其中的语法和用法, 以及Liquid目前的广泛用途, 都可以前往&lt;a href=&quot;https://github.com/Shopify/liquid/wiki&quot;&gt;其github上的wiki&lt;/a&gt;查看.&lt;/p&gt;
+
+&lt;p&gt;一些常用的语法:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;if : {% if statement %} {% elsif %} {% endif %}
+for : {% for statement %} {% endfor %}
+unless : {% unless statement %} {% endunless %}
+assign : {% assign statement %} (赋值)
+capture : {% capture %} {% endcapture %} (捕获赋值)
+case : {% case condition %} {% when 1 %} {% when 2 or 3 %} {% else %} {% endcase %}
+comment : {% comment %} {% endcomment %}
+raw : {% raw %} 以及 endraw
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;常用的管道用法:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;变量引用符号 : {{ variable_name }}
+大|小|首字母大写 : {{ v_name | upcase | downcase | capitalize }}
+排序|连接|切分|替换 : {{ v_name | sort | join:&quot;join-symbol&quot; | split: &quot;split-symbol&quot; | replace: &quot;replace-char&quot; }}
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+        <pubDate>Thu, 07 May 2015 00:00:00 +0800</pubDate>
+        <link>http://taoalpha.github.io/2015/05/07/jekyll-tips-1.html</link>
+        <guid isPermaLink="true">http://taoalpha.github.io/2015/05/07/jekyll-tips-1.html</guid>
+        
+        <category>jekyll</category>
+        
+        <category>tags</category>
+        
+        <category>tips</category>
+        
+        
+        <category>tech</category>
+        
+      </item>
+    
+  </channel>
+</rss>

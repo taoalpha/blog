@@ -1,0 +1,20 @@
+{% include header.html %}
+<body>
+
+  <!--[if lt IE 9]>
+  <script type="text/javascript">
+    document.createElement("nav"); 
+    document.createElement("header"); 
+    document.createElement("footer"); 
+    document.createElement("section"); 
+    document.createElement("aside"); 
+    document.createElement("article");
+  </script>
+  <![endif]-->
+  {% include lsidebar.html %}
+
+  {{ content }}
+
+<script type="text/javascript" src="/js/default.js"></script>
+</body>
+</html>

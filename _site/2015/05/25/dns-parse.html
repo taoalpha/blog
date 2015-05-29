@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>更换DNS解析 | TaoAlpha's Blog</title>
+    <meta name="author" content="taoalpha" />
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="TaoAlpha's Blog" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css/default.css" type="text/css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="" />
+    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="/js/functions.js" type="text/javascript"></script>
+</head>
+
+
+<body>
+
+  <!--[if lt IE 9]>
+  <script type="text/javascript">
+    document.createElement("nav"); 
+    document.createElement("header"); 
+    document.createElement("footer"); 
+    document.createElement("section"); 
+    document.createElement("aside"); 
+    document.createElement("article");
+  </script>
+  <![endif]-->
+  <section class="home-menu">
+    <nav class="home-icon-con upside">
+        <a class="home-menu-icon brand active" href="/blog">涛</a>
+        <a class="home-menu-icon" href="/tech"><i class="fa fa-wrench fa-1x"></i></a>
+        <a class="home-menu-icon" href="/dandp"><i class="fa fa-heartbeat fa-1x"></i></a>
+        <a class="home-menu-icon" href="/mylinks"><i class="fa fa-anchor fa-1x"></i></a>
+        <a class="home-menu-icon follow" href="#" title="Contact Me">+</a>
+    </nav>
+    <div class="home-contact">
+        <a href="http://facebook.com/taoalpha/" target="_blank"><img src="http://www.weibo.com/favicon.ico" alt="" width="25"/></a>
+        <a href="http://www.douban.com/people//" target="_blank" ><img src="http://www.douban.com/favicon.ico" alt="" width="22"/></a>
+        <a href="http://instagram.com//" target="_blank"><img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/00c6602/images/ico/favicon.ico" alt="" width="22"/></a>
+    </div>
+
+    <nav class="home-icon-con downside">
+        <a class="home-menu-icon" href="https://github.com/taoalpha/taoalpha.github.com/tree/master/blog/_posts/blog"><i class="fa fa-pencil fa-1x"></i></a>
+        <a class="home-menu-icon" href="/blog"><i class="fa fa-sign-in fa-1x"></i></a>
+    </nav >
+</section>
+
+
+  <link rel="stylesheet" href="/js/prettify/prettify.css" />
+<div id="content">
+    <div class="entry">
+        <h1 class="entry-title"><a href="/2015/05/25/dns-parse.html" title="更换DNS解析">更换DNS解析</a></h1>
+        
+        <div class="meta-top">
+            <a href="/users/taoalpha">
+                <div class="avatar" style="display:inline-block;"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&s=40" alt="100"></div>
+                <span>TaoAlpha</span>
+            </a>        
+            <span>2015-05-25</span>
+            <span class="wordage">983 字 </span>
+            <span class="readspeed">2 分钟读完 </span>
+        </div>
+        <p>回家啦回家啦~ 天南海北, 不如家好啊~!!!</p>
+
+<p>刚回来一天就发现家里网络似乎很诡异… 最开始是经常出现css样式错误或者图片加载不出来的问题, console中冒出来的错误也是net::ERR_CONNECTION_RESET的错误, 于是google了一下, 说是http和https的问题, 就装了一个<a href="https://www.eff.org/https-everywhere">https everywhere的插件</a>, 但是console中还是冒出来一些http资源无法在https下访问的错误… 就觉得有些奇怪, 应该是没找对问题的根本…</p>
+
+<p>虽然我起初开始怀疑是不是家里网络的问题, 但尚不确定是网络速度的问题还是地处偏僻角落… 被伟大互联网鄙视了的原因…亦或者是其他的问题…</p>
+
+<p>但是, 突然发现浏览过程中遇到了莫名跳转… 而且还是个广告跳转… 就基本确定自己是遇到的DNS拦截了… 于是正好想起来很多月前百度出了一个公共的DNS解析服务, 果断拿来用了一下… 效果极佳啊~哈哈</p>
+
+<p>感觉上面的话语充满了百度DNS软文的感觉… 所以这里介绍下DNS解析的设定方法以及贡献以下百度, 阿里和google几家的DNS解析服务哈哈 (考虑到天朝内, 度娘的优势还是很明显的)</p>
+
+<ul>
+  <li>要设置DNS解析, 自然需要进入到网络设置中, 这个根据操作系统的区别自然是有着很大的区别;</li>
+  <li>找到DNS的设定部分, 修改默认的DNS为你需要的DNS;</li>
+  <li>应用修改, DONE.</li>
+</ul>
+
+<p><a href="http://dudns.baidu.com/useDoc.html">Baidu DNS官网有一篇很全的设定贴</a>, 小白可以围观之.</p>
+
+<p>当然, 附加一些阿里和google的DNS:</p>
+
+<ul>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="http://www.alidns.com/">阿里DNS</a>: 223.5.5.5</td>
+          <td> </td>
+          <td>223.6.6.6</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="https://developers.google.com/speed/public-dns/">Google DNS</a>: 8.8.8.8</td>
+          <td> </td>
+          <td>8.8.4.4</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+  <li><a href="http://dudns.baidu.com/">百度DNS</a>: 180.76.76.76</li>
+  <li>
+    <table>
+      <tbody>
+        <tr>
+          <td><a href="http://www.114dns.com/">114DNS-</a>: 114.114.114.114</td>
+          <td> </td>
+          <td>114.114.115.115</td>
+        </tr>
+      </tbody>
+    </table>
+  </li>
+</ul>
+
+<p>恩, 我们要坚持和万恶的恶意DNS作战到底!!!</p>
+
+
+    </div>
+
+    <div class="sidenav">
+        <h2>All</h2>
+        <ul class="article-list">
+        
+            <li><a href="/2015/05/26/filesystem-recovery-from-time-machine.html">利用TM进行系统二进制文件恢复</a></li>
+        
+            <li><a href="/2015/05/25/dns-parse.html">更换DNS解析</a></li>
+        
+            <li><a href="/2015/05/21/mi-band.html">小米手环体验一周感受</a></li>
+        
+        </ul>
+
+        <h2>Tech</h2>
+        <ul class="article-list">
+        
+            <li><a href="/2015/05/22/Cookie-path.html">Cookie中path规则介绍</a></li>
+        
+            <li><a href="/2015/05/21/jekyll-count-of-chinese-characters.html">jekyll中如何做中文字数统计</a></li>
+        
+            <li><a href="/2015/05/12/js-date-to-chinese.html">JS实现中文日期的方法</a></li>
+        
+        </ul>
+
+        <h2>D&P</h2>
+        <ul class="article-list">
+        
+            <li><a href="/2015/05/08/design-psychology-1-cyber-psychology.html">设计心理学系列(1) - 网络心理学</a></li>
+        
+        </ul>
+    </div>
+    
+<div class="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/05/25/dns-parse" data-title="更换DNS解析 - TaoAlpha's Blog" data-url="/2015/05/25/dns-parse.html - http://taoalpha.github.io"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:'taoalpha'};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+
+</div>
+
+<script src="/js/post.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" src="/js/default.js"></script>
+</body>
+</html>

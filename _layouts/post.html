@@ -1,0 +1,47 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" href="/js/prettify/prettify.css" />
+<div id="content">
+    <div class="entry">
+        <h1 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
+        {% assign author = site.authors[page.author] %}
+        <div class="meta-top">
+            <a href="/users/{{ page.author }}">
+                <div class="avatar" style="display:inline-block;"><img src="{{ author.avatar }}" alt="100"></div>
+                <span>{{ author.display_name }}</span>
+            </a>        
+            <span>{{ page.date|date:"%Y-%m-%d" }}</span>
+            <span class="wordage">{{ content | strip_html | strip_newlines | size }} 字 </span>
+            <span class="readspeed">{{ content | strip_html | strip_newlines | size | divided_by:350 | round}} 分钟读完 </span>
+        </div>
+        {{ content }}
+    </div>
+
+    <div class="sidenav">
+        <h2>All</h2>
+        <ul class="article-list">
+        {% for post in site.categories.blog limit:3 %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <h2>Tech</h2>
+        <ul class="article-list">
+        {% for post in site.categories.tech limit:3 %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <h2>D&P</h2>
+        <ul class="article-list">
+        {% for post in site.categories.dandp limit:3 %}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+    {% include duoshuo.html %}
+</div>
+
+<script src="/js/post.js" type="text/javascript"></script>

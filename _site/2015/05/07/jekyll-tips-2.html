@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Jekyll 心得(2) - 筛选tag的实现 | TaoAlpha's Blog</title>
+    <meta name="author" content="taoalpha" />
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="TaoAlpha's Blog" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css/default.css" type="text/css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="" />
+    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="/js/jquery.cookie.js" type="text/javascript"></script>
+    <script src="/js/functions.js" type="text/javascript"></script>
+</head>
+
+
+<body>
+
+  <!--[if lt IE 9]>
+  <script type="text/javascript">
+    document.createElement("nav"); 
+    document.createElement("header"); 
+    document.createElement("footer"); 
+    document.createElement("section"); 
+    document.createElement("aside"); 
+    document.createElement("article");
+  </script>
+  <![endif]-->
+  <section class="home-menu">
+    <nav class="home-icon-con upside">
+        <a class="home-menu-icon brand active" href="/blog">涛</a>
+        <a class="home-menu-icon" href="/tech"><i class="fa fa-wrench fa-1x"></i></a>
+        <a class="home-menu-icon" href="/dandp"><i class="fa fa-heartbeat fa-1x"></i></a>
+        <a class="home-menu-icon" href="/mylinks"><i class="fa fa-anchor fa-1x"></i></a>
+        <a class="home-menu-icon follow" href="#" title="Contact Me">+</a>
+    </nav>
+    <div class="home-contact">
+        <a href="http://facebook.com/taoalpha/" target="_blank"><img src="http://www.weibo.com/favicon.ico" alt="" width="25"/></a>
+        <a href="http://www.douban.com/people//" target="_blank" ><img src="http://www.douban.com/favicon.ico" alt="" width="22"/></a>
+        <a href="http://instagram.com//" target="_blank"><img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/00c6602/images/ico/favicon.ico" alt="" width="22"/></a>
+    </div>
+
+    <nav class="home-icon-con downside">
+        <a class="home-menu-icon" href="https://github.com/taoalpha/taoalpha.github.com/tree/master/blog/_posts/blog"><i class="fa fa-pencil fa-1x"></i></a>
+        <a class="home-menu-icon" href="/blog"><i class="fa fa-sign-in fa-1x"></i></a>
+    </nav >
+</section>
+
+
+  <link rel="stylesheet" href="/js/prettify/prettify.css" />
+<div id="content">
+    <div class="entry">
+        <h1 class="entry-title"><a href="/2015/05/07/jekyll-tips-2.html" title="Jekyll 心得(2) - 筛选tag的实现">Jekyll 心得(2) - 筛选tag的实现</a></h1>
+        
+        <div class="meta-top">
+            <a href="/users/taoalpha">
+                <div class="avatar" style="display:inline-block;"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&s=40" alt="100"></div>
+                <span>TaoAlpha</span>
+            </a>        
+            <span>2015-05-07</span>
+            <span class="wordage">3106 字 </span>
+            <span class="readspeed">8 分钟读完 </span>
+        </div>
+        <p>对于blog而言, 利用categories和tags的筛选是非常方便的, 而在jekyll部署的静态博客中也能轻松的实现这一点的. 本文(也即本博客)中效果主要模仿<a href="http://jianshu.com">简书</a>.</p>
+
+<h2 id="categoriestags">展现categories以及tags</h2>
+
+<blockquote>
+  <p>首先我们需要设定了tags的post… 这样你的<code>site.tags</code>才会有数据~ 具体的tags设定方法可以参照<a href="/2015/05/07/jekyll-tips-1.html">心得(1)</a>.</p>
+</blockquote>
+
+<blockquote>
+  <p>接着就是如何展现tags数据了~ 以本文为例, 我总计有三个category, 因为要实现不同category下的tag只出现在自己的category页面下方, 所以在展现tags的时候需要做一个category的判定.</p>
+</blockquote>
+
+<pre><code>{% assign tags = "all" %}
+// 设置变量, 这里用all来表示默认的第一个tag, 代表全部tags的情况
+{% for post in site.posts %}
+    // 取所有的post出来逐一判定, 这里未来post很多的话, 会进行数量限制, 目前数量太少, 就糙着用啦
+    {% for tag in post.tags %}
+        // 取post自己的tags出来, 逐一进行判定是否已经在tags数组列表中了
+        {% unless tags contains tag %}
+            // 为了去掉重复的tag~
+            {% capture tags %}{{ tags }}|{{ tag }}{% endcapture %}
+            // 把所有不在tags数组中的tag都加到tags中
+        {% endunless %}
+    {% endfor %}
+{% endfor %}
+{% assign alltags = tags | split: '|' %}
+// 生成一个新的数组, 似乎本身liquid中没有直接append数组的方法... 看到此处的朋友有知道的请不吝告知~
+&lt;ul class="tags"&gt;
+{% for tag in alltags %}
+// 展现tag
+&lt;a href="javascript:;" data-rel="{{ tag }}" class="filter tag {% if tag == 'all'  %}active{% endif %}" &gt;{{ tag }}&lt;/a&gt;
+// 这里的data-rel是为了筛选做的准备, 后文会介绍
+{% endfor %}
+&lt;/ul&gt;
+</code></pre>
+
+<p>如此基本就实现了tags在特定category下的展现.</p>
+
+<h2 id="tag">根据tag进行筛选</h2>
+
+<p>有了tags之后, 就可以进一步做筛选了. 基本的思路是在不考虑分页的情况下, 筛选基本就是针对当前展现出来的文章列表做对应的展现隐藏控制.</p>
+
+<blockquote>
+  <p>利用<code>data-rel</code>(随意指定data后面的名称即可)存储要筛选的tag, 如上;</p>
+</blockquote>
+
+<blockquote>
+  <p>在post中加上tags的数据标签:</p>
+</blockquote>
+
+<pre><code>&lt;li class="post" data-filter="{{ post.tags|join:' ' }}"&gt;
+// 因为post.tags本身就是一个array类型, 所以这里直接用空格链接填入一个`data-filter`中即可;
+</code></pre>
+
+<blockquote>
+  <p>利用js实现点击筛选的控制:</p>
+</blockquote>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.filter&quot;</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// 由tag点击事件出发</span>
+    <span class="kd">var</span> <span class="nx">$this</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">$this</span><span class="p">.</span><span class="nx">hasClass</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// 排除当前已选tag, 新tag标记active</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.filter&quot;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">);</span>
+        <span class="nx">$this</span><span class="p">.</span><span class="nx">addClass</span><span class="p">(</span><span class="s2">&quot;active&quot;</span><span class="p">);</span> <span class="c1">// set the active tab</span>
+        <span class="kd">var</span> <span class="nx">$filter</span> <span class="o">=</span> <span class="nx">$this</span><span class="p">.</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;rel&quot;</span><span class="p">);</span> 
+        <span class="c1">// 获得要筛选的tag名称</span>
+        <span class="nx">$filter</span> <span class="o">==</span> <span class="s1">&#39;all&#39;</span> <span class="o">?</span> 
+            <span class="c1">// 对all做单独判断, 基本就是全展现</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.post&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">not</span><span class="p">(</span><span class="s2">&quot;:visible&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">fadeIn</span><span class="p">()</span> 
+        <span class="o">:</span> <span class="c1">// 否则的话, 利用filter进行tag匹配的判断</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.post&quot;</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">fadeOut</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="c1">// 判断post中是否包含此tag, 这里用array来判断而不是直接文本判断就是为了防止出现类似tag和tags这种局部包含的误判</span>
+                <span class="k">return</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">data</span><span class="p">(</span><span class="s2">&quot;filter&quot;</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">).</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">$filter</span><span class="p">)</span><span class="o">!=-</span><span class="mi">1</span><span class="p">;</span> 
+            <span class="p">})</span>
+            <span class="p">.</span><span class="nx">fadeIn</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span> 
+    <span class="p">}</span> <span class="c1">// endif</span>
+<span class="p">});</span> <span class="c1">// endon</span></code></pre></div>
+
+<p>这里都用的是fadeIn,fadeOut的动效, 你当然可以修改成自己的~ 这里的实现主要参照了<a href="http://www.jqueryrain.com/?http://www.picssel.com/demos/fboxfilteredgallery.html">jQuery filter with fancybox</a>, 不过原理其实很简单的~</p>
+
+<h2 id="tags">tags限制</h2>
+
+<p>随着post的增多, 你会发现自己的tags也越来越庞大, 如果全部展现的话, 一是太多, 二呢, 展现也不方便, 毕竟我目前的css样式只考虑了两行的情况, 所以呢, 还是需要对tags的展现做一些限制的.</p>
+
+<p>有两种思路:</p>
+
+<ul>
+  <li>
+    <p>利用jekyll的plugin直接在生成层控制, 每次随机出一些tag就行了;</p>
+  </li>
+  <li>
+    <p>利用js在展现层控制, 所有tag都生成出来, 但是由js控制随机展现一部分;</p>
+  </li>
+</ul>
+
+<p>最终我用的还是第二种思路, 第一种思路主要缺点是在编译生成的时候控制的话, 只有每次重新编译才会重新生成, 和我希望的访问随机需求不符合.</p>
+
+<p>实现方法也很容易, 基本就是利用Math.random()来生成随机数即可.</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">randomTags</span><span class="p">(){</span>
+    <span class="kd">var</span> <span class="nx">originArray</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;ul.tags&#39;</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;a.tag&#39;</span><span class="p">)</span>
+    <span class="nx">originArray</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+    <span class="c1">// 确保 all 每次都展现</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">index</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">random</span><span class="p">()</span><span class="o">*</span><span class="nx">originArray</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+        <span class="c1">// 没有做虑重处理, 所以很可能展现出来的tag没有10个; 想做的话也容易, 循环过程中加个是否显示了的判断即可, 这里就不做了~</span>
+        <span class="nx">originArray</span><span class="p">.</span><span class="nx">eq</span><span class="p">(</span><span class="nx">index</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>如上, 对于jekyll的tags和categories的探索就先这样了~ 以后有什么更加有趣的想法或者发现了再补充~</p>
+
+<p>See ya.</p>
+
+
+    </div>
+
+    <div class="sidenav">
+        <h2>All</h2>
+        <ul class="article-list">
+        
+            <li><a href="/2015/05/26/filesystem-recovery-from-time-machine.html">利用TM进行系统二进制文件恢复</a></li>
+        
+            <li><a href="/2015/05/25/dns-parse.html">更换DNS解析</a></li>
+        
+            <li><a href="/2015/05/21/mi-band.html">小米手环体验一周感受</a></li>
+        
+        </ul>
+
+        <h2>Tech</h2>
+        <ul class="article-list">
+        
+            <li><a href="/2015/05/22/Cookie-path.html">Cookie中path规则介绍</a></li>
+        
+            <li><a href="/2015/05/21/jekyll-count-of-chinese-characters.html">jekyll中如何做中文字数统计</a></li>
+        
+            <li><a href="/2015/05/12/js-date-to-chinese.html">JS实现中文日期的方法</a></li>
+        
+        </ul>
+
+        <h2>D&P</h2>
+        <ul class="article-list">
+        
+            <li><a href="/2015/05/08/design-psychology-1-cyber-psychology.html">设计心理学系列(1) - 网络心理学</a></li>
+        
+        </ul>
+    </div>
+    
+<div class="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="/2015/05/07/jekyll-tips-2" data-title="Jekyll 心得(2) - 筛选tag的实现 - TaoAlpha's Blog" data-url="/2015/05/07/jekyll-tips-2.html - http://taoalpha.github.io"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:'taoalpha'};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+        </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+
+</div>
+
+<script src="/js/post.js" type="text/javascript"></script>
+
+
+<script type="text/javascript" src="/js/default.js"></script>
+</body>
+</html>
