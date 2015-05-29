@@ -9,15 +9,19 @@ layout:           default
 
   <nav>
     <ul class="article-cate">
-      <li {% if page.pname == 'blog' %}class="on"{% endif %}><a href="/blog"><span>All</span></a></li>
-      <li {% if page.pname == 'tech' %}class="on"{% endif %}><a href="/blog/tech"><span>Tech</span></a></li>
-      <li {% if page.pname == 'danp' %}class="on"{% endif %}><a href="/blog/dandp"><span>D&amp;P</span></a></li>
+      <li {% if page.pname == 'blog' %}class="on"{% endif %}><a href="{{ site.baseurl }}"><span>All</span></a></li>
+      <li {% if page.pname == 'tech' %}class="on"{% endif %}><a href="{{ site.baseurl }}/tech"><span>Tech</span></a></li>
+      <li {% if page.pname == 'dandp' %}class="on"{% endif %}><a href="{{ site.baseurl }}/dandp"><span>D&amp;P</span></a></li>
     </ul>
   </nav>
 
   <nav class="cate-bar">
     {% assign tags = "all" %}
-    {% for post in site.categories[page.pname]%}
+    {% assign cposts = site.categories[page.pname] %}
+    {% if page.pname == 'blog' %}
+      {% assign cposts = site.posts %}
+    {% endif %}
+    {% for post in cposts %}
       {% for tag in post.tags %}
         {% unless tags contains tag %}
           {% capture tags %}{{ tags }}|{{ tag }}{% endcapture %}
@@ -34,7 +38,7 @@ layout:           default
 
   <article>
     <ul class="article-list">
-      {% for post in site.categories[page.pname]%}
+      {% for post in cposts %}
       <li class="post" data-filter="{{ post.tags|join:' ' }}">
         <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
         <div class="title-excerpt">{{ post.content | strip_html | truncatewords:20 | markdownify }}</div>
@@ -52,4 +56,4 @@ layout:           default
   randomTags("")
 </script>
 
-<script type="text/javascript" src="/blog/js/home.js"></script>
+<script type="text/javascript" src="{{ site.baseurl }}/js/home.js"></script>
