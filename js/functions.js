@@ -9,9 +9,10 @@ jQuery.fn.rotate = function(degrees) {
 function getLocation() {
     var weatherData = $.cookie("weatherData");
     var cLocation = $.cookie("cLocation");
-    var weatherImgUrl = $.cookie("weatherImgUrl");
+    var path_prefix = location.pathname.split("/")[2];
+    var weatherImgUrl = $.cookie(path_prefix+"weatherImgUrl");
     if(!weatherImgUrl){
-        randomImage()
+        randomImage(path_prefix)
     }
     if(weatherData){
         updateWeather(JSON.parse(weatherData),"cookie");
@@ -97,9 +98,9 @@ function randomTags(flag){
         originArray.eq(index).show();
     }
 }
-function randomImage(){
+function randomImage(path){
     var imageurl = "http://www.dailywallppr.com/img/"+ Math.floor(Math.random()*2320+1)+".jpg"
     $("section.aside").css("background-image","url("+imageurl+")");
-    $.cookie("weatherImgUrl",imageurl,{expires:0.05})
+    $.cookie(path+"weatherImgUrl",imageurl,{expires:0.05})
 }
 
