@@ -90,6 +90,12 @@
     star: 5
     tags: [code]
 
+  - link: https://regex101.com/#
+    title: Regex 101
+    desc: Online regex tester, debugger with highlighting for PHP, PCRE, Python and JavaScript.
+    star: 5
+    tags: [code,regex,debug]
+
   - link: https://www.overleaf.com/
     title: Overleaf
     desc: Former WriteLaTeX, online platform for scientific writing

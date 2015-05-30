@@ -3,8 +3,9 @@ layout: post
 title: 
 category: tech 
 description: 
-tags: 
+tags: [js,css3] 
 author: taoalpha
 ---
 
-[TaoAlpha]:    http://zzgary.info "TaoAlpha"
+{% highlight javascript %}
+{% endhighlight %}

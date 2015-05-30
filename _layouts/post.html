@@ -5,7 +5,7 @@ pname: blog
 
 {% stylesheet prettify/prettify %}
 <article id="content">
-    <div class="entry">
+    <section class="entry">
         <h1 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
         {% assign author = site.authors[page.author] %}
         <div class="meta-top">
@@ -18,7 +18,7 @@ pname: blog
             <span class="readspeed">{{ content | strip_html | strip_newlines | size | divided_by:350 | round}} 分钟读完 </span>
         </div>
         {{ content }}
-    </div>
+    </section>
 
     <sidebar class="sidenav">
         <h2>All</h2>
