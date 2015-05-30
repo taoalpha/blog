@@ -4,7 +4,7 @@ pname: mylinks
 permalink: /mylinks/
 ---
 
-<section class="index-content mylinks" style="padding-left:50px;">
+<section class="index-content mylinks" style="padding:0 0 0 50px;">
   {% assign linksdata = site.data.mylinks %}
   <div class="cate-bar">
       {% assign tags = "all" %}
@@ -27,7 +27,7 @@ permalink: /mylinks/
       <h2 class="title">{{ category.name|replace:"-"," " }}</h2>
           {% for link in category.links %}
         <li>
-            <a href="{{ link.link }}">{{ link.title }}{% if link.desc != null %}<span class="sub-title">{{ link.desc }}</span>{% endif %}</a>
+            <a href="{{ link.link }}" target="something">{{ link.title }}{% if link.desc != null %}<span class="sub-title">{{ link.desc }}</span>{% endif %}</a>
         </li>
           {% endfor %}
       </ul>
