@@ -8,7 +8,7 @@ $(function(){
       // get the data-rel value from selected tab and set as filter
       var $filter = $this.data("rel"); 
       // if we select view all, return to initial settings and show all
-      $filter == 'all' ? 
+      $filter.toLowerCase() == 'all' ? 
           $(".post")
           .not(":visible")
           .fadeIn() 

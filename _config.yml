@@ -94,3 +94,5 @@ assets:
   js_compressor: uglifier
   css_compressor: sass
   gzip: [ text/css, application/javascript ]
+tags:
+  - css3

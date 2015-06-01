@@ -197,6 +197,9 @@ pre ol{margin-left:25px;list-style-type:decimal;}
     font-size:13px;
     margin-bottom:20px;
     i,span{ margin-right:5px;}
+    a{color:#bbb;margin-right:2px;font-weight:normal;}
+    a:nth-of-type(n+2):before{content:",";padding-right:2px;}
+    a:hover{color:#999}
   }
   ul.article-cate { 
     height:40px; line-height:40px; padding-left:25px; border-bottom:1px solid #ccc; text-align:center;
@@ -248,11 +251,12 @@ pre ol{margin-left:25px;list-style-type:decimal;}
       padding:0px;
       float:left;
       width:23%;
-      margin:0 0 40px 10px;
+      margin:20px 0 40px 10px;
       overflow:hidden;
       border-left:1px solid #ccc;
       &:nth-child(4n+1){clear: both;}
       h2.title{
+        margin: auto;
         border-left:4px solid $highlightColor;            
         font-size:26px;
         padding-left:15px;
@@ -284,18 +288,17 @@ pre ol{margin-left:25px;list-style-type:decimal;}
 }
 
 
-
+/***************Tag Page Bread Navigation Style*****************/
+#bread{color:$grayColor;margin-left:40px;
+  border-bottom:1px dashed #666;
+  a{color:$grayColor;}
+  a:hover{color:#000;}
+}
 /***************Wiki Style*****************/
 .wiki h2{cursor:pointer;}
 .wiki ul{margin-left:30px;margin-bottom:20px;list-style:disc}
 .wiki ul li{margin-bottom:5px;}
 .wiki ul ul{list-style:circle;margin-top:10px;margin-bottom:10px;}
-
-/***************contact style*************/
-#disqus_container {font-size:12px;}
-#disqus_container a.comment{font-size:14px;}
-h3.about {color:#777;margin-top:20px;font-size:22px;margin-bottom:10px}
-.about-link a {margin-right:10px;font-weight:bold;font-style:italic;font-size:13px;color:#E50053}
 
 
 /**************目录导航**************/

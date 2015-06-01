@@ -1,0 +1,22 @@
+{% include header.html %}
+<body>
+  {% include lsidebar.html pname=page.pname %}
+  {% include picbar.html %}
+
+  <section class="index-content blog">
+
+    {{ content }}
+
+  </section>
+
+
+  <script type="text/javascript">
+    getLocation()
+    randomTags("")
+  </script>
+
+  {% javascript home %}
+</body>
+</html>
+
+

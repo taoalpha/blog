@@ -28,7 +28,7 @@ function getLocation() {
     }
 }
 function customLocation(){
-    $('div.location').find("span").text("");
+    $('.location').find("span").text("");
     $('input#cLocation').show().focus();
 }
 function updateLocation(){
@@ -42,7 +42,7 @@ function updateWeather(position,flag){
         weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q="+position+"&lang=zh_cn&units=metric";
     }else if (flag == "cookie"){
         updateWeatherPart(position);
-        $("aside.aside").css("background-image","url("+$.cookie(location.pathname.split("/")[2]+"weatherImgUrl")+")");
+        $(".aside").css("background-image","url("+$.cookie(location.pathname.split("/")[2]+"weatherImgUrl")+")");
         return
     }else{
         weatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&lang=zh_cn&units=metric";
@@ -62,7 +62,7 @@ function updateWeatherPart(data){
     var ZdataD = Mcharacters[Math.floor(day/10)]+Dcharacters[day % 10]
     var Edata = new Date(dt).toDateString()
 
-    $('div.location span').text(data.name);
+    $('.location span').text(data.name);
     $('input#cLocation').hide();
     $('h2.weather-cn').html(ZdataM+"月"+ZdataD+"日: <span>"+data["weather"][0]["description"]+"</span>");
     $('h3.weather-en').html(Edata+": <span>"+data["weather"][0]["main"]+"</span>");
@@ -100,7 +100,7 @@ function randomTags(flag){
 }
 function randomImage(path){
     var imageurl = "http://www.dailywallppr.com/img/"+ Math.floor(Math.random()*2320+1)+".jpg"
-    $("aside.aside").css("background-image","url("+imageurl+")");
+    $(".aside").css("background-image","url("+imageurl+")");
     $.cookie(path+"weatherImgUrl",imageurl,{expires:0.05})
 }
 
