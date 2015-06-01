@@ -23,7 +23,7 @@ coding有个很重要的环节就是fallback. 你不能为了用新特性就不�
 
   H5和CSS3的兼容性也是如此, 已经有一些现成的库可以满足我们的需求了, 为了省事, 你完全可以拿来直接用. 比如下面这个目前最流行的检测库:[Modernizr].
 
-  [Modernizr]的功能就是检测当前浏览器对HTML5和CSS3各个特性的支持情况, 你可以通过[Modernizr的Doc]查看其检测属性的列表以及使用方法. 当然, 如果你想更进一步的理解[Modernizr]的运行原理, 还可以去[Github/Modernizr]上查看其源码~ 当然, Modernizr主要提供的兼容性的检测, 其可以输出一个Modernizr的Object, 其中包含了其对所有属性的检测结果. 比如我在chromium下的检测结果为:
+  [Modernizr]的功能就是检测当前浏览器对HTML5和CSS3各个特性的支持情况, 你可以通过[Modernizr的Doc]查看其检测属性的列表以及使用方法. 当然, 如果你想更进一步的理解[Modernizr]的运行原理, 还可以去[Github/Modernizr]上查看其源码~ 当然, Modernizr主要提供的兼容性的检测, 其可以输出一个Modernizr的Object, 其中包含了其对所有属性的检测结果. 比如我在chromium下的检测结果为(部分):
 
 {% highlight json %}
 {

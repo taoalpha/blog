@@ -2,10 +2,11 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{% if page.pname != "blog" %}{{ page.pname|capitalize }} | {% endif %}{{ site.title }}</title>
     <meta name="author" content="taoalpha" />
     <meta name="renderer" content="webkit">
-    <meta name="description" content="TaoAlpha's Blog" />
+    <meta name="description" content="{% if page.description %}{{ page.description }}|{% endif %}TaoAlpha's Blog" />
+    <meta name="keywords" content="{% if page.tags %}{{ page.tags | join: ","}}|{% endif %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <link rel="shortcut icon" href="{{ site.baseurl }}/images/favicon.png" type="image/x-icon" />
     <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />

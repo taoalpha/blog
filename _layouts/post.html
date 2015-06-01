@@ -20,7 +20,7 @@ pname: blog
         {{ content }}
     </section>
 
-    <sidebar class="sidenav">
+    <aside class="sidenav">
         <h2>All</h2>
         <ul class="article-list">
         {% for post in site.posts limit:3 %}
@@ -41,7 +41,7 @@ pname: blog
             <li><a href="{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
         </ul>
-    </sidebar>
+    </aside>
 
     {% include duoshuo.html %}
 

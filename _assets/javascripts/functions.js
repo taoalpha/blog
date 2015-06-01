@@ -42,7 +42,7 @@ function updateWeather(position,flag){
         weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q="+position+"&lang=zh_cn&units=metric";
     }else if (flag == "cookie"){
         updateWeatherPart(position);
-        $("section.aside").css("background-image","url("+$.cookie(location.pathname.split("/")[2]+"weatherImgUrl")+")");
+        $("aside.aside").css("background-image","url("+$.cookie(location.pathname.split("/")[2]+"weatherImgUrl")+")");
         return
     }else{
         weatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&lang=zh_cn&units=metric";
@@ -100,7 +100,7 @@ function randomTags(flag){
 }
 function randomImage(path){
     var imageurl = "http://www.dailywallppr.com/img/"+ Math.floor(Math.random()*2320+1)+".jpg"
-    $("section.aside").css("background-image","url("+imageurl+")");
+    $("aside.aside").css("background-image","url("+imageurl+")");
     $.cookie(path+"weatherImgUrl",imageurl,{expires:0.05})
 }
 

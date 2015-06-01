@@ -1,7 +1,7 @@
 {% include header.html %}
 <body>
   {% include lsidebar.html pname=page.pname %}
-  {% include aside.html %}
+  {% include picbar.html %}
 
   <section class="index-content blog">
     <nav>
@@ -38,7 +38,7 @@
         {% for post in cposts %}
         <li class="post" data-filter="{{ post.tags|join:' ' }}">
           <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-          <div class="title-excerpt">{{ post.content | strip_html | truncatewords:20 | markdownify }}</div>
+          <summary class="title-excerpt">{{ post.content | strip_html | truncatewords:20 | markdownify }}</summary>
           <div class="post-info">
             <span class="author"><i class="fa fa-user"></i>{{ post.author }}</span>
             <span class="category"><i class="fa fa-briefcase"></i>{{ post.category }}</span>
