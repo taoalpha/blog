@@ -57,7 +57,6 @@ highlighter: pygments
 permalink: /:year/:month/:day/:title.html
 paginate: 5
 paginate_path: "page:num/"
-paginate_per_category: true
 
 # The release of Jekyll Now that you're using
 version: v1.0.0
