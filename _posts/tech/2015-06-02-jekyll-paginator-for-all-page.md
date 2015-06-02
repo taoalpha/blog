@@ -9,7 +9,7 @@ author: taoalpha
 
 ## 缘起
 
-随着博文数量正式达到15篇以上, 我寻思着也是时候给blog增加一个翻页的部分了.  首先当然是研究[jekyll的官方文档](http://jekyllrb.com/docs/pagination/), 然后再结合我们自己的需求进行修改. 因为考虑到blog的通常结构都会有category和tag, 而且昨天刚刚增加了[tag专属页](/blog{% post_url tech/2015-06-01-jekyll-tag-page %}), 所以就希望能够在category和tag页下都增加一个翻页的模块. 而目前jekyll的默认paginator尚无法支持这样的需求, 我们只能自己动手喽~
+随着博文数量正式达到15篇以上, 我寻思着也是时候给blog增加一个翻页的部分了.  首先当然是研究[jekyll的官方文档](http://jekyllrb.com/docs/pagination/), 然后再结合我们自己的需求进行修改. 因为考虑到blog的通常结构都会有category和tag, 而且昨天刚刚增加了[tag专属页]({{ site.baseurl }}{% post_url tech/2015-06-01-jekyll-tag-page %}), 所以就希望能够在category和tag页下都增加一个翻页的模块. 而目前jekyll的默认paginator尚无法支持这样的需求, 我们只能自己动手喽~
 
 ## jekyll paginator
 
@@ -66,7 +66,7 @@ paginate: 2
 
 首先我们可以学习以下默认的pagination是如何做的, 这一点我们可以在[github上jekyll-paginate的主页](https://github.com/jekyll/jekyll-paginate/blob/master/lib/jekyll-paginate/pager.rb)查看其源码.
 
-可以看到基本方法是完全可以通用的, 只是默认情况下的pager这个包含了翻页信息的对象只包含在了首页的创建上. 我们完全可以在生成tag页和category页的时候也同时生成一个对应的pager对象. 接下来我们就可以在原来的[jekyll生成tag页](/blog{% post_url tech/2015-06-01-jekyll-tag-page %})中的示例代码基础上加上pager.
+可以看到基本方法是完全可以通用的, 只是默认情况下的pager这个包含了翻页信息的对象只包含在了首页的创建上. 我们完全可以在生成tag页和category页的时候也同时生成一个对应的pager对象. 接下来我们就可以在原来的[jekyll生成tag页]({{ site.baseurl }}{% post_url tech/2015-06-01-jekyll-tag-page %})中的示例代码基础上加上pager.
 
 
 {% highlight ruby %}
@@ -153,7 +153,7 @@ end
     {% if page.pname == "blog" %}
       {% assign pname = "" %}
     {% endif %}
-    <!-- pname就是我之前插件中加入的那个用来表明所属页面属性的, 顺带也故意写成了方便添加url的路径格式 -->
+    <!-- pname就是我之前插件中加入的那个用来表明所属页面属性的, 顺带也故意写成了方便添加url的路径格式, 且下面这些路径还需要根据具体情况自行调整~ -->
     <div class="pagination">
       {% if paginator.previous_page %}
         <a href="{{ paginator.previous_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>

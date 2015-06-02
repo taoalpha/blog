@@ -1,6 +1,8 @@
 //= require vendor/font-awesome
 //= require vendor/_reset
 @import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
+@import "compass/css3/images";
 
 $highlightColor : #00C070;
 $grayColor : #999;
@@ -38,7 +40,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
   h2 { font-size:18px; color:#333; margin-bottom:15px; }
   ul { margin-bottom:50px; }
   li { margin-bottom:12px; word-break: break-all;}
-  a { color:#555; font-size:14px; display:block;}
+  a { color:#555; font-size:14px; display:block;line-height: 20px;}
 }
 .entry,.comments{
   margin-bottom:80px;
@@ -114,6 +116,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
   }
 }
 
+/****************picbar style**************/
 .aside {
   position: fixed;
   top: 0;
@@ -172,6 +175,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
   }
 }   
 
+/****************picbar style**************/
 .index-content {
   margin-left:28%; padding-right:10%;
   img{ max-width:120%;}
@@ -238,6 +242,35 @@ pre ol{margin-left:25px;list-style-type:decimal;}
         }
       }
     }
+  }
+}
+
+/****************pagination style**************/
+.pagination{
+  width: 300px;
+  height: 50px;
+  margin: -10px auto;
+  a,em{
+    width:30px;
+    height:30px;
+    line-height:30px;
+    text-align:center;
+    background-color:$highlightColor;
+    display:inline-block;
+    float:left;
+    margin-right:10px;
+    border-top: 1px solid #aff797;
+    @include box-shadow(1px 0px 0 rgba(black,0.5)); 
+    @include border-radius(4px, 4px);
+    @include background-image(linear-gradient(#65d66c,$highlightColor));
+  }
+  em{background:$grayColor;}
+  .prev,.next{
+    width:60px;
+  }
+  a:hover{
+    color:black;
+    @include background-image(linear-gradient($highlightColor,#3e9c6a));
   }
 }
 

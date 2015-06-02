@@ -13,11 +13,15 @@
     {% if page.pname == "blog" %}
       {% assign pname = "" %}
     {% endif %}
-    <div class="pagination">
+    <nav class="pagination">
       {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+        {% if paginator.previous_page == 1 %}
+          <a class="prev" href="{{ pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">&laquo; Prev</a>
+        {% else %}
+          <a class="prev" href="{{ paginator.previous_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">&laquo; Prev</a>
+        {% endif %}
       {% else %}
-        <span>&laquo; Prev</span>
+        <em class="prev">&laquo; Prev</em>
       {% endif %}
     
       {% for page in (1..paginator.total_pages) %}
@@ -31,11 +35,11 @@
       {% endfor %}
     
       {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+        <a class="next" href="{{ paginator.next_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">Next &raquo;</a>
       {% else %}
-        <span>Next &raquo;</span>
+        <em class="next">Next &raquo;</em>
       {% endif %}
-    </div>
+    </nav>
     {% endif %}
 
   </section>

@@ -24,21 +24,21 @@ pname: blog
         <h2>All</h2>
         <ul class="article-list">
         {% for post in site.posts limit:3 %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
         </ul>
 
         <h2>Tech</h2>
         <ul class="article-list">
         {% for post in site.categories.tech limit:3 %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+            <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
         </ul>
 
         <h2>D&P</h2>
         <ul class="article-list">
         {% for post in site.categories.dandp limit:3 %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
         </ul>
     </aside>
