@@ -11,7 +11,7 @@ module Jekyll
       tag_title_prefix = site.config['tag_title_prefix'] || 'Posts Tagged &ldquo;'
       tag_title_suffix = site.config['tag_title_suffix'] || '&rdquo;'
       self.data['title'] = "#{tag_title_prefix}#{tag}#{tag_title_suffix}"
-      self.data['pname'] = "Tag Page"
+      self.data['pname'] = "tag/#{tag}"
     end
   end
   class TagGenerator < Generator
@@ -26,10 +26,38 @@ module Jekyll
       end
     end
     def write_tag_index(site, dir, tag)
-      index = TagIndex.new(site, site.source, dir, tag)
-      index.render(site.layouts, site.site_payload)
-      index.write(site.dest)
-      site.pages << index
+      tag_posts = site.posts.find_all {|post| post.tags.include?(tag)}.sort_by {|post| -post.date.to_f}
+      num_pages = TagPager.calculate_pages(tag_posts, site.config['paginate'].to_i)
+      (1..num_pages).each do |page|
+        pager = TagPager.new(site, page, tag_posts, tag, num_pages)
+        index = TagIndex.new(site, site.source, dir, tag)
+        index.pager = pager
+        index.dir = dir
+        if page != 1
+          index.dir = File.join(dir, "page#{page}")
+        end
+        index.render(site.layouts, site.site_payload)
+        index.write(site.dest)
+        site.pages << index
+      end
     end
   end
+
+  class TagPager < Jekyll::Paginate::Pager 
+    attr_reader :tag
+
+    def initialize(site, page, all_posts, tag, num_pages = nil)
+      @tag = tag
+      super site, page, all_posts, num_pages
+    end
+
+    alias_method :original_to_liquid, :to_liquid
+
+    def to_liquid
+      liquid = original_to_liquid
+      liquid['tag'] = @tag
+      liquid
+    end
+  end
+
 end

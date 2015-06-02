@@ -101,6 +101,6 @@ function randomTags(flag){
 function randomImage(path){
     var imageurl = "http://www.dailywallppr.com/img/"+ Math.floor(Math.random()*2320+1)+".jpg"
     $(".aside").css("background-image","url("+imageurl+")");
-    $.cookie(path+"weatherImgUrl",imageurl,{expires:0.05})
+    $.cookie(path+"weatherImgUrl",imageurl,{expires:0.05,path:'/blog'})
 }
 

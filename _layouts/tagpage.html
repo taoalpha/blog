@@ -5,7 +5,7 @@ layout: home_base
 <nav id="bread">
   <h2><a href="/blog">All Posts</a> >> Posts with tag: {{ page.tag }}</h2>
 </nav>
-{% assign cposts = site.tags[page.tag] %}
+{% assign cposts = paginator.posts %}
 <article>
   <ul class="article-list">
     {% for post in cposts %}

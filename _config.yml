@@ -6,8 +6,6 @@
 name: TaoAlpha
 title: TaoAlpha's Blog
 author_info: TaoAlpha
-
-# Short bio or description (displayed in the header)
 description: Driven by Passion
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
@@ -57,6 +55,9 @@ baseurl: "/blog"
 markdown: kramdown
 highlighter: pygments
 permalink: /:year/:month/:day/:title.html
+paginate: 5
+paginate_path: "page:num/"
+paginate_per_category: true
 
 # The release of Jekyll Now that you're using
 version: v1.0.0
@@ -94,5 +95,3 @@ assets:
   js_compressor: uglifier
   css_compressor: sass
   gzip: [ text/css, application/javascript ]
-tags:
-  - css3

@@ -12,10 +12,7 @@ layout: home_base
 
 <nav class="cate-bar">
   {% assign tags = "all" %}
-  {% assign cposts = site.categories[page.pname] %}
-  {% if page.pname == 'blog' %}
-    {% assign cposts = site.posts %}
-  {% endif %}
+  {% assign cposts = paginator.posts %}
   {% assign alltags = cposts | map: "tags" | join:"," | split:","|uniq_i|reverse|push:"All"|reverse %}
   <ul class="tags">
   {% for tag in alltags %}
@@ -29,7 +26,7 @@ layout: home_base
     {% for post in cposts %}
     <li class="post" data-filter="{{ post.tags|uniq_i|join_tags|join:' '}}">
       <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-      <summary class="title-excerpt">{{ post.content | strip_html | truncatewords:20 | markdownify | replace: "%","" }}</summary>
+      <summary class="title-excerpt">{{ post.content | truncatewords:25 | markdownify | strip_html | replace: "%","" }}</summary>
       <div class="post-info">
         <span class="author"><i class="fa fa-user"></i>{{ post.author }}</span>
         <span class="category"><i class="fa fa-briefcase"></i>{{ post.category }}</span>
