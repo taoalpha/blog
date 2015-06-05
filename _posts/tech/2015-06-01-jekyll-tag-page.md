@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Jekyll添加tag专属页面
+title: Jekyll 添加 tag 专属页面
 category: tech 
-description: 随着写的博文逐渐增多, 使用的tag也越来越多, 单纯的页面tag随机筛选就变的不够用了, 于是今天就顺带的开启了tag的单页展示.
+description: 随着写的博文逐渐增多, 使用的 tag 也越来越多, 单纯的页面 tag 随机筛选就变的不够用了, 于是今天就顺带的开启了 tag 的单页展示.
 tags: [jekyll,ruby,jekyll tags] 
+series: jekyll-tips
 author: taoalpha
 ---
 
@@ -56,6 +57,60 @@ Tag可以算是blog的标配了, 借用tag我们才能够让blog更好的归档,
 - 在根目录下创建jekyll.md文件, 然后在上述代码的基础上加上`permalink: /tag/jekyll`即可;
 
 如此就算是实现了不用插件的情况下对特定tag创建的tag专属页了.
+
+<blockquote class="special update" markdown="1">
+## Update
+
+更新一种无插件创建tag页的方法: 思路是展现全部post在一个页面, 加上tag属性, 然后通过js借助url的parameter来实现过滤tag的功能;
+
+### 创建全部post的单页
+
+这一点基本和上述模板一致, 只需要将`site.tags.TAGNAME`换成`site.posts`就行, 然后将`post.tags`数据写到对应的li的class或者`data-`中. 这一点类似我之前[给目录页加tag筛选功能]({{ site.baseurl }}{% post_url tech/2015-05-07-jekyll-tips-2 %})是的做法. 只是控制部分转移到url的参数了.
+
+### 筛选过滤
+
+接下来就是获取url参数以及控制筛选的过程了.
+
+{% highlight javascript %}
+
+function getUrlParameter(sParam)
+{
+  // 默认你是通过"xxxx?tag=xxx"的结构传递tag的, 当然你可以根据具体的情况(比如#)修改
+  // location.search可以自动返回?及之后的字串
+  var rParams= window.location.search.substring(1);
+  var aParams = rParams.split('&');
+  for (var i = 0; i < aParams.length; i++) 
+  {
+    var sParameterName = aParams[i].split('=');
+    if (sParameterName[0] == sParam) 
+    {
+      return sParameterName[1];
+    }
+  }
+} 
+
+{% endhighlight %}
+
+获取后则是针对所有posts的一个遍历筛选了. 当然如果你前期模板建立的时候就按照tag把blog聚合成块的话, 那么此时筛选甚至可以做的更简单一些, 如下:
+
+{% highlight javascript %}
+
+window.onload = function() {
+  var tag = getUrlParameter('tag');
+  if (tag && document.getElementById('tag-' + tag)) {
+    document.getElementById('tag-' + tag).style.display = 'block';
+    document.getElementById('tagTitle').innerHTML = tag;
+  } else {
+    document.getElementById('tagTitle').innerHTML = 'Illegal Tag Query';
+  }
+};
+// 如上需要你模板定义是按照tag将博文提前聚合成块~
+
+{% endhighlight %}
+
+Inspired by: [Wenli Zhang - Jekyll Tag Searching ](http://zhangwenli.com/blog/2014/05/18/jekyll-tag-searching/)
+
+</blockquote>
 
 ## 插件自动生成
 

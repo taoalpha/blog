@@ -1,9 +1,10 @@
 ---
 layout: post
-title: jekyll中如何做中文字数统计
+title: Jekyll 中如何做中文字数统计
 category: tech 
-description: 如何利用已有的jekyll过滤器做中文字数统计
+description: 如何利用已有的 Jekyll 过滤器做中文字数统计
 tags: [jekyll]
+series: jekyll-tips
 author: taoalpha
 ---
 

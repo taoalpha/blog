@@ -1,9 +1,10 @@
 ---
 layout: post
-title: 在github page中使用jekyll插件
+title: 在 Github Pages 中使用Jekyll插件
 category: tech 
-description: 如何取巧的绕过github page的safe模式, 从而使用jekyll丰富的插件体系更好的服务于你的blog
+description: 如何取巧的绕过 Github Pages 的 safe 模式, 从而使用 Jekyll 丰富的插件体系更好的服务于你的 blog
 tags: [jekyll,plugin,github page]
+series: jekyll-tips
 author: taoalpha
 ---
 

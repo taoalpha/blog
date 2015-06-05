@@ -2,8 +2,9 @@
 layout: post
 title: Jekyll 添加翻页部分(包含分类页,标签页)
 category: tech 
-description: 随着写的博文逐渐增多, 也逐渐开始需要给博客添加一个翻页组件了. 不过因为jekyll目前默认的paginator只支持博客首页, 在其他页面都是无效的, 所以需要自己动手, 丰衣足食喽...
+description: 随着写的博文逐渐增多, 也逐渐开始需要给博客添加一个翻页组件了. 不过因为 jekyll 目前默认的 paginator 只支持博客首页, 在其他页面都是无效的, 所以需要自己动手, 丰衣足食喽...
 tags: [jekyll,ruby,paginator] 
+series: jekyll-tips
 author: taoalpha
 ---
 
@@ -17,7 +18,7 @@ author: taoalpha
 
 jekyll有默认的paginator, 可以非常简单的开启. 只需要在_config.yml中加入下面这行行即可:
 {% raw %}
-paginate: 2
+    paginate: 2
 {% endraw %}
 
 这里的paginate表示是单页显示的博文条数. 这里设置2也是为了方便测试, 具体数值大家根据需要自行调整即可.

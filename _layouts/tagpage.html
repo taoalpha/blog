@@ -13,7 +13,7 @@ layout: home_base
       <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
       <summary class="title-excerpt">{{ post.content | truncatewords:20 | markdownify | replace: "%","" | strip_html }}</summary>
       <div class="post-info">
-        <span class="author"><i class="fa fa-user"></i>{{ post.author }}</span>
+        <span class="author"><i class="fa fa-user"></i><a href="/blog/user/{{ post.author }}">{{ post.author }}</a></span>
         <span class="category"><i class="fa fa-briefcase"></i>{% if post.category != "blog" %}<a href="{{ site.baseurl }}/{{ post.category }}">{{ post.category }}{% else %}<a href="{{ site.baseurl }}">blog</a>{% endif %}</a></span>
         <span class="tags"><i class="fa fa-tags"></i>{% for tag in post.tags %}<a href="{{ site.baseurl }}/tag/{{tag}}">{{ tag }}</a>{% endfor %}</span>
         <span class="postdate"><i class="fa fa-history"></i>{{ post.date | date: "%B %d, %Y" }}</span>

@@ -1,6 +1,6 @@
 ---
 layout: default
-pname: blog
+pname: blogpost
 ---
 
 {% stylesheet prettify/prettify %}
@@ -9,7 +9,7 @@ pname: blog
         <h1 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
         {% assign author = site.authors[page.author] %}
         <div class="meta-top">
-            <a href="/users/{{ page.author }}">
+            <a href="/blog/user/{{ page.author }}">
                 <div class="avatar" style="display:inline-block;"><img src="{{ author.avatar }}" alt="100"></div>
                 <span>{{ author.display_name }}</span>
             </a>        
@@ -21,26 +21,14 @@ pname: blog
     </section>
 
     <aside class="sidenav">
-        <h2>All</h2>
+      {% for category in site.categories %}
+      <h2><a href="{% if category[0] == 'blog' %} /blog {% else %} /blog/{{category[0]}}/{% endif %}">{{ category[0] | capitalize }}</a></h2>
         <ul class="article-list">
-        {% for post in site.posts limit:3 %}
+        {% for post in category[1] limit:3 %}
         <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
         </ul>
-
-        <h2>Tech</h2>
-        <ul class="article-list">
-        {% for post in site.categories.tech limit:3 %}
-            <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-        </ul>
-
-        <h2>D&P</h2>
-        <ul class="article-list">
-        {% for post in site.categories.dandp limit:3 %}
-        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
-        {% endfor %}
-        </ul>
+      {% endfor %}
     </aside>
 
     {% include duoshuo.html %}

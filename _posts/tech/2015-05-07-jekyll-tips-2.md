@@ -1,9 +1,10 @@
 ---
 layout: post
-title: Jekyll 心得(2) - 筛选tag的实现 
+title: Jekyll 筛选 tag 的实现 
 category: tech 
 description: 主要介绍下如何实现不同category下tag的展现以及筛选的实现, 效果模拟简书的tag
 tags: [jekyll tags,tips,jekyll,js]
+series: jekyll-tips
 author: taoalpha
 ---
 

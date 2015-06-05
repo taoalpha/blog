@@ -6,8 +6,12 @@
 @import "compass/css3/transform";
 @import "compass/css3/animation";
 
-$highlightColor : #00C070;
 $grayColor : #999;
+$sidebarbg : #000;
+$lightgreen : #4aab5e;
+$lightbrown : #bb977d;
+$anchorColor: #BD194B;
+$lessgreen : #59D574;
 
 /***********default settings**********/
 .hide {display:none;}
@@ -15,7 +19,6 @@ a,a:hover {
   text-decoration:none;
   outline:none;
 }
-blockquote {margin-bottom:40px;}
 body {
   font-family:"lucida grande", "lucida sans unicode", lucida, helvetica, "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   font-size:16px;
@@ -29,11 +32,11 @@ pre code{background-color:transparent;border:none;padding:0;word-wrap:normal;}
 pre ol{margin-left:25px;list-style-type:decimal;}
 
 /************layout style*****************/
-#content {width:1060px;margin:90px auto 60px;min-height:400px;height:auto !important;height:400px; }
+#content {width:1100px;margin:90px auto 60px;min-height:400px;height:auto !important;height:400px; }
 
 /****************entry style**************/
 .sidenav { 
-  width:240px; 
+  width:300px; 
   background:#fff; 
   float:right; 
   padding:20px; 
@@ -100,10 +103,11 @@ pre ol{margin-left:25px;list-style-type:decimal;}
       line-height:1.1em;
     }
   }
-  blockquote{
-    margin-left:25px;
+  blockquote,.special{
+    padding:10px 0 10px 20px;
     font-size:14px;
-    font-style:italic
+    border-left: 10px solid $lightgreen;
+    background-color:$lessgreen;
   }
   img{
     max-width:670px;
@@ -111,9 +115,10 @@ pre ol{margin-left:25px;list-style-type:decimal;}
     margin:10px auto;
   }
   a{
-    color:$highlightColor;
+    color:$anchorColor;
+    font-weight:bold;
     &:hover{
-      border-bottom:1px dotted $highlightColor;
+      border-bottom:1px dotted $anchorColor;
     } 
   }
 }
@@ -173,7 +178,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
     margin-left:6px;
   }
   .location-icon:hover{
-    color:$highlightColor;
+    color:$lightgreen;
   }
 }   
 
@@ -198,7 +203,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
   a { 
     color:#444; 
     font-weight:bold; 
-    &:hover { color:$highlightColor; text-decoration:none; }
+    &:hover { color:$lightgreen; text-decoration:none; }
   }
   .title-excerpt {color:#717174;font-size:14px;line-height:1.8em;margin-bottom:6px;}
   .post-info{
@@ -241,9 +246,9 @@ pre ol{margin-left:25px;list-style-type:decimal;}
           border:1px solid $grayColor;
         }
         &.active{
-          background-color:$highlightColor;
+          background-color:$lightgreen;
           color:#fff;
-          border:1px solid $highlightColor;
+          border:1px solid $lightgreen;
         }
       }
     }
@@ -260,14 +265,14 @@ pre ol{margin-left:25px;list-style-type:decimal;}
     height:30px;
     line-height:30px;
     text-align:center;
-    background-color:$highlightColor;
+    background-color:$lightgreen;
     display:inline-block;
     float:left;
     margin-right:10px;
     border-top: 1px solid #aff797;
     @include box-shadow(1px 0px 0 rgba(black,0.5)); 
     @include border-radius(4px, 4px);
-    @include background-image(linear-gradient(#65d66c,$highlightColor));
+    @include background-image(linear-gradient(#65d66c,$lightgreen));
   }
   em{background:$grayColor;}
   .prev,.next{
@@ -275,7 +280,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
   }
   a:hover{
     color:black;
-    @include background-image(linear-gradient($highlightColor,#3e9c6a));
+    @include background-image(linear-gradient($lightgreen,#3e9c6a));
   }
 }
 
@@ -295,7 +300,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
       &:nth-child(4n+1){clear: both;}
       h2.title{
         margin: auto;
-        border-left:4px solid $highlightColor;            
+        border-left:4px solid $lightgreen;            
         font-size:26px;
         padding-left:15px;
       }
@@ -303,7 +308,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
         padding:5px 0 5px 22px;
         position:relative;
         border-left:1px solid rgba(0,0,0,0);            
-        &:hover{border-left:1px solid $highlightColor;}
+        &:hover{border-left:1px solid $lightgreen;}
         &:before{
           content: ' ';
           position: absolute;
@@ -349,19 +354,19 @@ pre ol{margin-left:25px;list-style-type:decimal;}
 #menuIndex li.h1{font-size:14px;font-weight:normal;padding-left:0;margin-bottom:10px;}
 #menuIndex li.h3{padding-left:25px;}
 
-.home-menu { position:fixed; top:0; left:0; z-index:5; width:40px; height:100%; background-color:#000; }
+.home-menu { position:fixed; top:0; left:0; z-index:5; width:40px; height:100%; background-color:$sidebarbg; @include box-shadow(-1px 0px 5px #fff);}
 .home-icon-con.downside{position:absolute; bottom:0; left:0; width: 100%;}
-.home-menu-icon { display:block; text-align: center; color:#eee; font-size:16px;  line-height:40px; height:40px; background:#000; }
-.home-follow { margin-left:2px; line-height:38px; padding:0 8px; display:inline-block; color:#fff; font-size:18px; background:#000;  }
+.home-menu-icon { display:block; text-align: center; color:#eee; font-size:16px;  line-height:40px; height:40px; background:$sidebarbg; }
+.home-follow { margin-left:2px; line-height:38px; padding:0 8px; display:inline-block; color:#fff; font-size:18px; background:$sidebarbg;  }
 .home-menu-icon:hover,.home-menu-icon.active,
-.home-follow:hover { background-color:$highlightColor; color:#fff; text-decoration:none; }
-.home-contact { color:#fff; margin:-40px 0 0 40px;width:110px; background:#000; padding:10px 0 9px; text-align:center; display:none;}
+.home-follow:hover { background-color:$lightgreen; color:#fff; text-decoration:none; }
+.home-contact { color:#fff; margin:-40px 0 0 40px;width:110px; background:$sidebarbg; padding:10px 0 9px; text-align:center; display:none;}
 .home-contact a { width:30px; display:inline-block; }
 .home-contact img { width:20px; }
 
 /**************Music Bar**************/
 
-#togglemusic i{
+#togglemusic i.rotate{
   @include animation(selfrotation 15s linear infinite);
 }
 #musicbar{
@@ -386,6 +391,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
   h2{font-size:20px;}
   h3{font-size:16px;}
   embed {display:none;}
+  a.brand{ background-color:$lightgreen; color:#fff; text-decoration:none; }
 
   .entry-title,.entry-title a {font-size:24px;}
   .entry-date {margin-bottom:40px;}
@@ -393,16 +399,14 @@ pre ol{margin-left:25px;list-style-type:decimal;}
   .entry pre ol li{margin-bottom:0;line-height:1em;}
   .entry pre code{line-height:1em;font-size:12px;}
   .sidenav {display:none;}
-  .entry {float:none;width:auto;background:transparent;padding:0;box-shadow:none;}
+  .entry,.comments {float:none;width:auto;background:transparent;padding:0;box-shadow:none;}
 
   .aside { position:relative; width:100%; height:300px; max-width:none; }
   .index-content{ margin-left:0; padding-right:0; }
   .index-content ul { width:85%;}
   .index-content .cate-bar { width:85%; }
 
-  .blog .aside,
-  .project .aside,
-  .opinion .aside {display:none;background-image:none;}
+  .blogpost .aside{display:none;background-image:none;}
 
   .home-menu { height:auto;}
   .home-icon-con.downside,.upside .home-menu-icon{display:none;}
@@ -411,12 +415,13 @@ pre ol{margin-left:25px;list-style-type:decimal;}
   .home-contact { color:#fff; margin:0; width:40px; line-height:40px; height:120px; background:#000; padding:10px 0 9px; text-align:center; display:none;}
 }
 
-@media (max-width: 1080px){
+@media (max-width: 1160px){
   #menuIndex {display:none;}
   .index-content .cate-bar ,
   .index-content .article-list,
   .index-content .article-cate { width:85%; }
   .sidenav {display:none;}
-  .entry {float:none;width:auto;background:transparent;padding:0;box-shadow:none;}
+  .entry,.comments {float:none;width:auto;background:transparent;padding:0;box-shadow:none;}
   #content {width:85%;margin:100px auto 50px; }
+  body.blogpost{background-image:url("");}
 }
