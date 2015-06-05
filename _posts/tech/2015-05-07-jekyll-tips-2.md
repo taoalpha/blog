@@ -13,7 +13,6 @@ author: taoalpha
 ## 展现categories以及tags
 
 > 首先我们需要设定了tags的post... 这样你的`site.tags`才会有数据~ 具体的tags设定方法可以参照[心得(1)]({% post_url tech/2015-05-07-jekyll-tips-1 %}).
-
 > 接着就是如何展现tags数据了~ 以本文为例, 我总计有三个category, 因为要实现不同category下的tag只出现在自己的category页面下方, 所以在展现tags的时候需要做一个category的判定.
 
 {% highlight liquid %}
@@ -50,7 +49,6 @@ author: taoalpha
 有了tags之后, 就可以进一步做筛选了. 基本的思路是在不考虑分页的情况下, 筛选基本就是针对当前展现出来的文章列表做对应的展现隐藏控制.
 
 > 利用`data-rel`(随意指定data后面的名称即可)存储要筛选的tag, 如上;
-
 > 在post中加上tags的数据标签:
 
 {% highlight liquid %}
