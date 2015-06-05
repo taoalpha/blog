@@ -20,23 +20,25 @@ Tag可以算是blog的标配了, 借用tag我们才能够让blog更好的归档,
 
 首先我们需要根据具体的需求创建一个tag页面的模板, 以我自己的为例:
 
+{% highlight liquid %}
 {% raw %}
-    ---
-    layout: home_base
-    ---
-    
-    <nav id="bread">
-      <h2><a href="/blog">All Posts</a> >> Posts with tag: {{ page.tag }}</h2>
-    </nav>
-    {% assign cposts = site.tags[page.tag] %}
-    <article>
-      <ul class="article-list">
-        {% for post in cposts %}
-        ... <!-- 填充展示内容 -->
-        {% endfor %}
-      </ul>
-    </article>
+---
+layout: home_base
+---
+
+<nav id="bread">
+  <h2><a href="/blog">All Posts</a> >> Posts with tag: {{ page.tag }}</h2>
+</nav>
+{% assign cposts = site.tags[page.tag] %}
+<article>
+  <ul class="article-list">
+    {% for post in cposts %}
+    ... <!-- 填充展示内容 -->
+    {% endfor %}
+  </ul>
+</article>
 {% endraw %}
+{% endhighlight %}
 
 上述就创建了一个非常简单的tag单页模板.
 
@@ -44,12 +46,14 @@ Tag可以算是blog的标配了, 借用tag我们才能够让blog更好的归档,
 
 留意上述的模板代码, 你就会发现我们是通过`site.tags`来筛选所有博文, 从而实现筛出特定tag的博文的目的的. 那么如果我们需要创建tag的专属页, 我们就需要在单页上指定tag, 所以单页的内容很简单:
 
+{% highlight liquid %}
 {% raw %}
-    ---
-    layout: tagpage
-    tag: jekyll
-    ---
+---
+layout: tagpage
+tag: jekyll
+---
 {% endraw %}
+{% endhighlight %}
 
 如此就创建了一个jekyll的tag单页, 那么访问路径设定呢? 有两种方法(都以`/tag/jekyll`为例):
 

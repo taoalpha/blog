@@ -17,9 +17,11 @@ author: taoalpha
 ### 开启翻页模块
 
 jekyll有默认的paginator, 可以非常简单的开启. 只需要在_config.yml中加入下面这行行即可:
+{% highlight liquid %}
 {% raw %}
-    paginate: 2
+paginate: 2
 {% endraw %}
+{% endhighlight %}
 
 这里的paginate表示是单页显示的博文条数. 这里设置2也是为了方便测试, 具体数值大家根据需要自行调整即可.
 
@@ -29,33 +31,35 @@ jekyll有默认的paginator, 可以非常简单的开启. 只需要在_config.ym
 
 开启翻页后, 就需要我们自行在页面上添加上翻页导航组件了. 这里需要借助`paginator`这个对象, 其包含了当前页面下分页的一些基本属性. 具体参照下面的代码即可.
 
+{% highlight liquid %}
 {% raw %}
-    {% if paginator.total_pages > 1 %}
-    <div class="pagination">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-      {% else %}
-        <span>&laquo; Prev</span>
-      {% endif %}
-    
-      {% for page in (1..paginator.total_pages) %}
-        {% if page == paginator.page %}
-          <em>{{ page }}</em>
-        {% elsif page == 1 %}
-          <a href="{{ '/' | replace: '//', '/' }}">{{ page }}</a>
-        {% else %}
-          <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-        {% endif %}
-      {% endfor %}
-    
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-      {% else %}
-        <span>Next &raquo;</span>
-      {% endif %}
-    </div>
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+  {% else %}
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="{{ '/' | replace: '//', '/' }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
     {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+  {% else %}
+    <span>Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}
 {% endraw %}
+{% endhighlight %}
 
 当然, 对应的页码显示样式就要看大家自己设定喽~
 
@@ -148,38 +152,40 @@ end
 
 页面级的改动也不多, 因为我的category, 首页, tag页用的是同一个模板, 所以修改起来相对容易~ 只是针对不同的页码调整了以下翻页导航的url构成~ 如下:
 
+{% highlight liquid %}
 {% raw %}
-    {% if paginator.total_pages > 1 %}
-    {% assign pname = page.pname %}
-    {% if page.pname == "blog" %}
-      {% assign pname = "" %}
+{% if paginator.total_pages > 1 %}
+{% assign pname = page.pname %}
+{% if page.pname == "blog" %}
+  {% assign pname = "" %}
+{% endif %}
+<!-- pname就是我之前插件中加入的那个用来表明所属页面属性的, 顺带也故意写成了方便添加url的路径格式, 且下面这些路径还需要根据具体情况自行调整~ -->
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+  {% else %}
+    <span>&laquo; Prev</span>
+  {% endif %}
+
+  {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+      <em>{{ page }}</em>
+    {% elsif page == 1 %}
+      <a href="{{ '/' | prepend: pname |prepend: "/"| prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+    {% else %}
+      <a href="{{ site.paginate_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
     {% endif %}
-    <!-- pname就是我之前插件中加入的那个用来表明所属页面属性的, 顺带也故意写成了方便添加url的路径格式, 且下面这些路径还需要根据具体情况自行调整~ -->
-    <div class="pagination">
-      {% if paginator.previous_page %}
-        <a href="{{ paginator.previous_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-      {% else %}
-        <span>&laquo; Prev</span>
-      {% endif %}
-    
-      {% for page in (1..paginator.total_pages) %}
-        {% if page == paginator.page %}
-          <em>{{ page }}</em>
-        {% elsif page == 1 %}
-          <a href="{{ '/' | prepend: pname |prepend: "/"| prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-        {% else %}
-          <a href="{{ site.paginate_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-        {% endif %}
-      {% endfor %}
-    
-      {% if paginator.next_page %}
-        <a href="{{ paginator.next_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-      {% else %}
-        <span>Next &raquo;</span>
-      {% endif %}
-    </div>
-    {% endif %}
+  {% endfor %}
+
+  {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+  {% else %}
+    <span>Next &raquo;</span>
+  {% endif %}
+</div>
+{% endif %}
 {% endraw %}
+{% endhighlight %}
 
 恩, 完事! 剩下的就是大家根据自己的需要来赋予翻页组件合适的样式喽~
 

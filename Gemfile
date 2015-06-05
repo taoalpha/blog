@@ -5,4 +5,5 @@ gem 'jekyll'
 gem 'jekyll-assets'
 gem 'uglifier'
 gem 'compass'
+gem 'rouge'
 # gem "rails"

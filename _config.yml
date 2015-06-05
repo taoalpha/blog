@@ -53,7 +53,7 @@ baseurl: "/blog"
 #
 
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge 
 permalink: /:year/:month/:day/:title.html
 paginate: 15
 paginate_path: "page:num/"

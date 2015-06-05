@@ -77,24 +77,28 @@ author: taoalpha
  Liquid 来自于shopify, 其代码也是由[Shopify在github上维护](https://github.com/Shopify/liquid)的, 如果想要详细了解其中的语法和用法, 以及Liquid目前的广泛用途, 都可以前往[其github上的wiki](https://github.com/Shopify/liquid/wiki)查看.
 
  一些常用的语法:
+{% highlight liquid %}
 {% raw %}
-    if : {% if statement %} {% elsif %} {% endif %}
-    for : {% for statement %} {% endfor %}
-    unless : {% unless statement %} {% endunless %}
-    assign : {% assign statement %} (赋值)
-    capture : {% capture %} {% endcapture %} (捕获赋值)
-    case : {% case condition %} {% when 1 %} {% when 2 or 3 %} {% else %} {% endcase %}
-    comment : {% comment %} {% endcomment %}
-    raw : {% raw %} 以及 endraw
+if : {% if statement %} {% elsif %} {% endif %}
+for : {% for statement %} {% endfor %}
+unless : {% unless statement %} {% endunless %}
+assign : {% assign statement %} (赋值)
+capture : {% capture %} {% endcapture %} (捕获赋值)
+case : {% case condition %} {% when 1 %} {% when 2 or 3 %} {% else %} {% endcase %}
+comment : {% comment %} {% endcomment %}
+raw : {% raw %} 以及 endraw
 {% endraw %}
+{% endhighlight %}
 
  常用的管道用法:
 
+{% highlight liquid %}
 {% raw %}
-    变量引用符号 : {{ variable_name }}
-    大|小|首字母大写 : {{ v_name | upcase | downcase | capitalize }}
-    排序|连接|切分|替换 : {{ v_name | sort | join:"join-symbol" | split: "split-symbol" | replace: "replace-char" }}
+变量引用符号 : {{ variable_name }}
+大|小|首字母大写 : {{ v_name | upcase | downcase | capitalize }}
+排序|连接|切分|替换 : {{ v_name | sort | join:"join-symbol" | split: "split-symbol" | replace: "replace-char" }}
 {% endraw %}
+{% endhighlight %}
 
 
 [TaoAlpha]:    http://zzgary.info "TaoAlpha"

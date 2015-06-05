@@ -16,30 +16,32 @@ author: taoalpha
 
 > 接着就是如何展现tags数据了~ 以本文为例, 我总计有三个category, 因为要实现不同category下的tag只出现在自己的category页面下方, 所以在展现tags的时候需要做一个category的判定.
 
+{% highlight liquid %}
 {% raw %}
-    {% assign tags = "all" %}
-    // 设置变量, 这里用all来表示默认的第一个tag, 代表全部tags的情况
-    {% for post in site.posts %}
-        // 取所有的post出来逐一判定, 这里未来post很多的话, 会进行数量限制, 目前数量太少, 就糙着用啦
-        {% for tag in post.tags %}
-            // 取post自己的tags出来, 逐一进行判定是否已经在tags数组列表中了
-            {% unless tags contains tag %}
-                // 为了去掉重复的tag~
-                {% capture tags %}{{ tags }}|{{ tag }}{% endcapture %}
-                // 把所有不在tags数组中的tag都加到tags中
-            {% endunless %}
-        {% endfor %}
+{% assign tags = "all" %}
+// 设置变量, 这里用all来表示默认的第一个tag, 代表全部tags的情况
+{% for post in site.posts %}
+    // 取所有的post出来逐一判定, 这里未来post很多的话, 会进行数量限制, 目前数量太少, 就糙着用啦
+    {% for tag in post.tags %}
+        // 取post自己的tags出来, 逐一进行判定是否已经在tags数组列表中了
+        {% unless tags contains tag %}
+            // 为了去掉重复的tag~
+            {% capture tags %}{{ tags }}|{{ tag }}{% endcapture %}
+            // 把所有不在tags数组中的tag都加到tags中
+        {% endunless %}
     {% endfor %}
-    {% assign alltags = tags | split: '|' %}
-    // 生成一个新的数组, 似乎本身liquid中没有直接append数组的方法... 看到此处的朋友有知道的请不吝告知~
-    <ul class="tags">
-    {% for tag in alltags %}
-    // 展现tag
-    <a href="javascript:;" data-rel="{{ tag }}" class="filter tag {% if tag == 'all'  %}active{% endif %}" >{{ tag }}</a>
-    // 这里的data-rel是为了筛选做的准备, 后文会介绍
-    {% endfor %}
-    </ul>
+{% endfor %}
+{% assign alltags = tags | split: '|' %}
+// 生成一个新的数组, 似乎本身liquid中没有直接append数组的方法... 看到此处的朋友有知道的请不吝告知~
+<ul class="tags">
+{% for tag in alltags %}
+// 展现tag
+<a href="javascript:;" data-rel="{{ tag }}" class="filter tag {% if tag == 'all'  %}active{% endif %}" >{{ tag }}</a>
+// 这里的data-rel是为了筛选做的准备, 后文会介绍
+{% endfor %}
+</ul>
 {% endraw %}
+{% endhighlight %}
 
 如此基本就实现了tags在特定category下的展现.
 
@@ -51,10 +53,12 @@ author: taoalpha
 
 > 在post中加上tags的数据标签:
 
+{% highlight liquid %}
 {% raw %}
-    <li class="post" data-filter="{{ post.tags|join:' ' }}">
-    // 因为post.tags本身就是一个array类型, 所以这里直接用空格链接填入一个`data-filter`中即可;
+<li class="post" data-filter="{{ post.tags|join:' ' }}">
+// 因为post.tags本身就是一个array类型, 所以这里直接用空格链接填入一个`data-filter`中即可;
 {% endraw %}
+{% endhighlight %}
 
 > 利用js实现点击筛选的控制:
 
