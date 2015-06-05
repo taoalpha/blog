@@ -208,3 +208,49 @@
     star: 5
     tags: [knowledge,English]
     order: 0
+
+
+- name: Mobile Frameworks
+  links:
+  - link: http://jquerymobile.com/
+    title: jQuery Mobile
+    desc: jQuery for mobile
+    star: 5
+    tags: [framework,mobile,jquery]
+    order: 0
+
+  - link: http://jqtjs.com/
+    title: jQT
+    desc: A Zepto/jQuery plugin for mobile web development
+    star: 5
+    tags: [framework,mobile]
+    order: 1
+
+  - link: http://www.sencha.com/products/touch/#overview
+    title: Sencha
+    desc: Cross-platform mobile web application framework based on HTML5 and JavaScript
+    star: 5
+    tags: [framework,mobile]
+    order: 2
+
+  - link: http://www.winktoolkit.org/
+    title: WINK
+    desc: Webapp Inovation Kit
+    star: 4
+    tags: [framework,mobile]
+    order: 3
+
+  - link: http://the-m-project.net/
+    title: The M Project
+    desc: Create cross-platform mobile web apps based on Backbone.js
+    star: 4
+    tags: [framework,mobile]
+    order: 4
+
+  - link: https://github.com/xui/xui
+    title: Xui
+    desc: A tiny javascript framework for mobile web apps.
+    star: 3
+    tags: [framework,mobile]
+    order: 5
+

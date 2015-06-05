@@ -98,9 +98,66 @@ function randomTags(flag){
         originArray.eq(index).show();
     }
 }
+
+// Create random image for image frame.
 function randomImage(path){
     var imageurl = "http://www.dailywallppr.com/img/"+ Math.floor(Math.random()*2320+1)+".jpg"
     $(".aside").css("background-image","url("+imageurl+")");
     $.cookie(path+"weatherImgUrl",imageurl,{expires:0.05,path:'/blog'})
 }
 
+
+// Load pageview counts from Google Analytics
+
+function getPageViewCount(dataurl){
+  if (dataurl === undefined) {
+    dataurl = 'https://taoalpha-github-page.appspot.com/query?id=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw'
+  }
+  $.ajax({
+    url: dataurl, 
+    dataType: 'jsonp',
+    timeout: 1000 * 3, // 3 sec
+    success: function(data) {
+      parsePageViewData(data.rows);
+    },
+    error: function() {
+      // if fail to get up-to-date data from GAE, get cached local version
+      console.log('Failed to get pageview from GAE!');
+        $.ajax({
+          url: '/blog/pageview.json',
+          dataType: 'json',
+          success: function(data) {
+            console.log('Local page view backup file.');
+            parsePageViewData(data.rows);
+          }
+        })
+      }
+  })
+}
+
+function parsePageViewData(rows){
+  if (rows === undefined) {
+    return;
+  }
+  $('.post').each(function() {
+    var myPath = $(this).children('h2').children('a').attr('href');
+    if (myPath) {
+      //myPath = myPath.slice('http://taoalpha.github.io'.length);
+      //myPath = myPath;
+      var len = rows.length;
+      var cnt = 0;
+      for (var i = 0; i < len; ++i) {
+        var thatPath = rows[i][0];
+        var queryId = thatPath.indexOf('?');
+        var mainPath = queryId >= 0 ? thatPath.slice(0, queryId) : thatPath;
+        if (thatPath === myPath || mainPath === myPath || mainPath === myPath + 'index.html' || myPath === mainPath + 'index.html') {
+            cnt += parseInt(rows[i][1]);
+        }
+      }
+      if (cnt){
+        $(this).find('span.viewcount').html('<i class="fa fa-eye"></i>'+cnt);
+      }
+    }
+  });
+
+}

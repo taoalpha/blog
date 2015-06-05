@@ -1,23 +1,35 @@
 var rotation = 0
 
 $(function(){
-    $('.follow').click(function(e){
-        e.preventDefault();
-        $(this).animate({  borderSpacing: -90 }, {
-            step: function(now,fx) {
-              $(this).css('-webkit-transform','rotate('+now+'deg)'); 
-              $(this).css('-moz-transform','rotate('+now+'deg)');
-              $(this).css('transform','rotate('+now+'deg)');
-            },
-            duration:'fast'
-        },'linear');
+  $('.follow').click(function(e){
+    e.preventDefault();
+    $(this).animate({  borderSpacing: -90 }, {
+      step: function(now,fx) {
+        $(this).css('-webkit-transform','rotate('+now+'deg)'); 
+        $(this).css('-moz-transform','rotate('+now+'deg)');
+        $(this).css('transform','rotate('+now+'deg)');
+      },
+      duration:'fast'
+    },'linear');
 
-        $(this).toggleClass("active");
+    $(this).toggleClass("active");
 
-        if($('.home-contact').is(':visible')){
-            $('.home-contact').slideUp(100);
-        }else{
-            $('.home-contact').slideDown(100);
-        }
-    });
+    if($('.home-contact').is(':visible')){
+      $('.home-contact').slideUp(100);
+    }else{
+      $('.home-contact').slideDown(100);
+    }
+  });
+
+  $('#togglemusic').click(function(e){
+    e.preventDefault();
+    $(this).toggleClass("active");
+
+    if($('#musicbar').is(':visible')){
+      $('#musicbar').slideUp(300);
+    }else{
+      $('#musicbar').slideDown(300);
+    }
+  });
+
 })
