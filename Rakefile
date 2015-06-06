@@ -19,7 +19,7 @@
     task :publish => [:generate] do
       Dir.mktmpdir do |tmp|
         system "mv _site/* #{tmp}/site"
-        system "cp -r _assets/vendors/* #{tmp}/vendors"
+        system "mv _assets/vendors/* #{tmp}/vendors"
         system "git checkout -B gh-pages"
         system "rm -rf ./*"
         system "mv #{tmp}/site/* ."
