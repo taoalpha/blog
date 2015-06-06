@@ -1,15 +1,24 @@
 {
-  "name": "taoalpha github page",
-  "dependencies": {
-    "jquery": ">2.0.3",
-    "jquery.cookie": "~1.4.1",
-    "jquery.lazyload": "~1.9.5",
-    "font-awesome": "~4.3.0",
-    "selectivizr": "~1.0.2"
-  },
+  "name": "blog",
+  "version": "0.0.1",
+  "homepage": "https://github.com/taoalpha/blog",
+  "description": "All dependencies for my github pages",
+  "authors": [
+    "TaoAlpha"
+  ],
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components"
-  ]
+    "bower_components",
+    "_assets/vendors",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "jquery.cookie": "~1.4.1",
+    "font-awesome": "~4.3.0",
+    "selectivizr": "~1.0.2"
+  }
 }
