@@ -25,7 +25,7 @@ layout: home_base
   <ul class="article-list">
     {% for post in cposts %}
     <li class="post" data-filter="{{ post.tags|uniq_i|join_tags|join:' '}}">
-      <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+    <h2><a {% if post.content contains 'Update' %}class="showupdate" {% endif %}href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
       <summary class="title-excerpt">{{ post.content | truncatewords:25 | markdownify | strip_html | replace: "%","" }}</summary>
       <div class="post-info">
         <span class="author"><i class="fa fa-user"></i><a href="/blog/user/{{ post.author }}">{{ post.author }}</a></span>

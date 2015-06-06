@@ -111,6 +111,40 @@ task :default => :publish
 
 上述代码就是用来帮助你简化发布环节的~ 当然你要是用shell自己写也是没问题的哈哈哈
 
+<blockquote class="special update" markdown="1">
+
+### Update
+
+这里遗留了一个问题就是在切换分支的过程中因为会`rm -rf *`, 所以我们在master分支定义在`.gitignore`的文件就会丢失了. 比如我用`bower`管理的各种包, 就会因为这个而在每次`rake`之后丢失...
+
+为了解决这个问题, 我们需要修改以下上述的rakefile:
+
+{% highlight ruby %}
+      Dir.mktmpdir do |tmp|
+        system "mv _site #{tmp}"
+        # 这里需要改成将_site整个文件夹移动到tmp
+        system "mv _assets/vendors #{tmp}"
+        # 然后把你需要保留的位于ignore中的文件也移动到tmp去
+        system "git checkout -B gh-pages"
+        system "rm -rf *"
+        system "mv #{tmp}/_site/* ."
+        # 这里就要变成移动tmp/_site下的所有文件到当前分支了
+        message = "Site updated at #{Time.now.utc}"
+        system "git add ."
+        system "git commit -am #{message.shellescape}"
+        system "git push origin gh-pages --force"
+        system "git checkout master -f"
+        system "mv #{tmp}/vendors ./_assets/"
+        # 在checkout到master之后, 再把对应的保留文件移回来即可.
+        system "echo yolo"
+        # 这里就可以执行一些别的小命令, 比如我就会让它每次cat一下我的todo.log, 然后就能知道下一步要做什么了哈哈 
+      end
+{% endhighlight %}
+
+恩, 这样一来, 就不用每次rake完还需要我们自己bower install一下了, 尤其是面对我们修改了dependencies的代码的情况, 就更加适用了~
+
+</blockquote>
+
 
 ## 插件安装
   

@@ -21,19 +21,41 @@ pname: blogpost
     </section>
 
     <aside class="sidenav">
+      {% assign postsAfterFilter = '-' | split: "-" %}
+      {% assign tagCountEachPost = '-' | split: "-" %}
+      {% for post in site.related_posts %}
+        {% assign commonTagCount = 0 %}
+        {% if post.title != page.title or post.series != page.series %}
+          {% for tag in post.tags %} 
+            {% if page.tags contains tag %}
+              {% assign commonTagCount = commonTagCount | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          {% if commonTagCount > 0 %}
+            {% assign postsAfterFilter = postsAfterFilter | push: post %}
+            {% assign tagCountEachPost = tagCountEachPost | push: commonTagCount %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+      {% assign postsAfterFilter = postsAfterFilter | sort_by_array: {{tagCountEachPost}} %}
+      
+      {% if postsAfterFilter.size > 0 %}
       <div class="relatedposts">
         <h2>Related Posts:</h2>
         <ul class="article-list">
-        {% for post in site.posts limit:5 %}
+        {% for post in postsAfterFilter limit: 5%}
           <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
         </ul>
       </div>
+      {% endif %}
       <div class="recentposts">
         <h2>Recent Posts:</h2>
         <ul class="article-list">
-        {% for post in site.related_posts limit:5 %}
+        {% for post in site.posts limit:5 %}
+          {% if post.title != page.title %}
           <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+          {% endif %}
         {% endfor %}
         </ul>
       </div>

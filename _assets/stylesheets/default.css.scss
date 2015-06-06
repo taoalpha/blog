@@ -213,7 +213,26 @@ pre span{line-height:15px;;}
   a { 
     color:#444; 
     font-weight:bold; 
-    &:hover { color:$lightgreen; text-decoration:none; }
+    &:visited{color:#888;}
+    &:visited:hover,&:hover { color:$lightgreen; text-decoration:none; }
+  }
+  a.showupdate:after{
+    content:"!";
+    color:$lightgreen;
+    font-size:25px;
+    line-height:28px;
+    margin-left:10px;
+  }
+  a.showupdate:visited:after{
+    color:#888;
+  }
+  a.showupdate:visited:hover:after,
+  a.showupdate:hover:after{
+    content:"! Updated !";
+    color:$lightgreen;
+    font-size:25px;
+    line-height:28px;
+    margin-left:10px;
   }
   .title-excerpt {color:#717174;font-size:14px;line-height:1.8em;margin-bottom:6px;}
   .post-info{

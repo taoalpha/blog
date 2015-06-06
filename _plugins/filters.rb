@@ -9,7 +9,19 @@ module Jekyll
     end
 
     def join_tags(tags)
-        tags.map{|x| x.split.join('-')}
+      tags.map{|x| x.split.join('-')}
+    end
+
+    def sort_by_array(tags,sArray)
+      newObj = {}
+      newArray = []
+      sArray.each_index do |x|
+        newObj[x] = sArray[x]
+      end
+      newObj.sort_by{|_key, value| value }.each do |x,y|
+        newArray.push(tags[x])
+      end
+      newArray.reverse!
     end
 
   end
