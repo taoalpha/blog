@@ -4,7 +4,8 @@
     "jquery": ">2.0.3",
     "jquery.cookie": "~1.4.1",
     "jquery.lazyload": "~1.9.5",
-    "font-awesome": "~4.3.0"
+    "font-awesome": "~4.3.0",
+    "selectivizr": "~1.0.2"
   },
   "ignore": [
     "**/.*",

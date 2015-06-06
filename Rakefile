@@ -28,7 +28,7 @@
         system "git push origin gh-pages --force"
         system "git checkout master"
         system "echo 'install dependencies with bower.'"
-        system "bower install"
+        system "proxychains4 bower install"
         system "echo yolo"
         system "cat todo.log"
       end
