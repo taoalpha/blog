@@ -58,11 +58,59 @@ author: taoalpha
 
 思路很简单, 确保其具有共同tag, 在无相关文章的情况下就不展示此模块了. 因为本身liquid的语法非常有限, 不借助插件的情况下, 想要实现更多功能的话, 就比较麻烦了. 如果有哪位XDJM有不借助插件的排序, 求务必告知我哦~
 
+<blockquote class="special update" markdown=1>
+
+### Update
+
+哈哈, 和朋友@小田讨论了下, 终于想到一个不用插件实现排序的方法了~ 代码如下:
+
+{% highlight liquid %}
+{% raw %}
+{% comment %} 一致到获取postsAfterFilter以及tagCountEachPost的部分都没有变化{% endcomment %}
+{% comment %} 下面则使用了一个叠加for循环来逐次寻找最大的tagcount, 然后同步输出对应postsAfterFilter的值{% endcomment %}
+{% if postsAfterFilter.size > 0 %}
+<div class="relatedposts">
+  <h2>Related Posts:</h2>
+  <ul class="article-list">
+{% assign j = tagCountEachPost | size | minus: 1 %}
+{% assign maxIndex = 0 %}
+{% assign getFirstNumber = true %}
+{% assign selectedIndex = "-"|split: "-" %}
+{% for p in (0..j) %}
+  {% for i in (0..j) %}
+    {% unless selectedIndex contains i %}
+      {% if getFirstNumber %}
+        {% assign firstNumber = tagCountEachPost[i] %}
+        {% assign getFirstNumber = false %}
+      {% endif %}
+      {% if tagCountEachPost[i] >= firstNumber %}
+        {% assign firstNumber = tagCountEachPost[i] %}
+        {% assign maxIndex = i %}
+      {% endif %}
+    {% endunless %}
+  {% endfor %}
+  {% assign getFirstNumber = true %}
+  {% assign selectedIndex = selectedIndex | push: maxIndex %}
+  {% if selectedIndex.size < 6 %}
+    <li><a href="{{ site.baseurl }}{{ postsAfterFilter[maxIndex]['url'] }}">{{ postsAfterFilter[maxIndex]['title'] }}</a></li>
+  {% endif %}
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+{% endraw %}
+{% endhighlight %}
+
+思路也很简单, 就是利用for循环写出一个找最大元素的方法, 然后每次记录下最大元素的index, 就能同步输出对应的post了~ 需要注意的就是**为了保证index的一一对应, 需要单独保存每次找到的最大值的index, 然后在下一次遍历中跳过**
+
+赞!
+</blockquote>
+
 ## 有插件下增加排序功能
 
 ### liquid 部分
 
-在上面的基础上, 首先我们需要在liquid中添加几行代码:
+在上面的基础上(在update之前的基础上), 首先我们需要在liquid中添加几行代码:
 
 {% highlight liquid %}
 {% comment %} 首先需要定义一个新的变量, 用来记录共同的tag数目 {% endcomment %} 

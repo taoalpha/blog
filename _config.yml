@@ -34,6 +34,8 @@ comments :
   provider : duoshuo
   duoshuo :
     short_name : taoalpha
+    api : 
+      commentCount: "http://api.duoshuo.com/threads/counts.json?short_name=taoalpha&threads="
 
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics: UA-46725017-2
