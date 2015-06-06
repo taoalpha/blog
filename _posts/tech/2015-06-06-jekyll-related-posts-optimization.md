@@ -113,4 +113,4 @@ Liquid::Template.register_filter(Jekyll::CustomizeFilter)
 
 - [Jekyll Related Posts without Plugin - 羡辙杂俎 ](http://zhangwenli.com/blog/2014/07/15/jekyll-related-posts-without-plugin/)
 - [Custom Jekyll filter for tags](http://melandri.net/Custom-Jekyll-filter-for-tags/)
-- [How to sort a Ruby Hash by number value?](http://stackoverflow.com/questions/2540435/how-to-sort-a-ruby-hash-by-number-value_
+- [How to sort a Ruby Hash by number value?](http://stackoverflow.com/questions/2540435/how-to-sort-a-ruby-hash-by-number-value)

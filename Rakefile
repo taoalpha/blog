@@ -22,7 +22,7 @@
         system "mv _assets/vendors #{tmp}"
         system "git checkout -B gh-pages"
         system "rm -rf *"
-        system "mv #{tmp}/_site ."
+        system "mv #{tmp}/_site/* ."
         message = "Site updated at #{Time.now.utc}"
         system "git add ."
         system "git commit -am #{message.shellescape}"
