@@ -21,14 +21,22 @@ pname: blogpost
     </section>
 
     <aside class="sidenav">
-      {% for category in site.categories %}
-      <h2><a href="{% if category[0] == 'blog' %} /blog {% else %} /blog/{{category[0]}}/{% endif %}">{{ category[0] | capitalize }}</a></h2>
+      <div class="relatedposts">
+        <h2>Related Posts:</h2>
         <ul class="article-list">
-        {% for post in category[1] limit:3 %}
-        <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+        {% for post in site.posts limit:5 %}
+          <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
         {% endfor %}
         </ul>
-      {% endfor %}
+      </div>
+      <div class="recentposts">
+        <h2>Recent Posts:</h2>
+        <ul class="article-list">
+        {% for post in site.related_posts limit:5 %}
+          <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
     </aside>
 
     {% include duoshuo.html %}

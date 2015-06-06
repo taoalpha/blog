@@ -3,7 +3,8 @@
   "dependencies": {
     "jquery": ">2.0.3",
     "jquery.cookie": "~1.4.1",
-    "jquery.lazyload": "~1.9.5"
+    "jquery.lazyload": "~1.9.5",
+    "font-awesome": "~4.3.0"
   },
   "ignore": [
     "**/.*",

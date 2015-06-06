@@ -91,6 +91,7 @@ assets:
     - _assets/images
     - _assets/javascripts
     - _assets/stylesheets
+    - _assets/vendors
   js_compressor: uglifier
   css_compressor: sass
   gzip: [ text/css, application/javascript ]

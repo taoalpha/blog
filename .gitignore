@@ -1,2 +1,4 @@
 /_site
-/_assets/javascripts/vendor
+/_assets/vendors
+/.sass-cache
+alias.sh
