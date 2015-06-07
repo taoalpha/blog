@@ -18,6 +18,7 @@
     desc "Generate and publish blog to gh-pages"
     task :publish => [:generate] do
       Dir.mktmpdir do |tmp|
+        system "proxychains4 curl https://taoalpha-github-page.appspot.com/query\?id\=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw > pageview.json"
         system "mv _site #{tmp}"
         system "mv _assets/vendors #{tmp}"
         system "git checkout -B gh-pages"
