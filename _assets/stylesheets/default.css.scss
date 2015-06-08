@@ -299,9 +299,11 @@ pre span{line-height:15px;;}
     float:left;
     margin-right:10px;
     border-top: 1px solid #aff797;
+    font-weight:normal;
     @include box-shadow(1px 0px 0 rgba(black,0.5)); 
     @include border-radius(4px, 4px);
     @include background-image(linear-gradient(#65d66c,$lightgreen));
+    &:hover,&:hover:visited,&:visited{color:#000;}
   }
   em{background:$grayColor;}
   .prev,.next{

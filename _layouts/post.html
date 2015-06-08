@@ -18,6 +18,9 @@ pname: blogpost
             <span class="readspeed">{{ content | strip_html | strip_newlines | size | divided_by:350 | round}} 分钟读完 </span>
         </div>
         {{ content }}
+        {% if page.function != "tipme" %}
+        {% include tipme.html %}
+        {% endif %}
     </section>
 
     <aside class="sidenav">
