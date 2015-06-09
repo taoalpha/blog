@@ -159,5 +159,39 @@ function parsePageViewData(rows){
       }
     }
   });
-
 }
+
+// load my wish books from douban
+function showMyWishBooks(){
+  var bookapi = "https://api.douban.com/v2/book/user/129154019/collections?status=wish&tag=MyWish";
+  $.ajax({
+    url: bookapi, 
+    dataType: 'jsonp',
+    timeout: 1000 * 3, // 3 sec
+    success: function(data) {
+      parseBookDatas(data.collections);
+    },
+    error: function() {
+      // if fail to get up-to-date data from douban, get cached local version
+      console.log('Failed to get pageview from Douban!');
+        $.ajax({
+          url: '/blog/doubanbooks.json',
+          dataType: 'json',
+          success: function(data) {
+            console.log('Local mybooks.data backup file.');
+            parseBookDatas(data.collections);
+          }
+        })
+    }
+  })
+}
+
+function parseBookDatas(data){
+  var template = "<li class='book_item'><a href='__book_url__' alt='__book_alt_title__'><img src='__book_img__'><span>__book_title__</span></a></li>"
+  $.each(data,function(key,item){
+    var bookitem = template.replace("__book_url__",item.book.alt).replace("__book_alt_title__",item.book.alt_title).replace("__book_title__",item.book.title).replace("__book_img__",item.book.images.large);
+    $('.books').append(bookitem);
+  });
+}
+
+

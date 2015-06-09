@@ -374,6 +374,45 @@ pre span{line-height:15px;;}
 .wiki ul li{margin-bottom:5px;}
 .wiki ul ul{list-style:circle;margin-top:10px;margin-bottom:10px;}
 
+/**************Tipme Page**************/
+.tipmeqrcode{
+  width:90%;
+  img{
+    width:50%;
+    float:left;
+  }
+}
+
+.wishbooks{
+  .books{
+    li.book_item{
+      width:32%;
+      float:left;
+      list-style:none;
+      a{display:block;width:100%;position:relative;height:220px;overflow:hidden;
+        img{width:80%;}
+        span{
+          display:block;
+          width:80%;
+          height:100%;
+          position:absolute;
+          top: 0px;
+          background-color: rgba(0, 0, 0, 0.64);
+          left: 10%;
+          line-height:100%;
+          text-align: center;
+          padding: 40% 2%;
+          color:white;
+        }
+        &:hover{border:none;
+          span{
+            background-color:rgba(0,0,0,0.4);
+          }
+        }
+      }
+    }
+  }
+}
 
 /**************目录导航**************/
 #menuIndex {overflow:auto;}
@@ -396,7 +435,6 @@ pre span{line-height:15px;;}
 .home-contact img { width:20px; }
 
 /**************Music Bar**************/
-
 #togglemusic i.rotate{
   @include animation(selfrotation 15s linear infinite);
 }
