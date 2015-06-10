@@ -6,8 +6,17 @@
     require 'tmpdir'
     require 'jekyll'
 
+    desc "Push to github"
+    task :push do
+        commit = ENV['commit']
+        system "proxychains4 curl https://taoalpha-github-page.appspot.com/query\?id\=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw > pageview.json"
+        system "git add -A"
+        system "git commit -m '#{commit}'"
+        system "git push"
+    end
+
     desc "Generate blog files"
-    task :generate do
+    task :generate => [:push] do
       Jekyll::Site.new(Jekyll.configuration({
         "source"      => ".",
         "destination" => "_site"
@@ -23,8 +32,6 @@
         system "git checkout -B gh-pages"
         system "rm -rf *"
         system "mv #{tmp}/_site/* ."
-        system "proxychains4 curl 'https://taoalpha-github-page.appspot.com/query\?id\=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw' > pageview.json"
-        system "curl 'https://api.douban.com/v2/book/user/taoalpha/collections?status=wish&tag=MyWish' > doubanbooks.json"
         message = "Site updated at #{Time.now.utc}"
         system "git add ."
         system "git commit -am #{message.shellescape}"
