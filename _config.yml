@@ -85,7 +85,13 @@ authors:
         web: http://zzgary.info
         github: taoalpha
 
-
+cats:
+  tech: wrench
+  dandp: heartbeat
+  book: book
+  mylinks: anchor
+  tipme: gratipay
+  
 # plugins
 assets:
   dirname: assets

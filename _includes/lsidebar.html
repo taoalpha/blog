@@ -1,14 +1,21 @@
 <aside class="home-menu">
   <nav class="home-icon-con upside">
-  <a class="home-menu-icon brand {% if include.pname == 'blog' or (include.pname != 'tech' and include.pname != 'dandp' and include.pname != 'mylinks') %}active{% endif %}" href="/blog">涛</a>
-    <a class="home-menu-icon {% if include.pname == 'tech' %}active{% endif %}" href="/blog/tech"><i class="fa fa-wrench fa-1x"></i></a>
-    <a class="home-menu-icon {% if include.pname == 'dandp' %}active{% endif %}" href="/blog/dandp"><i class="fa fa-heartbeat fa-1x"></i></a>
-    <a class="home-menu-icon {% if include.pname == 'mylinks' %}active{% endif %}" href="/blog/mylinks"><i class="fa fa-anchor fa-1x"></i></a>
-    <a class="home-menu-icon follow" href="javascript:;" title="Contact Me">+</a>
+  <a class="home-menu-icon brand {% if include.pname == 'blog' or (include.pname != 'tech' and include.pname != 'dandp' and include.pname != 'mylinks' and include.pname != 'book' and page.function != 'tipme') %}active{% endif %}" href="/blog">涛</a>
+  {% assign caticons = site.cats %}
+  {% for cat in site.categories %}
+  {% assign catname = cat[0] %}
+  {% unless catname == 'blog' %}
+  <a class="home-menu-icon {% if include.pname == catname %}active{% endif %}" href="/blog/{{ catname }}"><i class="fa fa-{{ caticons[catname] }} fa-1x"></i></a>
+  {% endunless %}
+  {% endfor %}
+  <a class="home-menu-icon {% if page.pname == 'mylinks' %}active{% endif %}" href="/blog/mylinks"><i class="fa fa-anchor fa-1x"></i></a>
+  <a class="home-menu-icon {% if page.function== 'tipme' %}active{% endif %}" href="/blog/tipme"><i class="fa fa-gratipay fa-1x"></i></a>
+  <a class="home-menu-icon follow" href="javascript:;" title="Contact Me">+</a>
   </nav>
   <div class="home-contact">
     <a href="http://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="" width="25"/></a>
     <a href="http://zzgary.info" target="something" ><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="" width="25"/></a>
+    <a href="http://douban.com/people/129154019/" target="something"><img src="http://img3.douban.com/favicon.ico" alt="" width="25"/></a>
     <a href="http://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="" width="25"/></a>
   </div>
 
