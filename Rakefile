@@ -18,13 +18,13 @@
     desc "Generate and publish blog to gh-pages"
     task :publish => [:generate] do
       Dir.mktmpdir do |tmp|
-        system "proxychains4 curl https://taoalpha-github-page.appspot.com/query\?id\=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw > _site/pageview.json"
-        system "curl https://api.douban.com/v2/book/user/taoalpha/collections?status=wish&tag=MyWish > _site/doubanbooks.json"
         system "mv _site #{tmp}"
         system "mv _assets/vendors #{tmp}"
         system "git checkout -B gh-pages"
         system "rm -rf *"
         system "mv #{tmp}/_site/* ."
+        system "proxychains4 curl https://taoalpha-github-page.appspot.com/query\?id\=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw > pageview.json"
+        system "curl https://api.douban.com/v2/book/user/taoalpha/collections?status=wish&tag=MyWish > doubanbooks.json"
         message = "Site updated at #{Time.now.utc}"
         system "git add ."
         system "git commit -am #{message.shellescape}"

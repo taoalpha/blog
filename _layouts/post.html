@@ -15,7 +15,7 @@ pname: blogpost
             </a>        
             <span>{{ page.date|date:"%Y-%m-%d" }}</span>
             <span class="wordage">{{ content | strip_html | strip_newlines | size }} 字 </span>
-            <span class="readspeed">{{ content | strip_html | strip_newlines | size | divided_by:350 | round}} 分钟读完 </span>
+            <span class="readspeed">{{ content | strip_html | strip_newlines | size | divided_by:350 | round | plus: 1}} 分钟读完 </span>
         </div>
         {{ content }}
         {% if page.function != "tipme" %}
