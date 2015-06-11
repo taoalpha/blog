@@ -4,6 +4,7 @@ title: JavaScript 阅读阶梯清单
 category: book
 description: 
 tags: [js] 
+target_book: Getting Good With JavaScript
 author: taoalpha
 ---
 ## 缘起

@@ -91,6 +91,15 @@ cats:
   book: book
   mylinks: anchor
   tipme: gratipay
+
+# default value for properties
+
+defaults:
+  -
+    scope:
+      type: "posts"
+    values:
+      language: "cn"
   
 # plugins
 assets:
