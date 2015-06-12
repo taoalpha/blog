@@ -136,6 +136,7 @@ pre span{line-height:15px;;}
 /****************picbar style**************/
 .aside {
   position: fixed;
+  min-width:350px;
   top: 0;
   left: 0;
   width: 28%;
@@ -484,13 +485,7 @@ pre span{line-height:15px;;}
   .home-contact { color:#fff; margin:0; width:40px; line-height:40px; height:120px; background:#000; padding:10px 0 9px; text-align:center; display:none;}
 }
 
-@media (max-width: 1160px){
-  #menuIndex {display:none;}
-  .index-content .cate-bar ,
-  .index-content .article-list,
-  .index-content .article-cate { width:85%; }
-  .sidenav {display:none;}
-  .entry,.comments {float:none;width:auto;background:transparent;padding:0;box-shadow:none;}
-  #content {width:85%;margin:100px auto 50px; }
-  body.blogpost{background-image:url("");}
+@media screen and (max-width:1260px) and (min-width: 750px) {
+  .aside{width:400px;}
+  .index-content{margin-left:400px;padding-right:10px;}
 }
