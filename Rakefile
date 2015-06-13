@@ -9,7 +9,6 @@
     desc "Push to github"
     task :push do
         commit = ENV['m']
-        system "proxychains4 curl https://taoalpha-github-page.appspot.com/query\?id\=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw > pageview.json"
         system "git add -A"
         system "git commit -m '#{commit}'"
         system "git push"
