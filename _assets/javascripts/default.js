@@ -55,4 +55,11 @@ $(function(){
     }
   });
 
+  // for the series part
+  $('.series h2,.series .expand,.series .collapse').on('click',function(e){
+    e.stopPropagation();
+    $('.series ul').slideToggle(300);
+    $('.series .expand').toggle();
+    $('.series .collapse').toggle();
+  })
 })

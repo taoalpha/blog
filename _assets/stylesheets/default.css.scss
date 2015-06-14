@@ -46,10 +46,28 @@ pre span{line-height:15px;;}
   padding:20px; 
   margin-bottom:50px; 
   @include box-shadow(0 1px 4px #ccc); 
-  h2 { font-size:18px; color:#333; margin-bottom:15px; }
-  ul { margin-bottom:50px; }
-  li { margin-bottom:12px; word-break: break-all;}
+  h2 { font-size:18px; color:#333; margin:10px auto; }
+  ul { margin:10px auto; }
+  li { margin-bottom:12px; word-break: break-all;padding-left:1em;}
   a { color:#555; font-size:14px; display:block;line-height: 20px;}
+  a:hover { color:#222;}
+  div.relatedposts{margin-bottom:30px;}
+}
+.series{
+  background-color:$anchorColor;
+  cursor:pointer;
+  padding:0px;
+  h2{
+    margin:0px;
+    padding:30px;
+    position:relative;
+    color:white;
+    i{position:absolute;right:20px;top:0px;line-height:80px;}
+    i.collapse{display:none;}
+  }
+  ul{display:none;margin:-20px 30px 0px 30px;}
+  a{color:white;}
+  a:hover{color:#eee;}
 }
 .entry,.comments{
   margin-bottom:80px;

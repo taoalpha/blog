@@ -68,7 +68,7 @@ author: taoalpha
 
 而且通常来说, persona只有和scenario结合的时候才有价值, 而往往一个product下有不止一个persona, 更有无数scenario. 拥有一个完善的persona, 就相当于有一个更好的代入对象, 我们都可以更好的找到一个用户的角度去观察和思考在某个情景下的用户目标, 行为和预期等等, 从而让产品设计的更加贴近用户, 更加自然的与用户交互了.
 
-参考资料:
+## 参考资料:
 
 - [Persona - Wiki](http://en.wikipedia.org/wiki/Persona#In_user_experience_design)
 - [Chris Kelley's Board of Personas](https://www.pinterest.com/chrismkelley/personas/)
