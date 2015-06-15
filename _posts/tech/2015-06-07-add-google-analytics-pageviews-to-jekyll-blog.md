@@ -4,6 +4,7 @@ title: 如何给 Jekyll 添加Google Analytics 统计
 category: tech 
 description: 继续折腾Jekyll, 这次我们来给blog的文章列表页增加 Google Analytics 统计的pageview 数据.
 tags: [jekyll,Google Analytics,pageview,GAE] 
+series: Jekyll Boost
 author: taoalpha
 ---
 

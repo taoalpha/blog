@@ -4,7 +4,7 @@ title: Jekyll 添加 tag 专属页面
 category: tech 
 description: 随着写的博文逐渐增多, 使用的 tag 也越来越多, 单纯的页面 tag 随机筛选就变的不够用了, 于是今天就顺带的开启了 tag 的单页展示.
 tags: [jekyll,ruby,jekyll tags] 
-series: jekyll-tips
+series: Jekyll Boost
 author: taoalpha
 ---
 

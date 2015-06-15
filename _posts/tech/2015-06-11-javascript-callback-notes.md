@@ -4,7 +4,6 @@ title: JavaScript callback学习笔记
 category: tech 
 description: 本文介绍我在学习js的callback函数过程中的一些新的, 比如如何用callback来确保js的执行顺序.
 tags: [js,callback] 
-series: javascript-tip
 author: taoalpha
 ---
 

@@ -4,7 +4,6 @@ title: Jekyll 简介
 category: tech 
 description: 正式开始使用Jekyll, 记录下使用过程中的心得
 tags: [jekyll,jekyll tags,tips]
-series: jekyll-tips
 author: taoalpha
 ---
 

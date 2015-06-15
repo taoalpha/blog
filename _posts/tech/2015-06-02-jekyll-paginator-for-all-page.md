@@ -4,7 +4,7 @@ title: Jekyll 添加翻页部分(包含分类页,标签页)
 category: tech 
 description: 随着写的博文逐渐增多, 也逐渐开始需要给博客添加一个翻页组件了. 不过因为 jekyll 目前默认的 paginator 只支持博客首页, 在其他页面都是无效的, 所以需要自己动手, 丰衣足食喽...
 tags: [jekyll,ruby,paginator] 
-series: jekyll-tips
+series: Jekyll Boost
 author: taoalpha
 ---
 

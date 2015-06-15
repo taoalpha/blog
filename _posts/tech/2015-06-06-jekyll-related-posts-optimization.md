@@ -4,6 +4,7 @@ title: 优化 Jekyll 的相关文章列表
 category: tech 
 description: Jekyll 虽然有默认的 related_post , 但是其产出结果的相关性非常差, 所以这里介绍以下如何优化相关文章这个模块.
 tags: [jekyll,ruby,related post] 
+series: Jekyll Boost
 author: taoalpha
 ---
 
@@ -26,7 +27,7 @@ author: taoalpha
 {% assign postsAfterFilter = '-' | split: "-" %}
 {% for post in site.related_posts %}
   {% assign commonTagCount = 0 %}
-  {% if post.title != page.title or post.series != page.series %}
+  {% if post.title != page.title and post.series != page.series %}
     {% for tag in post.tags %} 
       {% if page.tags contains tag %}
 
