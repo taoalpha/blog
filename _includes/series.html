@@ -4,7 +4,11 @@
   <ul class="article-list">
   {% for post in site.posts %}
     {% if post.series == page.series %}
+    {% if post.title == page.title %}
+    <li><a class="current" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% else %}
     <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    {% endif %}
     {% endif %}
   {% endfor %}
 </ul>

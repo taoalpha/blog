@@ -11,6 +11,7 @@ alias tech='cd ~/github/blog/_posts/tech'
 alias vendor='cd ~/github/blog/_assets/vendors/'
 alias wblog='cd ~/github/blog/_posts/blog'
 alias nb=newblog
+alias serve='bundle exec jekyll serve --drafts --watch'
 
 newblog(){
   cp template.md $(date +"%Y-%m-%d")-"$*".md && vim $(date +"%Y-%m-%d")-"$*".md
