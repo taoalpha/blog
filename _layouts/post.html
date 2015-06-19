@@ -6,7 +6,7 @@ pname: blogpost
 {% stylesheet syntax %}
 <article id="content">
     <section class="entry">
-        <h1 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
+        <h1 class="entry-title"><a href="/blog{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
         {% assign author = site.authors[page.author] %}
         <div class="meta-top">
             <a href="/blog/user/{{ page.author }}">
