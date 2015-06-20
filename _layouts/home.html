@@ -6,6 +6,7 @@ layout: home_base
     {% for category in site.categories %}
     <li {% if page.pname == category[0] %}class="on"{% endif %}><a href="{{ site.baseurl }}{% if category[0] != 'blog' %}/{{category[0]}}{% endif %}"><span>{{ category[0] | capitalize }}</span></a></li>
     {% endfor %}
+    <li><a href="http://zzgary.info" target="something" style="width:70px;">Portfolio</a></li>
   </ul>
 </nav>
 
