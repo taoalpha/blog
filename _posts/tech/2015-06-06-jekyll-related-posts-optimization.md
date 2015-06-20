@@ -114,6 +114,7 @@ author: taoalpha
 在上面的基础上(在update之前的基础上), 首先我们需要在liquid中添加几行代码:
 
 {% highlight liquid %}
+{% raw %}
 {% comment %} 首先需要定义一个新的变量, 用来记录共同的tag数目 {% endcomment %} 
 {% assign tagCountEachPost = '-' | split: "-" %}
 
@@ -126,6 +127,7 @@ author: taoalpha
 {% comment %} 这里对文章进行对应的筛选, 需要借助我们自定义的filter实现 {% endcomment %} 
 {% assign postsAfterFilter = postsAfterFilter | sort_by_array: {{tagCountEachPost}} %}
       
+{% endraw %}
 {% endhighlight %}
 
 下面就是插件环节~
