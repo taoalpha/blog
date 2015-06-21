@@ -63,6 +63,7 @@ GEM
       sass (~> 3.2)
     jekyll-watch (1.2.1)
       listen (~> 2.7)
+    jieba_rb (0.0.2)
     json (1.8.3)
     kramdown (1.7.0)
     liquid (2.6.2)
@@ -119,6 +120,7 @@ DEPENDENCIES
   compass
   jekyll
   jekyll-assets
+  jieba_rb
   rake
   rb-gsl
   rouge

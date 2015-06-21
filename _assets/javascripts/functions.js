@@ -1,3 +1,15 @@
+Array.prototype.getObjectUnique = function(id){
+   var a = [],b=[];
+   for(var i = 0, l = this.length; i < l; ++i){
+      if(b.indexOf(this[i][id])>-1) {
+         continue;
+      }
+      a.push(this[i]);
+      b.push(this[i][id]);
+   }
+   return a;
+}
+
 jQuery.fn.rotate = function(degrees) {
     $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
                  '-moz-transform' : 'rotate('+ degrees +'deg)',
@@ -6,6 +18,7 @@ jQuery.fn.rotate = function(degrees) {
     return $(this);
 };
 
+// Get Location of User
 function getLocation() {
     var weatherData = $.cookie("weatherData");
     var cLocation = $.cookie("cLocation");
@@ -27,15 +40,21 @@ function getLocation() {
         alert("Geolocation is not supported by this browser.");
     }
 }
+
+// Support customize location
 function customLocation(){
     $('.location').find("span").text("");
     $('input#cLocation').show().focus();
 }
+
+// Update the location
 function updateLocation(){
     var cLocation = $('input#cLocation').val();
     $.cookie("cLocation",cLocation,{path:"/",expires:7});
     updateWeather(cLocation,"cityname");
 }
+
+// Update the weather information
 function updateWeather(position,flag){
     var weatherUrl = "";
     if(flag == "cityname") {
@@ -52,6 +71,8 @@ function updateWeather(position,flag){
         updateWeatherPart(data);
     })
 }
+
+// Update the weather part in the page
 function updateWeatherPart(data){
     var dt = data["dt"]*1000;
     var day = new Date(dt).getDate()
@@ -67,6 +88,8 @@ function updateWeatherPart(data){
     $('h2.weather-cn').html(ZdataM+"月"+ZdataD+"日: <span>"+data["weather"][0]["description"]+"</span>");
     $('h3.weather-en').html(Edata+": <span>"+data["weather"][0]["main"]+"</span>");
 }
+
+// Show the error code
 function showError(error) {
     switch(error.code) {
         case error.PERMISSION_DENIED:
@@ -194,4 +217,33 @@ function parseBookDatas(data){
   });
 }
 
+function search(query){
+  var inverted_index = JSON.parse($('p#indexdata').text());
+  var result = [];
+  var dict = $('p#worddicts').text().split(",");
+  var stop = ["the","of","is","and","to","in","that","we","for","an","are","by","be","as","on","with","can","if","from","which","you","it","this","then","at","have","all","not","one","has","or","that","的","了","和","是","就","都","而","及","與","著","或","一個","沒有","我們","你們","妳們","他們","她們","是否"];
+  query = query.toLowerCase().replace(/[(^\s+)(\s+$)]/g,"");
+  var splitwords = [];
+  $.each(dict,function(k,v){
+    if(query.indexOf(v)>-1){
+      splitwords.push(v);
+    }
+  })
+  if(splitwords.length){
+    $.each(splitwords,function(k,v){
+      result = result.concat(inverted_index[v]); 
+    })
+    showSearchResult(result.getObjectUnique('post_url'));
+  }else{
+    $('ul.article-list').empty().append('<li class="post"><h2>无结果, 请更换查询词</h2></li>');
+  }
+}
 
+function showSearchResult(data){
+  $('ul.article-list').empty();
+  var template = '<li class="post"><h2><a href="__post_url__">__post_title__</a></h2><summary class="title-excerpt">__post_desc__</summary><div class="post-info"><span class="author"><i class="fa fa-user"></i><a href="__post_author_url__">__post_author__</a></span><span class="category"><i class="fa fa-briefcase"></i><a href="__post_category_url__">__post_category__</a></span><span class="postdate"><i class="fa fa-history"></i>__post_date__</span><span class="viewcount"></span></div></li>';
+  $.each(data,function(k,v){
+    var child = template.replace("__post_url__","/blog"+v.post_url).replace("__post_title__",v.post_title).replace("__post_desc__",v.post_content+"...").replace("__post_author_url__","/blog/author/"+v.post_author).replace("__post_author__",v.post_author).replace("__post_category_url__",v.post_category == "blog"? "/blog":"/blog/"+v.post_category).replace("__post_category__",v.post_category).replace("__post_date__",v.post_date.replace('00:00:00 +0800',''));
+    $('ul.article-list').append(child);
+  })
+}

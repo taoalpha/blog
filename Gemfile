@@ -9,4 +9,5 @@ gem 'rouge'
 gem 'rb-gsl'
 gem 'addressable'
 gem 'rake'
+gem 'jieba_rb'
 # gem "rails"

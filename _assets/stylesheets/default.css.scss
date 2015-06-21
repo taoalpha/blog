@@ -385,13 +385,30 @@ pre span{line-height:15px;;}
   }
 }
 
-
 /***************Tag Page Bread Navigation Style*****************/
 #bread{color:$grayColor;margin-left:40px;
   border-bottom:1px dashed #666;
   a{color:$grayColor;}
   a:hover{color:#000;}
 }
+
+/***************Search Page *****************/
+input#search{
+  width: 77%;
+  height: 50px;
+  font-size: 1.1em;
+  margin: 40px 0 40px 40px;
+  float: left;
+  outline:none;
+}
+button#gosearch{
+  width: 12%;
+  cursor:pointer;
+  height: 50px;
+  margin: 40px 0;
+  padding: 0px;
+}
+
 /***************Wiki Style*****************/
 .wiki h2{cursor:pointer;}
 .wiki ul{margin-left:30px;margin-bottom:20px;list-style:disc}
@@ -509,6 +526,7 @@ pre span{line-height:15px;;}
   .home-contact { color:#fff; margin:0; width:40px; line-height:40px; height:120px; background:#000; padding:10px 0 9px; text-align:center; display:none;}
   span.author,span.category{display:none;}
   div.post-info span{line-height:20px;}
+  .wishbooks .books li.book_item a{height:160px}
 }
 
 @media screen and (max-width:375px) {
@@ -519,6 +537,9 @@ pre span{line-height:15px;;}
   .index-content {
     .cate-bar{width:100%;}  
     ul{width:100%;}
+  }
+  .wishbooks .books li.book_item a{height:90px;
+  span{font-size:9px;}
   }
 }
 

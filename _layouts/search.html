@@ -1,0 +1,34 @@
+---
+layout: home_base
+function: search
+---
+
+<nav id="bread">
+  <h2><a href="/blog">All Posts</a> >> Search: </h2>
+</nav>
+
+<p style="display:none;" id="indexdata">{{ page.index }}</p>
+<p style="display:none;" id="worddicts">{{ page.worddict }}</p>
+
+<form action="" class="search">
+<input id="search" type="text" placeholder="Enter to search.">
+<button id="gosearch" type="button">Go</button>
+</form>
+
+<article>
+  <ul class="article-list">
+ </ul>
+</article>
+
+<script type="text/javascript" charset="utf-8">
+  $('form.search').submit(function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    $('button#gosearch').trigger('click');
+  })
+
+  $('button#gosearch').on('click',function(){
+    var query = $('input#search').val();
+    search(query);
+  })
+</script>

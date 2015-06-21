@@ -1,3 +1,4 @@
+require 'jieba_rb'
 module Jekyll
   module CustomizeFilter
     def uniq(tags)
@@ -22,6 +23,16 @@ module Jekyll
         newArray.push(tags[x])
       end
       newArray.reverse!
+    end
+
+    def keywords(tags)
+      keyword = JiebaRb::Keyword.new
+      alist = []
+      keywords_weights = keyword.extract tags,25
+      keywords_weights.each{|k,v|
+        alist.push(k)
+      }
+      alist.reverse!
     end
 
   end

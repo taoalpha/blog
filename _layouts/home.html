@@ -27,7 +27,7 @@ layout: home_base
     {% for post in cposts %}
     <li class="post" data-filter="{{ post.tags|uniq_i|join_tags|join:' '}}">
     <h2><a {% if post.content contains 'Update' %}class="showupdate" {% endif %}href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-      <summary class="title-excerpt">{{ post.content | truncatewords:25 | markdownify | strip_html | replace: "%","" }}</summary>
+    <summary class="title-excerpt">{% if post.language =="cn" %}{{ post.content | truncatewords:25 | markdownify | strip_html | replace: "%","" }}{% else %}}{{ post.content | truncatewords:60 | markdownify | strip_html | replace: "%","" }} {% endif %}</summary>
       <div class="post-info">
         <span class="author"><i class="fa fa-user"></i><a href="/blog/user/{{ post.author }}">{{ post.author }}</a></span>
         <span class="category"><i class="fa fa-briefcase"></i>{% if post.category != "blog" %}<a href="{{ site.baseurl }}/{{ post.category }}">{{ post.category }}{% else %}<a href="{{ site.baseurl }}">blog</a>{% endif %}</a></span>
