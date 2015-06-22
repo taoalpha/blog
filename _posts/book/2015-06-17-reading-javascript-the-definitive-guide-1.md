@@ -3,7 +3,7 @@ layout: post
 title: JavaScript the Definitive Guide (1)
 category: book
 description: 读书笔记系列开篇~ 从JS开始, 主要记录阅读过程中一些心得, 或者不清楚的点. 本文主要为"JavaScript the definitive guide"的前7章内容相关记录.
-tags: [js,reading notes] 
+tags: [js,reading notes]
 series: The Way I Learn JavaScript
 author: taoalpha
 ---
@@ -12,7 +12,7 @@ author: taoalpha
 
 "JavaScript: the definitive guide"可谓是JS入门必读数目之一了. 今天正好读到第7章, 做一简单总结. 前7章的内容都集中在JS中的基本知识上, 包含了:
 
-- 数据类型: 最简单的primitive datatyles: string, number, boolean , 两个空值类型: null, undefined,以及稍微复杂点的: object类型; 
+- 数据类型: 最简单的primitive datatypes: string, number, boolean , 两个空值类型: null, undefined(通常认为空值类型属于promitive的一种),以及稍微复杂点的: object类型;
 - 变量问题: 变量规则, 变量作用域问题;
 - 基础表达式和操作符: 操作符的优先级问题, 多操作数和单操作数以及执行顺序等;
 - 陈述语句: 包含了if/for/while/do/with/switch(case)/break/continue/return/var/identifiers/empty statement等等;
@@ -22,7 +22,7 @@ author: taoalpha
 
 ### break/continue 后接 label:
 
-  break/continue是通常用于for/white/do等循环语句中用以做状态判断的, 但本身其还有另一种用法, 就是通过后接标记语句的用法来是break或者continue能针对标记语句操作, 比如下面这个跳出多层嵌套的例子: 
+  break/continue是通常用于for/white/do等循环语句中用以做状态判断的, 但本身其还有另一种用法, 就是通过后接标记语句的用法来是break或者continue能针对标记语句操作, 比如下面这个跳出多层嵌套的例子:
 
 {% highlight javascript %}
 test:
@@ -37,7 +37,7 @@ test:
 // continue test; 也是同样的用法
 {% endhighlight %}
 
-但需要注意的即使: 
+但需要注意的即使:
 
 - continue 语句(带有或不带标签引用)只能用在循环中;
 - break 语句(不带标签引用),只能用在循环或 switch 中;
