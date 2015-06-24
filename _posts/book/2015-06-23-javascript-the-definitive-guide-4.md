@@ -1,4 +1,5 @@
 ---
+layout: post
 title: JavaScript the Definitive Guide (4)
 category: book
 description: 续前篇, 查漏补缺5-9章
@@ -31,7 +32,7 @@ author: taoalpha
   - 直接声明的八进制数是不允许的(即0开头的数字);
   - `eval`,`arguments`作为`keywords`对待, 不能赋值, 或赋予其他变量, 也不能用于`identifier`;
 
-{% image javascript-statements.jpg alt="JavaScript Statements" title="JavaScript Statements" [no-autosize] %}
+{% image 2015-06-23/javascript-statements.jpg alt="JavaScript Statements" title="JavaScript Statements" [no-autosize] %}
 
 ### Chapter 6 - Objects
 
