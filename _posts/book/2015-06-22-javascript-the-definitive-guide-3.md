@@ -19,7 +19,7 @@ author: taoalpha
 
 DONE.
 
-本篇是博主重新翻阅了"JavaScript the Definitive Guide(第六版)"的前4章内容(之前 [阅读笔记-1]({% post_url book/2015-06-17-reading-javascript-the-definitive-guide-1 %}),[阅读笔记-2]({% post_url book/2015-06-18-javascript-the-definitive-guide-2 %}) 均是第五版的)后的读书笔记以及心得体会. 内容主要覆盖js的基本用法, 考虑到重复, 这里主要是在上两篇的基础上查漏补缺.
+本篇是博主重新翻阅了"JavaScript the Definitive Guide(第六版)"的前4章内容(之前 [阅读笔记-1]({{ site.baseurl }}{% post_url book/2015-06-17-reading-javascript-the-definitive-guide-1 %}),[阅读笔记-2]({{ site.baseurl }}{% post_url book/2015-06-18-javascript-the-definitive-guide-2 %}) 均是第五版的)后的读书笔记以及心得体会. 内容主要覆盖js的基本用法, 考虑到重复, 这里主要是在上两篇的基础上查漏补缺.
 
 ## 阅读笔记
 

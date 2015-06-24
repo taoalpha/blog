@@ -11,7 +11,7 @@ author: taoalpha
 
 ## 展现categories以及tags
 
-> 首先我们需要设定了tags的post... 这样你的`site.tags`才会有数据~ 具体的tags设定方法可以参照[心得(1)]({% post_url tech/2015-05-07-jekyll-tips-1 %}).
+> 首先我们需要设定了tags的post... 这样你的`site.tags`才会有数据~ 具体的tags设定方法可以参照[心得(1)]({{ site.baseurl }}{% post_url tech/2015-05-07-jekyll-tips-1 %}).
 > 接着就是如何展现tags数据了~ 以本文为例, 我总计有三个category, 因为要实现不同category下的tag只出现在自己的category页面下方, 所以在展现tags的时候需要做一个category的判定.
 
 {% highlight liquid %}

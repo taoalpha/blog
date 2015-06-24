@@ -39,7 +39,7 @@ author: taoalpha
 
 ### 倒排索引
 
-选好的分词库, 我们就可以正式开始制作倒排了, 有了[建立Tag专属页]({% post_url tech/2015-06-01-jekyll-tag-page %})的经验, 我们可以采用类似的方法来创建一个建立search页的插件:
+选好的分词库, 我们就可以正式开始制作倒排了, 有了[建立Tag专属页]({{ site.baseurl }}{% post_url tech/2015-06-01-jekyll-tag-page %})的经验, 我们可以采用类似的方法来创建一个建立search页的插件:
 
 {% highlight ruby %}
 {% raw %}

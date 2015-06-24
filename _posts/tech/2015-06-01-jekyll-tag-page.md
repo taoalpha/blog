@@ -10,7 +10,7 @@ author: taoalpha
 
 ## Tag的运用
 
-Tag可以算是blog的标配了, 借用tag我们才能够让blog更好的归档, 既丰富了博客的内容体系, 也更便于筛选.而jekyll默认虽然给了tag的域, 但是却并不会自动开启tag的专属页面, 这个页面还需要我们自己来创建的. 建立tag专属页面的方法也有几种, 考虑到很多人都用github page作为自己jekyll的博客, 那么这里就按照有无插件辅助来区分以下方法吧(github page不支持插件~ 想要了解[如何在github page中使用jekyll插件](/blog{% post_url tech/2015-05-29-use-jekyll-plugin-with-github-page %})?)
+Tag可以算是blog的标配了, 借用tag我们才能够让blog更好的归档, 既丰富了博客的内容体系, 也更便于筛选.而jekyll默认虽然给了tag的域, 但是却并不会自动开启tag的专属页面, 这个页面还需要我们自己来创建的. 建立tag专属页面的方法也有几种, 考虑到很多人都用github page作为自己jekyll的博客, 那么这里就按照有无插件辅助来区分以下方法吧(github page不支持插件~ 想要了解[如何在github page中使用jekyll插件]({{ site.baseurl }}{% post_url tech/2015-05-29-use-jekyll-plugin-with-github-page %})?)
 
 ## 无插件实现方法
 

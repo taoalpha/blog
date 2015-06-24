@@ -9,7 +9,7 @@ author: taoalpha
 
 ## 缘起
 
-正巧最近Kindle4RSS会员到期, 本来计划续费的. 不过正巧有朋友推荐了[KindleEar](https://github.com/cdhigh/KindleEar), 而我又恰好之前因为[给博文添加GA的pageview]({% post_url tech/2015-06-07-add-google-analytics-pageviews-to-jekyll-blog %}), 用到了GAE, 而从我从GoAgent转移到Shadowsocks之后, 空出来了不少GAE的帐号, 于是就干脆拿来用喽~
+正巧最近Kindle4RSS会员到期, 本来计划续费的. 不过正巧有朋友推荐了[KindleEar](https://github.com/cdhigh/KindleEar), 而我又恰好之前因为[给博文添加GA的pageview]({{ site.baseurl }}{% post_url tech/2015-06-07-add-google-analytics-pageviews-to-jekyll-blog %}), 用到了GAE, 而从我从GoAgent转移到Shadowsocks之后, 空出来了不少GAE的帐号, 于是就干脆拿来用喽~
 
 ## 搭建方法
 

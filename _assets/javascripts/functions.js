@@ -26,6 +26,8 @@ function getLocation() {
   var weatherImgUrl = $.cookie(path_prefix+"weatherImgUrl");
   if(!weatherImgUrl){
       randomImage(path_prefix)
+  }else{
+      $(".aside").css("background-image","url("+weatherImgUrl+")");
   }
   if(weatherData){
       updateWeather(JSON.parse(weatherData),"cookie");
@@ -61,7 +63,6 @@ function updateWeather(position,flag){
       weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q="+position+"&lang=zh_cn&units=metric";
   }else if (flag == "cookie"){
       updateWeatherPart(position);
-      $(".aside").css("background-image","url("+$.cookie(location.pathname.split("/")[2]+"weatherImgUrl")+")");
       return
   }else{
       weatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&lang=zh_cn&units=metric";
@@ -255,6 +256,6 @@ function showSearchResult(data){
   var template = '<li class="post"><h2><a href="__post_url__">__post_title__</a></h2><summary class="title-excerpt">__post_desc__</summary><div class="post-info"><span class="author"><i class="fa fa-user"></i><a href="__post_author_url__">__post_author__</a></span><span class="category"><i class="fa fa-briefcase"></i><a href="__post_category_url__">__post_category__</a></span><span class="postdate"><i class="fa fa-history"></i>__post_date__</span><span class="viewcount"></span></div></li>';
   $.each(data,function(k,v){
     var child = template.replace("__post_url__","/blog"+v.post_url).replace("__post_title__",v.post_title).replace("__post_desc__",v.post_content+"...").replace("__post_author_url__","/blog/author/"+v.post_author).replace("__post_author__",v.post_author).replace("__post_category_url__",v.post_category == "blog"? "/blog":"/blog/"+v.post_category).replace("__post_category__",v.post_category).replace("__post_date__",v.post_date.replace('00:00:00 +0800',''));
-    $('ul.article-list').append(child);
+    $('ul.article-list').prepend(child);
   })
 }
