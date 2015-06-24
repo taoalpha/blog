@@ -67,11 +67,21 @@ function updateWeather(position,flag){
   }else{
       weatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat="+position.coords.latitude+"&lon="+position.coords.longitude+"&lang=zh_cn&units=metric";
   }
-  $.get(weatherUrl,function(data){                            
+  $.ajax({
+    url: weatherUrl, 
+    dataType: 'jsonp',
+    timeout: 1000 * 3, // 3 sec
+    success: function(data) {
       $.cookie("weatherData",JSON.stringify(data),{expires:0.05,path:'/'});
       updateWeatherPart(data);
+    },
+    error: function() {
+      // if fail then retry
+      updateWeather(position,flag);
+    }
   })
 }
+
 
 // Update the weather part in the page
 function updateWeatherPart(data){
