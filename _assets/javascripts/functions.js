@@ -10,6 +10,14 @@ Array.prototype.getObjectUnique = function(id){
   return a;
 }
 
+// 重写alert的代码:
+window._alert = window.alert;
+window.alert = function (msg, showItNow) {    
+  if (showItNow) {
+    window._alert(msg);
+  }
+};
+
 jQuery.fn.rotate = function(degrees) {
   $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
                '-moz-transform' : 'rotate('+ degrees +'deg)',
