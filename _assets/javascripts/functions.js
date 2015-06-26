@@ -277,3 +277,37 @@ function showSearchResult(data){
     $('ul.article-list').prepend(child);
   })
 }
+
+// function for sending emails
+function sendMail(msg){
+$.ajax({
+  type: 'POST',
+  url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+  data: {
+    'key': 'JMwEKDDW1NuLbxUrK4ELhQ',
+    'message': {
+      'from_email': msg.sender_mail,
+      'from_name' : msg.sender_name,
+      'to': [
+          {
+            'email': 'zzgary92@gmail.com',
+            'name': 'TaoAlpha',
+            'type': 'to'
+          }
+        ],
+      'autotext': 'true',
+      'subject': msg.subject,
+      'html': msg.content
+    }
+  }
+  }).done(function(response) {
+    showAlert("success","Thanks for your contribution!"); 
+  }).fail(function(data){
+    showAlert("fail","Sorry! Failed to send the email. Please retry!");
+  });
+}
+
+function showAlert(status,msg,duration){
+  if(!duration) duration = 5000;
+  $('div.notification').stop().fadeIn().removeClass('fail success alert').addClass(status).html(msg).show().fadeOut(duration);
+}

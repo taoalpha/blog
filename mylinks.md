@@ -31,4 +31,3 @@ permalink: /mylinks/
   </div>
 </section>
 <script type="text/javascript">randomTags("showall")</script>
-{% javascript home %}

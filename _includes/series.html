@@ -1,9 +1,11 @@
 {% if page.series %}
+{% assign counter = 0 %}
 <aside class="sidenav series">
 <h2>In Series: {{ page.series }}<i class="fa fa-arrow-down expand"></i><i class="collapse fa fa-arrow-up"></i></h2>
   <ul class="article-list">
   {% for post in site.posts %}
-    {% if post.series == page.series %}
+    {% if post.series == page.series and counter != 6 %}
+    {% assign counter = counter | plus: 1 %}
     {% if post.title == page.title %}
     <li><a class="current" href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
     {% else %}

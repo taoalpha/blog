@@ -1,59 +1,54 @@
-{% include header.html %}
-<body class="{{ page.pname }}">
-  {% include lsidebar.html pname=page.pname %}
-  {% include picbar.html %}
+---
+layout: default
+---
+{% include picbar.html %}
 
-  <section class="index-content blog">
+<section class="index-content blog">
 
-    {{ content }}
-    
+  {{ content }}
+  
 
-    {% if paginator.total_pages > 1 %}
-    {% assign pname = page.pname %}
-    {% if page.pname == "blog" %}
-      {% assign pname = "" %}
-    {% endif %}
-    <nav class="pagination">
-      {% if paginator.previous_page %}
-        {% if paginator.previous_page == 1 %}
-          <a class="prev" href="{{ pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">&laquo; Prev</a>
-        {% else %}
-          <a class="prev" href="{{ paginator.previous_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">&laquo; Prev</a>
-        {% endif %}
+  {% if paginator.total_pages > 1 %}
+  {% assign pname = page.pname %}
+  {% if page.pname == "blog" %}
+    {% assign pname = "" %}
+  {% endif %}
+  <nav class="pagination">
+    <div class="paginator">
+    {% if paginator.previous_page %}
+      {% if paginator.previous_page == 1 %}
+        <a class="prev" href="{{ pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">&laquo; Prev</a>
       {% else %}
-        <em class="prev">&laquo; Prev</em>
+        <a class="prev" href="{{ paginator.previous_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">&laquo; Prev</a>
       {% endif %}
-    
-      {% for page in (1..paginator.total_pages) %}
-        {% if page == paginator.page %}
-          <em>{{ page }}</em>
-        {% elsif page == 1 %}
-          <a href="{{ '/' | prepend: pname |prepend: "/"| prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-        {% else %}
-          <a href="{{ site.paginate_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-        {% endif %}
-      {% endfor %}
-    
-      {% if paginator.next_page %}
-        <a class="next" href="{{ paginator.next_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">Next &raquo;</a>
-      {% else %}
-        <em class="next">Next &raquo;</em>
-      {% endif %}
-    </nav>
+    {% else %}
+      <em class="prev">&laquo; Prev</em>
     {% endif %}
+  
+    {% for page in (1..paginator.total_pages) %}
+      {% if page == paginator.page %}
+        <em>{{ page }}</em>
+      {% elsif page == 1 %}
+        <a href="{{ '/' | prepend: pname |prepend: "/"| prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+      {% else %}
+        <a href="{{ site.paginate_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+      {% endif %}
+    {% endfor %}
+  
+    {% if paginator.next_page %}
+      <a class="next" href="{{ paginator.next_page_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '///', '/' | replace: '//', '/' }}">Next &raquo;</a>
+    {% else %}
+      <em class="next">Next &raquo;</em>
+    {% endif %}
+    </div>
+  </nav>
+  {% endif %}
 
-  </section>
+</section>
 
 
-  <script type="text/javascript">
-    getLocation()
-    randomTags("")
-    getPageViewCount()
-  </script>
-
-  {% javascript home %}
-  {% include analytics.html %}
-</body>
-</html>
-
-
+<script type="text/javascript">
+  getLocation()
+  randomTags("")
+  getPageViewCount()
+</script>

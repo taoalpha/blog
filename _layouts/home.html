@@ -3,8 +3,11 @@ layout: home_base
 ---
 <nav>
   <ul class="article-cate">
+    <li {% if page.pname == 'blog' %}class="on"{% endif %}><a href="{{ site.baseurl }}"><span>Blog</span></a></li>
     {% for category in site.categories %}
-    <li {% if page.pname == category[0] %}class="on"{% endif %}><a href="{{ site.baseurl }}{% if category[0] != 'blog' %}/{{category[0]}}{% endif %}"><span>{{ category[0] | capitalize }}</span></a></li>
+    {% if category[0] != 'blog' %}
+    <li {% if page.pname == category[0] %}class="on"{% endif %}><a href="{{ site.baseurl }}/{{category[0]}}"><span>{{ category[0] | capitalize }}</span></a></li>
+    {% endif %}
     {% endfor %}
     <li><a href="http://zzgary.info" target="something" style="width:70px;">Portfolio</a></li>
   </ul>
@@ -27,15 +30,7 @@ layout: home_base
     {% for post in cposts %}
     <li class="post" data-filter="{{ post.tags|uniq_i|join_tags|join:' '}}">
     <h2><a {% if post.content contains 'Update' %}class="showupdate" {% endif %}href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-    <summary class="title-excerpt">{% if post.language =="cn" %}{{ post.content | truncatewords:25 | markdownify | strip_html | replace: "%","" }}{% else %}}{{ post.content | truncatewords:60 | markdownify | strip_html | replace: "%","" }} {% endif %}</summary>
-      <div class="post-info">
-        <span class="author"><i class="fa fa-user"></i><a href="/blog/user/{{ post.author }}">{{ post.author }}</a></span>
-        <span class="category"><i class="fa fa-briefcase"></i>{% if post.category != "blog" %}<a href="{{ site.baseurl }}/{{ post.category }}">{{ post.category }}{% else %}<a href="{{ site.baseurl }}">blog</a>{% endif %}</a></span>
-        <span class="tags"><i class="fa fa-tags"></i>{% for tag in post.tags %}<a href="{{ site.baseurl }}/tag/{{tag}}">{{ tag }}</a>{% endfor %}</span>
-        <span class="postdate"><i class="fa fa-history"></i>{{ post.date | date: "%B %d, %Y" }}</span>
-        <span class="readspeed"><i class="fa fa-clock-o"></i>{{ post.content | strip_html | strip_newlines | size | divided_by:350 | round | plus: 1}} 分钟读完 </span>
-        <span class="viewcount"></span>
-      </div>
+    {% include summary.html %}
     </li>
     {% endfor %}
   </ul>
