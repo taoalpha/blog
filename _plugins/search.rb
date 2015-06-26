@@ -38,9 +38,9 @@ module Jekyll
         postdata['post_url'] = post.url
         postdata['post_title'] = post.title
         if post["language"] == "en"
-          postdata['post_content'] = post.content[0...400].gsub!(/<(.*?)|{%|%}|\s|\n|([#]+)|\t/) {" "}
+          postdata['post_content'] = post.content[0...400].gsub!(/<(.*?)>?|{%|%}|\s|\n|([#]+)|\t/) {" "}
         else
-          postdata['post_content'] = post.content[0...200].gsub!(/<(.*?)|{%|%}|\s|\n|([#]+)|\t/) {" "}
+          postdata['post_content'] = post.content[0...200].gsub!(/<(.*?)>?|{%|%}|\s|\n|([#]+)|\t/) {" "}
         end
         postdata['post_author'] = post["author"]
         postdata['post_category'] = post.categories

@@ -3,6 +3,7 @@ layout: post
 title: 为什么以及如何应用"persona"
 category: dandp
 source: http://www.uxbooth.com/articles/creating-personas/
+series: Get to know persona
 description: 
 tags: [persona,UX,User Test]
 author: taoalpha

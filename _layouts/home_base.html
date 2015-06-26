@@ -25,11 +25,20 @@ layout: default
       <em class="prev">&laquo; Prev</em>
     {% endif %}
   
+    {% assign t_page = paginator.total_pages | minus: 2 %}
     {% for page in (1..paginator.total_pages) %}
       {% if page == paginator.page %}
         <em>{{ page }}</em>
       {% elsif page == 1 %}
         <a href="{{ '/' | prepend: pname |prepend: "/"| prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+      {% elsif page > 3 and page < t_page %}
+      {% if paginator.page < 3 or paginator.page > t_page %}
+        <em>......</em>
+        {% elsif page == paginator.previous_page %}
+        <em>...</em>
+        {% elsif page == paginator.next_page %}
+        <em>...</em>
+        {% endif %}
       {% else %}
         <a href="{{ site.paginate_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
       {% endif %}
