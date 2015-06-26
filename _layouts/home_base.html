@@ -26,18 +26,24 @@ layout: default
     {% endif %}
   
     {% assign t_page = paginator.total_pages | minus: 2 %}
+    {% assign p_count = 0 %}
     {% for page in (1..paginator.total_pages) %}
       {% if page == paginator.page %}
         <em>{{ page }}</em>
       {% elsif page == 1 %}
         <a href="{{ '/' | prepend: pname |prepend: "/"| prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
       {% elsif page > 3 and page < t_page %}
-      {% if paginator.page < 3 or paginator.page > t_page %}
-        <em>......</em>
-        {% elsif page == paginator.previous_page %}
-        <em>...</em>
+        {% if page == paginator.previous_page %}
+          {% assign p_count = p_count|plus: 1 %}
+          <em>...</em>
         {% elsif page == paginator.next_page %}
-        <em>...</em>
+          {% assign p_count = p_count|plus: 1 %}
+          <em>...</em>
+        {% elsif paginator.page <3 or paginator.page > t_page %}
+          {% if p_count == 0 %}
+            {% assign p_count = p_count|plus: 1 %}
+            <em>...</em>
+          {% endif %}
         {% endif %}
       {% else %}
         <a href="{{ site.paginate_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
