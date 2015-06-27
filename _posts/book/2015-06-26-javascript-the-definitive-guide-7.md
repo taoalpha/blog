@@ -4,6 +4,7 @@ title: JavaScript the Definitive Guide (7)
 category: book
 description: 正式进入本书第二部分的内容, 核心主要围绕在浏览器内的js. 包含了最基本的使用方式, 方法, 因浏览器而增加的各种属性方法, 操作css, dom的方法, 以及常用的一些js框架, 库等, 同时还包含了目前浏览器大热的安全领域.
 tags: [js,reading notes]
+series: The Way I Learn JavaScript
 author: taoalpha
 ---
 
@@ -124,4 +125,8 @@ jQuery流行度的一大证据之一! 哈哈 我计划抽时间好好读一下jQ
 
 我在早先做chrome插件[详见我的portfolio](zzgary.info)的时候, [写过一篇专门介绍web存储的文章](http://callmet.zzgary.info/2014/02/04/data-storage-patch-day40-web-app-in/). 恩, 当时写了不少`patch`系列, 哈哈, 改天写个脚本全部导出来转移过来.
 
-恩 我现在就去写导入工具... 今天就到这里吧, 明天算是最后一篇就能完结本书啦~
+恩
+
+## 参考资料
+
+- [JavaScript the Definitive Guide 6th edition](http://book.douban.com/subject/5303032/) 我现在就去写导入工具... 今天就到这里吧, 明天算是最后一篇就能完结本书啦~

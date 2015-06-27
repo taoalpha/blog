@@ -544,6 +544,12 @@ button#gosearch{
   .index-content {
     .cate-bar{width:100%;}  
     ul{width:100%;}
+    ul.article-cate li a, .index-content ul.article-cate li a:visited{ width:55px;}
+    .pagination a, .pagination em{margin-right:6px;}
+    .pagination{
+      a{display:none;}
+      .prev,.next,.first,.last,em{display:block;}
+    }
   }
   .wishbooks .books li.book_item a{height:90px;
   span{font-size:9px;}

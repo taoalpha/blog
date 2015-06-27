@@ -31,7 +31,7 @@ layout: default
       {% if page == paginator.page %}
         <em>{{ page }}</em>
       {% elsif page == 1 %}
-        <a href="{{ '/' | prepend: pname |prepend: "/"| prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+        <a class='first' href="{{ '/' | prepend: pname |prepend: "/"| prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
       {% elsif page > 3 and page < t_page %}
         {% if page == paginator.previous_page %}
           {% assign p_count = p_count|plus: 1 %}
@@ -45,6 +45,8 @@ layout: default
             <em>...</em>
           {% endif %}
         {% endif %}
+      {% elsif page == paginator.total_pages %}
+        <a class="last" href="{{ site.paginate_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
       {% else %}
         <a href="{{ site.paginate_path | prepend: "/" | prepend: pname | prepend: "/" | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
       {% endif %}
