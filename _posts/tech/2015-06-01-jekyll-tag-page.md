@@ -62,7 +62,7 @@ tag: jekyll
 
 如此就算是实现了不用插件的情况下对特定tag创建的tag专属页了.
 
-<blockquote class="special update" markdown="1">
+<blockquote class="special update" markdown="1" data-flag="gotsomeupdateshere">
 ## Update
 
 更新一种无插件创建tag页的方法: 思路是展现全部post在一个页面, 加上tag属性, 然后通过js借助url的parameter来实现过滤tag的功能;

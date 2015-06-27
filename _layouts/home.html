@@ -29,7 +29,7 @@ layout: home_base
   <ul class="article-list">
     {% for post in cposts %}
     <li class="post" data-filter="{{ post.tags|uniq_i|join_tags|join:' '}}">
-    <h2><a {% if post.content contains 'Update' %}class="showupdate" {% endif %}href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+    <h2><a {% if post.content contains 'gotsomeupdateshere' %}class="showupdate" {% endif %}href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
     {% include summary.html %}
     </li>
     {% endfor %}

@@ -59,7 +59,7 @@ author: taoalpha
 
 思路很简单, 确保其具有共同tag, 在无相关文章的情况下就不展示此模块了. 因为本身liquid的语法非常有限, 不借助插件的情况下, 想要实现更多功能的话, 就比较麻烦了. 如果有哪位XDJM有不借助插件的排序, 求务必告知我哦~
 
-<blockquote class="special update" markdown="1">
+<blockquote class="special update" markdown="1" data-flag="gotsomeupdateshere">
 
 ### Update
 

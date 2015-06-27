@@ -110,7 +110,7 @@ task :default => :publish
 
 上述代码就是用来帮助你简化发布环节的~ 当然你要是用shell自己写也是没问题的哈哈哈
 
-<blockquote class="special update" markdown="1">
+<blockquote class="special update" markdown="1" data-flag="gotsomeupdateshere">
 
 ### Update
 
