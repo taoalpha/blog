@@ -53,7 +53,7 @@ Cyberpsychology最开始是集中关注于人在操作机器以及与机器交�
 - [Journal of Computer Mediated Communication](http://jcmc.indiana.edu/)
 - [Cyberpsychology: Journal of Psychosocial Research on Cyberspace](http://www.cyberpsychology.eu/)
 - [Cyberpsychology, Behavior, and Social Networking](http://www.liebertpub.com/publication.aspx?pub_id=10)
-- [Journal of CyberTherapy & Rehabilitation](http://www.vrphobia.eu/]
+- [Journal of CyberTherapy & Rehabilitation](http://www.vrphobia.eu/)
 
 ## 阅读书目
 

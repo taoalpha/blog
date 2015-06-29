@@ -3,7 +3,7 @@ layout: home_base
 ---
 <nav>
   <ul class="article-cate">
-    <li {% if page.pname == 'blog' %}class="on"{% endif %}><a href="{{ site.baseurl }}"><span>Blog</span></a></li>
+    <li {% if page.pname == 'blog' %}class="on"{% endif %}><a href="{{ site.baseurl }}/"><span>Blog</span></a></li>
     {% for category in site.categories %}
     {% if category[0] != 'blog' %}
     <li {% if page.pname == category[0] %}class="on"{% endif %}><a href="{{ site.baseurl }}/{{category[0]}}"><span>{{ category[0] | capitalize }}</span></a></li>
