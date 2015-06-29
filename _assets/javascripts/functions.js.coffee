@@ -23,7 +23,7 @@ jQuery.fn.rotate = (degrees) ->
   cLocation = $.cookie("cLocation");
   path_prefix = location.pathname.split("/")[2];
   weatherImgUrl = $.cookie(path_prefix+"weatherImgUrl");
-  if not weatherImgUrl
+  if !weatherImgUrl
     randomImage path_prefix
   else $(".aside").css 'background-image',"url(#{weatherImgUrl})"
   if weatherData
@@ -56,6 +56,7 @@ jQuery.fn.rotate = (degrees) ->
     weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=#{position}&lang=zh_cn&units=metric"
   else if flag is "cookie"
     updateWeatherPart position
+    return
   else
     weatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=#{position.coords.latitude}&lon=#{position.coords.longitude}&lang=zh_cn&units=metric"
   $.ajax
@@ -65,9 +66,11 @@ jQuery.fn.rotate = (degrees) ->
     success: (data) ->
       $.cookie("weatherData",JSON.stringify(data),{expires:0.05,path:'/'})
       updateWeatherPart(data)
+      1
     error: ->
       # retry if fail
       updateWeather(position,flag)
+      0
   1
 
 # update weather in the page
@@ -107,21 +110,25 @@ jQuery.fn.rotate = (degrees) ->
     success: (data) ->
       $(".aside").css("background-image","url(#{data.response.image.url})");
       $.cookie(path+"weatherImgUrl",data.response.image.url,{expires:0.05,path:'/blog'})
+      1
     error: ->
       # retry if fail
       randomImage(path)
+      0
   1
 
 # Load pageview counts from Google Analytics
 
 @getPageViewCount = (dataurl) ->
-  dataurl = 'https://taoalpha-github-page.appspot.com/query?id=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw' if dataurl?
+  if !dataurl
+    dataurl = 'https://taoalpha-github-page.appspot.com/query?id=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAgICACgw'
   $.ajax
     url: dataurl
     dataType: 'jsonp'
     timeout: 1000 * 3
     success: (data) ->
       parsePageViewData(data.rows)
+      1
     error: ->
       # if fail to get up-to-date data from GAE, get cached local version
       console.log('Failed to get pageview from GAE!')
@@ -131,10 +138,12 @@ jQuery.fn.rotate = (degrees) ->
         success: (data) ->
           console.log('Local page view backup file.')
           parsePageViewData(data.rows)
+          1
+      0
   1
 
 @parsePageViewData = (rows) ->
-  return if rows?
+  return if !rows
   $('.post').each ->
     myPath = $(this).children('h2').children('a').attr('href')
     if myPath
@@ -142,7 +151,7 @@ jQuery.fn.rotate = (degrees) ->
       #myPath = myPath;
       len = rows.length;
       cnt = 0;
-      for i in [0..len]
+      for i in [0..len-1]
         thatPath = rows[i][0]
         queryId = thatPath.indexOf('?')
         mainPath = if queryId >= 0 then thatPath.slice(0, queryId) else thatPath
@@ -159,6 +168,7 @@ jQuery.fn.rotate = (degrees) ->
     timeout: 1000 * 3
     success: (data) ->
       parseBookDatas data.collections
+      1
     error: ->
       # if fail to get up-to-date data from douban, get cached local version
       console.log('Failed to get pageview from Douban!')
@@ -168,6 +178,8 @@ jQuery.fn.rotate = (degrees) ->
         success: (data) ->
           console.log('Local mybooks.data backup file.')
           parseBookDatas(data.collections)
+          1
+      0
   1
 
 @parseBookDatas = (data) ->
@@ -224,8 +236,10 @@ jQuery.fn.rotate = (degrees) ->
         'html': msg.content
   .done (response)->
     showAlert("success","Thanks for your contribution!")
+    1
   .fail (data)->
     showAlert("fail","Sorry! Failed to send the email. Please retry!")
+    0
   1
 
 @showAlert = (status,msg,duration) ->
