@@ -17,9 +17,11 @@ module Jekyll
   class SearchGenerator< Generator
     safe true
     def generate(site)
-      if site.layouts.key? 'search'
-        dir = site.config['search_dir'] || 'search'
-        write_search_index(site, File.join(dir, ''))
+      if Jekyll.configuration({})['i_search'] 
+        if site.layouts.key? 'search'
+          dir = site.config['search_dir'] || 'search'
+          write_search_index(site, File.join(dir, ''))
+        end
       end
     end
     def write_search_index(site, dir)

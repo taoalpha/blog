@@ -3,6 +3,7 @@ layout: post
 title: CoffeeScript Programming with jQuery, rails and Nodejs (1)
 category: book
 description: The notes I took while I was learning the 'CoffeeScript'. If you are a real beginner with 'CoffeeScript', I suggest you start with another book called "The Little Book on CoffeeScript", it's better for beginners. And after that, this one is definitely your best choice.
+series: The Way I Learn CoffeeScript
 language: en
 tags: [js,CoffeeScript,jQuery,rails,nodejs,reading notes]
 author: taoalpha
@@ -23,6 +24,8 @@ This note is mainly about the fist chapter of the book, a nice introduction for 
 CoffeeScript is pretty popular in the community of JavaScript for its simplicity, elegant and readable. Now let us dive into it.
 
 Instead of  listing the keywords and statements used in CoffeeScript one by one, it would better we learn CoffeeScript from comparing the difference between the CoffeeScript and JavaScript.
+
+### CoffeeScript fix some ugly stuffs in JavaScript
 
 - CoffeeScript removes most of the semicolons and the curly braces which used a lot in JavaScript, gives us a clearly view of the code, but you can still use the semicolons if you want, and you still have to use the semicolons if you want to put multiple statements in single one;
 - CoffeeScript learns a lot from ruby and python. Like this one: it uses whitespace or indentation, more accurately, to delimit the code blocks instead of braces.
@@ -97,6 +100,8 @@ scores = [78, 75, 79];
 alert(gpaScoreAverage.apply(null, scores));
 
 {% endhighlight %}
+
+### CoffeeScript saves you a lot of keystrokes
 
 - CoffeeScript will declare the variables you need at the top of the function for you automatically. So that means you can't create the global variables in a function like you can do in JavaScript, actually you can't use the `var` keyword in CoffeeScript. <= many people agree that omitting the `var` keyword makes the variables become global is a really bad desgin...
 - Object:
@@ -211,19 +216,20 @@ mike = new Person("Mike");
 mike.mycar.whoisdriver();
 {% endhighlight %}
 
-- Other Good Things:
-  - CoffeeScript will quote reserved words automatically if you use them in your literal object;
-  - You can also drop the comma when you define your literal array or literal object only if you put one property per line, you can drop the braces for object, but you need them for array;
-  - Use `#{variable_name}` to concatenate the string and variables instead of `+`, but only use them enclosing with double-quote, the single-quote strings are literal, borrowed from ruby;
-  - CoffeeScript will always convert the `==` and `!=` to `===` and `!==`;
-  - Use the `existential operator: ?` to check whether a variable exists and has a value or not(means not null or undefined);
-  - Also use the `soak: ?. ` as a shortcut for ternary statement;
-  - Support some new keywords like `unless`, the opposite to `if`;
-  - Use plain english aliases for some of the logical operators: `is for ===`,`isnt for !==`,`not for !`,`and for &&`,`or for ||`,`true can also be yes, or on`,`false can be no or off`;
-  - Support assign multiple values at once;
-  - CoffeeScript replaces the `case` in `switch` with `when ... then`, so you can forget about the `break`, and it also replaces the `default` with `else`;
-  - CoffeeScript supports the `chained comparisions`: `61 > a > 39`;
-  - You can use `###` to comment multiple lines. The biggest difference between `###` and `#` is former one will be part of generated javascript;
+### Other Good Things
+
+- CoffeeScript will quote reserved words automatically if you use them in your literal object;
+- You can also drop the comma when you define your literal array or literal object only if you put one property per line, you can drop the braces for object, but you need them for array;
+- Use `#{variable_name}` to concatenate the string and variables instead of `+`, but only use them enclosing with double-quote, the single-quote strings are literal, borrowed from ruby;
+- CoffeeScript will always convert the `==` and `!=` to `===` and `!==`;
+- Use the `existential operator: ?` to check whether a variable exists and has a value or not(means not null or undefined);
+- Also use the `soak: ?. ` as a shortcut for ternary statement;
+- Support some new keywords like `unless`, the opposite to `if`;
+- Use plain english aliases for some of the logical operators: `is for ===`,`isnt for !==`,`not for !`,`and for &&`,`or for ||`,`true can also be yes, or on`,`false can be no or off`;
+- Support assign multiple values at once;
+- CoffeeScript replaces the `case` in `switch` with `when ... then`, so you can forget about the `break`, and it also replaces the `default` with `else`;
+- CoffeeScript supports the `chained comparisions`: `61 > a > 39`;
+- You can use `###` to comment multiple lines. The biggest difference between `###` and `#` is former one will be part of generated javascript;
 
 {% highlight coffeescript %}
 b=1
@@ -244,6 +250,8 @@ ref = ["!2", "24", "2"], city = ref[0], state = ref[1], country = ref[2];
 ref1 = getAddress().address, myStreet = ref1.street, myRoom = ref1.room;
 ###
 {% endhighlight %}
+
+### Special for List
 
 - List: CoffeeScript borrowed a lot `list comprehensions` from python`[ x*2 for x in object_name ]` and ruby.
   - `while`: it works nearly the same as in javascript except that it has an opposite keyword in CoffeeScript: `until` and both of them can be used as expression and will return a array;
@@ -306,7 +314,7 @@ for (name in ages) {
 
 ## Puzzle
 
-- Q1: In the second code example above, CoffeeScript create a default extend function for us:
+- **Q1:** In the second code example above, CoffeeScript create a default extend function for us:
 
 {% highlight javascript %}
 var extend = function(child, parent) {

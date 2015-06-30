@@ -1,4 +1,4 @@
-$(document).ready ->
+$ ->
   isMobile =
     Android: ->
         navigator.userAgent.match(/Android/i)
