@@ -58,8 +58,6 @@ paginate: 15
 paginate_path: "page:num/"
 
 lsi: true
-#lsi: false 
-#i_search: false
 i_search: true
 google_analytics: UA-46725017-2
 
