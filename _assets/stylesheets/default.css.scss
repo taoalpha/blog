@@ -329,7 +329,7 @@ pre span{line-height:15px;;}
     //@include box-shadow(1px 0px 0 rgba(black,0.5)); 
     //@include border-radius(4px, 4px);
     //@include background-image(linear-gradient(#65d66c,$lightgreen));
-    &,&:hover,&:hover:visited,&:visited{color:#000;}
+    &,&:hover,&:hover:visited,&:visited{color:#fff;}
   }
   em{background:$grayColor;}
   .prev,.next{
@@ -414,6 +414,11 @@ button#gosearch{
   height: 50px;
   margin: 40px 0;
   padding: 0px;
+  background-color:$lightgreen;
+  border:none;
+  outline:none;
+  color:white;
+  font-size:1.1em;
 }
 
 /***************Wiki Style*****************/

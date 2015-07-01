@@ -25,11 +25,16 @@ module Jekyll
       end
     end
     def write_search_index(site, dir)
+      i = 0
       h = Hash.new
       po = Hash.new
       tlist = []
       keyword = JiebaRb::Keyword.new
       site.posts.each do |post|
+        i += 1
+        if i > 20 then
+          break
+        end
         alist = []
         keywords_weights = keyword.extract post.content,45
         keywords_weights.each{|k,v|

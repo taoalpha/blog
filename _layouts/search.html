@@ -6,11 +6,8 @@ function: search
 <nav id="bread">
   <h2><a href="/blog">All Posts</a> >> Search: </h2>
 </nav>
-
-<p style="display:none;" id="indexdata">{{ page.index }}</p>
-<p style="display:none;" id="worddicts">{{ page.worddict }}</p>
-
 <form action="" class="search">
+<p style="margin: 20px 0 0px 40px;color: #999;">Here I only create the index based on the latest 20 posts...</p>
 <input id="search" type="text" placeholder="Enter to search.">
 <button id="gosearch" type="button">Go</button>
 </form>
@@ -19,6 +16,9 @@ function: search
   <ul class="article-list">
  </ul>
 </article>
+
+<p style="display:none;" id="indexdata">{{ page.index }}</p>
+<p style="display:none;" id="worddicts">{{ page.worddict }}</p>
 
 <script type="text/javascript" charset="utf-8">
   $('form.search').submit(function(e){
