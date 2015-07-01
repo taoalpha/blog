@@ -50,7 +50,8 @@ $ ->
         tmpl += "<li><a href='#' data-id=#{h2[i].id}>#{h2[i].name}</a></li>"
         if h3[i]?
           for j in [0..h3.length-1]
-            tmpl += "<li class='h3'><a href='#' data-id=#{h3[i][j].id}>#{h3[i][j].name}</a></li>"
+            if h3[i][j]
+              tmpl += "<li class='h3'><a href='#' data-id=#{h3[i][j].id}>#{h3[i][j].name}</a></li>"
       tmpl += '</ul>'
 
     genIndex = ->
