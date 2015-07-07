@@ -57,9 +57,9 @@ permalink: /:year/:month/:day/:title.html
 paginate: 15
 paginate_path: "page:num/"
 
-lsi: true
-i_search: true
-google_analytics: UA-46725017-2
+#lsi: true
+#i_search: true
+#google_analytics: UA-46725017-2
 
 # The release of Jekyll Now that you're using
 version: v1.0.0
