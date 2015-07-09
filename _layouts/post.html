@@ -23,6 +23,12 @@ pname: blogpost
         {% endif %}
     </section>
 
+    {% if site.swiftype %}
+    <aside class="sidenav">
+      <input class="st-default-search-input searchbox" type="text" placeholder="Enter to search">
+    </aside>
+    {% endif %}
+
     {% include series.html %}
     <aside class="sidenav">
       {% include related.html %}

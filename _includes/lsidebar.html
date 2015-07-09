@@ -10,7 +10,11 @@
   {% endfor %}
   <a class="home-menu-icon {% if page.pname == 'mylinks' %}active{% endif %}" href="/blog/mylinks"><i class="fa fa-anchor fa-1x"></i></a>
   <a class="home-menu-icon {% if page.function == 'tipme' %}active{% endif %}" href="/blog/tipme"><i class="fa fa-gratipay fa-1x"></i></a>
-  <a class="home-menu-icon {% if page.function == 'search' %}active{% endif %}" href="/blog/search"><i class="fa fa-search fa-1x"></i></a>
+  {% if page.function == 'search' %}
+  <a class="home-menu-icon active" href="/blog/search"><i class="fa fa-search fa-1x"></i></a>
+  {% else %}
+  <a class="home-menu-icon" href="javascript:$('.searchbox').focus().css('border', '1px dashed #666');setTimeout(function(){$('.searchbox').focus().css('border', 'none').css('border-bottom', '1px solid #ccc')},1000);"><i class="fa fa-search fa-1x"></i></a>
+  {% endif %}
   <a class="home-menu-icon follow" href="javascript:;" title="Contact Me">+</a>
   </nav>
   <div class="home-contact">

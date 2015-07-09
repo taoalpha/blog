@@ -44,6 +44,10 @@ jQuery.fn.rotate = (degrees) ->
 
 # Support customize location
 @customLocation = ->
+  $('.location').find("span").text("")
+  $('input#cLocation').show().focus()
+
+@updateLocation = ->
   cLocation = $('input#cLocation').val()
   $.cookie "cLocation",cLocation,{path:"/",expires:7}
   updateWeather cLocation,"cityname"
