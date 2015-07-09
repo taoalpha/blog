@@ -246,6 +246,111 @@ jQuery.fn.rotate = (degrees) ->
     0
   1
 
+# galog
+
+@getGALogFile = (dataurl) ->
+  if !dataurl
+    dataurl = 'https://taoalpha-github-page.appspot.com/query?id=ahZzfnRhb2FscGhhLWdpdGh1Yi1wYWdlchULEghBcGlRdWVyeRiAgICAq_OHCgw&format=json'
+  $.ajax
+    url: dataurl
+    dataType: 'jsonp'
+    timeout: 1000 * 3
+    success: (data) ->
+      parseGALog(data)
+      1
+    error: ->
+      # if fail to get up-to-date data from GAE, get cached local version
+      console.log('Failed to get GA Log File from GAE!')
+      $.ajax
+        url: '/blog/accesslog.json'
+        dataType: 'json'
+        success: (data) ->
+          console.log('Local page view backup file.')
+          parseGALog(data)
+          1
+      0
+  1
+
+@parseGALog = (data) ->
+  overalldata = {}
+  overalldata.tpv = data["totalsForAllResults"]["ga:pageviews"]
+  overalldata.tuv = data["totalsForAllResults"]["ga:uniquePageviews"]
+  overalldata.datasize = parseFloat(JSON.stringify(data).length/8/1024).toFixed(2)
+  overalldata.referer = []
+  overalldata['404'] = 0
+
+  requestdata = {}
+  refererdata = {}
+  osdata = {}
+  browserdata = {}
+  countrydata = {}
+
+  temp_data = data.rows
+  $.each temp_data,(k,v) ->
+    overalldata.referer.push(v[0]) if v[0] not in overalldata.referer
+    overalldata['404'] += parseInt(v[7]) if v[5] == "/blog/404"
+
+    if !requestdata[v[5]]
+      requestdata[v[5]] = {}
+      requestdata[v[5]]["pv"] = parseInt(v[7])
+      requestdata[v[5]]["uv"] = parseInt v[8]
+    else
+      requestdata[v[5]]["pv"] += parseInt v[7]
+      requestdata[v[5]]["uv"] += parseInt v[8]
+
+    if !countrydata[v[3]]
+      countrydata[v[3]] = {}
+      countrydata[v[3]]["pv"] = parseInt v[7]
+      countrydata[v[3]]["uv"] = parseInt v[8]
+    else
+      countrydata[v[3]]["pv"] += parseInt v[7]
+      countrydata[v[3]]["uv"] += parseInt v[8]
+
+    if !refererdata[v[0]]
+      refererdata[v[0]] = {}
+      refererdata[v[0]]["pv"] = parseInt v[7]
+      refererdata[v[0]]["uv"] = parseInt v[8]
+    else
+      refererdata[v[0]]["pv"] += parseInt v[7]
+      refererdata[v[0]]["uv"] += parseInt v[8]
+
+    if !osdata[v[2]]
+      osdata[v[2]] = {}
+      osdata[v[2]]["pv"] = parseInt v[7]
+      osdata[v[2]]["uv"] = parseInt v[8]
+    else
+      osdata[v[2]]["pv"] += parseInt v[7]
+      osdata[v[2]]["uv"] += parseInt v[8]
+
+    if !browserdata[v[1]]
+      browserdata[v[1]] = {}
+      browserdata[v[1]]["pv"] = parseInt v[7]
+      browserdata[v[1]]["uv"] = parseInt v[8]
+    else
+      browserdata[v[1]]["pv"] += parseInt v[7]
+      browserdata[v[1]]["uv"] += parseInt v[8]
+
+  # render overall part
+  $('li.overall').find('summary').html "<ul><li><span class='itemname'><i class='fa fa-bar-chart'></i>total pageviews</span> <span class='count'>#{overalldata.tpv}</span></li><li><span class='itemname'><i class='fa fa-bar-chart'></i>total unique visitors</span> <span class='count'>#{overalldata.tuv}</span></li><li><span class='itemname'><i class='fa fa-bar-chart'></i>referrers</span> <span class='count'>#{overalldata.referer.length}</span></li><li><span class='itemname'><i class='fa fa-bar-chart'></i>total 404</span> <span class='count'>#{overalldata['404']}</span></li><li><span class='itemname'><i class='fa fa-bar-chart'></i>log size</span> <span class='count'>#{overalldata.datasize}kb</span></li><li><span class='itemname'><i class='fa fa-bar-chart'></i>log source</span> <span class='count'>ga</span></li></ul>"
+
+  showLogData(requestdata,parseInt(overalldata.tpv),parseInt(overalldata.tuv),'Path')
+  showLogData(refererdata,parseInt(overalldata.tpv),parseInt(overalldata.tuv),'Referer')
+  showLogData(osdata,parseInt(overalldata.tpv),parseInt(overalldata.tuv),'OS')
+  showLogData(browserdata,parseInt(overalldata.tpv),parseInt(overalldata.tuv),'Browser')
+  showLogData(countrydata,parseInt(overalldata.tpv),parseInt(overalldata.tuv),'Country')
+
+@showLogData = (rq,ptotal,utotal,id) ->
+  script = "if($(this).hasClass('expanded')){$(this).removeClass('expanded').closest('thead').next('tbody').find('tr:nth-of-type(n+10)').hide();}else{$(this).addClass('expanded').closest('thead').next('tbody').find('tr').show()}"
+  thead = "<tr><th>PageViews</th><th>%</th><th>Unique PageViews</th><th>%</th><th class=''>__title__<span onclick=#{script}><i class='fa fa-expand'></i></span></th></tr>"
+  tbodyitem = "<tr class='root'><td class='num'>__value_1__</td><td>__value_2__</td><td class='num'>__value_3__</td><td>__value_4__</td><td>__value_5__</td></tr>"
+  tbody = ''
+
+  $.each rq, (k,v) ->
+    tbody += tbodyitem.replace('__value_1__',v['pv']).replace('__value_2__',(v['pv']/ptotal*100).toFixed(2)).replace('__value_3__',v['uv']).replace('__value_4__',(v['uv']/utotal*100).toFixed(2)).replace('__value_5__',k)
+
+  $('li.'+id).find('thead').html thead.replace('__title__',id)
+  $('li.'+id).find('tbody').html tbody
+
 @showAlert = (status,msg,duration) ->
   duration = 5000 if duration?
   $('div.notification').stop().fadeIn().removeClass('fail success alert').addClass(status).html(msg).show().fadeOut(duration)
