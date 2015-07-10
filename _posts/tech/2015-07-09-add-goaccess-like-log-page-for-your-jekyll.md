@@ -14,7 +14,7 @@ author: taoalpha
 
 ## 准备工作
 
-如果你了解[ google-analytics-super-proxy ](https://github.com/googleanalytics/google-analytics-super-proxy) 或者你看过我之前写的[如何给jekyll博文添加阅读数]({{ site.baseurl }} {% post_url tech/2015-06-07-add-google-analytics-pageviews-to-jekyll-blog %}), 那么你就可以进行下面的准备工作了, 如果没有的话, 请先阅读相关内容后再继续 ^_^
+如果你了解[ google-analytics-super-proxy ](https://github.com/googleanalytics/google-analytics-super-proxy) 或者你看过我之前写的[如何给jekyll博文添加阅读数]({{ site.baseurl }}{% post_url tech/2015-06-07-add-google-analytics-pageviews-to-jekyll-blog %}), 那么你就可以进行下面的准备工作了, 如果没有的话, 请先阅读相关内容后再继续 ^_^
 
 - 在[GA Query Explorer](https://ga-dev-tools.appspot.com/query-explorer)中测试构建你需要的Query API, 比如我根据Goaccess的日志内容和GA本身的统计情况选取了: `ga:fullReferrer`,`ga:browser`,`ga:operatingSystem`,`ga:country`,`ga:pagePath`作为我的dimensions, 然后将`ga:pageviews`和`ga:uniquePageviews`作为我的metrics, 而且因为之前测试没有关闭ga, 所以存在一些干扰数据, 可以通过filters中设置`ga:hostname!~127*`来过滤掉;
 - 在我们建立好的GAE上添加一个新的Query, 并设定其更新频率;
@@ -23,7 +23,7 @@ author: taoalpha
 
 ### 获取json
 
-这一步和[如何给jekyll博文添加阅读数]({{ site.baseurl }} {% post_url tech/2015-06-07-add-google-analytics-pageviews-to-jekyll-blog %})基本一样, 区别的就在于我们这次不是直接处理`responseData.rows`了, 我们直接把`responseData`传给解析函数, 因为我们需要除了rows以外的一些属性.
+这一步和[如何给jekyll博文添加阅读数]({{ site.baseurl }}{% post_url tech/2015-06-07-add-google-analytics-pageviews-to-jekyll-blog %})基本一样, 区别的就在于我们这次不是直接处理`responseData.rows`了, 我们直接把`responseData`传给解析函数, 因为我们需要除了rows以外的一些属性.
 
 ### 解析展示
 
