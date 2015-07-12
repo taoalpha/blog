@@ -3,7 +3,7 @@ layout: post
 title: Cookie中path规则介绍
 category: tech
 description: Cookie种植过程中path规则的一些介绍, 结合我的使用经历介绍一些小的技巧~
-tags: [js,cookie]
+tags: [javascript,cookie]
 author: taoalpha
 ---
 

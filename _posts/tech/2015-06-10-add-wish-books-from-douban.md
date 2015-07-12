@@ -3,7 +3,7 @@ layout: post
 title: 如何获取豆瓣图书的"想读"列表 
 category: tech
 description: 为博客添加豆瓣读书的"想读"书目, 效果请见[tipme](/blog/tipme).
-tags: [js,api,douban] 
+tags: [javascript,api,douban] 
 author: taoalpha
 ---
 
