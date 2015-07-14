@@ -5,7 +5,7 @@ category: book
 description: 学习JS中的一等公民 - function. 也是本书第八章内容的一些心得和笔记分享.
 tags: [js,reading notes] 
 author: taoalpha
-series: The Way I Learn JavaScript
+series: Basic Guide for JavaScript
 ---
 
 ## 概述
@@ -204,6 +204,7 @@ factorial(5)
 
 类似Array, String等都有着一个对应的类, 可以允许你通过`new`来创建对象. Function也有自己对应的`Function()`类, 可以通过:`new Function()`来创建函数, 其接收不定长参数, 最后一个参数始终作为函数运行主体. 不过通常来说这种方法定义函数远没有我们常用的`function`关键词来的方便, 所以使用上倒是少了很多~ 不过有几点还是值得注意的:
 
+- new ClassFunction() 是把function作为constructor的一种用法, 你可以简单的理解为: `var cc = new ClassFunction(params)` ==> `var cc = new Object();ClassFunction.call(cc,params)`
 - `new Function()`不接收函数名参数, 即其创建的都是`anonymous function`;
 - `new Function()`不继承作用域, 几遍其是在嵌套函数中定义, 也只继承global域, 不会继承上层函数的作用域;
 

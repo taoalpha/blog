@@ -4,7 +4,7 @@ title: JavaScript the Definitive Guide (3)
 category: book
 description: 今天翻了下新版(第六版)的definitive guide, 发现有不少改动, 所幸之前也只是看了1/5, 所以就重头开始再翻一遍第六版, 本文算是对这一版的前4个chapter的一次查漏补缺.
 tags: [js,reading notes]
-series: The Way I Learn JavaScript
+series: Basic Guide for JavaScript
 author: taoalpha
 ---
 

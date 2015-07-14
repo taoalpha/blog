@@ -69,7 +69,7 @@ console.log example.find("Alex","Russell")
 
 - **首先是添加部分:** 
   - 三次添加的`find`所指向的函数逻辑是相同的, 区别在于其`old`的指向是不同的, 第一次添加时没有`old`, `old`是undefined, 而第二次添加的时候`old`是指向第一次添加时的`find`的, 而第三次添加的时候`old`是指向第二次的`find`的;
-  - 需要注意的是, 因为`old`的存在, `fn`这个变量在`addMethod`域内和`old`域内都是一直存在的:
+  - 需要注意的是, 因为`old`的存在, `fn`这个变量在`addMethod`域内和`old`域内都是一直存在的(这里包含了一个闭包的实现 Closure):
     - 在`addMethod`域内因为每次其都会被调用更新, 所以三次添加后, 其指向的就是最后添加的那个函数, 本例中即两个参数的find;
     - 在`old`域内, 则会指向前一次的find, 本例中第三次添加的`old`的fn指向的就是第二次添加时`addMethod`传入的find函数, 即一个参数的;
   - 此外, 要记得`arguments.length`是我们传入的参数个数, `fn.length`则代表函数接受的参数个数;

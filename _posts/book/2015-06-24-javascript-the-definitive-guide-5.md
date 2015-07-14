@@ -4,7 +4,7 @@ title: JavaScript the Definitive Guide (5)
 category: book
 description: 第十章, 正则表达式; 十一章, js的子集和扩展; 十二章, 走出浏览器的js.
 tags: [js,reading notes]
-series: The Way I Learn JavaScript
+series: Basic Guide for JavaScript
 author: taoalpha
 ---
 

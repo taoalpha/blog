@@ -49,9 +49,36 @@ pre span{line-height:15px;;}
   h2 { font-size:18px; color:#333; margin:10px auto; }
   ul { margin:10px auto; }
   li { margin-bottom:12px; word-break: break-all;padding-left:1em;}
-  a { color:#555; font-size:14px; display:block;line-height: 20px;}
+  a { color:#555; font-size:14px; display:block;line-height: 20px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
   a:hover { color:#222;}
   div.relatedposts{margin-bottom:30px;}
+  .article-list{
+    li:before{
+      content: "";
+      width: 5px;
+      height: 5px;
+      display: block;
+      position: relative;
+      background-color: #ccc;
+      top: 12px;
+      left: -12px;
+      border-radius: 2px;
+    }
+    li:last-child:after{
+      display:none;
+    }
+    li:after{
+      content: "";
+      width: 1px;
+      height: 35px;
+      background-color: #ccc;
+      position: relative;
+      top: -10px;
+      display: inline-block;
+      left: -10px;
+      float: left;
+    }
+  }
 }
 .series{
   background-color:$anchorColor;
@@ -69,6 +96,11 @@ pre span{line-height:15px;;}
   a.current{color:#3D3D3D;}
   a{color:white;}
   a:hover{color:#bbb;}
+  .article-list{
+    li:before,li:after{
+      background-color:#fff; 
+    }
+  }
 }
 .entry,.comments{
   margin-bottom:80px;

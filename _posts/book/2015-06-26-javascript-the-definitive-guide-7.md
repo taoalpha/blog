@@ -4,7 +4,7 @@ title: JavaScript the Definitive Guide (7)
 category: book
 description: 正式进入本书第二部分的内容, 核心主要围绕在浏览器内的js. 包含了最基本的使用方式, 方法, 因浏览器而增加的各种属性方法, 操作css, dom的方法, 以及常用的一些js框架, 库等, 同时还包含了目前浏览器大热的安全领域.
 tags: [js,reading notes]
-series: The Way I Learn JavaScript
+series: Basic Guide for JavaScript
 author: taoalpha
 ---
 

@@ -4,7 +4,7 @@ title: JavaScript the Definitive Guide (8)
 category: book
 description: 本书收篇.
 tags: [js,reding notes]
-series: The Way I Learn JavaScript
+series: Basic Guide for JavaScript
 author: taoalpha
 ---
 

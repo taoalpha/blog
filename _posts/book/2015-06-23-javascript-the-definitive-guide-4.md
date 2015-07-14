@@ -4,7 +4,7 @@ title: JavaScript the Definitive Guide (4)
 category: book
 description: 续前篇, 查漏补缺5-9章
 tags: [js,reading notes]
-series: The Way I Learn JavaScript
+series: Basic Guide for JavaScript
 author: taoalpha
 ---
 
