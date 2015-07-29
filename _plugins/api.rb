@@ -12,7 +12,7 @@ module Jekyll
     def generate_latest(site, dir)
       latest_posts = []
       site.posts.reverse.take(5).each do |post|
-        post_hash = post.to_liquid.keep_if { |k, _| ['url', 'title', 'created_at', 'author'].include? k }
+        post_hash = post.to_liquid.keep_if { |k, _| ['url', 'title', 'date', 'author'].include? k }
         if post["language"] == "en"
           post_hash['summary'] = post.content[0...400].gsub!(/{%|%}|\s|\n|([#]+)|\t/) {" "}+"..."
         else
