@@ -3,9 +3,31 @@ Array::getObjectUnique = (id) ->
   add = (data) -> b.push data[id];data
   (add i for i in @ when b.indexOf(i[id]) == -1 )
 
-@._alert = @.alert
-@.alert = (msg,showItNow) ->
-  @._alert msg if showItNow
+# inhibit the alert function
+@_alert = @alert
+@alert = (msg,showItNow) ->
+  @_alert msg if showItNow
+
+
+# show the debug message on the page if in debug mode
+if !$.cookie('debugMode')
+  $.cookie('debugMode',0)
+@debugMode = $.cookie('debugMode')
+location.search.replace("?",'').split('&').forEach (item)=>
+  subs = item.split('=')
+  if subs[0]=='debug' and subs[1] == 'on'
+    $.cookie('debugMode',1)
+    @debugMode = 1
+  else if subs[0]=='debug' and subs[1] == 'off'
+    $.cookie('debugMode',0)
+    @debugMode = 0
+
+# if in debug mode, print all log on the page
+
+@_console = console
+@_console._log = console.log
+console.log = (msg) =>
+  if @debugMode=="1" then showAlert('alert',msg) else _console._log msg
 
 jQuery.fn.rotate = (degrees) ->
   rotatecss =
@@ -15,6 +37,7 @@ jQuery.fn.rotate = (degrees) ->
     "transform": "rotate(#{degrees}deg)"
   $(this).css rotatecss
   $(this)
+
 
 # Get user's location
 
@@ -352,5 +375,5 @@ jQuery.fn.rotate = (degrees) ->
   $('li.'+id).find('tbody').html tbody
 
 @showAlert = (status,msg,duration) ->
-  duration = 5000 if duration?
+  duration = 8000 if duration?
   $('div.notification').stop().fadeIn().removeClass('fail success alert').addClass(status).html(msg).show().fadeOut(duration)
