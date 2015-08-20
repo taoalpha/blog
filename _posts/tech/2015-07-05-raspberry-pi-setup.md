@@ -4,6 +4,7 @@ title: Raspberry Pi Setup
 category: tech
 description: 今天介绍下如何配置一个树莓派, 主要是一些树莓派的基本配置, 多数大家google以下也是可以找到的, 这里算是汇总了一下.
 tags: [Raspberry Pi,node,wifi,python]
+series: The Way I learn Pi
 author: taoalpha
 ---
 
