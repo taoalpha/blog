@@ -133,6 +133,6 @@ function parsePageViewData(rows){
 - [Google Analytics superProxy](https://developers.google.com/analytics/solutions/google-analytics-super-proxy) 
 - [Google Analytics superProxy - Github](https://github.com/googleanalytics/google-analytics-super-proxy)
 - [A plugin for loading Google Analytics data into Jekyll](http://developmentseed.org/blog/google-analytics-jekyll-plugin/)
-- [Pageview from Google Analytics for Your Blog](zhangwenli.com/blog/2014/08/05/page-view-from-google-analytics-for-your-blog/)
+- [Pageview from Google Analytics for Your Blog](http://zhangwenli.com/blog/2014/08/05/page-view-from-google-analytics-for-your-blog/)
 
 说了也有趣, 我是从[WenLi](http://zhangwenli.com/blog)代码中获取的灵感, 然后google折腾出的解决方案, 结果写到一半就发现她也有一篇相近的博文哈哈
