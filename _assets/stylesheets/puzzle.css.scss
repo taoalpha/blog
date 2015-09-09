@@ -1,0 +1,499 @@
+$prefix_image_path : 'http://fun.zzgary.info/wordsdiary/';
+body {
+  color:#eeefef;
+  font-size:62.5%;
+  background:url(#{$prefix_image_path}/images/purple_grid.png) #323355;
+  background-attachment: fixed;
+  font-family:Arial, Helvetica, sans-serif;
+  margin:0;
+  padding:0;
+  overflow-x: hidden;
+}
+
+.container {
+  width:940px;
+  position:relative;
+  margin-left:auto;
+  margin-right:auto;
+  padding:10px;
+  *zoom:1;
+}
+
+h1, h2 {  }
+
+h1 {
+  color:#fff;
+  font-size:36px;
+  font-weight:400;
+  margin:0;
+    text-transform:capitalize;
+}
+
+h2 {
+  font-size:22px;
+  font-weight:400;
+  margin:5px 0;
+  letter-spacing:.1em;
+}
+
+h3 {
+  font-size:1.6em;
+  margin:10px 0 10px 10px;
+}
+
+article :link,a:visited {
+  color:#7097af;
+  text-decoration:none;
+}
+
+article a:hover {
+  color:#7DBADF;
+}
+
+article a img {
+  border:none;
+}
+
+p {
+  margin:0 0 10px 8px;
+  font-size:1.5em;
+  font-weight:400;
+  line-height:1.6em;
+}
+
+.clear {
+  clear:both;
+  line-height:0;
+  font-size:0;
+}
+div.option{
+  position:absolute;
+  top:20px;
+  right:38px;
+  font-size:15px;
+  line-height:20px;
+}
+div.option a{
+  display:block;
+  padding-right: 10px;
+  float: left;
+}
+div.secbox input,div.secbox button,div.secbox textarea{
+  display:block;
+  width:90%;
+  height:60px;
+  outline: none;
+  margin:10px auto 10px auto;
+  padding:3px;
+  color:#fff;
+  background-color:rgba(0,0,0,0.8);
+}
+div.secbox textarea{
+  height:280px;
+}
+div.secbox button{
+  cursor:pointer;
+  width:92%;
+  background-color:rgba(0,0,0,0.9);
+}
+/* ============ TIMELINE ============= */
+
+.timeline-container {
+  /*border-left:2px solid #ccc;*/
+  border-left:4px solid rgba(255,255,255,0.19);
+  margin:20px auto;
+  width:900px;
+}
+
+.timeline-toggle {
+  float:right;
+  border:none;
+  padding: 10px;
+}
+
+  .timeline-toggle:hover {
+    background: rgba(211, 77, 84, 0.48);
+    cursor:pointer;
+  }
+
+div.timeline-wrapper {
+  clear:left;
+  float:left;
+  margin:0 0 12px;
+  width:900px;
+  h2 {
+    background:url(#{$prefix_image_path}/images/major-bar.png) 3px 0 no-repeat;
+    background-size:48px;
+    font-family:Palatino,"Times New Roman", Times, serif;
+    cursor: pointer;
+    font-size:2em;
+    font-weight:400;
+    margin: 0px 0 10px -20px;
+    padding:4px 4px 4px 20px;
+    height: 28px;
+  }
+
+  h2 span {
+    background:rgba(188, 183, 216, 0.48);
+    -webkit-border-radius:4px;
+    -moz-border-radius:4px;
+    border-radius:4px;
+    color:#fff;
+    letter-spacing:.1em;
+    line-height:1.3em;
+    margin-left: 30px;
+    padding:10px 12px 4px;
+  }
+}
+dl.timeline-series dt:hover a{
+  color: #fff !important;
+}
+.purple{
+  background: url(#{$prefix_image_path}/images/purple_bg.png);
+    border-top: 1px solid #b29cdc;
+}
+.green{
+  background: url(#{$prefix_image_path}/images/green_bg.png);
+    border-top: 1px solid #1ccdcf;
+}
+.orange{
+  background: url(#{$prefix_image_path}/images/orange_bg.png);
+    border-top: 1px solid #f8b14a;
+}
+div.arrow.purple{
+  background-image: url(#{$prefix_image_path}/images/purple_arrow.png);
+}
+div.arrow.green{
+  background-image: url(#{$prefix_image_path}/images/green_arrow.png);
+}
+div.arrow.orange{
+  background-image: url(#{$prefix_image_path}/images/orange_arrow.png);
+}
+div.arrow{
+  background-repeat:no-repeat;
+  background-position: -9px 0px;
+  width:9px;
+  height: 26px;
+  position: absolute;
+  left: 26px;
+  top: 30px;
+    border: 0px;
+  display:none;
+}
+div.cross{
+  background-image: url(#{$prefix_image_path}/images/cross.png);
+  position:absolute;
+  top:35px;
+  right:10px;
+  width:20px;
+  height:20px;
+  background-size: 100%;
+  display:none;
+}
+div.edit{
+    background-image:url(#{$prefix_image_path}/images/editicon.png);
+    width:100px;
+    height:20px;
+    background-repeat:no-repeat;
+    bottom:8px;
+    position:relative;
+    font-size: 16px;
+    padding-left: 22px;
+    line-height: 21px;
+    color: #aaa;
+    visibility:hidden;
+    cursor:pointer;
+}
+
+dl.timeline-series:hover div.edit {
+    visibility:visible;
+}
+dl.timeline-series {
+  clear:left;
+  float:left;
+  margin:0 12px 0 -10px;
+  padding:4px 0px 4px 0;
+  position:relative;
+  width:880px;
+  overflow: hidden;
+}
+
+  .timeline-series dt {
+    background:url(#{$prefix_image_path}/images/minor-dot.png) left center no-repeat;
+    clear:left;
+    font-size:1.6em;
+    list-style-type:none;
+    line-height:1.2em;
+    margin:0 0 0;
+    padding:10px 0 10px 35px;
+    white-space:nowrap;
+    cursor:pointer;
+  &:hover a.open+div.cross{
+    display:block;
+  }
+  a {
+    color:#DFD9D9;
+    cursor:pointer;
+  }
+  a.closed {
+      color:#DFD9D9;
+      font-size:1em;
+      margin-left:0;
+  }
+  a.open {
+      color:#fff;
+      display:block;
+      /*background: url(#{$prefix_image_path}/images/purple_bg.png);*/
+      padding: 20px 0 20px 10px;
+    }
+
+  }
+
+  .timeline-series dd {
+    padding-left:24px;
+    width:100%;
+    background: #fff;
+    color: #484E5C;
+    margin: -10px 0px 0px 35px;
+    padding-top: 10px;
+  h3 {
+      /*color:#FFF;*/
+      clear:both;
+      float:left;
+      font-size:1.5em;
+      margin:0;
+      white-space:nowrap;
+    }
+
+  }
+
+.timeline-event-content{
+  p {
+    clear:left;
+    float:left;
+    line-height:1.5em;
+    margin:6px 0 16px;
+    width:90%;
+  }
+  h4 {
+    clear:left;
+    float:left;
+    font-size:1.4em;
+    font-weight:400;
+    margin:10px 0 0;
+    padding:0 0 0 20px;
+  }
+  blockquote {
+    /*border-left:2px solid #ccc;*/
+    border-left:4px solid rgba(255,255,255,0.19);
+    clear:left;
+    float:left;
+    font-size:1.8em;
+    margin-left:0;
+    padding:0 30px;
+    width:400px;
+  }
+
+  blockquote .attribution{
+    font-size:0.7em;
+    text-align: right;
+  }
+  div.media {
+    float:right;
+    padding:0 0 12px;
+    width:300px;
+      margin-right: 20px;
+  }
+
+  .media img {
+    border:2px solid #000;
+    margin:0;
+  }
+    
+  .media img.youtube{
+        display:none;
+  }
+
+  .media p {
+    font-size:1.2em;
+    margin:0;
+    padding:0;
+  }
+
+  .media a{
+        width:244px;
+        height:180px;
+        line-height:180px;
+        text-align:center;
+        display:block;
+    }
+
+  .media a:link,.media a:visited {
+    color:#ab221b;
+  }
+
+  .media a:hover {
+    color:#7DBADF;
+  }
+
+}
+
+/* Smartphones (landscape and portrait) ----------- */
+@media screen and (max-width: 768px) {
+
+    body {
+        font-size: large;
+    }
+
+    h1{
+      font-size:25px;
+    }
+
+    .container {
+       padding:30px;
+       width:90%;
+    }
+
+    div.addnew{
+      position:static;
+      font-size:15px;
+      line-height:20px;
+    }
+
+    div#timeline{
+        width:100%;
+    }
+
+    div.timeline-toggle{
+       float:none;
+    }
+
+    .timeline-event-content div.media {
+        display:none;
+        float:none;
+    }
+    
+    div.timeline-wrapper{
+        width:100%;
+      span{
+          font-size:24px;
+      }
+
+      dt {
+         font-size:1em;
+         white-space: normal;
+      }
+
+      dd h3 {
+         font-size:1em;
+         white-space: normal;
+         padding: 5px 10px 0px 15px;
+      }
+    }
+
+    .timeline-series dd {
+        padding-left:0;
+        width:100%;
+    }
+
+    .timeline-event-content .media p {
+       font-size:1em;
+    }
+
+    dl.timeline-series {
+       float:none;
+       max-width:100%;
+    }
+
+    .timeline-event-content p {
+       float:none;
+       width:88%;
+       padding: 5px 0 0 20px;
+       font-size:20px;
+    }
+
+    .timeline-event-content blockquote {
+       float:none;
+       width:200px;
+       font-size:1em;
+    }
+}
+/* Smartphones (portrait) ----------- */
+@media only screen and (max-width : 320px) {
+
+    * {
+        max-width: 300px;
+    }
+
+}
+/*
+    Colorbox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxWrapper {max-width:none;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+.cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{box-sizing:content-box; -moz-box-sizing:content-box; -webkit-box-sizing:content-box;}
+
+/*
+    User Style:
+    Change the following styles to modify the appearance of Colorbox.  They are
+    ordered & tabbed in a way that represents the nesting of the generated HTML.
+*/
+#cboxOverlay{background:url(#{$prefix_image_path}/images/overlay.png) repeat 0 0;}
+#colorbox{outline:0;}
+    #cboxTopLeft{width:21px; height:21px; background:url(#{$prefix_image_path}/images/controls.png) no-repeat -101px 0;}
+    #cboxTopRight{width:21px; height:21px; background:url(#{$prefix_image_path}/images/controls.png) no-repeat -130px 0;}
+    #cboxBottomLeft{width:21px; height:21px; background:url(#{$prefix_image_path}/images/controls.png) no-repeat -101px -29px;}
+    #cboxBottomRight{width:21px; height:21px; background:url(#{$prefix_image_path}/images/controls.png) no-repeat -130px -29px;}
+    #cboxMiddleLeft{width:21px; background:url(#{$prefix_image_path}/images/controls.png) left top repeat-y;}
+    #cboxMiddleRight{width:21px; background:url(#{$prefix_image_path}/images/controls.png) right top repeat-y;}
+    #cboxTopCenter{height:21px; background:url(#{$prefix_image_path}/images/border.png) 0 0 repeat-x;}
+    #cboxBottomCenter{height:21px; background:url(#{$prefix_image_path}/images/border.png) 0 -29px repeat-x;}
+    #cboxContent{background:#fff; overflow:hidden;}
+        .cboxIframe{background:#fff;}
+        #cboxError{padding:50px; border:1px solid #ccc;}
+        #cboxLoadedContent{margin-bottom:28px;}
+        #cboxTitle{position:absolute; bottom:4px; left:0; text-align:center; width:100%; color:#949494;}
+        #cboxCurrent{position:absolute; bottom:4px; left:58px; color:#949494;}
+        #cboxLoadingOverlay{background:url(#{$prefix_image_path}/images/loading_background.png) no-repeat center center;}
+        #cboxLoadingGraphic{background:url(#{$prefix_image_path}/images/loading.gif) no-repeat center center;}
+
+        /* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+        #cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {border:0; padding:0; margin:0; overflow:visible; width:auto; background:none; }
+
+        /* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+        #cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {outline:0;}
+
+        #cboxSlideshow{position:absolute; bottom:4px; right:30px; color:#0092ef;}
+        #cboxPrevious{position:absolute; bottom:0; left:0; background:url(#{$prefix_image_path}/images/controls.png) no-repeat -75px 0; width:25px; height:25px; text-indent:-9999px;}
+        #cboxPrevious:hover{background-position:-75px -25px;}
+        #cboxNext{position:absolute; bottom:0; left:27px; background:url(#{$prefix_image_path}/images/controls.png) no-repeat -50px 0; width:25px; height:25px; text-indent:-9999px;}
+        #cboxNext:hover{background-position:-50px -25px;}
+        #cboxClose{position:absolute; bottom:0; right:0; background:url(#{$prefix_image_path}/images/controls.png) no-repeat -25px 0; width:25px; height:25px; text-indent:-9999px;}
+        #cboxClose:hover{background-position:-25px -25px;}
+
+/*
+  The following fixes a problem where IE7 and IE8 replace a PNG's alpha transparency with a black fill
+  when an alpha filter (opacity change) is set on the element or ancestor element.  This style is not applied to or needed in IE9.
+  See: http://jacklmoore.com/notes/ie-transparency-problems/
+*/
+.cboxIE #cboxTopLeft,
+.cboxIE #cboxTopCenter,
+.cboxIE #cboxTopRight,
+.cboxIE #cboxBottomLeft,
+.cboxIE #cboxBottomCenter,
+.cboxIE #cboxBottomRight,
+.cboxIE #cboxMiddleLeft,
+.cboxIE #cboxMiddleRight {
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
+}
+

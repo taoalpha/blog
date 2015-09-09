@@ -160,7 +160,7 @@ jQuery.fn.rotate = (degrees) ->
       # if fail to get up-to-date data from GAE, get cached local version
       console.log('Failed to get pageview from GAE!')
       $.ajax
-        url: '/blog/pageview.json'
+        url: '/blog/api/pageview.json'
         dataType: 'json'
         success: (data) ->
           console.log('Local page view backup file.')
@@ -200,7 +200,7 @@ jQuery.fn.rotate = (degrees) ->
       # if fail to get up-to-date data from douban, get cached local version
       console.log('Failed to get pageview from Douban!')
       $.ajax
-        url: '/blog/doubanbooks.json'
+        url: '/blog/api/doubanbooks.json'
         dataType: 'json'
         success: (data) ->
           console.log('Local mybooks.data backup file.')
@@ -285,7 +285,7 @@ jQuery.fn.rotate = (degrees) ->
       # if fail to get up-to-date data from GAE, get cached local version
       console.log('Failed to get GA Log File from GAE!')
       $.ajax
-        url: '/blog/accesslog.json'
+        url: '/blog/api/accesslog.json'
         dataType: 'json'
         success: (data) ->
           console.log('Local page view backup file.')

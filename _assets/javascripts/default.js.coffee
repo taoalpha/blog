@@ -36,7 +36,7 @@ $ ->
 
   $('a').on 'click',(e) ->
     # if music is playing, open the link in new window except those links with functions binding with.
-    return if $(this).attr('href').indexOf("javascript") == 0
+    return if $(this).attr('href') && $(this).attr('href').indexOf("javascript") == 0
     return if !OpenInNewWindow
     e.preventDefault()
     newlink = $(this).attr("href")
