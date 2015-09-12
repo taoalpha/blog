@@ -17,8 +17,7 @@ do($=jQuery)->
       $.timeliners.options.push(options)
 
     $(document).ready ->
-      for i in [0..$.timeliners.options.length+1]
-        startTimeliner($.timeliners.options[i])
+      startTimeliner($.timeliners.options)
 
   startTimeliner = (options)->
     settings = {
@@ -99,12 +98,12 @@ do($=jQuery)->
       # value: numeric
       # default: 4
 
-      fontOpen: options['fontOpen'] || '1.1em',
+      fontOpen: options['fontOpen'] || '0.9em',
       # sets the font size of an event after it is opened
       # value: any valid CSS font-size value,
       # default: 1.2em
 
-      fontClosed: options['fontClosed'] || '1em',
+      fontClosed: options['fontClosed'] || '0.9em',
       # sets the font size of an event after it is closed
       # value: any valid CSS font-size value
       # defaults: 1em

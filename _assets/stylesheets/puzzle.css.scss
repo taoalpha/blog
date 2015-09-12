@@ -1,341 +1,253 @@
 $prefix_image_path : 'http://fun.zzgary.info/wordsdiary/';
+*{box-sizing:border-box;}
 body {
-  color:#eeefef;
-  font-size:62.5%;
-  background:url(#{$prefix_image_path}/images/purple_grid.png) #323355;
-  background-attachment: fixed;
+  color:white;
+  background:#2a2f35;
   font-family:Arial, Helvetica, sans-serif;
   margin:0;
   padding:0;
   overflow-x: hidden;
 }
 
-.container {
-  width:940px;
-  position:relative;
-  margin-left:auto;
-  margin-right:auto;
-  padding:10px;
-  *zoom:1;
-}
-
-h1, h2 {  }
-
-h1 {
-  color:#fff;
-  font-size:36px;
-  font-weight:400;
-  margin:0;
-    text-transform:capitalize;
-}
-
-h2 {
-  font-size:22px;
-  font-weight:400;
-  margin:5px 0;
-  letter-spacing:.1em;
-}
-
-h3 {
-  font-size:1.6em;
-  margin:10px 0 10px 10px;
-}
-
-article :link,a:visited {
-  color:#7097af;
-  text-decoration:none;
-}
-
-article a:hover {
-  color:#7DBADF;
-}
-
-article a img {
-  border:none;
-}
-
-p {
-  margin:0 0 10px 8px;
-  font-size:1.5em;
-  font-weight:400;
-  line-height:1.6em;
-}
-
+section.puzzle{padding-right:0px;}
 .clear {
   clear:both;
   line-height:0;
   font-size:0;
 }
-div.option{
-  position:absolute;
-  top:20px;
-  right:38px;
-  font-size:15px;
-  line-height:20px;
+
+/* ===================== Top ============= */
+
+$top-height:80px;
+
+.puzzle-top{
+  background:#c95d4f;
+  width:100%;
+  height:$top-height;
+  color:white;
+  .newbutton{
+    width:$top-height;
+    height:$top-height;
+    background:#b05146;
+    font-size:1.8em;
+    line-height:$top-height;
+    float:right;
+    text-align:center;
+  }
+  .namespace{
+    padding:0 0 0 40px;
+    float:left;
+    h1{
+      font-size:1.2em;
+      display:block;
+      margin:20px 0 0 0;
+    }
+    span{
+      float:left;
+      margin: 10px 15px 0 0px;
+      i:before{
+        padding-right:5px;
+      }
+    }
+  }
 }
-div.option a{
-  display:block;
-  padding-right: 10px;
-  float: left;
-}
-div.secbox input,div.secbox button,div.secbox textarea{
-  display:block;
-  width:90%;
-  height:60px;
-  outline: none;
-  margin:10px auto 10px auto;
-  padding:3px;
-  color:#fff;
-  background-color:rgba(0,0,0,0.8);
-}
-div.secbox textarea{
-  height:280px;
-}
-div.secbox button{
-  cursor:pointer;
-  width:92%;
-  background-color:rgba(0,0,0,0.9);
-}
+
 /* ============ TIMELINE ============= */
 
 .timeline-container {
-  /*border-left:2px solid #ccc;*/
-  border-left:4px solid rgba(255,255,255,0.19);
-  margin:20px auto;
-  width:900px;
-}
+  border-left:5px solid rgba(255,255,255,0.19);
+  margin:0 40px auto;
+  width:100%;
 
-.timeline-toggle {
-  float:right;
-  border:none;
-  padding: 10px;
-}
-
-  .timeline-toggle:hover {
-    background: rgba(211, 77, 84, 0.48);
-    cursor:pointer;
-  }
-
-div.timeline-wrapper {
-  clear:left;
-  float:left;
-  margin:0 0 12px;
-  width:900px;
-  h2 {
-    background:url(#{$prefix_image_path}/images/major-bar.png) 3px 0 no-repeat;
-    background-size:48px;
-    font-family:Palatino,"Times New Roman", Times, serif;
-    cursor: pointer;
-    font-size:2em;
-    font-weight:400;
-    margin: 0px 0 10px -20px;
-    padding:4px 4px 4px 20px;
-    height: 28px;
-  }
-
-  h2 span {
-    background:rgba(188, 183, 216, 0.48);
-    -webkit-border-radius:4px;
-    -moz-border-radius:4px;
-    border-radius:4px;
-    color:#fff;
-    letter-spacing:.1em;
-    line-height:1.3em;
-    margin-left: 30px;
-    padding:10px 12px 4px;
-  }
-}
-dl.timeline-series dt:hover a{
-  color: #fff !important;
-}
-.purple{
-  background: url(#{$prefix_image_path}/images/purple_bg.png);
-    border-top: 1px solid #b29cdc;
-}
-.green{
-  background: url(#{$prefix_image_path}/images/green_bg.png);
-    border-top: 1px solid #1ccdcf;
-}
-.orange{
-  background: url(#{$prefix_image_path}/images/orange_bg.png);
-    border-top: 1px solid #f8b14a;
-}
-div.arrow.purple{
-  background-image: url(#{$prefix_image_path}/images/purple_arrow.png);
-}
-div.arrow.green{
-  background-image: url(#{$prefix_image_path}/images/green_arrow.png);
-}
-div.arrow.orange{
-  background-image: url(#{$prefix_image_path}/images/orange_arrow.png);
-}
-div.arrow{
-  background-repeat:no-repeat;
-  background-position: -9px 0px;
-  width:9px;
-  height: 26px;
-  position: absolute;
-  left: 26px;
-  top: 30px;
-    border: 0px;
-  display:none;
-}
-div.cross{
-  background-image: url(#{$prefix_image_path}/images/cross.png);
-  position:absolute;
-  top:35px;
-  right:10px;
-  width:20px;
-  height:20px;
-  background-size: 100%;
-  display:none;
-}
-div.edit{
-    background-image:url(#{$prefix_image_path}/images/editicon.png);
-    width:100px;
-    height:20px;
-    background-repeat:no-repeat;
-    bottom:8px;
-    position:relative;
-    font-size: 16px;
-    padding-left: 22px;
-    line-height: 21px;
-    color: #aaa;
-    visibility:hidden;
-    cursor:pointer;
-}
-
-dl.timeline-series:hover div.edit {
-    visibility:visible;
-}
-dl.timeline-series {
-  clear:left;
-  float:left;
-  margin:0 12px 0 -10px;
-  padding:4px 0px 4px 0;
-  position:relative;
-  width:880px;
-  overflow: hidden;
-}
-
-  .timeline-series dt {
-    background:url(#{$prefix_image_path}/images/minor-dot.png) left center no-repeat;
-    clear:left;
-    font-size:1.6em;
-    list-style-type:none;
-    line-height:1.2em;
-    margin:0 0 0;
-    padding:10px 0 10px 35px;
-    white-space:nowrap;
-    cursor:pointer;
-  &:hover a.open+div.cross{
-    display:block;
-  }
-  a {
-    color:#DFD9D9;
-    cursor:pointer;
-  }
-  a.closed {
-      color:#DFD9D9;
-      font-size:1em;
-      margin-left:0;
-  }
-  a.open {
-      color:#fff;
-      display:block;
-      /*background: url(#{$prefix_image_path}/images/purple_bg.png);*/
-      padding: 20px 0 20px 10px;
-    }
-
-  }
-
-  .timeline-series dd {
-    padding-left:24px;
-    width:100%;
-    background: #fff;
-    color: #484E5C;
-    margin: -10px 0px 0px 35px;
-    padding-top: 10px;
-  h3 {
-      /*color:#FFF;*/
-      clear:both;
-      float:left;
-      font-size:1.5em;
-      margin:0;
-      white-space:nowrap;
-    }
-
-  }
-
-.timeline-event-content{
-  p {
-    clear:left;
-    float:left;
-    line-height:1.5em;
-    margin:6px 0 16px;
-    width:90%;
-  }
-  h4 {
-    clear:left;
-    float:left;
-    font-size:1.4em;
-    font-weight:400;
-    margin:10px 0 0;
-    padding:0 0 0 20px;
-  }
-  blockquote {
-    /*border-left:2px solid #ccc;*/
-    border-left:4px solid rgba(255,255,255,0.19);
-    clear:left;
-    float:left;
-    font-size:1.8em;
-    margin-left:0;
-    padding:0 30px;
-    width:400px;
-  }
-
-  blockquote .attribution{
-    font-size:0.7em;
-    text-align: right;
-  }
-  div.media {
+  // toggle for expanding or collapsing all puzzles
+  .timeline-toggle {
     float:right;
-    padding:0 0 12px;
-    width:300px;
-      margin-right: 20px;
+    border:none;
+    padding: 10px;
+    &:hover {
+      background: rgba(211, 77, 84, 0.48);
+      cursor:pointer;
+    }
   }
 
-  .media img {
-    border:2px solid #000;
-    margin:0;
-  }
-    
-  .media img.youtube{
-        display:none;
-  }
-
-  .media p {
-    font-size:1.2em;
-    margin:0;
-    padding:0;
-  }
-
-  .media a{
-        width:244px;
-        height:180px;
-        line-height:180px;
-        text-align:center;
-        display:block;
+  // main content area of all puzzles of a day
+  .timeline-wrapper {
+    position:static;
+    clear:left;
+    float:left;
+    width:88%;
+    margin:20px 45px;
+    background:#e3edef;
+    &.check:before{
+      content:"\f00c";
+    }
+    &.ongoing:before{
+      content:"\f252";
+      color:#cd5e51;
+      font-size: 0.8em;
+      padding: 4px 2px;
+    }
+    &:before{
+      font-family: Fontawesome;
+      width:20px;
+      height:20px;
+      color:#5fb594;
+      display:block;
+      background-color:#2a2f35;
+      position:relative;
+      left:-55px;
+      top:25px;
     }
 
-  .media a:link,.media a:visited {
-    color:#ab221b;
-  }
+    // date title, show the date of the puzzles created
+    h2.date-title {
 
-  .media a:hover {
-    color:#7DBADF;
-  }
+      //font-family:Palatino,"Times New Roman", Times, serif;
+      background:#1a1d22;
+      cursor: pointer;
+      font-size:1.0em;
+      height:70px;
+      margin: -20px 0px 0px;
+      &:before{
+        content:'\f0d9';
+        position:absolute;
+        color:#1a1d22;
+        margin:4px -5px;
+        display:block;
+        font-family: Fontawesome;
+        zoom: 3;
+      }
+      span{
+        display:block;
+        line-height:70px;
+        float:left;
+        padding:0 35px 0 25px;
+        &.count {
+          opacity:0.4;
+          float:right;
+        }
+      }
+    }
 
+    // one puzzle block
+    .timeline-series {
+      position:relative;
+      overflow: hidden;
+      color:#000;
+      opacity:0.7;
+      width:100%;
+      background: #d4e0e2;
+      //nth-last-of-type(n + 2) also works
+      &:not(:last-child) .timeline-event{
+        border-bottom: 2px dotted #464a4a;
+      }
+
+      // title of the puzzle, seen by default after you click the date title
+      .timeline-event {
+        clear:left;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        font-size:0.9em;
+        background-color: #e3edef;
+        padding:20px 20px 20px 25px;
+        list-style-type:none;
+        line-height:1.2em;
+        cursor:pointer;
+        &:before{
+          content:'\f128';
+          font-size: 2.5em;
+          font-family:fontawesome;
+          color:#5c569b;
+          position:relative;
+          top:5px;
+          padding-right:10px;
+        }
+        span{
+          float:right;
+          margin:-2px 30px;
+          color:#b0b9c1;
+          &.check{
+            color:#5fb594;
+          }
+        }
+      }
+
+      // details of the puzzle, including the description of a puzzle and the answer area you can edit.
+      .timeline-event-content {
+        width:100%;
+        background: #d4e0e2;
+        font-size:0.8em;
+        padding: 10px 0px 10px 60px;
+        p.puzzle-desc {
+          line-height:1.5em;
+          opacity:0.7;
+        }
+        .editanswer{
+          outline:none;
+          opacity:0.3;
+          background-color:#d4e0e2;
+          border:1px dotted #464a4a;
+          display:block;
+          margin:15px 35px 5px 0px;
+          padding:5px;
+          height:70px;
+        }
+        h4 {
+          clear:left;
+          float:left;
+          font-size:1.4em;
+          font-weight:400;
+          margin:10px 0 0;
+          padding:0 0 0 20px;
+        }
+        blockquote {
+          /*border-left:2px solid #ccc;*/
+          border-left:4px solid rgba(255,255,255,0.19);
+          clear:left;
+          float:left;
+          font-size:1.8em;
+          margin-left:0;
+          padding:0 30px;
+          width:400px;
+        }
+        blockquote .attribution{
+          font-size:0.7em;
+          text-align: right;
+        }
+        div.media {
+          float:right;
+          padding:0 0 12px;
+          width:300px;
+            margin-right: 20px;
+        }
+        .media img {
+          border:2px solid #000;
+          margin:0;
+          &.youtube{
+            display:none;
+          }
+        }
+        .media p {
+          font-size:1.2em;
+          margin:0;
+          padding:0;
+        }
+        .media a{
+          width:244px;
+          height:180px;
+          line-height:180px;
+          text-align:center;
+          display:block;
+        }
+        .media a:link,.media a:visited {
+          color:#ab221b;
+        }
+        .media a:hover {
+          color:#7DBADF;
+        }
+      }
+    }
+  }
 }
 
 /* Smartphones (landscape and portrait) ----------- */
@@ -372,7 +284,6 @@ dl.timeline-series {
         display:none;
         float:none;
     }
-    
     div.timeline-wrapper{
         width:100%;
       span{
@@ -496,4 +407,3 @@ dl.timeline-series {
 .cboxIE #cboxMiddleRight {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF,endColorstr=#00FFFFFF);
 }
-
