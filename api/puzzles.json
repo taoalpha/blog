@@ -1,36 +1,39 @@
 {
-  "2015-09-15":
+  "lastupdate":"2015-09-19 10:00:00",
+  "puzzles":
   {
-    "23:30:00":
+    "2015-09-15":
     {
-      "title":"Except callback functions, how to make sure one function execute after another in JS?",
-      "desc":"Since JS is single-thread. Sometimes we can not make sure the data processed by another function has already done or not when we want to use it...",
-      "status":"ongoing",
-      "answer":"",
-      "author":"taoalpha",
-      "other":""
-    }
-  }
-
-  "2015-09-09":
-  {
-    "13:30:00":
-    {
-      "title":"Why can not use call or apply for setTimeout function to change the scope for setTimeout?",
-      "desc":"We can use call and apply to change the scope of a function, but why we can not use it on setTimeout?",
-      "status":"ongoing",
-      "answer":"",
-      "author":"taoalpha",
-      "other":""
+      "23:30:00":
+      {
+        "title":"Except callback functions, how to make sure one function execute after another in JS?",
+        "desc":"Since JS is single-thread. Sometimes we can not make sure the data processed by another function has already done or not when we want to use it...",
+        "status":"ongoing",
+        "answer":"",
+        "author":"taoalpha",
+        "other":""
+      }
     },
-    "13:50:00":
+    "2015-09-09":
     {
-      "title":"Is there any good-code-habit-guide that encourage all the coders use whatever the language he/she uses?",
-      "desc":"We all know some basic, like good and friendly comments, semantic names, but is there any website that summarize all these?",
-      "status":"ongoing",
-      "answer":"",
-      "author":"taoalpha",
-      "other":""
+      "13:30:00":
+      {
+        "title":"Why can not use call or apply for setTimeout function to change the scope for setTimeout?",
+        "desc":"We can use call and apply to change the scope of a function, but why we can not use it on setTimeout?",
+        "status":"ongoing",
+        "answer":"",
+        "author":"taoalpha",
+        "other":""
+      },
+      "13:50:00":
+      {
+        "title":"Is there any good-code-habit-guide that encourage all the coders use whatever the language he/she uses?",
+        "desc":"We all know some basic, like good and friendly comments, semantic names, but is there any website that summarize all these?",
+        "status":"ongoing",
+        "answer":"",
+        "author":"taoalpha",
+        "other":""
+      }
     }
   }
 }
