@@ -253,7 +253,7 @@ jQuery.fn.rotate = (degrees) ->
         'from_name' : msg.sender_name
         'to': [
             {
-              'email': 'zzgary92@gmail.com'
+              'email': 'iamzhoutao92@gmail.com'
               'name': 'TaoAlpha'
               'type': 'to'
             }
@@ -262,7 +262,7 @@ jQuery.fn.rotate = (degrees) ->
         'subject': msg.subject
         'html': msg.content
   .done (response)->
-    showAlert("success","Thanks for your contribution!")
+    showAlert("success","Thanks for your message!")
     1
   .fail (data)->
     showAlert("fail","Sorry! Failed to send the email. Please retry!")

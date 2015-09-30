@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Using Django with Bower and Pipeline
+title: Use Django with Bower and Pipeline
 category: tech
 description: Integrate bower and coffee-script, sass into django.
 tags: [django,python]

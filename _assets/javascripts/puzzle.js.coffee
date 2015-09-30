@@ -39,7 +39,7 @@ class @Puzzles
 
     return "Not a validate Object" if typeof(@apidata) != "object" or typeof(@localdata) != "object"
     # Based on localdata and updatit if api changed.
-    if not localStorage.getItem("api_last_update") or (Date.parse(localStorage.getItem("api_last_update")) > Date.parse(@api_last_update))
+    if not localStorage.getItem("local_last_update") or (Date.parse(localStorage.getItem("local_last_update")) > Date.parse(@api_last_update))
       for i of @apidata
         if @localdata.hasOwnProperty(i)
           for j of @apidata[i]
@@ -47,7 +47,7 @@ class @Puzzles
               @localdata[i][j] = @api[i][j]
         else
           @localdata[i] = @apidata[i]
-      localStorage.setItem "api_last_update",new Date()
+      localStorage.setItem "local_last_update",new Date()
       @saveLocaldata()
     @statistical()
 
@@ -144,6 +144,7 @@ class @Puzzles
 
     localStorage.setItem "local_puzzles",JSON.stringify(@localdata)
     # set the flag to record last update time
+    localStorage.setItem "local_last_update",new Date()
 
   pushToGist: () ->
 
