@@ -20,6 +20,32 @@ $ ->
     else
       $('.home-contact').slideDown(100)
 
+  $('.makecontribution').click (e) ->
+    e.preventDefault()
+    console.log("make contribution")
+    contribution = $('#contribution')
+    contribution.removeClass 'hide'
+    $('body').addClass 'noscroll'
+    $('#contributionContent').focus()
+    #if contribution.contentEditable == null
+    #  $('#contributionContent').removeClass 'hide'
+
+  $('div#contribution span.close').click (e) ->
+    e.stopPropagation()
+    $('#contribution').addClass "hide"
+    $('body').removeClass "noscroll"
+
+  $('#sendToMe').click (e) ->
+    e.preventDefault()
+    msg = {}
+    msg.sender_mail = $('input#sender_mail').val()
+    msg.sender_name = "User"
+    msg.subject = "Hi, Tao!"
+    msg.content = $('textarea#contributionContent').val()
+    sendMail(msg)
+    $('#contribution').addClass "hide"
+    $('body').removeClass "noscroll"
+
   $('#togglemusic').click (e) ->
     e.preventDefault()
     console.log("music")

@@ -262,10 +262,10 @@ jQuery.fn.rotate = (degrees) ->
         'subject': msg.subject
         'html': msg.content
   .done (response)->
-    showAlert("success","Thanks for your message!")
+    showAlert("success","Thanks for your message!",8000)
     1
   .fail (data)->
-    showAlert("fail","Sorry! Failed to send the email. Please retry!")
+    showAlert("fail","Sorry! Failed to send the email. Please retry!",8000)
     0
   1
 

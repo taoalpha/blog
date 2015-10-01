@@ -26,8 +26,17 @@
   </div>
 
   <nav class="home-icon-con downside">
-    <a class="home-menu-icon" href="https://github.com/taoalpha/taoalpha.github.com/tree/master/blog/_posts/blog"><i class="fa fa-pencil fa-1x"></i></a>
-    <a class="home-menu-icon" href="javascript:;"" id="togglemusic"><i class="fa fa-music fa-1x"></i></a>
+    <a class="home-menu-icon makecontribution" href="#contribution"><i class="fa fa-pencil fa-1x"></i></a>
+    <a class="home-menu-icon" href="javascript:;" id="togglemusic"><i class="fa fa-music fa-1x"></i></a>
   </nav >
   {% include music.html %}
 </aside>
+<div id="contribution" class="hide">
+  <span class="close"></span>
+  <input type="email" placeholder="Give me your email" id="sender_mail">
+  <textarea id="contributionContent" name="contribution" cols="30" rows="10" placeholder="Thanks for your contribution!
+Now tell me what you want to say: feedback ? advice ? contributions ? Whatever you want ^_^.
+I will look at it as soon as I receive it and reply you asap.
+    "></textarea>
+  <input type="submit" id="sendToMe">
+</div>
