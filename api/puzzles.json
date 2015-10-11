@@ -1,7 +1,19 @@
 {
-  "lastupdate":"2015-09-19 10:00:00",
+  "lastupdate":"2015-10-01 18:00:00",
   "puzzles":
   {
+    "2015-10-01":
+    {
+      "18:00:00":
+      {
+        "title":"In JS, when I create an object with initial value, like {}. How much space the object will have in head ? Will it expand automatically ?",
+        "desc":"I am working on implementing all frequently used data structures in JS. When I was doing HashTable, I saw there are two variables: capacity and load factor and one function called rehash() in HashTable of Java. But I don't know how to implement this in JS, seems I don't need to do anything about the memory management.",
+        "status":"ongoing",
+        "answer":"",
+        "author":"taoalpha",
+        "other":""
+      }
+    },
     "2015-09-15":
     {
       "23:30:00":

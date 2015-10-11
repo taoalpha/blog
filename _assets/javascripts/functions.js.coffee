@@ -96,7 +96,7 @@ jQuery.fn.rotate = (degrees) ->
       1
     error: ->
       # retry if fail
-      updateWeather(position,flag)
+      # updateWeather(position,flag)
       0
   1
 

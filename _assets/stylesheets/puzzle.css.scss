@@ -157,6 +157,10 @@ $top-height:80px;
         line-height:1.2em;
         cursor:pointer;
         .puzzle_title{
+          width: 80%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: inline-block;
           font-size:0.9em;
         }
         &:before{
