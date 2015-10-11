@@ -80,12 +80,12 @@ jQuery.fn.rotate = (degrees) ->
 @updateWeather = (position, flag) ->
   weatherUrl = ''
   if flag is "cityname"
-    weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=#{position}&lang=zh_cn&units=metric"
+    weatherUrl = "http://api.openweathermap.org/data/2.5/weather?q=#{position}&lang=zh_cn&units=metric&APPID=dc89c84c07cb6ee8c613334dbac4959c"
   else if flag is "cookie"
     updateWeatherPart position
     return
   else
-    weatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=#{position.coords.latitude}&lon=#{position.coords.longitude}&lang=zh_cn&units=metric"
+    weatherUrl = "http://api.openweathermap.org/data/2.5/weather?lat=#{position.coords.latitude}&lon=#{position.coords.longitude}&lang=zh_cn&units=metric&APPID=dc89c84c07cb6ee8c613334dbac4959c"
   $.ajax
     url: weatherUrl
     dataType: 'jsonp'
