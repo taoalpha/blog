@@ -2,8 +2,8 @@
 layout: post
 title: 用 Raspberry Pi 做 NAS 和 采集器
 category: tech
-description:
-tags: []
+description: 本篇为树莓派折腾系列的第二篇, 主要介绍下如何用树莓派制作一个简单的采集器, 也就是自用的网络小爬虫; 另外也顺带介绍下如何把树莓派建立成一个简易的 NAS.
+tags: [Raspberry Pi,NAS,Crawler]
 series: The Way I learn Pi
 author: taoalpha
 ---
