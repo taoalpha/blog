@@ -16,10 +16,11 @@
 
     desc "Generate blog files"
     task :generate => [:push] do
-      Jekyll::Site.new(Jekyll.configuration({
-        "source"      => ".",
-        "destination" => "_site"
-      })).process
+      #Jekyll::Site.new(Jekyll.configuration({
+      #  "source"      => ".",
+      #  "destination" => "_site"
+      #})).process
+      system "bundle exec jekyll build"
     end
 
 
