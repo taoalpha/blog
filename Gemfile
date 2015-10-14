@@ -1,5 +1,5 @@
 # A sample Gemfile
-source "https://ruby.taobao.org"
+# source "https://ruby.taobao.org"
 
 gem 'jekyll'
 gem 'jekyll-assets'
