@@ -82,10 +82,12 @@ git push -u origin master
 
     desc "Generate blog files"
     task :generate do
-      Jekyll::Site.new(Jekyll.configuration({
-        "source"      => ".",
-        "destination" => "_site"
-      })).process
+      #Jekyll::Site.new(Jekyll.configuration({
+      #  "source"      => ".",
+      #  "destination" => "_site"
+      #})).process
+      system "bundle exec jekyll build"
+      # fix the problem caused by updating the modules to the latest version
     end
 
 

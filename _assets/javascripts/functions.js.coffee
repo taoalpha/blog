@@ -72,7 +72,6 @@ jQuery.fn.rotate = (degrees) ->
 
 @updateLocation = ->
   cLocation = $('input#cLocation').val()
-  $.cookie "cLocation",cLocation,{path:"/",expires:7}
   updateWeather cLocation,"cityname"
   1
 
@@ -111,8 +110,10 @@ jQuery.fn.rotate = (degrees) ->
   ZdataD = Mcharacters[Math.floor(day/10)]+Dcharacters[day % 10]
   Edata = new Date(dt).toDateString()
 
-  $('.location span').text(data.name);
-  $('input#cLocation').hide();
+  $('.location span').text(data.name)
+  # update clocation
+  $.cookie "cLocation",data.name,{expires:7,path:"/"}
+  $('input#cLocation').hide()
   $('h2.weather-cn').html "#{ZdataM}月#{ZdataD}日:<span>#{data['weather'][0]["description"]}</span>"
   $('h3.weather-en').html "#{Edata}: <span>#{data['weather'][0]["main"]}</span>"
   1
