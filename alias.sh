@@ -14,5 +14,6 @@ alias nb=newblog
 alias serve='bundle exec jekyll serve --drafts --watch'
 
 newblog(){
-  cp template.md $(date +"%Y-%m-%d")-"$*".md && atom $(date +"%Y-%m-%d")-"$*".md
+  cp template.md $(date +"%Y-%m-%d")-"$*".md && vim $(date +"%Y-%m-%d")-"$*".md
+  #&& atom $(date +"%Y-%m-%d")-"$*".md
 }
