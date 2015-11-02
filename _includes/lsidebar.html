@@ -1,6 +1,7 @@
 <aside class="home-menu">
   <nav class="home-icon-con upside">
   <a class="home-menu-icon brand {% if include.pname == 'blog' or (include.pname != 'tech' and include.pname != 'dandp' and include.pname != 'mylinks' and include.pname != 'book' and page.function != 'tipme') %}active{% endif %}" href="/blog/">涛</a>
+  {% comment %}
   {% assign caticons = site.cats %}
   {% for cat in site.categories %}
   {% assign catname = cat[0] %}
@@ -8,6 +9,7 @@
   <a class="home-menu-icon {% if include.pname == catname %}active{% endif %}" href="/blog/{{ catname }}"><i class="fa fa-{{ caticons[catname] }} fa-1x"></i></a>
   {% endunless %}
   {% endfor %}
+  {% endcomment %}
   <a class="home-menu-icon {% if page.pname == 'mylinks' %}active{% endif %}" href="/blog/mylinks"><i class="fa fa-anchor fa-1x"></i></a>
   <a class="home-menu-icon {% if page.function == 'tipme' %}active{% endif %}" href="/blog/tipme"><i class="fa fa-gratipay fa-1x"></i></a>
   {% if page.function == 'search' %}

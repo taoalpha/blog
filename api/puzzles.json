@@ -1,5 +1,5 @@
 {
-  "lastupdate":"2015-10-01 18:00:00",
+  "lastupdate":"2015-10-30 00:50:00",
   "puzzles":
   {
     "2015-10-01":
@@ -32,8 +32,8 @@
       {
         "title":"Why can not use call or apply for setTimeout function to change the scope for setTimeout?",
         "desc":"We can use call and apply to change the scope of a function, but why we can not use it on setTimeout?",
-        "status":"ongoing",
-        "answer":"",
+        "status":"check",
+        "answer":"setTimeout and setInterval both need a context as window so that it can insert the function into the event queue and evoke it at the right time. So you can use call and apply on setTimeout, setInterval, just don't change the context to something else other than window.",
         "author":"taoalpha",
         "other":""
       },
