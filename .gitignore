@@ -1,4 +1,8 @@
-/_assets/vendors
-/.sass-cache
-/_site
-/_drafts
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+jekyll_bak/
