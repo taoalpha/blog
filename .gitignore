@@ -1,4 +1,6 @@
-/_assets/vendors
-/.sass-cache
-/_site
-/_drafts
+_assets/vendors
+.sass-cache
+_site
+_drafts
+node_modules/
+db.json
