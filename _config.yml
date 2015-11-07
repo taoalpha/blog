@@ -93,6 +93,13 @@ authors:
         email: iamzhoutao92@gmail.com
         web: http://zzgary.info
         github: taoalpha
+    Luke Hoban:
+        display_name: Luke Hoban
+        avatar: https://avatars0.githubusercontent.com/u/223467?v=3&s=460 
+        email: lukehoban@gmail.com
+        web: http://blogs.msdn.com/lukeh
+        github: lukehoban
+
 
 cats:
   tech: wrench

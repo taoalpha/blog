@@ -5,7 +5,7 @@ category: tech
 description: As I getting to understand the ES6, I am getting to be more crazy about the JS world !!!
 tags: [ES6,JS] 
 language : en
-author: taoalpha
+author: Luke Hoban
 ---
 
 > This post is a copy of [Luke Hoban - ES6Features repo](https://github.com/lukehoban/es6features)
