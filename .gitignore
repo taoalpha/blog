@@ -7,3 +7,4 @@ public/
 .deploy*/
 jekyll_bak/
 _assets/
+.sass-cache/
