@@ -29,6 +29,9 @@
       Dir.mktmpdir do |tmp|
         system "mv _site #{tmp}"
         system "mv _assets/vendors #{tmp}"
+        system "mv node_modules #{tmp}"
+        system "mv db.json #{tmp}"
+        system "mv themes #{tmp}"
         system "git checkout -B gh-pages"
         system "rm -rf *"
         system "mv #{tmp}/_site/* ."
@@ -38,6 +41,9 @@
         system "git push origin gh-pages --force"
         system "git checkout master"
         system "mv #{tmp}/vendors ./_assets/"
+        system "mv #{tmp}/node_modules ./"
+        system "mv #{tmp}/themes ./"
+        system "mv #{tmp}/db.json ./"
         system "echo yolo"
         system "cat todo.log"
       end
