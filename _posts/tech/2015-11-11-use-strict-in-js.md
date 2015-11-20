@@ -4,6 +4,7 @@ title: Strict Mode in JavaScript
 category: tech 
 description: Some of you may have already seen some use of the strict mode before, but I believe most of the people don't actually know much about the strict mode.
 tags: [JS] 
+language: en
 author: taoalpha
 ---
 
