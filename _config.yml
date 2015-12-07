@@ -83,6 +83,8 @@ exclude:
     - Rakefile
     - README.md
     - _site
+    - node_modules
+    - themes
     - .sass-cache
     - .jekyll-assets-cache
 
