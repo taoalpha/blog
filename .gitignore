@@ -8,3 +8,5 @@ public/
 jekyll_bak/
 _assets/
 .sass-cache/
+themes/landscape/
+themes/next/

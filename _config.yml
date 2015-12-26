@@ -75,35 +75,24 @@ deploy:
   type:
 
 
-# customization
+## plugins
 
-authors:
-  taoalpha:
-    display_name: TaoAlpha
-    avatar: https://avatars3.githubusercontent.com/u/4335753?v=3&s=40
-    email: iamzhoutao92@gmail.com
-    web: http://zzgary.info
-    github: taoalpha
-  Luke Hoban:
-    display_name: Luke Hoban
-    avatar: https://avatars0.githubusercontent.com/u/223467?v=3&s=460 
-    email: lukehoban@gmail.com
-    web: http://blogs.msdn.com/lukeh
-    github: lukehoban
+node_sass:
+  debug: false
+  outputStyle: nested
+  precision: 5
+  sourceComments: false
 
-## categories and associate icons
-cats:
-  tech: wrench
-  dandp: circle-o-notch
-  book: book
-  mylinks: anchor
-  tipme: gratipay
-  puzzle: puzzle-piece
+# pagination
+per_page: 10 #每页10篇文章
+pagination_dir: page
 
-## for duoshuo
-comments :
-  provider : duoshuo
-  duoshuo :
-    short_name : taoalpha
-    api : 
-      commentCount: "http://api.duoshuo.com/threads/counts.json?short_name=taoalpha&threads="
+# mark
+marked:
+  gfm: true
+  pedantic: false
+  sanitize: false
+  tables: true
+  breaks: true
+  smartLists: true
+  smartypants: true
