@@ -5,3 +5,5 @@ _drafts
 node_modules/
 db.json
 themes/
+public/
+.deploy_git/
