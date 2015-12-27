@@ -2,8 +2,9 @@ layout: page
 title: GA Log Analytic
 function: log-analyse
 author: taoalpha
-permalink: /galog/
+permalink: galog
 id: galog-page
+pname: galog-page
 ---
 <style>
 /************** GA log page ************/

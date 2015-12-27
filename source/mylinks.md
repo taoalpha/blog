@@ -1,6 +1,6 @@
 layout: page
 pname: mylinks
-permalink: /mylinks/
+permalink: mylinks/
 ---
 
 <style>

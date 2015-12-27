@@ -3,7 +3,7 @@ title: Buy me a soda!
 function: tipme
 author: taoalpha
 pname: tipme
-permalink: /tipme/
+permalink: tipme/
 id: tipme-page
 ---
 

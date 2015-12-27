@@ -97,3 +97,11 @@ marked:
   breaks: true
   smartLists: true
   smartypants: true
+
+# api
+api:
+  latest:
+    path: api/latest.json
+    desc: latest posts
+    attr: [author,title,permalink,date,summary]
+    limit: 10
