@@ -60,7 +60,7 @@ Since they are using pretty much the same logic, I just remove the built-in modu
 
 Here it is:
 
-``` nodejs
+``` javascript
 // this is the index.js
 var merge = require('utils-merge');
 var pathFn = require('path');
@@ -91,7 +91,7 @@ for(var item in config){
 }
 ```
 
-``` nodejs
+``` javascript
 // this is the ./lib/generator.js
 var jade = require('jade');
 var pathFn = require('path');
