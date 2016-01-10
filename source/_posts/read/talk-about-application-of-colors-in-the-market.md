@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-27 3:00:00
 title: 谈谈颜色在市场方面的应用

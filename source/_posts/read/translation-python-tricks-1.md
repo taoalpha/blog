@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-01-03 8:00:00
 title: python tricks(1)

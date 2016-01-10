@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-01-14 1:00:00
 title:  HCI相关出版物总汇

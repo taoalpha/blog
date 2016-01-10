@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-21 5:00:00
 title: Knowledge vs Intelligence

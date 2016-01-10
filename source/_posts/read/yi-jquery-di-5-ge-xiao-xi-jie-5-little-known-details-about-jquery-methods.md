@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-08-05 1:00:00
 title: jQuery的5个小细节-5 Little Known Details About jQuery Methods

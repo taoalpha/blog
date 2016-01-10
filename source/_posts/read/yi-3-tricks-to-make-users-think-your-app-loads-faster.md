@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-07-23 3:00:00
 title:  3 Tricks to Make Users Think Your App Loads Faster

@@ -1,7 +1,7 @@
 
 date: 2015-05-08 8:00:00
 title: 设计心理学系列(1) - 网络心理学 
-category: dandp
+category: read
 description: 简单介绍下网络心理学(cyber psychology)的内容, 来源以及一些组成作为本设计心理学系列的开篇.
 tags: [设计心理学,Cyber Psychology]
 author: taoalpha

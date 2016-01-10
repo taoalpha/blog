@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-26 0:00:00
 title: 7条规则助你创造优质UI-上篇

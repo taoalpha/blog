@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-06-12 1:00:00
 title: The designer's guide to the Golden Ratio

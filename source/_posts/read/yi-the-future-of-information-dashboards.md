@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-03-30 3:00:00
 title:  The Future of Information Dashboards

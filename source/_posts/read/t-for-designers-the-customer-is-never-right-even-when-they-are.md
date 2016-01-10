@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-09-11 6:00:00
 title:  For designers, the Customer is Never Right(Even when they are)

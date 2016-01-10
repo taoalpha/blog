@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-25 3:00:00
 title: 关于Landing page - serial landing page的重设计

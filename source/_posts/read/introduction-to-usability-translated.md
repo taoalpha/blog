@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2013-06-13 5:00:00
 title: Introduction To Usability(译)

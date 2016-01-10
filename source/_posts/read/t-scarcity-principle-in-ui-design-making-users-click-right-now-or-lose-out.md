@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-07 4:00:00
 title: Scarcity Principle in UI Design - Making Users Click RIGHT NOW or Lose Out

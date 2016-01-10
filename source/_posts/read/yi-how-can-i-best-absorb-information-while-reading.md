@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-04-19 1:00:00
 title: How Can I Best Absorb Information While Reading?

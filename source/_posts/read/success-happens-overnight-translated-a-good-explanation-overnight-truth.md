@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2013-06-11 5:00:00
 title: Success happens overnight(译)--很好的解释"一夜成名"的真相

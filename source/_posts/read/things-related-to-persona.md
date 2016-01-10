@@ -1,7 +1,7 @@
 
 date: 2015-06-11 6:00:00
 title: 为什么以及如何应用"persona"
-category: dandp
+category: read
 source: http://www.uxbooth.com/articles/creating-personas/
 series: Get to know persona
 description: 

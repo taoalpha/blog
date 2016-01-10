@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-08-29 3:00:00
 title: Advanced Objects in JavaScript

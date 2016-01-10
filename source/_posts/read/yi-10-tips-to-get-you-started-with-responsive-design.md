@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-08-15 9:00:00
 title: 10 Tips to Get You Started with Responsive Design

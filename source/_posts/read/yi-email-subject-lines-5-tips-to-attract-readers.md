@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-07-26 3:00:00
 title: Email Subject Lines - 5 Tips to Attract Readers

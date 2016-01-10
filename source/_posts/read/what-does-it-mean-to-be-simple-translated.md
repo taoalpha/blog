@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2013-06-08 9:00:00
 title: What does it mean to be simple?(译)

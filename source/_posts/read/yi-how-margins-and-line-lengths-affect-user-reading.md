@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-08-29 6:00:00
 title: How Margins and Line Lengths Affect User Reading

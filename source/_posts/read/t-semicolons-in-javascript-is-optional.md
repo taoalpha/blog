@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-05 3:00:00
 title: Semicolons in JavaScript is optional

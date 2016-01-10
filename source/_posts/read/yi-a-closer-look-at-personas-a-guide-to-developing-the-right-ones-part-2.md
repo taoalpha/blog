@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-08-19 2:00:00
 title:  A Closer Look At Personas - A Guide To Developing The Right Ones (Part 2)

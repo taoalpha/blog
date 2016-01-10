@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2013-06-11 2:00:00
 title: Your are Just Getting Started(译)--解读初创公司

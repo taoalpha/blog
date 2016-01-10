@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-05-01 2:00:00
 title: Compassion - How can we find compassion for people we hate?

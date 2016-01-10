@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-10-29 0:00:00
 title: The Who, What, When, Wear, and Why of Wearable Technology

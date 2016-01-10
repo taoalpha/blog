@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2015-03-08 3:00:00
 title: What is Pythonic?

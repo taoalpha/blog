@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-12-04 9:00:00
 title: Google又做了一件大好事:干掉了烦人的识别型验证码!

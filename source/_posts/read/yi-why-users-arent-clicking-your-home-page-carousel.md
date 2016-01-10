@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-05-03 0:00:00
 title: Why Users Aren’t Clicking Your Home Page Carousel?

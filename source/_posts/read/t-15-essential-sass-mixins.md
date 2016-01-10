@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-17 3:00:00
 title: 15 essential Sass mixins 

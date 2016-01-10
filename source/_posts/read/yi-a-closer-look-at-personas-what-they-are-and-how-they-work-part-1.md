@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-08-16 5:00:00
 title:  A Closer Look At Personas - What They Are And How They Work (Part 1)

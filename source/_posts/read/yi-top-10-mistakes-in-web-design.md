@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-04-19 8:00:00
 title: Top 10 Mistakes in Web Design

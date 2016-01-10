@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-09-05 4:00:00
 title: What Is the Relationship Between HCI Research and UX Practice?

@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2013-06-12 1:00:00
 title: Teenage Usability(译)-为青少年而设计

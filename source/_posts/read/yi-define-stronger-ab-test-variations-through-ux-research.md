@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-04-23 9:00:00
 title: Define Stronger A/B Test Variations Through UX Research

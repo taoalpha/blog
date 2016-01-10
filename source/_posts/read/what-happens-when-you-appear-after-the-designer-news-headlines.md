@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-25 7:00:00
 title: 当你出现在Designer News的头条之后会发生什么?

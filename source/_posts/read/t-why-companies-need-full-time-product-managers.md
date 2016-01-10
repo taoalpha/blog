@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-01 7:00:00
 title: Why Companies Need Full-Time Product Managers

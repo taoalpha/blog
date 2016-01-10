@@ -1,4 +1,4 @@
-category: dandp
+category: read
 description: ''
 date: 2014-11-10 4:00:00
 title: How to Create a web design style guide
