@@ -1,6 +1,6 @@
 date: 2015-06-23 3:00:00
 title: JavaScript the Definitive Guide (4)
-category: book
+category: read
 description: 续前篇, 查漏补缺5-9章
 tags: [js,reading notes]
 series: Basic Guide for JavaScript

@@ -1,6 +1,6 @@
 date: 2015-06-10 5:00:00
 title: JavaScript 阅读阶梯清单
-category: book
+category: read
 description: 
 tags: [js] 
 target_book: Getting Good With JavaScript

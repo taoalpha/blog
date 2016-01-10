@@ -1,6 +1,6 @@
 date: 2015-06-24 4:00:00
 title: JavaScript the Definitive Guide (5)
-category: book
+category: read
 description: 第十章, 正则表达式; 十一章, js的子集和扩展; 十二章, 走出浏览器的js.
 tags: [js,reading notes]
 series: Basic Guide for JavaScript

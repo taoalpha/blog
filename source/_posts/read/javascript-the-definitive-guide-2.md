@@ -1,6 +1,6 @@
 date: 2015-06-18 6:00:00
 title: JavaScript the Definitive Guide (2)
-category: book
+category: read
 description: 学习JS中的一等公民 - function. 也是本书第八章内容的一些心得和笔记分享.
 tags: [js,reading notes] 
 author: taoalpha

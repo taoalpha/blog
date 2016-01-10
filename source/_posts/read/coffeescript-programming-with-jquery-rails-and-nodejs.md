@@ -1,6 +1,6 @@
 date: 2015-06-28 0:00:00
 title: CoffeeScript Programming with jQuery, rails and Nodejs (1)
-category: book
+category: read
 description: The notes I took while I was learning the 'CoffeeScript'. If you are a real beginner with 'CoffeeScript', I suggest you start with another book called "The Little Book on CoffeeScript", it's better for beginners. And after that, this one is definitely your best choice.
 series: The Way I Learn CoffeeScript
 language: en

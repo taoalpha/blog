@@ -1,6 +1,6 @@
 date: 2015-06-27 8:00:00
 title: JavaScript the Definitive Guide (8)
-category: book
+category: read
 description: 本书收篇.
 tags: [js,reding notes]
 series: Basic Guide for JavaScript

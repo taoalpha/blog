@@ -1,6 +1,6 @@
 date: 2015-06-25 5:00:00
 title: 像TED一样演讲
-category: book
+category: read
 description: 今天顺带读完了这本"像TED一样演讲", 作者上一部和演讲相关的书是"乔布斯的魔力演讲". 归纳了下书中的核心点, 记录分享给大家.
 tags: [reading notes,speaking]
 author: taoalpha

@@ -1,6 +1,6 @@
 date: 2015-06-17 6:00:00
 title: JavaScript the Definitive Guide (1)
-category: book
+category: read
 description: 读书笔记系列开篇~ 从JS开始, 主要记录阅读过程中一些心得, 或者不清楚的点. 本文主要为"JavaScript the definitive guide"的前7章内容相关记录.
 tags: [js,reading notes]
 series: Basic Guide for JavaScript

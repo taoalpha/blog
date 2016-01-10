@@ -1,6 +1,6 @@
 date: 2015-06-30 0:00:00
 title: CoffeeScript Programming with jQuery, rails and Nodejs (2)
-category: book
+category: read
 description: The second and last note of this book, will focus on how to use CoffeeScript with jQuery, rails and node.
 tags: [js,CoffeeScript,jQuery,rails,nodejs,reading notes]
 language: en
