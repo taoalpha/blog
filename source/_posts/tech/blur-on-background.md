@@ -22,7 +22,7 @@ Let's do it old fashion first. You want create a box within which all background
 
 Then what you should know is ` background-attachment` which adds the magic.
 
-``` CSS
+``` scss
 /* background-attachment can specify the position of the background image
  * fixed : the background is fixed with regard to the viewport, so it won't move with the element
  * background-attachment: fixed;
@@ -70,7 +70,7 @@ div.blurBox.withoutcss3{
 
 With CSS3, we don't need the second image, we can just use blur.
 
-``` CSS
+``` scss
 
 /* z-index is to make sure the content of the box won't be blur */
 

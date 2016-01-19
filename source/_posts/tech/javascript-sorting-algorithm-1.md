@@ -1,8 +1,8 @@
-date: 2015-10-29 4:00:00
+date: 2015-10-29 1:00:00
 title: Sorting Algorithm in JavaScript - Insertion Sort and Selection Sort
 category: tech 
 description: Sorting Alogorithm is one of the most frequently used algorithms and we have many different kinds of sorting algorithms. In order to understand javascript better and do more practice, I will implement several famous sorting algorithms in JavaScript.
-tags: [JS,Algorithm,Sorting] 
+tags: [JS,Algorithm,Sort] 
 series: Sorting Algorithm in JavaScript
 author: taoalpha
 language: en

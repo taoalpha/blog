@@ -18,8 +18,8 @@
     "hexo-renderer-jade": "^0.1.0",
     "hexo-renderer-marked": "^0.2.4",
     "hexo-renderer-scss": "^1.0.1",
-    "hexo-generator-api": "^0.0.1",
     "hexo-renderer-stylus": "^0.3.0",
+    "hexo-generator-api": "^0.0.1",
     "hexo-server": "^0.1.2"
   },
   "devDependencies": {

@@ -19,7 +19,7 @@ Tags: Medium, String, Two Pointers, Hash Table
 
 #### Hash Table
 
-Af first, my idea is use a hashmap as a view window to tract all the letters of current substring, and everytime we found the repeated one, we just move the loop pointer to the last position of this repeated character, and continue looping to the end. But apparently it will cost much more than O(n) for the average case. So then I thought I don't need the move the loop pointer back, just need a new pointer to indicate the start of the substring, and if I do that, I couldn't empty the view window which is the hashmap since I will lose tract of the elements between the `start and i`, so I keep all elements in the hashmap, just make sure every valid repeated character is appeared after the current `start` pointer.
+At first, my idea is use a hashmap as a view window to tract all the letters of current substring, and everytime we found the repeated one, we just move the loop pointer to the last position of this repeated character, and continue looping to the end. But apparently it will cost much more than O(n) for the average case. So then I thought I don't need the move the loop pointer back, just need a new pointer to indicate the start of the substring, and if I do that, I couldn't empty the view window which is the hashmap since I will lose tract of the elements between the `start and i`, so I keep all elements in the hashmap, just make sure every valid repeated character is appeared after the current `start` pointer.
 
 Here is the code:
 

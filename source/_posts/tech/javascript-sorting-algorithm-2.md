@@ -2,7 +2,7 @@ date: 2015-10-29 4:00:00
 title: Sorting Algorithm in JavaScript - Bubble Sort and Merge Sort
 category: tech 
 description: Two more sorting algorithms.
-tags: [Sorting,Algorithm,JS] 
+tags: [Sort,Algorithm,JS] 
 series: Sorting Algorithm in JavaScript
 author: taoalpha
 language: en
