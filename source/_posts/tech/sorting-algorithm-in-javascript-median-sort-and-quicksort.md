@@ -165,4 +165,4 @@ Heap Sort is really fast, sometimes it is even faster than quicksort since it wi
 
 ## BTW
 
-I believe I still have 2 posts for this series, one will talk about the radix, and the other will be the counting and bucket sort. See ya.
+I believe I still have 2 posts for this serie, one will talk about the radix, and the other will be the counting and bucket sort. See ya.
