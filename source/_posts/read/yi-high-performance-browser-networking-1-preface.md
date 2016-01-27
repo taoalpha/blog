@@ -2,7 +2,7 @@ category: read
 description: ''
 date: 2014-07-24 7:00:00
 title:  High-Performance Browser Networking .1.Preface
-tags: [翻译文章,技术文章; 浏览器性能; 译系列]
+tags: [翻译文章,技术文章, 浏览器性能, 译系列]
 ---
 
 chrome一直以极速著称, 当然这和webkit内核有很大的关系, 但是本身chrome在网络处理上也有着非常多的优化方案, 综合了这些优化和本身优质的内核属性, chrome才能实现如今的极速~ 
