@@ -76,6 +76,11 @@ deploy:
   branch: gh-pages
 
 ## plugins
+plugins:
+  - hexo-tag-emojis
+
+emojis:
+  cdn: http://cdn.staticfile.org/emojify.js/0.9.5/emojis
 
 node_sass:
   debug: false
@@ -104,3 +109,8 @@ api:
     desc: latest posts
     attr: [author,title,permalink,date,summary]
     limit: 10
+
+
+exclude:
+
+skip_render:
