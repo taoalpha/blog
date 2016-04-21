@@ -47,3 +47,20 @@ if ((host == window.location.host) && (window.location.protocol != "https:")) {
   window.location.protocol = "https";
 }
 ```
+
+{% blockquote Updates %}
+
+If you change to HTTPS, you can not load resources through http request, so remember to change your resources to https too.
+
+If you have some api calls which don't have a https version, you have to figure out some ways to solve that. Here I have three solutions may be helpful:
+
+- S1: Replace with another similar service
+  if you can find some alternatives, you may just replace the old http service with new https alternative, you may need to change your code as well since the api may have some little difference.
+- S2: Proxy
+  if you host your website on a server which you have access to it, you may build your own proxy and replacing the old request with your proxy(like forwarding all http request to your proxy, and forwarding retrieved data back to your site).
+- S3: Cookie trick
+  if you are using a static website host like github pages, and your data is pretty small and doesn't change so frequently. You may can use cookie trick : everytime when someone loads the page, check the cookie, if already got, load your site through https, otherwise, load with http and retrieve the data and store in cookie. So if your users have the cookie, they will always in HTTPS protocol and the data would be renderred perfectly.
+
+Currently, the weather information I show on my website is using openweathermap and I have only http version if I don't want to pay them :) So I use the cookie trick to store the information in cookie during your first visit(or the first visit after the cookie expired), every visit after that will be redirected to HTTPS automatically. :)
+
+{% endblockquote %}
