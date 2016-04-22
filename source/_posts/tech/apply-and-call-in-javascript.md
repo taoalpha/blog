@@ -104,3 +104,4 @@ Now everything seems pretty clear, right ?
 - apply: pass the arr(the second params in apply) to origin function as multiple params 
 - call: pass all params except the first one to origin function as multiple params 
 
+That's all!

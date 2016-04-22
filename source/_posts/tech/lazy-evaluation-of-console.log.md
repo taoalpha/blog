@@ -76,4 +76,4 @@ obj["foo"] = "bar"
 */
 ```
 
-Cool ?! :)
+Cool ?! :) Have a great day!
