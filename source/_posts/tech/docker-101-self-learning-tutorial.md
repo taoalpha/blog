@@ -40,34 +40,34 @@ Consider registry as a factory contains a lot of images created and uploaded by 
 
 Docker has several very common commands you will use everyday. If you want to try docker, this should be a really good start:
 
-1. ps
+1. **ps**
   list current active containers for you. If you want to check recently used containers, you can use `docker ps -n number`
-2. images
+2. **images**
   list images you have.
-3. pull <image name>
-  pull an image from the docker hub or some private registry
-4. run <optional parameters> <image> <commands>
-  run an image which will create a container for you.
-5. diff <container>
-  show the difference (changes you made) of a container.
-6. log <container>
-  show the log of a container.
-7. commit <container id> <image name>
-  pack the container to a new image, use `-m` record the comments, `-a` to specify an author.
-8. attach <container id>
-  get into the running container.
-9. tag
+3. **pull**
+  `pull <image name>` , pull an image from the docker hub or some private registry
+4. **run**
+  `run <optional parameters> <image> <commands>`, run an image which will create a container for you.
+5. **diff**
+  `diff <container>`, show the difference (changes you made) of a container.
+6. **log**
+  `log <container>`, show the log of a container.
+7. **commit**
+  `commit <container id> <image name>`, pack the container to a new image, use `-m` record the comments, `-a` to specify an author.
+8. **attach**
+  `attach <container id>`, get into the running container.
+9. **tag**
   set tags on an image.
-10. build
+10. **build**
   build an image from Dockerfile.
-11. push <image name>
-  push the image to hub.
-12. rm / rmi <container id / image name>
-  remove the container / image
-13. inspect <container id>
-  get some detail information like the network of a container
-14. network <command> <...>
-  create your own brighe network
+11. **push**
+  `push <image name>`,push the image to hub.
+12. **rm / rmi**
+  `rm / rmi <container id / image name>`, remove the container / image
+13. **inspect**
+  `inspect <container id>`, get some detail information like the network of a container
+14. **network**
+  `network <command> <...>`, create your own brighe network
 
 
 ## How to use docker
