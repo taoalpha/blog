@@ -14,8 +14,8 @@ id: tipme-page
   小弟还真没用过下面这两个支付二维码, 您要不帮我试试?? ^_^
   
 <div class='tipmeqrcode' markdown="1">
-  {% img /blog/images/wechat-tip.jpg %}
-  {% img /blog/images/zhifubao-tip.jpg %}
+  {% img /images/wechat-tip.jpg %}
+  {% img /images/zhifubao-tip.jpg %}
 </div>
 
 <div style="clear:both;"></div>
