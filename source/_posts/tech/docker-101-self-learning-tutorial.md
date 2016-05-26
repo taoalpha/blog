@@ -1,7 +1,7 @@
 title: docker 101 self-learning tutorial
 date: 2016-03-10 11:17:10-05:00
 category: tech
-tags: [docker,vm]
+tags: [Docker,VM]
 ---
 
 ## What Docker does ?
