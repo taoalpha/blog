@@ -2,6 +2,7 @@ title: 喜欢
 date: 2016-05-14 13:41:09-04:00
 category: blog
 tags: [随笔]
+encrypt: true
 ---
 
 我喜欢上了一个女孩，在24岁的夏天
