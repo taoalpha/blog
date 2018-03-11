@@ -55,7 +55,7 @@ author: taoalpha
 do ->
  c = 1
  $.ajax 
-    url: "http://taoalpha.me/blog/api/latest.json"
+    url: "http://taoalpha.github.io/blog/api/latest.json"
     dataType:'json'
  .done (data)->
     console.log(this)

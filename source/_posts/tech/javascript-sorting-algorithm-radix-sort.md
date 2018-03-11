@@ -8,7 +8,7 @@ author: taoalpha
 ---
 
 ## Comparison based sorting algorithms
-We have discussed all popular comparison based sorting algorithms: [insertion sort and selection sort](http://taoalpha.me/blog/2015/10/29/tech-javascript-sorting-algorithm-1/), [bubble sort and merge sort](http://taoalpha.me/blog/2015/10/29/tech-javascript-sorting-algorithm-2/), [Quicksort and Heap Sort](http://taoalpha.me/blog/2016/01/19/tech-sorting-algorithm-in-javascript-median-sort-and-quicksort/).
+We have discussed all popular comparison based sorting algorithms: [insertion sort and selection sort](http://taoalpha.github.io/blog/2015/10/29/tech-javascript-sorting-algorithm-1/), [bubble sort and merge sort](http://taoalpha.github.io/blog/2015/10/29/tech-javascript-sorting-algorithm-2/), [Quicksort and Heap Sort](http://taoalpha.github.io/blog/2016/01/19/tech-sorting-algorithm-in-javascript-median-sort-and-quicksort/).
 
 All these algorithms are great under most of conditions, but their lower bound is O(nlogn), they can not do better.
 

@@ -23,7 +23,7 @@ So I inlcude the codes file from colors which defines the color code(ANSI escape
 ``` javascript
 /**
  * Add color support for console.log by giving string some additional methods to paint themself with color
- * @author Tao <tao@taoalpha.me>
+ * @author Tao <iamzhoutao92@gmail.com>
  */
 
 

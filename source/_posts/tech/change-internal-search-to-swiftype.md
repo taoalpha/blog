@@ -36,7 +36,7 @@ You can just put the robots.txt in the root directory of your domain and it will
 
 So if you have a sitemap, it can help search engines like google crawl your site better.
 
-You can just put the sitemap.xml in your root directory with robots.txt, or you can specify it in your robots.txt using this one line code: `Sitemap: http://taoalpha.me/blog/sitemap.xml`.
+You can just put the sitemap.xml in your root directory with robots.txt, or you can specify it in your robots.txt using this one line code: `Sitemap: http://taoalpha.github.io/blog/sitemap.xml`.
 
 You can have multiple sitemap.xml files, of course.
 

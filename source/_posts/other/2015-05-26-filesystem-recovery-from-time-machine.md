@@ -1,3 +1,4 @@
+date: 2015-05-26 0:00:00
 title: 利用TM进行系统二进制文件恢复
 description: 介绍在遭遇误删或者因故丢失系统二进制文件时, 如何利用time machine来进行恢复, 尤其是对一些有特殊权限的二进制文件的恢复.
 category: blog

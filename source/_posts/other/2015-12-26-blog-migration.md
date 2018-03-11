@@ -1,6 +1,6 @@
+date: 2015-12-26 02:34:01
 title: Blog Migration from jekyll to hexo
 description: Finally migrate my blog to the hexo!!!
-date: 2015-12-26 02:34:01
 category: blog
 tags: [migration,hexo]
 author: taoalpha

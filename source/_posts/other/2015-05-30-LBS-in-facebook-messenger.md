@@ -1,3 +1,4 @@
+date: 2015-05-30 0:00:00
 title: Facebook Messenger成为跟踪神器
 description: harvard的一个学生发现了messenger中位置信息的暴露, 做了一个插件整理这些位置数据, 然后发现玩大了...然后...就被facebook要求下线了...
 category: blog
