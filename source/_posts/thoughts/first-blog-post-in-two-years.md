@@ -10,7 +10,7 @@ I can not believe its almost two years since I posted my last post here... Time 
 
 ### Why Stop and Why Restart ?
 
-The reason why I stopped is ... I am too lazy and writing is a very hard habit to form... and also:
+The reason why I stopped is ... I am too lazy and writing as a habit is very hard to make... and also:
 
 1. The more I know, the harder for me to write anything. I am always thinking too much
 2. I love creating tools instead of documents, like posts
