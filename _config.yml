@@ -111,3 +111,12 @@ gitment:
   client_secret: 46040668c536860a9e2e9a8508c513309e3840b5
   repo: blog
   owner: taoalpha
+
+menus:
+  timeline: 
+    name: timeline
+    icon: fa-map-marker
+  search:
+    name: search
+    icon: fa-search
+    js: 1
