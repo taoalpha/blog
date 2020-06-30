@@ -12,7 +12,7 @@ timezone: America/New_York
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://taoalpha.github.io/blog
+url: https://taoalpha.github.io/blog
 root: /blog/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -103,3 +103,11 @@ api:
     desc: latest posts
     attr: [author,title,permalink,date,summary]
     limit: 10
+
+# comments
+comments: gitment
+gitment:
+  client_id: 875872ffb3955d0ffe20
+  client_secret: 46040668c536860a9e2e9a8508c513309e3840b5
+  repo: blog
+  owner: taoalpha
