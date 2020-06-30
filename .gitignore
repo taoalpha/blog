@@ -10,3 +10,5 @@ _assets/
 .sass-cache/
 themes/landscape/
 themes/next/
+*lock.json
+*.lock

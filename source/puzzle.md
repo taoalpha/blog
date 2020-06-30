@@ -2,7 +2,7 @@ layout: page
 title: All Puzzles Confuse me!
 function: puzzle
 author: taoalpha
-permalink: puzzle
+permalink: puzzle/
 pname: puzzle
 ---
 <div class="puzzle-top">
