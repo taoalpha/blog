@@ -110,7 +110,7 @@ Object.defineProperty(Object.prototype,
 
 ### Chapter 7 - Arrays
 
-这里主要记录ECMAScript 5引入的一些新的方法, 3已有的可以查看 <a href="{% post_path book-javascript-the-definitive-guide-2 %}">阅读笔记-2</a>
+这里主要记录ECMAScript 5引入的一些新的方法, 3已有的可以查看 {% post_link readings-javascript-the-definitive-guide-2 阅读笔记-2 %}
 
 - `forEach(value,index,array_itself)`: `array`自身的循环调用函数, 相当于`for(i in array_name){}`, 区别在于其不支持`break`等可以跳出循环的语句, 如果你想要提前结束循环, 就需要通过`try/catch`包裹并利用抛出异常来结束循环;
 - `map()`: 也算是循环的一种, 遍历每个元素并传递给传入的函数, 最终返回一个**新数组**;
@@ -189,7 +189,7 @@ factorial(5) // 此时会自动缓存4,3,2的阶乘值. 对于一些复杂的运
 
 ### Chapter 9 - Classes and Modules
 
-除了 <a href="{% post_path book-javascript-the-definitive-guide-2 %}">阅读笔记-2</a>中包含的, 由于ECMAScript 5所引入的那些`object property`自然都可以应用到新的class中, 从而创建更为复杂有效的函数. 其实js中目前不存在class这个关键词, 所以其模仿的class, 说白了就是一个复杂一些的函数对象.
+除了 {% post_link readings-javascript-the-definitive-guide-2 阅读笔记-2 %}中包含的, 由于ECMAScript 5所引入的那些`object property`自然都可以应用到新的class中, 从而创建更为复杂有效的函数. 其实js中目前不存在class这个关键词, 所以其模仿的class, 说白了就是一个复杂一些的函数对象.
 
 而因为其内容驳杂繁多, 我么会在后面的应用中有很多实践的机会, 这里就不一一描述了.
 

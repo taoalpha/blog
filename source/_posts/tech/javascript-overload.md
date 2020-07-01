@@ -85,7 +85,7 @@ console.log example.find("Alex","Russell")
 
 随着对JS的逐步深入, 越发觉得JS是一个很了不起的语言, 其兼容了Function Programming和OOP. 对开发者有一种极强的普适性, 可以很简单的写函数调用, 也可以实现很复杂的功能. 了不起!
 
-为了缩短文章的长度, 我选择coffeescript来展示源码(可以省掉很多空间), 其实coffeescript真的很简单, 记住几个基本的规则, 理解起来很容易, 逻辑都还是js的逻辑. 有兴趣的可以查看我之前写的 <a href="{% post_path book-coffeescript-programming-with-jquery-rails-and-nodejs %}">CoffeeScript Programming with jQuery, Rails and Nodejs读书笔记</a>
+为了缩短文章的长度, 我选择coffeescript来展示源码(可以省掉很多空间), 其实coffeescript真的很简单, 记住几个基本的规则, 理解起来很容易, 逻辑都还是js的逻辑. 有兴趣的可以查看我之前写的 <a href="{% post_path readings-coffeescript-programming-with-jquery-rails-and-nodejs %}">CoffeeScript Programming with jQuery, Rails and Nodejs读书笔记</a>
 
 ## 参考文献
 

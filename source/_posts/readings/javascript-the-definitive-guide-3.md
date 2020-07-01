@@ -18,8 +18,7 @@ author: taoalpha
 
 DONE.
 
-本篇是博主重新翻阅了"JavaScript the Definitive Guide(第六版)"的前4章内容(之前 <a href="{% post_path book-reading-javascript-the-definitive-guide-1 %}"><a href="{% post_path book-javascript-the-definitive-guide-2 %}"></a>
-<a href="">阅读笔记-2</a>均是第五版的)后的读书笔记以及心得体会. 内容主要覆盖js的基本用法, 考虑到重复, 这里主要是在上两篇的基础上查漏补缺.
+本篇是博主重新翻阅了"JavaScript the Definitive Guide(第六版)"的前4章内容(之前 {% post_link readings-reading-javascript-the-definitive-guide-1 阅读笔记-1 %}以及{% post_link readings-javascript-the-definitive-guide-2 阅读笔记-2 %} 均是第五版的)后的读书笔记以及心得体会. 内容主要覆盖js的基本用法, 考虑到重复, 这里主要是在上两篇的基础上查漏补缺.
 
 ## 阅读笔记
 
