@@ -1,6 +1,5 @@
 date: 2018-03-17 17:12:00
 title: 2016-2018
-category: essay
 description: In the past two years, what has changed in my life, and what has not
 tags: [thoughts,experience]
 author: taoalpha

@@ -1,6 +1,5 @@
 date: 2018-03-15 9:33:00
 title: First Blog Post In Two Years
-category: essay
 description: I have stopped updating this blog for almost two years... now I decide to restart it.
 tags: [thoughts]
 author: taoalpha

@@ -15,7 +15,6 @@ timezone: America/New_York
 url: https://taoalpha.github.io/blog
 root: /blog/
 permalink: :year/:month/:day/:title/
-permalink_defaults:
 
 # Directory
 source_dir: source
@@ -96,14 +95,6 @@ marked:
   smartLists: true
   smartypants: true
 
-# api
-api:
-  latest:
-    path: api/latest.json
-    desc: latest posts
-    attr: [author,title,permalink,date,summary]
-    limit: 10
-
 # comments
 comments: gitment
 gitment:
@@ -120,3 +111,28 @@ menus:
     name: search
     icon: fa-search
     js: 1
+
+# for hexo-generator-sitemap
+sitemap:
+  path: sitemap.xml
+  template: ./sitemap_template.xml
+  rel: false
+  tags: true
+  categories: true
+
+# for hexo-generator-feed
+feed:
+   # Generate both atom and rss2 feeds
+  type:
+    - atom
+    - rss2
+  path:
+    - atom.xml
+    - rss2.xml
+  limit: 20
+  hub:
+  content:
+  content_limit: 140
+  content_limit_delim: ' '
+  order_by: -date
+  autodiscovery: true

@@ -2,7 +2,7 @@ layout: page
 title: GA Log Analytic
 function: log-analyse
 author: taoalpha
-permalink: galog
+permalink: galog/
 id: galog-page
 pname: galog-page
 ---
@@ -152,7 +152,6 @@ article.galog li.overall summary span.count {
       </table>
      </summary>
     </li>
-
     <li class="post Referer">
       <h4>Top referers</h4>
       <summary>
@@ -164,7 +163,6 @@ article.galog li.overall summary span.count {
         </table>
      </summary>
     </li>
-
     <li class="post OS">
       <h4>Top Operating Systems</h4>
       <summary>
@@ -176,7 +174,6 @@ article.galog li.overall summary span.count {
         </table>
      </summary>
     </li>
-
     <li class="post Browser">
       <h4>Top Browsers</h4>
       <summary>
@@ -188,7 +185,6 @@ article.galog li.overall summary span.count {
         </table>
      </summary>
     </li>
-
     <li class="post Country">
       <h4>Top Countries</h4>
       <summary>

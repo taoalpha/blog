@@ -3,6 +3,7 @@ title: Gitment and Gitalk
 category: tech
 description: 多说停止维护了, 作为静态网站来说, 用什么取代多说呢 ?
 tags: [javascript,duoshuo,gitment,gitalk,comment]
+language: zh
 author: taoalpha
 ---
 
