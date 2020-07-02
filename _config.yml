@@ -172,3 +172,16 @@ feed:
   content_limit_delim: ' '
   order_by: -date
   autodiscovery: true
+
+# open graph protocol
+og:
+  image: http://taoalpha.github.io/images/newblog.jpg
+  type: website
+
+favicon: favicon.png
+
+# google-analytics:
+ga: UA-46725017-2
+
+# settings
+swiftype: true

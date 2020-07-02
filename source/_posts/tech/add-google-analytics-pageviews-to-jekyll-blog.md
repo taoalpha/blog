@@ -26,7 +26,7 @@ author: taoalpha
 ### 在GAP上创建App
 
 - 首先, 你需要一个Google帐号... 哈哈(恩.. 更前提的是你能够[科学上网](http://www.jianshu.com/collection/b6b16295fc83));
-- 接下来, 在[App Engine Administration Console](https://appengine.google.com)上创建app, 因为主要用来防止superProxy, 所以名字上随便起, 基本也没什么直接访问的可能;
+- 接下来, 在[App Engine Administration Console](https://appengine.google.com)上创建app, 因为主要用来放置superProxy, 所以名字上随便起, 基本也没什么直接访问的可能;
 - 在[Services pane](https://code.google.com/apis/console/#:services)中开启Google Analytics的权限, 搜索到GA然后enable即可;
 - 在[API Access pane](https://code.google.com/apis/console/#:access)中创建一个OAuth验证, 如果你有多个app, 选择用来放superProxy的那个, 其中`Authorized Redirect URIs`中填写上"http://your-app-id.appspot.com/admin/auth", 如果你需要本地测试的话, 也加上"http://localhost:8080/admin/auth"即可, 如此创建后即可获得一个Client ID和Secret Key了;
 
