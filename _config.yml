@@ -54,12 +54,9 @@ tag_map:
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 
-# Extensions
-coffee:
-  header: false
-  bare: false
-
 autoprefixer:
+render:
+  ts: themes/taoalpha/tsconfig.json
 
 theme: taoalpha
 
@@ -89,7 +86,7 @@ pagination_dir: page
 menus:
   timeline: 
     link: timeline
-    icon: fa-map-marker
+    icon: fa-map-marker-alt
 
 # social links
 social:
