@@ -1,0 +1,63 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> High-Performance Browser Networking .1.Preface | TaoAlpha's Blog</title><meta name="description" content="Here is my new blog based on hexo."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="High-Performance Browser Networking .1.Preface | TaoAlpha's Blog"><meta property="og:description" content="Here is my new blog based on hexo."><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="post"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><div class="stars"></div><div class="twinkling"></div><div id="progress-bar" class="hidden"><span class="bg"></span></div><article id="content"><div class="main"><section class="entry"><h1 class="entry-title">High-Performance Browser Networking .1.Preface</h1><div class="meta-top"><a href="https://taoalpha.github.io"><div style="display:inline-block;" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&amp;s=40" alt="100"></div><span>TaoAlpha</span></a><span>2014-07-24</span><span class="wordage">3578 words</span><span class="readspeed">11 minutes to read</span></div><div class="entry-content"><p>chrome一直以极速著称, 当然这和webkit内核有很大的关系, 但是本身chrome在网络处理上也有着非常多的优化方案, 综合了这些优化和本身优质的内核属性, chrome才能实现如今的极速~ </p>
+<p>进入正文前, 先介绍下<a href="https://www.igvita.com/posa/high-performance-networking-in-google-chrome/" target="_blank">原文</a>或者说<a href="https://www.igvita.com/" target="_blank">原书</a>的作者: <strong>Ilya Grigorik</strong>.</p>
+<p>Ilya是google的一个网络性能开发工程师, 其在很多方面都有杰出的成绩~ 有兴趣的可以去<a href="https://github.com/igrigorik" target="_blank">大神的github</a>上看看大神都在做什么项目, 顺带能观摩学习下大神的代码~</p>
+<p>==================================正文=============================</p>
+<p><strong>前言</strong><br>–Steve Sounders, Head Performance Engineer, Google, 2013</p>
+<p>“优秀的开发者知道如何做, 伟大的开发者知道为什么这么做.”</p>
+<p>我们一直都以此名言勉励自己. 我们都希望成为那个知道而且可以解释我们所使用系统的底层原理的人. 但是, 如果你是一个网页开发者, 你可能反而要走相反的路子.</p>
+<p>网页开发者现在变得越来越细分. 你是什么类型的开发者呢? 前端? 后端? 韵味? 大数据分析? UI/UX(交互设计)? 存储? 视频? 信息流? 我还可以给这个长长的列表中加入性能工程师这一细分领域. </p>
+<p>我们很多时候很难平衡技术的基础学习和前沿领域的了解. 但是, 如果我们不能了解这些基础知识, 我们的知识系统一定很空洞, 很浅薄. 仅仅知道一个技术手段的顶层使用是不够的, 尤其是在面对一些复杂的问题时, 一旦出现了一些莫名其妙的问题, 那么依赖的还是掌握底层原理的人.</p>
+<p>这也是为什么本书(High Performance Browser Networking)如此重要了. 如果你是一个网页开发者, 那么你的基础知识就是网络以及网络协议基于的金字塔结构: TCP-TLS-UDP-HTTP以及其他一些东东. 这其中的每一个协议都有其自身的性能属性特点和优化方法, 而为了创建高性能的应用, 你就需要去了解网络的工作形式, 为什么是这样的而不是那样的~</p>
+<p>感谢上苍, 你已经找到了如何阅读本书的方法. 我真希望在我开始网络编程之路时能够有这本书啊. 当初完全依靠那些懂得网络原理的前辈的言传身教以及自己硬啃那些说明指导才一步步走到现在的. HPBN一书集合了一个网络界的前辈–Ilya Grigorik–他把自己对网络的方方面面了解都融合集成到了这本书中.</p>
+<p>在本书中, Ilya详尽解释了许多关于网络的原理性知识: 比如为什么延迟(latency)是性能的绊脚石. 为什么TCP并不总是最好的传送机制以及UDP可能是你更好的选择. 还有为什么链接复用是个非常关键的优化. 紧接着他更进一步的提供了很多提升网络性能的具体方法. 想要减少延迟? 尽可能在里客户端更近的服务器端中断会话. 想要提升链接的复用? 启用链接的长效性. 就是这种如何做和为什么这么做的结合让本书传达的知识更有可操作性.</p>
+<p>Ilya 阐述了网络的基本原理并且基于此介绍了很多协议和浏览器方面的前沿知识. HTTP 2.0的有点也有所介绍. 回顾了XHR以及它的局限性, 和由此引发的跨域资源共享问题的介绍.Server-Sent Events, WebSockets, 和 WebRTC 也都所涉及, 带我们领略了一些浏览器网络的最前沿.</p>
+<p>本书的两大核心就是基础原理和前沿知识. 性能是帮助我们理解网络的根本, 并将之转化到性能是如何影响到我们的网页和用户的. 它把复杂的概念转化成了我们可以真正用于提升优化自己网站并创造更好的用户体验的工具. 这一点很重要, 这也是你为什么要阅读本身的重要原因.</p>
+<p>浏览器是当下受众面最广的部署平台了: 它出现在每一台智能手机, 平板, 笔记本, 台机和每一个介于其中形式的载体上. 实际上, 从目前设备的涨势来看, 我们预期2020年的时候入网设备能够达到200亿–至少有一个浏览器而且至少可以接入wifi或者信号基站. 而平台的形式, 设备的厂商, 以及操作系统的版本都不是问题, 每一个设备都至少会有一个网页浏览器, 而浏览器本身功能也在越发丰富了.</p>
+<p>我们如何看到的浏览器已经和过去的老版本有了千差万别, 这得益于进来的一系列创新: HTML, CSS形成的展示层, JavaScript作为web集成的新语言被引入, 以及HTML5的提出和其新的API都在继续提升着新平台提供高性能应用的能力. 当今再没有别的技术或者平台能够做到这样, 这么的面向全部人类, 同时这也是如今各种机会, 创新频出的领域.</p>
+<p>实际上, 再没有比浏览器内部的网络基础机构更适合阐述网络的快速迭代和创新了. 历史上, 我们曾经受限于简单的HTTP请求式交互, 而如今, 我们拥有了更加丰富的机制, 可以实现更加有效的信息流传递, 双向而实时的交流, 自定义应用协议的传递以及一对一的视频会议, 各方之间的数据直接传输等等, 只需要JavaScript, 足矣.</p>
+<p>最终结果? 不计其数的联网设备, 已有服务和新服务中不断壮大的用户基数, 以及对高性能应用的高需求. 速度一直都是一个功能特点, 甚至对一些应用而言, 它是决胜功能点, 而一个高性能的网页应用也需要一个对浏览器如何工作以及和网络的交互有扎实, 基础的了解的人, 这也是本书的受众.</p>
+<p><strong>About this Book(关于本书)</strong></p>
+<p>我们的目的是能够覆盖到每一个应该了解网络是如何工作的开发者: 我们使用的是哪一种协议, 它有什么局限性, 如何最大化的优化你的性能来使用你的网络, 以及浏览器提供了什么样的网络特性来让你使用.</p>
+<p>在此过程中, 我们会深入的了解TCP, UDP以及TLS协议, 以及如何去针对性的优化我们的应用和基础结构. 接着我们会深入的了解下无线和移动网是如何工作的–就是无线电波这家伙, 比较难懂–还会讨论一些它对我们设计和搭建我们自己的应用的启发. 最后, 我们们仔细剖析一下HTTP协议是如何工作的, 并调查下浏览器中许多新的,让你兴奋的网络特性:</p>
+<ul>
+    <li>即将到来的HTTP 2.0的改善;</li>
+    <li>新XHR的特点和能力;</li>
+    <li>结合Server-Send Events的数据流</li>
+    <li>使用WebScoket的双向沟通;</li>
+    <li>点对点的视频和音频沟通--WebRTC;</li>
+    <li>点对点的数据交互--DataChannel</li>
+</ul>
+
+<p>理解每一个字节都是如何传递的,以及每个传递过程和协议的属性对我们创建高性能应用都是至关重要的知识. 毕竟, 如果我们的应用卡死在网络上, 那么无论怎么渲染, JS或者其他的优化方式都是没有意义的. 我们的目标是通过近可能最大的提升网络性能而减少等待的时间.</p>
+<p>HPBN一书将会是任何一个乐于研究优化传递和应用性能的开发者的菜, 更广面的, 任何一个不满足于一个简单的checklist, 而是想要了解浏览器和底层协议是如何工作的, 有着强烈好奇心的人, 都是本书的受众. 其中如何做以及为什么做会交替进行: 我们将会覆盖到很多实际的建议, 帮助你更好的进行配置和架构规划, 我们还会探究下每一种优化方法的益处和代价.</p>
+<p><strong>Conventions Used in This Book(本书使用的一些习惯表达)</strong></p>
+<ul>
+    <li><i>斜体:</i> 代表新术语, URLs, email地址, 文件名或者文件扩展名;</li>
+    <li>Constant width:Used for program listings, as well as within paragraphs to refer to program elements such as variable or function names, databases, data types, environment variables, statements, and keywords.</li>
+    <li>Constant width bold: Shows commands or other text that should be typed literally by the user.</li>
+    <li>Constant width italic: Shows text that should be replaced with user-supplied values or by values determined by context.</li>
+</ul>
+后面三个和两种tip的形式都无法在本译文中体现, 所以就不管了哈...
+
+<p><strong>Source links:</strong></p>
+<ul>
+    <li><a href="http://chimera.labs.oreilly.com/books/1230000000545/pr01.html" target="_blank">Preface Part1</a></li>
+    <li><a href="http://chimera.labs.oreilly.com/books/1230000000545/pr02.html" target="_blank">Preface Part2</a></li>
+</ul>
+</div><div class="post-info"><span class="category"><i class="fas fa-briefcase"></i><a href="/blog/categories/readings">readings</a></span><span class="tags"><i class="fas fa-tags"></i><a href="/blog/tags/%E7%BF%BB%E8%AF%91%E6%96%87%E7%AB%A0">翻译文章</a><a href="/blog/tags/%E6%8A%80%E6%9C%AF%E6%96%87%E7%AB%A0;-%E6%B5%8F%E8%A7%88%E5%99%A8%E6%80%A7%E8%83%BD;-%E8%AF%91%E7%B3%BB%E5%88%97">技术文章; 浏览器性能; 译系列</a></span></div></section><div class="widgets"><aside id="menuIndex" class="sidenav hidden"></aside><aside class="sidenav"><input type="text" placeholder="Enter to search" class="st-default-search-input searchbox"></aside><div class="related-posts sidenav"><h2>Related Posts:</h2><ul class="article-list"><li><a href="/blog/2015/03/08/readings-what-is-pythonic/">What is Pythonic?</a></li><li><a href="/blog/2015/02/16/readings-reloading-python-modules/">Reloading Python Modules</a></li><li><a href="/blog/2014/12/05/readings-read-a-brief-history-of-web-design/">网页设计简史</a></li><li><a href="/blog/2014/12/04/readings-read-google-did-a-good-thing-kill-annoying-type-identification-code/">Google又做了一件大好事:干掉了烦人的识别型验证码!</a></li><li><a href="/blog/2014/11/27/readings-talk-about-application-of-colors-in-the-market/">谈谈颜色在市场方面的应用</a></li></ul></div><aside class="sidenav"><div class="recent-posts"><h2>Recent Posts:</h2><ul class="article-list"><li><a href="/blog/2020/07/04/travel-working-holiday-visa-3/">打工度假 (三)</a></li><li><a href="/blog/2020/07/02/travel-working-holiday-visa-2/">打工度假 (二)</a></li><li><a href="/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/">我都做了哪些来复活本博客的</a></li><li><a href="/blog/2020/07/01/travel-working-holiday-visa/">打工度假 (一)</a></li><li><a href="/blog/2020/06/30/tech-gitment-and-gittalk/">Gitment and Gitalk</a></li></ul></div></aside></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script><div class="comments"><script>const gitment = new Gitment({
+  id: new Date('Thu Jul 24 2014 07:00:00 GMT-0400').toISOString(),
+  owner: 'taoalpha',
+  repo: 'blog',
+  oauth: {
+    client_id: '875872ffb3955d0ffe20',
+    client_secret: '46040668c536860a9e2e9a8508c513309e3840b5',
+  },
+});
+gitment.render(document.querySelector('.comments'));
+</script></div></article><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script src="/blog/js/post.js"></script></body></html>

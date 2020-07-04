@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>TaoAlpha&#39;s Blog</title>
+  
+  <subtitle>I love a lot of things, JS is my favorite.</subtitle>
+  <link href="/blog/atom.xml" rel="self"/>
+  
+  <link href="https://taoalpha.github.io/blog/"/>
+  <updated>2020-07-04T09:46:35.002Z</updated>
+  <id>https://taoalpha.github.io/blog/</id>
+  
+  <author>
+    <name>TaoAlpha</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>打工度假 (三)</title>
+    <link href="https://taoalpha.github.io/blog/2020/07/04/travel-working-holiday-visa-3/"/>
+    <id>https://taoalpha.github.io/blog/2020/07/04/travel-working-holiday-visa-3/</id>
+    <published>2020-07-04T13:29:54.000Z</published>
+    <updated>2020-07-04T09:46:35.002Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;上次说了我在新西兰 WHV 期间住过的不同类型风格的住宿, 略略带过了一些工作的介绍, 这次主要聊一下我在这期间做过的各种工作 :) 我之后细数了一次, 总共还是做了十几种工作的呢.&lt;/p&gt;
+&lt;h2 id=&quot;养鸡场&quot;&gt;&lt;a href=&quot;#养鸡场&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="travel" scheme="https://taoalpha.github.io/blog/categories/travel/"/>
+    
+    
+      <category term="whv" scheme="https://taoalpha.github.io/blog/tags/whv/"/>
+    
+      <category term="travel" scheme="https://taoalpha.github.io/blog/tags/travel/"/>
+    
+      <category term="new zealand" scheme="https://taoalpha.github.io/blog/tags/new-zealand/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>打工度假 (二)</title>
+    <link href="https://taoalpha.github.io/blog/2020/07/02/travel-working-holiday-visa-2/"/>
+    <id>https://taoalpha.github.io/blog/2020/07/02/travel-working-holiday-visa-2/</id>
+    <published>2020-07-02T17:34:24.000Z</published>
+    <updated>2020-07-04T07:30:20.338Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;之前主要说了申请相关的事情和一些基本的介绍, 今天主要说说我在新西兰 WHV 时候都住过那些地方 :)&lt;/p&gt;
+&lt;p&gt;因为一般选择 WHV 的人都不富裕, 不然的话直接旅游签证不香吗? 所以大家短期居住的选择一般都是比较平价或者廉价的背包客栈啊, 青年旅社啊,
+        
+      
+    
+    </summary>
+    
+    
+      <category term="travel" scheme="https://taoalpha.github.io/blog/categories/travel/"/>
+    
+    
+      <category term="whv" scheme="https://taoalpha.github.io/blog/tags/whv/"/>
+    
+      <category term="travel" scheme="https://taoalpha.github.io/blog/tags/travel/"/>
+    
+      <category term="new zealand" scheme="https://taoalpha.github.io/blog/tags/new-zealand/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我都做了哪些来复活本博客的</title>
+    <link href="https://taoalpha.github.io/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/"/>
+    <id>https://taoalpha.github.io/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/</id>
+    <published>2020-07-02T01:31:31.000Z</published>
+    <updated>2020-07-01T20:51:15.885Z</updated>
+    
+    <summary type="html">
+    
+      记录下我都做了那些事情来重新让本博客满血复活的.
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="hexo" scheme="https://taoalpha.github.io/blog/tags/hexo/"/>
+    
+      <category term="Google Analytics" scheme="https://taoalpha.github.io/blog/tags/Google-Analytics/"/>
+    
+      <category term="pixabay" scheme="https://taoalpha.github.io/blog/tags/pixabay/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>打工度假 (一)</title>
+    <link href="https://taoalpha.github.io/blog/2020/07/01/travel-working-holiday-visa/"/>
+    <id>https://taoalpha.github.io/blog/2020/07/01/travel-working-holiday-visa/</id>
+    <published>2020-07-01T13:24:52.000Z</published>
+    <updated>2020-07-04T07:30:27.241Z</updated>
+    
+    <summary type="html">
+    
+      聊聊打工度假签证和我 15 年去新西兰打工度假的经历.
+    
+    </summary>
+    
+    
+      <category term="travel" scheme="https://taoalpha.github.io/blog/categories/travel/"/>
+    
+    
+      <category term="whv" scheme="https://taoalpha.github.io/blog/tags/whv/"/>
+    
+      <category term="travel" scheme="https://taoalpha.github.io/blog/tags/travel/"/>
+    
+      <category term="new zealand" scheme="https://taoalpha.github.io/blog/tags/new-zealand/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Gitment and Gitalk</title>
+    <link href="https://taoalpha.github.io/blog/2020/06/30/tech-gitment-and-gittalk/"/>
+    <id>https://taoalpha.github.io/blog/2020/06/30/tech-gitment-and-gittalk/</id>
+    <published>2020-06-30T18:30:00.000Z</published>
+    <updated>2020-07-01T09:48:25.575Z</updated>
+    
+    <summary type="html">
+    
+      多说停止维护了, 作为静态网站来说, 用什么取代多说呢 ?
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="javascript" scheme="https://taoalpha.github.io/blog/tags/javascript/"/>
+    
+      <category term="duoshuo" scheme="https://taoalpha.github.io/blog/tags/duoshuo/"/>
+    
+      <category term="gitment" scheme="https://taoalpha.github.io/blog/tags/gitment/"/>
+    
+      <category term="gitalk" scheme="https://taoalpha.github.io/blog/tags/gitalk/"/>
+    
+      <category term="comment" scheme="https://taoalpha.github.io/blog/tags/comment/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2016-2018</title>
+    <link href="https://taoalpha.github.io/blog/2018/03/17/thoughts-past-two-years/"/>
+    <id>https://taoalpha.github.io/blog/2018/03/17/thoughts-past-two-years/</id>
+    <published>2018-03-17T21:12:00.000Z</published>
+    <updated>2020-07-01T07:37:04.900Z</updated>
+    
+    <summary type="html">
+    
+      In the past two years, what has changed in my life, and what has not
+    
+    </summary>
+    
+    
+    
+      <category term="thoughts" scheme="https://taoalpha.github.io/blog/tags/thoughts/"/>
+    
+      <category term="experience" scheme="https://taoalpha.github.io/blog/tags/experience/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>First Blog Post In Two Years</title>
+    <link href="https://taoalpha.github.io/blog/2018/03/15/thoughts-first-blog-post-in-two-years/"/>
+    <id>https://taoalpha.github.io/blog/2018/03/15/thoughts-first-blog-post-in-two-years/</id>
+    <published>2018-03-15T13:33:00.000Z</published>
+    <updated>2020-07-01T07:37:01.082Z</updated>
+    
+    <summary type="html">
+    
+      I have stopped updating this blog for almost two years... now I decide to restart it.
+    
+    </summary>
+    
+    
+    
+      <category term="thoughts" scheme="https://taoalpha.github.io/blog/tags/thoughts/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Type check in JS</title>
+    <link href="https://taoalpha.github.io/blog/2016/08/27/tech-type-check-in-js/"/>
+    <id>https://taoalpha.github.io/blog/2016/08/27/tech-type-check-in-js/</id>
+    <published>2016-08-27T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.718Z</updated>
+    
+    <summary type="html">
+    
+      how to do type check in JS
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="js" scheme="https://taoalpha.github.io/blog/tags/js/"/>
+    
+      <category term="type check" scheme="https://taoalpha.github.io/blog/tags/type-check/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Deep copy in javascript</title>
+    <link href="https://taoalpha.github.io/blog/2016/08/13/tech-deep-copy-in-javascript/"/>
+    <id>https://taoalpha.github.io/blog/2016/08/13/tech-deep-copy-in-javascript/</id>
+    <published>2016-08-13T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.680Z</updated>
+    
+    <summary type="html">
+    
+      how to implement deep copy in js.
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="js" scheme="https://taoalpha.github.io/blog/tags/js/"/>
+    
+      <category term="copy" scheme="https://taoalpha.github.io/blog/tags/copy/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Javascript Module Standard</title>
+    <link href="https://taoalpha.github.io/blog/2016/06/17/tech-javascript-module-system/"/>
+    <id>https://taoalpha.github.io/blog/2016/06/17/tech-javascript-module-system/</id>
+    <published>2016-06-17T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.693Z</updated>
+    
+    <summary type="html">
+    
+      introduction on JS module standard
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="js" scheme="https://taoalpha.github.io/blog/tags/js/"/>
+    
+      <category term="module" scheme="https://taoalpha.github.io/blog/tags/module/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>defineProperty in JavaScript</title>
+    <link href="https://taoalpha.github.io/blog/2016/04/29/tech-defineproperty-in-javascript/"/>
+    <id>https://taoalpha.github.io/blog/2016/04/29/tech-defineproperty-in-javascript/</id>
+    <published>2016-04-29T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.681Z</updated>
+    
+    <summary type="html">
+    
+      introduce defineProperty in JS
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="js" scheme="https://taoalpha.github.io/blog/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Symbol and Iterate Object in ES6</title>
+    <link href="https://taoalpha.github.io/blog/2016/04/28/tech-symbol-and-iterate-object-in-es6/"/>
+    <id>https://taoalpha.github.io/blog/2016/04/28/tech-symbol-and-iterate-object-in-es6/</id>
+    <published>2016-04-28T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.715Z</updated>
+    
+    <summary type="html">
+    
+      Symbol and Iterate Object in ES6
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="js" scheme="https://taoalpha.github.io/blog/tags/js/"/>
+    
+      <category term="es6" scheme="https://taoalpha.github.io/blog/tags/es6/"/>
+    
+      <category term="symbol" scheme="https://taoalpha.github.io/blog/tags/symbol/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker 101 minimalist web dev docker</title>
+    <link href="https://taoalpha.github.io/blog/2016/04/27/tech-docker-101-minimalist-web-dev-docker/"/>
+    <id>https://taoalpha.github.io/blog/2016/04/27/tech-docker-101-minimalist-web-dev-docker/</id>
+    <published>2016-04-27T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.683Z</updated>
+    
+    <summary type="html">
+    
+      Docker 101 minimalist web dev docker
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="docker" scheme="https://taoalpha.github.io/blog/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Two-way and one-way data binding</title>
+    <link href="https://taoalpha.github.io/blog/2016/04/22/tech-two-way-and-one-way-data-binding/"/>
+    <id>https://taoalpha.github.io/blog/2016/04/22/tech-two-way-and-one-way-data-binding/</id>
+    <published>2016-04-22T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.717Z</updated>
+    
+    <summary type="html">
+    
+      Two-way and one-way data binding
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="data binding" scheme="https://taoalpha.github.io/blog/tags/data-binding/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Lazy Evaluation of console.log</title>
+    <link href="https://taoalpha.github.io/blog/2016/04/21/tech-lazy-evaluation-of-console-log/"/>
+    <id>https://taoalpha.github.io/blog/2016/04/21/tech-lazy-evaluation-of-console-log/</id>
+    <published>2016-04-21T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.703Z</updated>
+    
+    <summary type="html">
+    
+      Lazy Evaluation of console.log
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="js" scheme="https://taoalpha.github.io/blog/tags/js/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>apply and call in JS</title>
+    <link href="https://taoalpha.github.io/blog/2016/04/17/tech-apply-and-call-in-javascript/"/>
+    <id>https://taoalpha.github.io/blog/2016/04/17/tech-apply-and-call-in-javascript/</id>
+    <published>2016-04-17T11:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.676Z</updated>
+    
+    <summary type="html">
+    
+      apply and call in JS
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="js" scheme="https://taoalpha.github.io/blog/tags/js/"/>
+    
+      <category term="apply" scheme="https://taoalpha.github.io/blog/tags/apply/"/>
+    
+      <category term="call" scheme="https://taoalpha.github.io/blog/tags/call/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Docker 101 self-learning tutorial</title>
+    <link href="https://taoalpha.github.io/blog/2016/03/10/tech-docker-101-self-learning-tutorial/"/>
+    <id>https://taoalpha.github.io/blog/2016/03/10/tech-docker-101-self-learning-tutorial/</id>
+    <published>2016-03-10T12:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.684Z</updated>
+    
+    <summary type="html">
+    
+      docker 101
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="docker" scheme="https://taoalpha.github.io/blog/tags/docker/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript Sorting Algorithm - Radix Sort and Bucket Sort</title>
+    <link href="https://taoalpha.github.io/blog/2016/01/19/tech-javascript-sorting-algorithm-radix-sort/"/>
+    <id>https://taoalpha.github.io/blog/2016/01/19/tech-javascript-sorting-algorithm-radix-sort/</id>
+    <published>2016-01-19T12:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.698Z</updated>
+    
+    <summary type="html">
+    
+      Two basic sorting algorithms, radix and bucket.
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="sort" scheme="https://taoalpha.github.io/blog/tags/sort/"/>
+    
+      <category term="algorithm" scheme="https://taoalpha.github.io/blog/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Sorting Algorithm in JavaScript - Quicksort and Heap Sort</title>
+    <link href="https://taoalpha.github.io/blog/2016/01/19/tech-sorting-algorithm-in-javascript-median-sort-and-quicksort/"/>
+    <id>https://taoalpha.github.io/blog/2016/01/19/tech-sorting-algorithm-in-javascript-median-sort-and-quicksort/</id>
+    <published>2016-01-19T12:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.713Z</updated>
+    
+    <summary type="html">
+    
+      quicksort and heap sort
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="sort" scheme="https://taoalpha.github.io/blog/tags/sort/"/>
+    
+      <category term="algorithm" scheme="https://taoalpha.github.io/blog/tags/algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Add a reading progressbar to your blog</title>
+    <link href="https://taoalpha.github.io/blog/2016/01/16/tech-add-a-reading-progressbar-to-your-blog/"/>
+    <id>https://taoalpha.github.io/blog/2016/01/16/tech-add-a-reading-progressbar-to-your-blog/</id>
+    <published>2016-01-16T12:00:00.000Z</published>
+    <updated>2020-06-30T11:25:46.672Z</updated>
+    
+    <summary type="html">
+    
+      how to add a reading progressbar to your blog
+    
+    </summary>
+    
+    
+      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
+    
+    
+      <category term="css" scheme="https://taoalpha.github.io/blog/tags/css/"/>
+    
+      <category term="progress" scheme="https://taoalpha.github.io/blog/tags/progress/"/>
+    
+  </entry>
+  
+</feed>

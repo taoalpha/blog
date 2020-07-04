@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 更换DNS解析 | TaoAlpha's Blog</title><meta name="description" content="猛然发现上网自动跳转很多, 还经常出现net::ERR_CONNECTION_RESET的错误, 就觉得可能是被运营商劫持了... 于是更换了以下DNS解析服务器, 果然瞬间清净了..."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="更换DNS解析 | TaoAlpha's Blog"><meta property="og:description" content="猛然发现上网自动跳转很多, 还经常出现net::ERR_CONNECTION_RESET的错误, 就觉得可能是被运营商劫持了... 于是更换了以下DNS解析服务器, 果然瞬间清净了..."><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="post"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><div class="stars"></div><div class="twinkling"></div><div id="progress-bar" class="hidden"><span class="bg"></span></div><article id="content"><div class="main"><section class="entry"><h1 class="entry-title">更换DNS解析</h1><div class="meta-top"><a href="https://taoalpha.github.io"><div style="display:inline-block;" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&amp;s=40" alt="100"></div><span>TaoAlpha</span></a><span>2015-05-25</span><span class="wordage">800 words</span><span class="readspeed">3 minutes to read</span></div><div class="entry-content"><p>回家啦回家啦~ 天南海北, 不如家好啊~!!!</p>
+<p>刚回来一天就发现家里网络似乎很诡异… 最开始是经常出现css样式错误或者图片加载不出来的问题, console中冒出来的错误也是net::ERR_CONNECTION_RESET的错误, 于是google了一下, 说是http和https的问题, 就装了一个<a href="https://www.eff.org/https-everywhere" target="_blank" rel="noopener">https everywhere的插件</a>, 但是console中还是冒出来一些http资源无法在https下访问的错误… 就觉得有些奇怪, 应该是没找对问题的根本… </p>
+<p>虽然我起初开始怀疑是不是家里网络的问题, 但尚不确定是网络速度的问题还是地处偏僻角落… 被伟大互联网鄙视了的原因…亦或者是其他的问题… </p>
+<p>但是, 突然发现浏览过程中遇到了莫名跳转… 而且还是个广告跳转… 就基本确定自己是遇到的DNS拦截了… 于是正好想起来很多月前百度出了一个公共的DNS解析服务, 果断拿来用了一下… 效果极佳啊~哈哈</p>
+<p>感觉上面的话语充满了百度DNS软文的感觉… 所以这里介绍下DNS解析的设定方法以及贡献以下百度, 阿里和google几家的DNS解析服务哈哈 (考虑到天朝内, 度娘的优势还是很明显的)</p>
+<ul>
+<li>要设置DNS解析, 自然需要进入到网络设置中, 这个根据操作系统的区别自然是有着很大的区别;</li>
+<li>找到DNS的设定部分, 修改默认的DNS为你需要的DNS;</li>
+<li>应用修改, DONE.</li>
+</ul>
+<p><a href="http://dudns.baidu.com/useDoc.html" target="_blank" rel="noopener">Baidu DNS官网有一篇很全的设定贴</a>, 小白可以围观之.</p>
+<p>当然, 附加一些阿里和google的DNS:</p>
+<ul>
+<li><a href="http://www.alidns.com/" target="_blank" rel="noopener">阿里DNS</a> - 223.5.5.5 or 223.6.6.6</li>
+<li><a href="https://developers.google.com/speed/public-dns/" target="_blank" rel="noopener">Google DNS</a> - 8.8.8.8 or 8.8.4.4 </li>
+<li><a href="http://dudns.baidu.com/" target="_blank" rel="noopener">百度DNS</a> - 180.76.76.76</li>
+<li><a href="http://www.114dns.com/" target="_blank" rel="noopener">114DNS-</a> - 114.114.114.114 or 114.114.115.115</li>
+</ul>
+<p>恩, 我们要坚持和万恶的恶意DNS作战到底!!!</p>
+</div><div class="post-info"><span class="category"><i class="fas fa-briefcase"></i><a href="/blog/categories/blog">blog</a></span><span class="tags"><i class="fas fa-tags"></i><a href="/blog/tags/DNS">DNS</a></span></div></section><div class="widgets"><aside id="menuIndex" class="sidenav hidden"></aside><aside class="sidenav"><input type="text" placeholder="Enter to search" class="st-default-search-input searchbox"></aside><aside class="sidenav"><div class="recent-posts"><h2>Recent Posts:</h2><ul class="article-list"><li><a href="/blog/2020/07/04/travel-working-holiday-visa-3/">打工度假 (三)</a></li><li><a href="/blog/2020/07/02/travel-working-holiday-visa-2/">打工度假 (二)</a></li><li><a href="/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/">我都做了哪些来复活本博客的</a></li><li><a href="/blog/2020/07/01/travel-working-holiday-visa/">打工度假 (一)</a></li><li><a href="/blog/2020/06/30/tech-gitment-and-gittalk/">Gitment and Gitalk</a></li></ul></div></aside></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script><div class="comments"><script>const gitment = new Gitment({
+  id: new Date('Mon May 25 2015 00:00:00 GMT-0400').toISOString(),
+  owner: 'taoalpha',
+  repo: 'blog',
+  oauth: {
+    client_id: '875872ffb3955d0ffe20',
+    client_secret: '46040668c536860a9e2e9a8508c513309e3840b5',
+  },
+});
+gitment.render(document.querySelector('.comments'));
+</script></div></article><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script src="/blog/js/post.js"></script></body></html>

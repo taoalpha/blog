@@ -1,0 +1,199 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> GA Log Analytic | TaoAlpha's Blog</title><meta name="description" content="Here is my new blog based on hexo."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="GA Log Analytic | TaoAlpha's Blog"><meta property="og:description" content="Here is my new blog based on hexo."><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="galog-page"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><section class="page-content galog-page"><style>
+/************** GA log page ************/
+article.galog ul {
+  padding-left: 0px;
+}
+
+article.galog li.post.overall {
+  height: 210px;
+}
+
+article.galog summary{
+  margin-bottom: 20px;
+}
+
+article.galog li.overall summary ul li {
+  width: 28%;
+  float: left;
+  margin: 0 20px 20px 0px;
+  background-color: #F1F1F1;
+  border-top: 4px solid #9E9E9E;
+  color: #242424;
+  font-weight: normal;
+  padding: 7px;
+}
+
+article.galog li.overall summary span.itemname {
+  font-size: 10px;
+}
+
+article.galog li.overall summary span.itemname i {
+  margin-left: 5px;
+}
+
+article.galog li.overall summary span.count {
+  font-size: 19px;
+  text-shadow: 1px 1px 0 #FFF;
+  padding: 8px 0px;
+  display: block;
+  font-weight: 700;
+}
+.pure-table {
+    animation: float 5s infinite;
+    border: 1px solid #cbcbcb;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    empty-cells: show;
+    border-radius: 3px;
+}
+.pure-table a {
+    color: #242424;
+    outline: 0;
+    text-decoration: none;
+}
+.pure-table td {
+    border-left: 1px solid #cbcbcb;
+}
+.pure-table td,
+.pure-table th {
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: 6px 12px;
+}
+.pure-table th:last-child {
+    padding-right: 0;
+}
+.pure-table th:last-child span {
+    margin: 1px 15px 0 15px;
+    float:right;
+}
+.pure-table thead th {
+    border-bottom: 4px solid #9ea7af;
+    border-right: 1px solid #343a45;
+}
+.pure-table tbody th {
+    background: rgb(242, 242, 242);
+    border-left: 1px solid rgb(203, 203, 203);
+}
+.pure-table td:first-child,
+.pure-table th:first-child {
+    border-left-width: 0
+}
+.pure-table td:last-child {
+    white-space: normal;
+    width: auto;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+.pure-table thead {
+    background: #242424;
+    color: #FFF;
+    text-align: left;
+    text-shadow: 0px -1px 0px #000;
+    vertical-align: bottom;
+}
+.pure-table td {
+    background-color: #FFF
+}
+.pure-table td.num {
+    text-align: right
+}
+.pure-table .sub td {
+    background-color: #F2F2F2;
+}
+.pure-table tbody{
+  color: #777;
+  font-size:12px;
+}
+.pure-table tbody tr:nth-of-type(n+10){
+  display:none;
+}
+.pure-table tbody tr:hover,
+.pure-table-striped tr:nth-child(2n-1) td {
+    background-color: #f4f4f4
+}
+.pure-table tr {
+    border-bottom: 1px solid #ddd;
+}
+.pure-table thead tr {
+    border: 1px solid rgb(52, 58, 69);
+} 
+
+</style>
+
+<nav id="bread">
+  <h2>Site Logs for last 30 days:</h2>
+</nav>
+<article class="galog">
+  <ul class="article-list">
+    <li class="post overall">
+      <h4>overall analyzed requests</h4>
+      <summary>
+      </summary>
+    </li>
+    <li class="post Path">
+      <h4>Top requests</h4>
+      <summary>
+      <table class="pure-table">
+        <thead>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+     </summary>
+    </li>
+    <li class="post Referer">
+      <h4>Top referers</h4>
+      <summary>
+        <table class="pure-table">
+          <thead>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+     </summary>
+    </li>
+    <li class="post OS">
+      <h4>Top Operating Systems</h4>
+      <summary>
+        <table class="pure-table">
+          <thead>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+     </summary>
+    </li>
+    <li class="post Browser">
+      <h4>Top Browsers</h4>
+      <summary>
+        <table class="pure-table">
+          <thead>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+     </summary>
+    </li>
+    <li class="post Country">
+      <h4>Top Countries</h4>
+      <summary>
+        <table class="pure-table">
+          <thead>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+     </summary>
+    </li>
+  </ul>
+</article>
+</section><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script type="text/javascript">getGALogFile()</script></body></html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Two-way and one-way data binding | TaoAlpha's Blog</title><meta name="description" content="Two-way and one-way data binding"><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="Two-way and one-way data binding | TaoAlpha's Blog"><meta property="og:description" content="Two-way and one-way data binding"><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="post"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><div class="stars"></div><div class="twinkling"></div><div id="progress-bar" class="hidden"><span class="bg"></span></div><article id="content"><div class="main"><section class="entry"><h1 class="entry-title">Two-way and one-way data binding</h1><div class="meta-top"><a href="https://taoalpha.github.io"><div style="display:inline-block;" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&amp;s=40" alt="100"></div><span>TaoAlpha</span></a><span>2016-04-22</span><span class="wordage">2838 words</span><span class="readspeed">9 minutes to read</span></div><div class="entry-content"><h2 id="Write-Ahead"><a href="#Write-Ahead" class="headerlink" title="Write Ahead"></a>Write Ahead</h2><p>I start learning React recently, and since I haven’t written Angular code for several weeks, I guess I need to review some basic concepts during the self-learning :)</p>
+<p>The first book which I am reading is Mastering React, it is pretty good, and I think if you want to learn React, you can start from this one.</p>
+<h2 id="Data-Binding"><a href="#Data-Binding" class="headerlink" title="Data Binding"></a>Data Binding</h2><p>If you have ever used react or angular before, you should have heard about the words more or often. So what is data binding ?</p>
+<blockquote><p>Data binding is a general technique that binds data sources from the provider and consumer together and synchronizes them. This is usually done with two data/information sources with different languages as in XML data binding. In UI data binding, data and information objects of the same language but different logic function are bound together.</p>
+<footer><strong>WikiPedia</strong><cite><a href="https://en.wikipedia.org/wiki/Data_binding" target="_blank" rel="noopener">Data Binding from Wikipedia</a></cite></footer></blockquote>
+
+<p>Want to simplify it ? I think we can consider the data binding as a connection between Model and View which would be the web UI in web field (most times). And then synchronize the data between Model and View.</p>
+<p>Depends on the direction of the data flow and the limitation on the frequency of the flow, we have several different ways of data binding.</p>
+<h3 id="Two-way-data-binding"><a href="#Two-way-data-binding" class="headerlink" title="Two-way data binding"></a>Two-way data binding</h3><p>This one is pretty intuitive since that is what most people believe synchronization means.</p>
+<ul>
+<li>Data always flows between Model and View</li>
+<li>For Data in Model:<ul>
+<li>Gets propagated to View</li>
+<li>If have Data Modifications: Propagated immediately and reflected in View</li>
+</ul>
+</li>
+<li>For Data in View:<ul>
+<li>Gets propagated to Model</li>
+<li>If have Data Modifications: Propagated immediately and reflected in Model</li>
+</ul>
+</li>
+</ul>
+<p>So if we use two-way data binding, we always have the same data in Model and View.</p>
+<h3 id="One-way-data-binding"><a href="#One-way-data-binding" class="headerlink" title="One-way data binding"></a>One-way data binding</h3><p>Sometimes you will think two-way binding is too complex and may cause some confusion. Then you will like the idea of one-way binding, the data only flows from Model to View.</p>
+<ul>
+<li>Data always flows from Model to View</li>
+<li>For Data in Model:<ul>
+<li>Gets propagated to View</li>
+<li>If have Data Modifications: Propagated immediately and reflected in View</li>
+</ul>
+</li>
+<li>For Data in View:<ul>
+<li>No propagation happens (back to scope) for any data change</li>
+</ul>
+</li>
+</ul>
+<p>This is what react is using.</p>
+<h3 id="One-time-data-binding"><a href="#One-time-data-binding" class="headerlink" title="One-time data binding"></a>One-time data binding</h3><p>Sometimes you may just want to send the data and only do it once, you may want to use one-time data binding.</p>
+<ul>
+<li>Data only flows from Model to View once</li>
+<li>For Data in Model:<ul>
+<li>Gets propagated to View (only once for the first time)</li>
+<li>If have Data Modifications: No Propagation</li>
+</ul>
+</li>
+<li>For Data in View:<ul>
+<li>No propagation happens (back to scope) for any data change</li>
+</ul>
+</li>
+</ul>
+<h2 id="Conclude"><a href="#Conclude" class="headerlink" title="Conclude"></a>Conclude</h2><p>Angular will be the first choice if you want to be familiar with all three different ways or you need different binding methods in your web app. If you want to simplify your data flow of your app, you may try React, even though you may write more codes to achieve the same thing you can do with one line code in Angular(two-way binding).</p>
+</div><div class="post-info"><span class="category"><i class="fas fa-briefcase"></i><a href="/blog/categories/tech">tech</a></span><span class="tags"><i class="fas fa-tags"></i><a href="/blog/tags/data-binding">data binding</a></span></div></section><div class="widgets"><aside id="menuIndex" class="sidenav hidden"></aside><aside class="sidenav"><input type="text" placeholder="Enter to search" class="st-default-search-input searchbox"></aside><aside class="sidenav"><div class="recent-posts"><h2>Recent Posts:</h2><ul class="article-list"><li><a href="/blog/2020/07/04/travel-working-holiday-visa-3/">打工度假 (三)</a></li><li><a href="/blog/2020/07/02/travel-working-holiday-visa-2/">打工度假 (二)</a></li><li><a href="/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/">我都做了哪些来复活本博客的</a></li><li><a href="/blog/2020/07/01/travel-working-holiday-visa/">打工度假 (一)</a></li><li><a href="/blog/2020/06/30/tech-gitment-and-gittalk/">Gitment and Gitalk</a></li></ul></div></aside></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script><div class="comments"><script>const gitment = new Gitment({
+  id: new Date('Fri Apr 22 2016 07:00:00 GMT-0400').toISOString(),
+  owner: 'taoalpha',
+  repo: 'blog',
+  oauth: {
+    client_id: '875872ffb3955d0ffe20',
+    client_secret: '46040668c536860a9e2e9a8508c513309e3840b5',
+  },
+});
+gitment.render(document.querySelector('.comments'));
+</script></div></article><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script src="/blog/js/post.js"></script></body></html>

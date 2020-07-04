@@ -1,0 +1,75 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Scalable and Modular Architecture for CSS | TaoAlpha's Blog</title><meta name="description" content="Scalable and Modular Architecture for CSS"><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="Scalable and Modular Architecture for CSS | TaoAlpha's Blog"><meta property="og:description" content="Scalable and Modular Architecture for CSS"><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="post"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><div class="stars"></div><div class="twinkling"></div><div id="progress-bar" class="hidden"><span class="bg"></span></div><article id="content"><div class="main"><section class="entry"><h1 class="entry-title">Scalable and Modular Architecture for CSS</h1><div class="meta-top"><a href="https://taoalpha.github.io"><div style="display:inline-block;" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&amp;s=40" alt="100"></div><span>TaoAlpha</span></a><span>2016-01-10</span><span class="wordage">5075 words</span><span class="readspeed">15 minutes to read</span></div><div class="entry-content"><h2 id="Modularity-of-Web-Dev"><a href="#Modularity-of-Web-Dev" class="headerlink" title="Modularity of Web Dev"></a>Modularity of Web Dev</h2><p>As your project becomes more complex, its more difficult to maintain the code, no matter what kind of language you are using. That’s why we use OOP for most of the projects, by doing that, it saves you a lot of time and energy. Since web development becomes more popular, more and more people start focusing on this area and come up with some fantastic ideas about how to apply modularity or OOP on web development.</p>
+<p>We all know that a basic website would contains three basic parts: HTML/CSS/JS. HTML is in charge of the struture, the CSS will focus on the appearance, and JS will give your website more animation(now css can do that too) and interaction. Among all these three parts, HTML is the easiest one, there is not so many things to talk about except the semantic tag, H5..etc, if you want to improve the modularity, most times HTML is not what you care most. Instead, CSS and JS are your primary concern.</p>
+<p><a href="https://smacss.com/" target="_blank" rel="noopener">Scalable and Modular Architecture for CSS</a> is a nice book focus on applying modularity to CSS, and here is the notes I wrote down after I read it. About JS, we will talk about it later :) You can start with a nice and good coding style.</p>
+<h2 id="Reading-Notes"><a href="#Reading-Notes" class="headerlink" title="Reading Notes"></a>Reading Notes</h2><h3 id="Categories-of-Rules"><a href="#Categories-of-Rules" class="headerlink" title="Categories of Rules"></a>Categories of Rules</h3><p>Jonathan Snook groups CSS rules into five types of categories:</p>
+<ul>
+<li>Base: Base rules are the defaults. They are almost exclusively single ele- ment selectors but it could include attribute selectors, pseudo-class selectors, child selectors or sibling selectors. Essentially, a base style says that wherever this element is on the page, it should look like this;<ul>
+<li>You can use some reset frameworks out there, just be sure you know everything it does before you actually put it in your project;</li>
+</ul>
+</li>
+<li>Layout: Layout rules divide the page into sections. Layouts hold one or more modules together;<ul>
+<li>Generally, a Layout style only has a single selector: a single ID or class name;</li>
+<li>Sometimes, you may have different layouts base on different settings like user preference, then you can use more than one selectors;</li>
+</ul>
+</li>
+<li>Modules: Modules are the reusable, modular parts of our design. They are the callouts, the sidebar sections, the product lists and so on;<ul>
+<li>Each Module should be designed to exist as a standalone component;</li>
+<li>Avoid using IDs and ele- ment selectors, sticking only to class names;</li>
+<li>Only include a selector that includes semantics. A span or div holds none. A heading has some. A class defined on an element has plenty;</li>
+<li>If you do wish to use an element selector, it should be within one level of a class selector;</li>
+</ul>
+</li>
+<li>State rules: State rules are ways to describe how our modules or layouts will look when in a particular state. Is it hidden or expanded? Is it ac- tive or inactive? They are about describing how a module or layout looks on screens that are smaller or bigger. They are also about de- scribing how a module might look in different views like the home page or the inside page;<ul>
+<li>A state is something that augments and overrides all other styles;</li>
+<li>States should be made to stand alone and are usually built of a single class selector, sometimes you can use !important to address the state;</li>
+<li>In a case where a state rule is made for a specific module, the state class name should include the module name in it;</li>
+</ul>
+</li>
+<li>Theme rules: Theme rules are similar to state rules in that they describe how modules or layouts might look. Most sites don’t require a layer of theming but it is good to be aware of it;<ul>
+<li>Focus on general appearance of your website like colors, borders etc;</li>
+</ul>
+</li>
+</ul>
+<p>And also using proper name for different categories can be beneficial for immediately understanding which category a particular style belongs to and its role within the overall scope of the page. Here is a simple example:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Example Module */</span></span><br><span class="line"><span class="selector-class">.example</span> &#123; &#125;</span><br><span class="line"><span class="comment">/* Callout Module */</span></span><br><span class="line"><span class="selector-class">.callout</span> &#123; &#125;</span><br><span class="line"><span class="comment">/* Callout Module with State */</span></span><br><span class="line"><span class="selector-class">.callout</span><span class="selector-class">.is-collapsed</span> &#123; &#125;</span><br><span class="line"><span class="comment">/* Form field module */</span></span><br><span class="line"><span class="selector-class">.field</span> &#123; &#125;</span><br><span class="line"><span class="comment">/* jsExample is a subclass or variation of example */</span></span><br><span class="line"><span class="selector-class">.example-jsExample</span> &#123; &#125;</span><br><span class="line"><span class="comment">/* Inline layout  */</span></span><br><span class="line"><span class="selector-class">.l-inline</span> &#123; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
+<li>Minimizing the Depth: The depth of applicability is the number of generations that are affected by a given rule;</li>
+<li>Two Goals of SMACSS: Increase semantics and decrease reliance on specific HTML;</li>
+<li>How to separate the files in your project:<ul>
+<li>Place all Base rules into their own file;</li>
+<li>Depending on the type of layouts you have, either place all of them into a single file or major layouts into separate files;</li>
+<li>Put each module into its own file;</li>
+<li>Depending on size of project, place sub-modules into their own file;</li>
+<li>Place global states into their own file;</li>
+<li>Place layout and module states, including media queries that affect those layouts and modules, into the module files;</li>
+</ul>
+</li>
+<li>Organize styles in the following order:<ul>
+<li>Box: display, float, position, left, top, height, width…</li>
+<li>Border: border;</li>
+<li>Background: background;</li>
+<li>Text: font-family, font-size, text-transform, letter-spacing…</li>
+<li>Others: others;</li>
+</ul>
+</li>
+<li>Be Consistent;</li>
+</ul>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>This book is pretty short with all valueable content. Strongly recommend after you get familiar with all basic css concepts.</p>
+</div><div class="post-info"><span class="category"><i class="fas fa-briefcase"></i><a href="/blog/categories/readings">readings</a></span><span class="tags"><i class="fas fa-tags"></i><a href="/blog/tags/css">css</a><a href="/blog/tags/scalable">scalable</a><a href="/blog/tags/modular">modular</a></span></div></section><div class="widgets"><aside id="menuIndex" class="sidenav hidden"></aside><aside class="sidenav"><input type="text" placeholder="Enter to search" class="st-default-search-input searchbox"></aside><aside class="sidenav series"><h2>In Serie: The way I learn CSS3<i class="fas fa-arrow-down expand"></i><i class="collapse fas fa-arrow-up"></i></h2><ul class="article-list hidden"><li><a href="/blog/2016/01/10/readings-smacss-scalable-and-modular-architecture-for-css/" data-id='0' class="current">Scalable and Modular Architecture for CSS</a></li><li><a href="/blog/2015/12/31/tech-blur-on-background/" data-id='1'>Blur on Background</a></li></ul></aside><aside class="sidenav"><div class="recent-posts"><h2>Recent Posts:</h2><ul class="article-list"><li><a href="/blog/2020/07/04/travel-working-holiday-visa-3/">打工度假 (三)</a></li><li><a href="/blog/2020/07/02/travel-working-holiday-visa-2/">打工度假 (二)</a></li><li><a href="/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/">我都做了哪些来复活本博客的</a></li><li><a href="/blog/2020/07/01/travel-working-holiday-visa/">打工度假 (一)</a></li><li><a href="/blog/2020/06/30/tech-gitment-and-gittalk/">Gitment and Gitalk</a></li></ul></div></aside></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script><div class="comments"><script>const gitment = new Gitment({
+  id: new Date('Sun Jan 10 2016 07:00:00 GMT-0500').toISOString(),
+  owner: 'taoalpha',
+  repo: 'blog',
+  oauth: {
+    client_id: '875872ffb3955d0ffe20',
+    client_secret: '46040668c536860a9e2e9a8508c513309e3840b5',
+  },
+});
+gitment.render(document.querySelector('.comments'));
+</script></div></article><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script src="/blog/js/post.js"></script></body></html>

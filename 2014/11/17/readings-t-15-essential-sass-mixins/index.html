@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 15 essential Sass mixins | TaoAlpha's Blog</title><meta name="description" content="Here is my new blog based on hexo."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="15 essential Sass mixins | TaoAlpha's Blog"><meta property="og:description" content="Here is my new blog based on hexo."><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="post"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><div class="stars"></div><div class="twinkling"></div><div id="progress-bar" class="hidden"><span class="bg"></span></div><article id="content"><div class="main"><section class="entry"><h1 class="entry-title">15 essential Sass mixins</h1><div class="meta-top"><a href="https://taoalpha.github.io"><div style="display:inline-block;" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&amp;s=40" alt="100"></div><span>TaoAlpha</span></a><span>2014-11-17</span><span class="wordage">7372 words</span><span class="readspeed">22 minutes to read</span></div><div class="entry-content"><h4>Source:</h4>
+
+<ul>
+<li><a href="http://www.developerdrive.com/2014/11/15-essential-sass-mixins/" target="_blank" rel="noopener">原文: 15 essential Sass Mixins</a></li>
+</ul>
+
+<h3>15 个必备的Sass mixins</h3>
+
+<p>现在有很多成套的sass mixin库, 比如我个人很喜欢的 <a href="http://bourbon.io/" target="_blank" rel="noopener">Bourbon</a>和非常流行的 <a href="http://compass-style.org/" target="_blank" rel="noopener">Compass</a>. 但是有时候, 实际上是多数情况下, 可能从中选一些结合自己的mixin才是最适合自己的.</p>
+
+<p>过于依赖一个工具总是不好的, 而且如果你想让sass的mixin通过@include来调用的话, 那么你就更应该试着写写自己的mixin了~</p>
+
+<p>sass的mixin的应用范围是非常广泛的, 而以下这15个mixin则是每个开发者都应该有的:</p>
+
+<p><strong>box-sizing</strong></p>
+
+<p>sass就像所有的预处理器一样, 能够很好的处理浏览器前缀的. 下面这个mixin是用于处理box-sizing这个前缀的:</p>
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box-sizing($type)</span><br><span class="line"> &#123;</span><br><span class="line"> -webkit-box-sizing:$type;</span><br><span class="line"> -moz-box-sizing:$type;</span><br><span class="line"> box-sizing:$type;</span><br><span class="line"> &#125;</span><br><span class="line">&lt;/code&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>用法很简单:</p>
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    @include box-sizing(border-box);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/code&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>Opacity</strong>
+除了浏览器前缀之外, 还让人无比反感但又经常使用的就是透明度的问题了, 尤其是老版本的IE. 下面这个mixin则可以帮助你解决这个问题:</p>
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> opacity($opacity) &#123;</span><br><span class="line">    opacity: $opacity;</span><br><span class="line">    filter: alpha(opacity=($opacity * 100));</span><br><span class="line"> &#125;</span><br><span class="line">&lt;/code&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>用法也很简单:</p>
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">@include opacity(0.5);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/code&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>column-width</strong></p>
+<p>这又是一个mixin处理浏览器前缀的极好例子:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> column-width ( $<span class="attribute">value:</span> <span class="number">150px</span> ) &#123;</span><br><span class="line"> -webkit-column-width: $value;</span><br><span class="line">  -moz-column-width: $value;</span><br><span class="line">  column-width: $value;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>用法很简单:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line"> @include column-width(150px);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong><span>circle</span></strong></p>
+<p>一旦你为 <em>border-radius</em>做了mixin后, 你就可以在其他的mixin中使用它了, 下例就是典型:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> circle</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">@include</span> border-radius(<span class="number">100%</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>用法很简单:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include circle();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>font-size</strong></p>
+<p><span>Mixin对于边试边调是极好的, 下例的font-size的mixin就可以通过简单的修改rem来调整字体大小了, 而rem也仅会在支持它的浏览器中起作用.</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> font-size($size) &#123;</span><br><span class="line"> font-size:$size;</span><br><span class="line"> font-size: ($size / 16px) * 1rem;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>用法很简单:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include font-size(14px);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>box-shadow</strong></p>
+<p><span>同样还是处理浏览器前缀问题的:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> box-shadow( $<span class="attribute">h:</span> <span class="number">10px</span> , $<span class="attribute">v:</span> <span class="number">10px</span> , $<span class="attribute">b:</span> <span class="number">0px</span> , $<span class="attribute">s:</span> <span class="number">0px</span> , $<span class="attribute">c:</span> #<span class="number">000000</span> ) &#123;</span><br><span class="line">  -webkit-box-shadow: $h $v $b $s $c;</span><br><span class="line">  -moz-box-shadow: $h $v $b $s $c;</span><br><span class="line">  box-shadow: $h $v $b $s $c;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><span>用法很简单:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include box-shadow(8px, 8px);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>xPos</strong></p>
+<p><span>你还可以使用mixin来简化代码, 下面例子就是让你把元素沿横轴定位时使用:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> xPos($x)&#123;</span><br><span class="line"> -webkit-transform:translateX($x);</span><br><span class="line"> -moz-transform:translateX($x);</span><br><span class="line"> -ms-transform:translateX($x);</span><br><span class="line"> transform:translateX($x);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><span>用法很简单:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include xPos(50px);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong><span>vertical-align</span></strong></p>
+<p><span>纵向居中一个元素是很费劲的一件事, 不过下面这个mixin则可以给你很大的帮助:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> vertical-align &#123;</span><br><span class="line"> <span class="selector-tag">position</span>: <span class="selector-tag">relative</span>;</span><br><span class="line"> <span class="selector-tag">top</span>: 50%;</span><br><span class="line"> <span class="selector-tag">-webkit-transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</span><br><span class="line"> <span class="selector-tag">-ms-transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</span><br><span class="line"> <span class="selector-tag">transform</span>: <span class="selector-tag">translateY</span>(<span class="selector-tag">-50</span>%);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><span>用法很简单:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include vertical-align();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong><span>flexbox</span></strong></p>
+<p><span>mixin在处理类似flexbox的问题时非常有效: .</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flexbox&#123;</span><br><span class="line"> display:-webkit-box; // old</span><br><span class="line"> display:-moz-box; // old</span><br><span class="line"> display:-ms-flexbox; // ie</span><br><span class="line"> display:-webkit-flex; // new</span><br><span class="line"> display:flex; // new</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><span>用法很简单:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include flexbox();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>flex</strong></p>
+<p><span>一旦通过mixin设定 <em>display</em> 属性为 <em>flex,</em> 那么你就也需要一个mixin来设定 <em>flex</em> 属性了:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flex($values) &#123;</span><br><span class="line"> -webkit-box-flex: $values;</span><br><span class="line"> -moz-box-flex: $values;</span><br><span class="line"> -ms-flex: $values;</span><br><span class="line"> -webkit-flex: $values;</span><br><span class="line"> flex: $values;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>用法很简单:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include flex(1, 2);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong><span>flex-order</span></strong></p>
+<p><span>再加一个设定order的:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flex-order($order)&#123;</span><br><span class="line"> -webkit-box-ordinal-group: $order; // old</span><br><span class="line"> -moz-box-ordinal-group: $order; // old</span><br><span class="line"> -ms-flex-order: $order; // ie</span><br><span class="line"> -webkit-order: $order; // new</span><br><span class="line"> order: $order; // new</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><span>用法很简单:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include flex-order(3);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong><span>flex-direction</span></strong></p>
+<p><span>mixin也是支持sass中的 <em>@if</em>, <em>@else if,</em> 以及 <em>@else</em> 等语句的, 可以用来把2个不同的mixin合并到一起:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> flex-direction($direction)&#123;</span><br><span class="line"> <span class="keyword">@if</span> $direction == column</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="selector-tag">-webkit-flex-direction</span><span class="selector-pseudo">:vertical</span>;</span><br><span class="line"> <span class="selector-tag">-moz-flex-direction</span><span class="selector-pseudo">:vertical</span>;</span><br><span class="line"> <span class="selector-tag">-ms-flex-direction</span><span class="selector-pseudo">:column</span>;</span><br><span class="line"> <span class="selector-tag">-webkit-flex-direction</span><span class="selector-pseudo">:column</span>;</span><br><span class="line"> <span class="selector-tag">flex-direction</span><span class="selector-pseudo">:column</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">@else</span></span><br><span class="line"> &#123;</span><br><span class="line"> <span class="selector-tag">-webkit-flex-direction</span><span class="selector-pseudo">:horizontal</span>;</span><br><span class="line"> <span class="selector-tag">-moz-flex-direction</span><span class="selector-pseudo">:horizontal</span>;</span><br><span class="line"> <span class="selector-tag">-ms-flex-direction</span><span class="selector-pseudo">:row</span>;</span><br><span class="line"> <span class="selector-tag">-webkit-flex-direction</span><span class="selector-pseudo">:row</span>;</span><br><span class="line"> <span class="selector-tag">flex-direction</span><span class="selector-pseudo">:row</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>用法很简单:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include flex-direction(column);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong><span>gradient</span></strong></p>
+<p><span>代码尽量要简单, 不过在必要的时候, mixin比较臃肿也是情有可原的.下面这个例子是为不同浏览器设定渐变效果的mixin, 只需要3个参数就能实现很好的渐变效果:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> gradient($start-color, $end-color, $orientation)&#123;</span><br><span class="line"> background: $start-color;</span><br><span class="line"> <span class="keyword">@if</span> $orientation == vertical</span><br><span class="line"> &#123;</span><br><span class="line"> // vertical</span><br><span class="line"> background: -moz-linear-gradient(top, $start-color 0%, $end-color 100%);</span><br><span class="line"> background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$start-color), color-stop(100%,$end-color));</span><br><span class="line"> background: -webkit-linear-gradient(top, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: -o-linear-gradient(top, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: -ms-linear-gradient(top, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: linear-gradient(to bottom, $start-color 0%,$end-color 100%);</span><br><span class="line"> filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=0 );</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">@else</span> if $orientation == horizontal</span><br><span class="line"> &#123;</span><br><span class="line"> // horizontal</span><br><span class="line"> background: -moz-linear-gradient(left, $start-color 0%, $end-color 100%);</span><br><span class="line"> background: -webkit-gradient(linear, left top, right top, color-stop(0%,$start-color), color-stop(100%,$end-color));</span><br><span class="line"> background: -webkit-linear-gradient(left, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: -o-linear-gradient(left, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: -ms-linear-gradient(left, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: linear-gradient(to right, $start-color 0%,$end-color 100%);</span><br><span class="line"> filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">@else</span></span><br><span class="line"> &#123;</span><br><span class="line"> // radial</span><br><span class="line"> background: -moz-radial-gradient(center, ellipse cover, $start-color 0%, $end-color 100%);</span><br><span class="line"> background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$start-color), color-stop(100%,$end-color));</span><br><span class="line"> background: -webkit-radial-gradient(center, ellipse cover, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: -o-radial-gradient(center, ellipse cover, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: -ms-radial-gradient(center, ellipse cover, $start-color 0%,$end-color 100%);</span><br><span class="line"> background: radial-gradient(ellipse at center, $start-color 0%,$end-color 100%);</span><br><span class="line"> filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$start-color', endColorstr='$end-color',GradientType=1 );</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>用法很简单:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include gradient(#ff00ff, #ff00cc, vertical);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong><span>ghost-button</span></strong></p>
+<p><span>如果你想要紧随潮流的话, 你可以利用下面这个mixin来创建一个 <a href="http://www.developerdrive.com/2014/10/how-to-make-a-ghost-button-in-css3/" target="_blank" rel="noopener">ghost button</a>, 上面的例子是我们几周前做的. 通过 <em>&amp;:hover</em> 属性可以让我们指定其hover的状态:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> ghost-button($font, $font-size, $font-color, $border-size, $border-color, $padding, $transition-speed, $hover-color)&#123;</span><br><span class="line"> <span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>;</span><br><span class="line"> <span class="selector-tag">text-decoration</span><span class="selector-pseudo">:none</span>;</span><br><span class="line"> <span class="selector-tag">text-transform</span><span class="selector-pseudo">:uppercase</span>;</span><br><span class="line"> font-family: $font;</span><br><span class="line"> font-size: $font-size;</span><br><span class="line"> color:$font-color;</span><br><span class="line"> border:$border-size solid $border-color;</span><br><span class="line"> padding:$padding;</span><br><span class="line"> -webkit-transition: color $transition-speed, background $transition-speed;</span><br><span class="line"> transition: color $transition-speed, background $transition-speed;</span><br><span class="line"> &amp;<span class="selector-tag">amp</span>;<span class="selector-pseudo">:hover</span></span><br><span class="line"> &#123;</span><br><span class="line"> <span class="attribute">background</span>:$border-color;</span><br><span class="line"> <span class="attribute">color</span>:$hover-color;</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><span>用法很简单:</span></p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> @include ghost-button(“Trebuchet”, 12px, #ffffff, 5px, #34dec6, 4px, 300ms, #000000 );</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong><span>break-point</span></strong></p>
+<p><span>通过使用 </span><em>@content</em> 语句, 我们甚至可以把内容也加入include中去, 在此基础上建立断点. 当然你不应该仅仅根据设备尺寸来设定断点, 不过下面的例子中还是简单的分为了PC和手机端:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@mixin</span> break-point($point)</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">@if</span> $point == desktop&#123;</span><br><span class="line"> <span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">50em</span>)</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">@content</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">@else</span> if $point == mobile&#123;</span><br><span class="line"> <span class="keyword">@media</span> <span class="keyword">only</span> screen <span class="keyword">and</span> (<span class="attribute">max-width:</span><span class="number">20em</span>)</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="keyword">@content</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>用法很简单:</p>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line"> <span class="attribute">margin</span>:<span class="number">5em</span>;</span><br><span class="line"> @include break-point(mobile)</span><br><span class="line"> &#123;</span><br><span class="line"> <span class="attribute">margin</span>:<span class="number">2em</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+</div><div class="post-info"><span class="category"><i class="fas fa-briefcase"></i><a href="/blog/categories/readings">readings</a></span><span class="tags"><i class="fas fa-tags"></i><a href="/blog/tags/%E8%AF%91%E7%B3%BB%E5%88%97">译系列</a><a href="/blog/tags/%E7%BF%BB%E8%AF%91%E6%96%87%E7%AB%A0">翻译文章</a><a href="/blog/tags/coding">coding</a><a href="/blog/tags/Sass">Sass</a><a href="/blog/tags/Mixin">Mixin</a></span></div></section><div class="widgets"><aside id="menuIndex" class="sidenav hidden"></aside><aside class="sidenav"><input type="text" placeholder="Enter to search" class="st-default-search-input searchbox"></aside><div class="related-posts sidenav"><h2>Related Posts:</h2><ul class="article-list"><li><a href="/blog/2015/03/08/readings-what-is-pythonic/">What is Pythonic?</a></li><li><a href="/blog/2015/02/16/readings-reloading-python-modules/">Reloading Python Modules</a></li><li><a href="/blog/2014/12/05/readings-read-a-brief-history-of-web-design/">网页设计简史</a></li><li><a href="/blog/2014/12/04/readings-read-google-did-a-good-thing-kill-annoying-type-identification-code/">Google又做了一件大好事:干掉了烦人的识别型验证码!</a></li><li><a href="/blog/2014/11/27/readings-talk-about-application-of-colors-in-the-market/">谈谈颜色在市场方面的应用</a></li></ul></div><aside class="sidenav"><div class="recent-posts"><h2>Recent Posts:</h2><ul class="article-list"><li><a href="/blog/2020/07/04/travel-working-holiday-visa-3/">打工度假 (三)</a></li><li><a href="/blog/2020/07/02/travel-working-holiday-visa-2/">打工度假 (二)</a></li><li><a href="/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/">我都做了哪些来复活本博客的</a></li><li><a href="/blog/2020/07/01/travel-working-holiday-visa/">打工度假 (一)</a></li><li><a href="/blog/2020/06/30/tech-gitment-and-gittalk/">Gitment and Gitalk</a></li></ul></div></aside></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script><div class="comments"><script>const gitment = new Gitment({
+  id: new Date('Mon Nov 17 2014 03:00:00 GMT-0500').toISOString(),
+  owner: 'taoalpha',
+  repo: 'blog',
+  oauth: {
+    client_id: '875872ffb3955d0ffe20',
+    client_secret: '46040668c536860a9e2e9a8508c513309e3840b5',
+  },
+});
+gitment.render(document.querySelector('.comments'));
+</script></div></article><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script src="/blog/js/post.js"></script></body></html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> JavaScript the Definitive Guide (8) | TaoAlpha's Blog</title><meta name="description" content="本书收篇."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="JavaScript the Definitive Guide (8) | TaoAlpha's Blog"><meta property="og:description" content="本书收篇."><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="post"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><div class="stars"></div><div class="twinkling"></div><div id="progress-bar" class="hidden"><span class="bg"></span></div><article id="content"><div class="main"><section class="entry"><h1 class="entry-title">JavaScript the Definitive Guide (8)</h1><div class="meta-top"><a href="https://taoalpha.github.io"><div style="display:inline-block;" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&amp;s=40" alt="100"></div><span>TaoAlpha</span></a><span>2015-06-27</span><span class="wordage">4392 words</span><span class="readspeed">13 minutes to read</span></div><div class="entry-content"><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>先说题外话: 昨天读到中途转去忙把以前的旧文章移植过来, 昨夜就已完成, 主要通过python解析了导出来的xml文本, 然后获取对应的时间信息和url信息组成符合jekyll规则的文件名, 再利用文本拼接出每个文件中固有的头和主体, 本来计划用<a href="https://github.com/aaronsw/html2text" target="_blank" rel="noopener">html2text</a>来把每个博文转为markdown, 不过后来源码有些问题, 对部分博文识别不好, 我也没时间细改, 所以就干脆拼接了html到主体中去.</p>
+<p>主要导入了当初写的<a href="%3C!--%EF%BF%BC3--%3E/tag/Patch/">Patch系列</a>和针对UX写的<a href="%3C!--%EF%BF%BC4--%3E/tag/%E8%AF%91%E7%B3%BB%E5%88%97/">翻译系列</a>. 分别归类到了<a href="%3C!--%EF%BF%BC5--%3E/tech">Tech</a>和<a href="%3C!--%EF%BF%BC6--%3E/dandp">DandP</a>目录下. 有兴趣的可查看之~</p>
+<p>今天来继续完结<code>JavaScript: the Definitive Guide</code>一书.</p>
+<h2 id="阅读笔记"><a href="#阅读笔记" class="headerlink" title="阅读笔记"></a>阅读笔记</h2><h3 id="Chapter-20-Client-side-Storage"><a href="#Chapter-20-Client-side-Storage" class="headerlink" title="Chapter 20 - Client-side Storage"></a>Chapter 20 - Client-side Storage</h3><ul>
+<li><code>application cache</code>:<ul>
+<li>为了丰富web app的功能, 或者说让web app更加的像native app, 就有了<code>application cache</code>这个机制, 从而让离线对于web app来说成为了可能;</li>
+<li><code>application cache</code>存储所有的静态格式, 包含<code>html</code>,<code>css</code>,<code>javascript</code>,<code>images</code>等等, 所有和web运行相关的资源文件;</li>
+<li><code>application cache</code>不作为常规<code>cache</code>而被轻易清理掉, 它会一直保持直到被要求删除或者用户手动删除;</li>
+<li><code>Manifest</code>: 为了能够让浏览器将网页存储到<code>application cache</code>里, 我们需要一个<code>manifest</code>文件, 并将之引入到html的head中<code>&lt;html manifest=&quot;myapp.appcache&quot;&gt;</code><ul>
+<li>此文件必须以<code>CACHE MANIFEST</code>为起始行;</li>
+<li>列出所有需要加入application cache里的文件, 用相对路径, 相对与manifest文件而言;</li>
+<li><code>#</code>表示注释, 空行自动忽略;</li>
+<li>此文件生效的前提是其MIME属性为<code>text/cache-manifest</code>, 即<code>Content-Type</code>这个header属性, 通常你需要自行在server中添加对应的规则;</li>
+<li>如果网页由多个html组成, 则每个html都需要使用<code>&lt;html manifest=&quot;myapp.appcache&quot;&gt;</code>声明, 指向同一个appcache文件即可;</li>
+<li>一旦缓存, 则所有资源文件都从缓存中获取, 未列出的资源不予加载;</li>
+</ul>
+</li>
+<li><code>Complex Manifest</code>:<ul>
+<li><code>manifest</code>支持复杂规则, 其支持多个<code>section</code>, 包含了<code>NETWORK:</code>,<code>FALLBACK:</code>这两类, 还要加上默认的<code>CACHE:</code>;</li>
+<li><code>NETWORK:</code>: 所有不予cache必须要从网络获取的资源, 可以设定路径, 支持通配符<code>*</code>;</li>
+<li><code>FALLBACK:</code>: 如其名, 优先从网络获取, 无法获取时从本地获取, 所以其每行指定两个url;</li>
+</ul>
+</li>
+<li><code>Update</code>:<ul>
+<li>对于<code>Application Cache</code>而言, 其更新主要依照<code>manifest</code>, 浏览器会自动在情况允许时帮助你查看<code>manifest</code>是否更新, 如有, 则重新缓存所有文件;</li>
+<li>注意: 浏览器不会自动帮你查看缓存的文件是否更新, 只查看<code>manifest</code>;</li>
+<li>通常可以使用<code>#</code>加一行version的注释行来强制更新;</li>
+<li><code>applicationCache.onupdateready</code>: application cache提供了状态函数来指示其更新的进度, 你可以针对其加以操作, 还包含<code>onchecking</code>,<code>onnoupdate</code>,<code>ondownloading</code>,<code>onprogress</code>,<code>oncached</code>,<code>onerror</code>,<code>onobsolete</code>;</li>
+<li>除了上述事件外, 还可以通过<code>applicationCache.status</code>来探测其状态: <code>ApplicationCache.UNCACHED =&gt; (0)</code>,<code>ApplicationCache.IDLE =&gt; (1)</code>,<code>ApplicationCache.CHECKING =&gt; (2)</code>,<code>ApplicationCache.DOWNLOADING =&gt; (3)</code>,<code>ApplicationCache.UPDATEREADY =&gt; (4)</code>,<code>ApplicationCache.OBSOLETE =&gt; (5)</code>;</li>
+<li><code>swapCache()</code>: 清楚旧或者废弃的缓存;</li>
+</ul>
+</li>
+<li><code>Delete</code>:<ul>
+<li>很简单, 删除<code>manifest</code>, 去掉html中的引用即可;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CACHE MANIFEST</span><br><span class="line"># appVersion: 1</span><br><span class="line"></span><br><span class="line">CACHE:</span><br><span class="line">myapp.html</span><br><span class="line">myapp.css</span><br><span class="line">myapp.js</span><br><span class="line"></span><br><span class="line">FALLBACK:</span><br><span class="line">videos/ offline_help.html</span><br><span class="line"></span><br><span class="line">NETWORK:</span><br><span class="line">cgi/</span><br></pre></td></tr></table></figure>
+
+<p>这就算是一个最基本的<code>manifest</code>了.</p>
+<h3 id="Chapter-21-Scripted-Media-and-Graphics"><a href="#Chapter-21-Scripted-Media-and-Graphics" class="headerlink" title="Chapter 21 - Scripted Media and Graphics"></a>Chapter 21 - Scripted Media and Graphics</h3><ul>
+<li><code>Images</code>:<ul>
+<li><code>onmouseover</code>: 鼠标<code>hover</code>移入事件;</li>
+<li><code>onmouseout</code>: 鼠标<code>hover</code>移出事件;</li>
+<li><code>new Image()</code>: 通过创建一个<code>Image</code>对象, 可以赋予其<code>src</code>属性从而实现预加载的功能;</li>
+</ul>
+</li>
+<li><code>Audio</code><ul>
+<li><code>(new Audio()).canPlayType(type)</code>: 检测某种类型的文件是否能播放;</li>
+<li><code>play()</code>: 播放;</li>
+<li><code>initialTime</code>: 初始播放进度;</li>
+<li><code>duration</code>: 文件总时长;</li>
+<li><code>currentTime</code>: 当前播放进度;</li>
+<li><code>muted</code>: boolean, 是否静音;</li>
+<li><code>volume</code>: 音量值;</li>
+<li><code>controls</code>: boolean, 是否显示控件;</li>
+<li><code>loop</code>: boolean, 是否循环;</li>
+<li><code>preload</code>: 是否预加载以及预加载类型, <code>metadata</code>表示加载时长,帧速等, <code>auto</code>表示尽可能预加载更多的内容, <code>none</code>什么都不预加载;</li>
+<li><code>autoplay</code>: boolean, 是否自动播放;</li>
+<li><code>playbackRate</code>: 播放速度(1.0 == normal speed);</li>
+<li><code>readyState</code>: 加载情况(0,1,2,3,4)=&gt;(尚未加载, 已加载但当前位置未加载, 当前位置已开始加载但是不足以开始播放(下一帧还没加载好),已加载且足够播放但是不足以播放到结尾,加载基本足够可以播放至结束)</li>
+<li><code>networkState</code>: 当前媒体文件使用网络的情况(0,1,2,3)=&gt;(还没开始, 没开始但可能已经加载完或者预加载设置为none, 正在使用中, 无法找到资源);</li>
+<li><code>error</code>: 错误信息(1,2,3,4)=&gt;(用户手动停止, 类型正确网络不通畅, encoding问题, 类型不支持)</li>
+</ul>
+</li>
+<li><code>Video</code></li>
+</ul>
+<img class="2015-06-27&#x2F;Video-Event-Type.png">
+
+<ul>
+<li><p><code>SVG: Scalable Vector Graphics</code></p>
+<ul>
+<li>SVG算是一种xml格式的矢量图类型;</li>
+<li>最新的主流浏览器基本都支持直接在<code>img</code>中嵌入svg, 部分老的浏览器依然只支持使用<code>object</code>标签: <code>&lt;object data=&quot;sample.svg&quot; type=&quot;image/svg+xml&quot; width=&quot;100&quot; height=&quot;100&quot;/&gt;</code></li>
+<li>一定程度上SVG很像<code>canvas</code>, 不过它是通过XML的属性来实现的(比如通过<code>&lt;line x1=&#39;50&#39; y1=&#39;5.000&#39; x2=&#39;50.00&#39; y2=&#39;10.00&#39;/&gt;</code>来画线);</li>
+</ul>
+</li>
+<li><p><code>Canvas</code></p>
+<ul>
+<li>作为HTML5引入的一个可谓是最重要的标签之一, canvas的存在极大的丰富了网络的表现形式;</li>
+<li><code>canvas</code>和js的关系紧密, 因为其绘画的实现方式就是通过js;</li>
+<li><code>canvas.getContext(&#39;2d&#39;/&#39;3d&#39;)</code>: 通过它创建的对象就可以在画布上尽情挥洒了;</li>
+<li>很多canvas的函数本质都是数学坐标的公式运算!</li>
+</ul>
+</li>
+</ul>
+<p>我会在后面阅读的<a href="http://book.douban.com/subject/6383126/" target="_blank" rel="noopener">HTML5 Canvas</a>中更加详细的研究canvas的各种用法~ 敬请期待~</p>
+<img class="2015-06-27&#x2F;canvas-api.png">  
+
+<h3 id="Chapter-22-HTML5-APIs"><a href="#Chapter-22-HTML5-APIs" class="headerlink" title="Chapter 22 - HTML5 APIs"></a>Chapter 22 - HTML5 APIs</h3><ul>
+<li>Geolocation:<ul>
+<li><code>navigator.geolocation.getCurrentPosition()</code></li>
+<li><code>navigator.geolocation.watchPosition()</code>: 在用户位置变化时唤醒;</li>
+<li><code>navigator.geolocation.clearWatch()</code></li>
+<li><a href="http://codepen.io/agrayson/pen/IvjCi" target="_blank" rel="noopener">实例 codepen</a></li>
+</ul>
+</li>
+<li>History Management:<ul>
+<li><code>pushState()</code></li>
+<li><code>replaceState()</code></li>
+<li><a href="http://codepen.io/lodr/pen/ldcwk" target="_blank" rel="noopener">实例 codepen</a></li>
+</ul>
+</li>
+<li>Cross-Origin Messaging:<ul>
+<li><code>postMessage()</code></li>
+<li><code>onmessage()</code></li>
+<li><a href="http://codepen.io/matt-west/pen/lpExI" target="_blank" rel="noopener">实例 codepen</a></li>
+</ul>
+</li>
+<li>Web Workers:<ul>
+<li>通常来说, js的执行是单线程的, 不支持多线程, 利用<code>Worker</code>可以稍稍的模拟下多线程;</li>
+<li><code>Worker</code>开启的执行不能对window和Dom有任何的操作, 和主线程只能通过<code>postMessage()</code>来交互;</li>
+<li><code>Worker</code>对象的工作域是<code>WorkerGlobalScope</code>, 完全和主线程工作域不同;</li>
+<li><code>Worker</code>支持<code>importScripts</code>来引入其需要的js库;</li>
+<li><a href="http://codepen.io/lodr/pen/qpfEy" target="_blank" rel="noopener">实例 codepen</a> - 因为跨域问题, 所以这里不能执行, 不过代码很简单, 很好理解, 有兴趣的可以download到本地测试</li>
+</ul>
+</li>
+<li>Typed Arrays and ArrayBuffers:<ul>
+<li>HTML5 的数组类型变的更加强大, 开始出现类似<code>Int8Array()</code>,<code>Uint8Array()</code>等多种新形式;</li>
+<li><a href="http://codepen.io/lodr/pen/ymlgt" target="_blank" rel="noopener">实例 codepen</a></li>
+</ul>
+</li>
+<li>Blobs:<ul>
+<li>算是存储的一种新形势, 浏览器通常可以存储<code>Blobs</code>到内存或者硬盘中, <code>blobs</code>本身更是可以代表任何数据, 以二进制的形式;</li>
+<li><a href="http://codepen.io/davidelrizzo/pen/cxsGb" target="_blank" rel="noopener">实例 codepen</a></li>
+</ul>
+</li>
+<li>The Filesystem API: 开启本地文件交互时代;<ul>
+<li><a href="http://codepen.io/lodr/pen/aHwtn" target="_blank" rel="noopener">实例 codepen</a></li>
+</ul>
+</li>
+<li>Client-Side Databases: 主要为IndexedDB;<ul>
+<li><a href="http://codepen.io/gtorodelvalle/pen/puBoE" target="_blank" rel="noopener">实例 codepen</a></li>
+</ul>
+</li>
+<li>Web Sockets: 一种相对http来说的新网络协议;<ul>
+<li><a href="http://codepen.io/matt-west/pen/tHlBb" target="_blank" rel="noopener">实例 codepen</a></li>
+</ul>
+</li>
+</ul>
+<p>上面针对HTML 5的各个API给出了一个对应的实例, 毕竟看着具体的代码和例子才有意思哈哈</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="http://book.douban.com/subject/5303032/" target="_blank" rel="noopener">JavaScript the Definitive Guide 6th edition</a></li>
+</ul>
+</div><div class="post-info"><span class="category"><i class="fas fa-briefcase"></i><a href="/blog/categories/readings">readings</a></span><span class="tags"><i class="fas fa-tags"></i><a href="/blog/tags/js">js</a><a href="/blog/tags/reding-notes">reding notes</a></span></div></section><div class="widgets"><aside id="menuIndex" class="sidenav hidden"></aside><aside class="sidenav"><input type="text" placeholder="Enter to search" class="st-default-search-input searchbox"></aside><aside class="sidenav series"><h2>In Serie: Basic Guide for JavaScript<i class="fas fa-arrow-down expand"></i><i class="collapse fas fa-arrow-up"></i></h2><ul class="article-list hidden"><li><a href="/blog/2015/06/18/readings-javascript-the-definitive-guide-2/" data-id='0'>JavaScript the Definitive Guide (2)</a></li><li><a href="/blog/2015/06/24/readings-javascript-the-definitive-guide-5/" data-id='1'>JavaScript the Definitive Guide (5)</a></li><li><a href="/blog/2015/06/23/readings-javascript-the-definitive-guide-4/" data-id='2'>JavaScript the Definitive Guide (4)</a></li><li><a href="/blog/2015/06/22/readings-javascript-the-definitive-guide-3/" data-id='3'>JavaScript the Definitive Guide (3)</a></li><li><a href="/blog/2015/06/25/readings-javascript-the-definitive-guide-6/" data-id='4'>JavaScript the Definitive Guide (6)</a></li><li><a href="/blog/2015/06/27/readings-javascript-the-definitive-guide-8/" data-id='5' class="current">JavaScript the Definitive Guide (8)</a></li></ul></aside><div class="related-posts sidenav"><h2>Related Posts:</h2><ul class="article-list"><li><a href="/blog/2016/01/09/readings-javascript-coding-style/">JavaScript Coding Style</a></li><li><a href="/blog/2015/06/30/readings-coffeescript-programming-with-jquery-rails-and-nodejs-2/">CoffeeScript Programming with jQuery, rails and Nodejs (2)</a></li><li><a href="/blog/2015/06/28/readings-coffeescript-programming-with-jquery-rails-and-nodejs/">CoffeeScript Programming with jQuery, rails and Nodejs (1)</a></li><li><a href="/blog/2015/06/26/readings-javascript-the-definitive-guide-7/">JavaScript the Definitive Guide (7)</a></li><li><a href="/blog/2015/06/25/readings-javascript-the-definitive-guide-6/">JavaScript the Definitive Guide (6)</a></li></ul></div><aside class="sidenav"><div class="recent-posts"><h2>Recent Posts:</h2><ul class="article-list"><li><a href="/blog/2020/07/04/travel-working-holiday-visa-3/">打工度假 (三)</a></li><li><a href="/blog/2020/07/02/travel-working-holiday-visa-2/">打工度假 (二)</a></li><li><a href="/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/">我都做了哪些来复活本博客的</a></li><li><a href="/blog/2020/07/01/travel-working-holiday-visa/">打工度假 (一)</a></li><li><a href="/blog/2020/06/30/tech-gitment-and-gittalk/">Gitment and Gitalk</a></li></ul></div></aside></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script><div class="comments"><script>const gitment = new Gitment({
+  id: new Date('Sat Jun 27 2015 08:00:00 GMT-0400').toISOString(),
+  owner: 'taoalpha',
+  repo: 'blog',
+  oauth: {
+    client_id: '875872ffb3955d0ffe20',
+    client_secret: '46040668c536860a9e2e9a8508c513309e3840b5',
+  },
+});
+gitment.render(document.querySelector('.comments'));
+</script></div></article><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script src="/blog/js/post.js"></script></body></html>

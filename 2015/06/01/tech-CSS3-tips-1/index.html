@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> CSS3 中易混淆属性 (1) | TaoAlpha's Blog</title><meta name="description" content="新开CSS3系列, 主要介绍CSS3的一些基本新属性, 新用法以及小技巧之类的. 本次主题是nth-child()和nth-of-type(), 以及initial和inherit, em和rem."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="CSS3 中易混淆属性 (1) | TaoAlpha's Blog"><meta property="og:description" content="新开CSS3系列, 主要介绍CSS3的一些基本新属性, 新用法以及小技巧之类的. 本次主题是nth-child()和nth-of-type(), 以及initial和inherit, em和rem."><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="post"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><div class="stars"></div><div class="twinkling"></div><div id="progress-bar" class="hidden"><span class="bg"></span></div><article id="content"><div class="main"><section class="entry"><h1 class="entry-title">CSS3 中易混淆属性 (1)</h1><div class="meta-top"><a href="https://taoalpha.github.io"><div style="display:inline-block;" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&amp;s=40" alt="100"></div><span>TaoAlpha</span></a><span>2015-06-01</span><span class="wordage">1762 words</span><span class="readspeed">6 minutes to read</span></div><div class="entry-content"><h2 id="开题说明"><a href="#开题说明" class="headerlink" title="开题说明"></a>开题说明</h2><p>继jekyll tips系列之后, 这次新开CSS3 tips系列. 以记录学习研究过程中对css3的困惑以及心得~ </p>
+<h2 id="今日主题"><a href="#今日主题" class="headerlink" title="今日主题"></a>今日主题</h2><p>今日的主题主要有以下三个方面, 我会逐一说明.</p>
+<h3 id="nth-child-和-nth-of-type"><a href="#nth-child-和-nth-of-type" class="headerlink" title="nth-child() 和 nth-of-type()"></a><code>nth-child()</code> 和 <code>nth-of-type()</code></h3><p>nth-child()和nth-of-type()都是CSS3新引入的pseudo class. 两者有着非常接近而又细微的差别.</p>
+<p>其中:</p>
+<ul>
+<li><p><strong>:nth-child()</strong> 指的是 “第x个指定的元素;</p>
+</li>
+<li><p><strong>:nth-of-type()</strong> 指的是 “第x个指定的<strong>该</strong>元素;</p>
+</li>
+</ul>
+<p>有点难以理解? 看下下面的例子就可以了:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">section</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">span</span>&gt;</span>Little<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span>&gt;</span>Piggy<span class="tag">&lt;/<span class="name">p</span>&gt;</span>    <span class="comment">&lt;!-- p:nth-child(2) --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">p</span>&gt;</span>second one<span class="tag">&lt;/<span class="name">p</span>&gt;</span>    <span class="comment">&lt;!-- p:nth-of-type(2) --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">section</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-child(2)</span> &#123; <span class="attribute">color</span>: red; &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:nth-of-type(2)</span> &#123; <span class="attribute">color</span>: red; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>多数情况下, 两者确实是可以混用的, 但对于类似上述的这种情况或者是对于table元素(因为table下的tr和th是同级别元素), 那么这个细微的差别就很有价值了.</p>
+<p>目前<code>:nth-of-type</code>的支持已经比较普遍了, 主流浏览器都是从比较早的版本就支持了:Firefox 3.5+, Opera 9.5+, Chrome 2+, Safari 3.1+, IE 9+ .</p>
+<h3 id="initial-和-inherit"><a href="#initial-和-inherit" class="headerlink" title="initial 和 inherit"></a>initial 和 inherit</h3><p>initial 和 inherit 虽然不是css3的新元素, 但也算是很少用的几个属性之一了. 两者的区别其实和语意差别是完全一致的. </p>
+<ul>
+<li><p><strong>initial:</strong> 初始值, 通过这一值可以将某个css属性恢复到初始状态, 基本来说就是当前浏览器的默认状态, 可以说一个非常方便的reset;</p>
+</li>
+<li><p><strong>inherit:</strong> 继承值, 顾名思义, 继承其母元素的属性;</p>
+</li>
+</ul>
+<p>在元素母元素为html或者body且两者无样式的时候, 对两者的首级子元素而言, 用initial或者inherit效果是完全一样的.</p>
+<p>两个属性都是极少用到的属性, 当然也能理解, 首先很多浏览器对很多元素而言, 属性默认值就是inherit, 而initial虽然可以说是极好的reset方式, 但是想象一下每个css属性都需要重置, 一个个写…也够累的…</p>
+<p>意识到这个问题的人自然很多, 尤其是那些浏览器背后的天才工程师们, 他们已经开始着手做准备了~ 于是就有了<code>all: initial</code>这种神级的设定~ 可以一次性的reset所有属性, 可惜的是, 其目前得到的浏览器支持是很有限的:) chrome肯定有的喽~</p>
+<h3 id="em-和-rem"><a href="#em-和-rem" class="headerlink" title="em 和 rem"></a>em 和 rem</h3><p>em,rem是CSS新引入的字体尺寸单位了, 都是相对单位. 和initial, inherit异曲同工的就是两者的区别也近似后者.</p>
+<ul>
+<li>em: 相对的对象是母元素;</li>
+<li>rem: 相对的对象是根元素:root</li>
+</ul>
+<p>对于em和rem有两种用法:</p>
+<ul>
+<li><p>全局rem式: 设定全局根元素, html的字体尺寸为绝对值, 比如20px, 然后所有子元素都使用rem来定义其字体大小;</p>
+</li>
+<li><p>模块式: 鉴于上面的情况在复杂网页中有可能会出现放大比例的误差增大, 更好的一种方式就是将网页设定为模块式, 每个模块的母元素使用一个绝对大小, 子元素设定em;</p>
+</li>
+</ul>
+<p>具体选用哪一个, 还需要大家各自衡量喽~ </p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料:"></a>参考资料:</h2><ul>
+<li><a href="https://css-tricks.com/getting-acquainted-with-initial/" target="_blank" rel="noopener">Getting Acquainted with Initial</a></li>
+<li><a href="https://css-tricks.com/the-difference-between-nth-child-and-nth-of-type/" target="_blank" rel="noopener">The Difference Between :nth-child and :nth-of-type</a></li>
+<li><a href="https://css-tricks.com/rems-ems/" target="_blank" rel="noopener">Font Size Idea: px at the Root, rem for Components, em for Text Elements</a></li>
+<li><a href="https://css-tricks.com/theres-more-to-the-css-rem-unit-than-font-sizing/" target="_blank" rel="noopener">There’s more to the CSS rem unit than font sizing</a></li>
+</ul>
+</div><div class="post-info"><span class="category"><i class="fas fa-briefcase"></i><a href="/blog/categories/tech">tech</a></span><span class="tags"><i class="fas fa-tags"></i><a href="/blog/tags/css3">css3</a><a href="/blog/tags/tips">tips</a></span></div></section><div class="widgets"><aside id="menuIndex" class="sidenav hidden"></aside><aside class="sidenav"><input type="text" placeholder="Enter to search" class="st-default-search-input searchbox"></aside><aside class="sidenav series"><h2>In Serie: The Way I Learn CSS3<i class="fas fa-arrow-down expand"></i><i class="collapse fas fa-arrow-up"></i></h2><ul class="article-list hidden"><li><a href="/blog/2015/06/01/tech-CSS3-tips-1/" data-id='0' class="current">CSS3 中易混淆属性 (1)</a></li></ul></aside><div class="related-posts sidenav"><h2>Related Posts:</h2><ul class="article-list"><li><a href="/blog/2015/05/30/tech-css3-support-test/">HTML5以及CSS3兼容方法</a></li><li><a href="/blog/2015/05/07/tech-jekyll-tips-1/">Jekyll 简介</a></li><li><a href="/blog/2015/05/07/tech-jekyll-tips-2/">Jekyll 筛选 tag 的实现</a></li></ul></div><aside class="sidenav"><div class="recent-posts"><h2>Recent Posts:</h2><ul class="article-list"><li><a href="/blog/2020/07/04/travel-working-holiday-visa-3/">打工度假 (三)</a></li><li><a href="/blog/2020/07/02/travel-working-holiday-visa-2/">打工度假 (二)</a></li><li><a href="/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/">我都做了哪些来复活本博客的</a></li><li><a href="/blog/2020/07/01/travel-working-holiday-visa/">打工度假 (一)</a></li><li><a href="/blog/2020/06/30/tech-gitment-and-gittalk/">Gitment and Gitalk</a></li></ul></div></aside></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script><div class="comments"><script>const gitment = new Gitment({
+  id: new Date('Mon Jun 01 2015 09:00:00 GMT-0400').toISOString(),
+  owner: 'taoalpha',
+  repo: 'blog',
+  oauth: {
+    client_id: '875872ffb3955d0ffe20',
+    client_secret: '46040668c536860a9e2e9a8508c513309e3840b5',
+  },
+});
+gitment.render(document.querySelector('.comments'));
+</script></div></article><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script src="/blog/js/post.js"></script></body></html>

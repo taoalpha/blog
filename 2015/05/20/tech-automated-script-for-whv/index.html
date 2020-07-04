@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 自动化WHV申请工具 | TaoAlpha's Blog</title><meta name="description" content="本文介绍下制作私人使用的WHV申请工具的过程和思路,不会公布具体代码."><meta name="viewport" content="width=device-width, initial-scale=1"><!-- open graph part--><meta property="og:title" content="自动化WHV申请工具 | TaoAlpha's Blog"><meta property="og:description" content="本文介绍下制作私人使用的WHV申请工具的过程和思路,不会公布具体代码."><meta property="og:url" content="undefined"><meta property="og:image" content="http://taoalpha.github.io/images/newblog.jpg"><meta property="og:type" content="website"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hint.css/2.6.0/hint.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"><link rel="short icon" href="/blog/favicon.png"><link rel="stylesheet" href="/blog/css/default.css"><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/blog/atom.xml" title="TaoAlpha's Blog" type="application/atom+xml">
+<link rel="alternate" href="/blog/rss2.xml" title="TaoAlpha's Blog" type="application/rss+xml">
+</head><body class="post"><aside class="home-menu"><nav class="home-icon-con upside"><a href="/blog/" class="home-menu-icon brand">涛</a><a href="/blog/timeline" class="home-menu-icon"><i class="fas fa-map-marker-alt"></i></a><a aria-label="Click to take you to the search box." class="home-menu-icon search-trigger hint--right"><i class="fas fa-search"></i></a><a href="javascript:;" title="Contact Me" class="home-menu-icon follow">+</a><div class="home-contact hidden"><a href="https://facebook.com/zzgary/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/facebook-32.png" alt="facebook"></a><a href="https://github.com/taoalpha/" target="something"><img src="https://cdn1.iconfinder.com/data/icons/social-shade-rounded-rects/512/github-32.png" alt="github"></a><a href="https://taoalpha.github.io" target="something"><img src="https://cdn3.iconfinder.com/data/icons/colore-sociale/32/mewally_32x32.png" alt="portfolio"></a><a href="https://douban.com/people/129154019" target="something"><img src="https://img3.doubanio.com/favicon.ico" alt="douban"></a></div></nav><nav class="home-icon-con downside"><a href="/blog/rss2.xml" class="home-menu-icon rss"><i class="fas fa-rss"></i></a><a href="/blog/about/" class="home-menu-icon"><i class="fas fa-smile"></i></a><span id="dark-mode" class="home-menu-icon hidden"><i class="fas fa-adjust"></i></span></nav></aside><div class="stars"></div><div class="twinkling"></div><div id="progress-bar" class="hidden"><span class="bg"></span></div><article id="content"><div class="main"><section class="entry"><h1 class="entry-title">自动化WHV申请工具</h1><div class="meta-top"><a href="https://taoalpha.github.io"><div style="display:inline-block;" class="avatar"><img src="https://avatars3.githubusercontent.com/u/4335753?v=3&amp;s=40" alt="100"></div><span>TaoAlpha</span></a><span>2015-05-20</span><span class="wordage">2937 words</span><span class="readspeed">9 minutes to read</span></div><div class="entry-content"><h2 id="大体思路"><a href="#大体思路" class="headerlink" title="大体思路"></a>大体思路</h2><p>对于WHV新西兰的申请官网而言, 想要试图利用程序来实现自动申请的话, 主要需要攻克几个问题, 分步如下:</p>
+<h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><p>我曾经试过很多种登录方式来试图登录whv的申请官网, 比如用常规的post请求, 以及后来使用mechanize, 甚至尝试过selenium+chrome的组合. 但最终都因为各种原因或失败或放弃了… </p>
+<ul>
+<li><p>常规的post解包分析法:</p>
+<p>  这个的主要难点在于登录. 因为不知道是不是因为asp的原因, 每次通过模拟post获取的cookie都是无效的… 无法用于登录;</p>
+</li>
+<li><p>mechanize:</p>
+<p>  mechanize是个很不错的python module, 对于常规的网站而言绝对足够, 其对表格提交的天然支持更是很多人脚本登录的最佳选择之一. 可惜此次依然不试用… 因为官网的form提交会经过一个js的函数验证, 而mechanize最悲剧的一点就是不支持js…ಥ_ಥ</p>
+</li>
+<li><p>selenium + chrome:</p>
+<p>  可行. 但是非常慢! 不得不说, selenium和chrome的组合不愧是网页产品的自动化脚本测试神器啊. 写好运行然后就可以端碗饭在电脑前面坐等了哈哈</p>
+</li>
+<li><p>selenium + phantomjs:</p>
+<p>  考虑到chrome在天朝的情况, 以及速度本身的恶心.. 我在了解selenium的时候发现了phantomjs, 这个没有界面的浏览器后台模拟器. 而selenium和phantomjs的合并就让我看到了突破登录的希望.</p>
+</li>
+</ul>
+<h4 id="取cookie"><a href="#取cookie" class="headerlink" title="取cookie"></a>取cookie</h4><p>如上所说, 我通过selenium和phantomjs的结合, 利用其自带的webdriver的<code>get_cookies()</code>函数成功的将登录后的cookie提取出来保存到了文件之中.  而通过这样”真实”的访问获取到的cookie也如愿以偿的让我成功实现了后来的环节.</p>
+<p>这里的大体思路很简单, 就是通过phantomjs来模拟浏览器行为, 修改其自带的headers为chrome的标准headers来增加混淆程度. 因为selenium和phantomjs的易上手性, 基本这里也就5行代码搞定的节奏…</p>
+<h4 id="带cookie填表发post"><a href="#带cookie填表发post" class="headerlink" title="带cookie填表发post"></a>带cookie填表发post</h4><p>获取到cookie后, 为了节省时间, 我并没有继续选用selenium和phantomjs的组合来填表. 毕竟他们真的太慢了… 而是换用了带cookie直接post的方式. 主要思路和步骤如下:</p>
+<ul>
+<li>利用urllib2,cookielib来制作opener并装上cookie;</li>
+<li>首先进行一次试探性访问, 获取到页面状态值:viewstate,viewstategenerator,eventvalidation; 有些页面存在只有两个或者更多个的情况, 可以根据页面进行修正;</li>
+<li>组合页面状态参数以及需要post的信息数据, 进行post;</li>
+</ul>
+<p>基本来说, 只要确保post的时候key-value对好,那么, 在cookie有效期内是不会有啥问题的. 而想要做的更好更流畅, 在面对各种错误的情况下更抗压, 就得看容错这一步的做法了.</p>
+<h4 id="容错"><a href="#容错" class="headerlink" title="容错"></a>容错</h4><p>一旦实现了cookie的获取和post, 那么想让工具正式能够使用就基本靠细心的容错了. 毕竟无论是页面超时, post失败, 是否已经有表格, 表格完整性验证等等, 都需要根据具体情况逐步完善, 下面也主要介绍下我的思路.</p>
+<ul>
+<li>cookie有无以及是否失效问题;</li>
+<li>登录失败重试问题;</li>
+<li>流畅填表和中断单表填写(区分了正常情况下一张张表填和单独填某张表的情况, whv一共6个信息表要填写的);</li>
+<li>有无表格(无表格创建表格, 有表格获取表格id);</li>
+<li>表格完整性检验;</li>
+<li>表格所处状态检验(提交以及付款状态);</li>
+<li>表格post失败重试问题;</li>
+<li>超时问题;</li>
+</ul>
+<p>基本以上就构成了一个基本完整, 有着自动重试功能的自动化whv脚本了. </p>
+<h2 id="测试情况"><a href="#测试情况" class="headerlink" title="测试情况"></a>测试情况</h2><p>在名额开放前使用ireland名额测试情况如下:</p>
+<ul>
+<li><p>无cookie文件:</p>
+<p>  登录获取cookie耗时: normal: 20s, min:13s, max: time-out;<br>  填表时间: normal: 5s-10s/表, min: 5s/表, max: time-out;<br>  全程时间: normal: 100s, min: 90s, max: time-out;</p>
+</li>
+<li><p>有cookie文件:</p>
+<p>  登录获取cookie耗时: normal: 0.000003s;<br>  填表时间: normal: 5s-10s/表, min: 5s/表, max: time-out;<br>  全程时间: normal: 80, min: 60s, max: time-out;</p>
+</li>
+</ul>
+<h2 id="细节补充"><a href="#细节补充" class="headerlink" title="细节补充"></a>细节补充</h2><p>看起来还是很简单的, 不过真的写起来挺恶心的… 尤其是你在测试中会遇到各种奇葩问题… </p>
+<p>因为本文本来是10号写的, 但是后来一直拖到了20号才写完.. 昨天用脚本实况演练了下.. 发现真正开放名额这一天, 还是太恐怖… 登录都无法登录不上去… 一直处于不断重试的过程中… 居然还没我浏览器手动来的快… 最后把浏览器登录后的cookie放进去试了下,<br>因为本文本来是10号写的, 但是后来一直拖到了20号才写完.. 昨天用脚本实况演练了下.. 发现真正开放名额这一天, 还是太恐怖… 登录都无法登录不上去… 一直处于不断重试的过程中… 居然还没我浏览器手动来的快… 最后把浏览器登录后的cookie放进去试了下, 发现后面,<br>因为本文本来是10号写的, 但是后来一直拖到了20号才写完.. 昨天用脚本实况演练了下.. 发现真正开放名额这一天, 还是太恐怖… 登录都无法登录不上去… 一直处于不断重试的过程中… 居然还没我浏览器手动来的快… 最后把浏览器登录后的cookie放进去试了下<br>看起来还是很简单的, 不过真的写起来挺恶心的… 尤其是你在测试中会遇到各种奇葩问题… </p>
+<p>看起来还是很简单的, 不过真的写起来挺恶心的… 尤其是你在测试中会遇到各种奇葩问题…<br>,<br>因为本文本来是10号写的, 但是后来一直拖到了20号才写完.. 昨天用脚本实况演练了下.. 发现真正开放名额这一天, 还是太恐怖… 登录都无法登录不上去… 一直处于不断重试的过程中… 居然还没我浏览器手动来的快… 最后把浏览器登录后的cookie放进去试了下, 发现后面的容错做的还算可以, 基本能保证程序不会意外退出… 不过因为体检的原因, 我也没等到程序跑完就走了…</p>
+<p>和朋友讨论说到似乎cookie是可以计算出来的, 而计算方法在页面的js里面可以看到, 以后有时间可以去看看.</p>
+<h2 id="Module列表"><a href="#Module列表" class="headerlink" title="Module列表"></a>Module列表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> urllib2</span><br><span class="line"><span class="keyword">import</span> urllib</span><br><span class="line"><span class="keyword">import</span> cookielib</span><br></pre></td></tr></table></figure>
+
+<p>以及需要把phantomjs的二进制文件放入到合适的路径中去, 为了便于移植, 我是放到了当前路径下…</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>如上, 基本就能实现一个较为完整的自动脚本了~ 不过不解决cookie问题的话, 实际使用不会有多大帮助的… 毕竟那一天的网络太可怕…</p>
+</div><div class="post-info"><span class="category"><i class="fas fa-briefcase"></i><a href="/blog/categories/blog">blog</a></span><span class="tags"><i class="fas fa-tags"></i><a href="/blog/tags/WHV">WHV</a><a href="/blog/tags/Python">Python</a></span></div></section><div class="widgets"><aside id="menuIndex" class="sidenav hidden"></aside><aside class="sidenav"><input type="text" placeholder="Enter to search" class="st-default-search-input searchbox"></aside><aside class="sidenav"><div class="recent-posts"><h2>Recent Posts:</h2><ul class="article-list"><li><a href="/blog/2020/07/04/travel-working-holiday-visa-3/">打工度假 (三)</a></li><li><a href="/blog/2020/07/02/travel-working-holiday-visa-2/">打工度假 (二)</a></li><li><a href="/blog/2020/07/02/tech-what-i-have-done-to-restart-this-blog/">我都做了哪些来复活本博客的</a></li><li><a href="/blog/2020/07/01/travel-working-holiday-visa/">打工度假 (一)</a></li><li><a href="/blog/2020/06/30/tech-gitment-and-gittalk/">Gitment and Gitalk</a></li></ul></div></aside></div></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"><script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script><div class="comments"><script>const gitment = new Gitment({
+  id: new Date('Wed May 20 2015 07:00:00 GMT-0400').toISOString(),
+  owner: 'taoalpha',
+  repo: 'blog',
+  oauth: {
+    client_id: '875872ffb3955d0ffe20',
+    client_secret: '46040668c536860a9e2e9a8508c513309e3840b5',
+  },
+});
+gitment.render(document.querySelector('.comments'));
+</script></div></article><div class="notification fail hidden"></div><!-- jquery--><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-46725017-2",'auto');ga('send','pageview');</script><script>(function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+_st('install','CUMLELEvkSRAFuVehSCm','2.0.0');</script><!-- main functions--><script src="/blog/js/functions.js"></script><script src="/blog/js/default.js"></script><script src="/blog/js/post.js"></script></body></html>
