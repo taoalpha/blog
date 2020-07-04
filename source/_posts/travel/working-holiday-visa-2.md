@@ -1,7 +1,7 @@
 date: 2020-07-02 13:34:24
 category: travel
 title: 打工度假 (二)
-tags: [whv,travel]
+tags: [whv,travel,new zealand]
 author: taoalpha
 series: 新西兰打工度假
 language: zh

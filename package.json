@@ -7,7 +7,7 @@
   },
   "scripts": {
     "server": "hexo s",
-    "new:post": "./scripts/post.sh new"
+    "new:post": "./source/_scripts/post.sh new"
   },
   "devDependencies": {
     "hexo": "^4.2.1",

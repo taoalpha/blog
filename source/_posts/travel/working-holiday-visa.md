@@ -2,7 +2,7 @@ title: 打工度假 (一)
 date: 2020-07-01 09:24:52
 category: travel
 description: 聊聊打工度假签证和我 15 年去新西兰打工度假的经历.
-tags: [travel,whv]
+tags: [travel,whv,new zealand]
 series: 新西兰打工度假
 language: zh
 author: taoalpha
