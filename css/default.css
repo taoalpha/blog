@@ -856,6 +856,7 @@ h6 {
 
 /****** Swiftype Search for post **************/
 .sidenav .st-default-search-input {
+  box-sizing: border-box;
   display: inline-block;
   width: 190px;
   height: 16px;
