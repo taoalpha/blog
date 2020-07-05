@@ -747,6 +747,7 @@ h6 {
         float: right;
         line-height: 40px; }
       .page-content ul.article-cate li.search input {
+        box-sizing: border-box;
         height: 40px;
         line-height: 40px;
         border: none;
@@ -856,7 +857,6 @@ h6 {
 
 /****** Swiftype Search for post **************/
 .sidenav .st-default-search-input {
-  box-sizing: border-box;
   display: inline-block;
   width: 190px;
   height: 16px;
