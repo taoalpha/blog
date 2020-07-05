@@ -41,7 +41,7 @@
         const settings = getSettings();
         const patchUpdates = { lastUpdate: {} };
         let p = Promise.resolve(null);
-        if (settings.weatherData && !isExpired(settings, 'weather', 1000 * 60 * 60)) {
+        if (settings.weatherData && !isExpired(settings, 'weather', 1000 * 60 * 10)) {
             p = p.then(() => updateWeatherWithData(settings.weatherData, 'storage'));
         }
         else if (settings.enableLocation || settings.enableLocation === undefined) {
@@ -119,7 +119,6 @@
         tags.classList.remove('hidden');
         window.animateCSS(tags, ["lightSpeedInLeft"]);
     };
-    const maxRetry = 3;
     function setImage(img) {
         const picBar = document.querySelector(".aside");
         if (!picBar)
