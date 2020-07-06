@@ -2,23 +2,170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2020/07/04/travel-working-holiday-visa-3/</loc>
+    <loc>https://taoalpha.github.io/blog/2020/07/06/thoughts-recommendation-to-new-grads-on-job-choices/</loc>
     
-    <lastmod>1593855995002</lastmod>
+    <lastmod>1594029683385</lastmod>
     
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2020/07/01/travel-working-holiday-visa/</loc>
+    <loc>https://taoalpha.github.io/blog/2015/11/06/tech-es6-general-summary/</loc>
     
-    <lastmod>1593847827241</lastmod>
+    <lastmod>1594021490466</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/06/28/readings-coffeescript-programming-with-jquery-rails-and-nodejs/</loc>
+    
+    <lastmod>1594021467929</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/06/30/readings-coffeescript-programming-with-jquery-rails-and-nodejs-2/</loc>
+    
+    <lastmod>1594021467929</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/09/07/tech-django-with-bower-and-pipeline/</loc>
+    
+    <lastmod>1594021467929</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/10/30/tech-javascript-array-operation-cost/</loc>
+    
+    <lastmod>1594021467929</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/11/03/tech-javascript-lru-cache/</loc>
+    
+    <lastmod>1594021467929</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/10/29/tech-javascript-sorting-algorithm-1/</loc>
+    
+    <lastmod>1594021467929</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/12/07/tech-my-first-cli-tool-with-nodejs/</loc>
+    
+    <lastmod>1594021467929</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/10/14/tech-raspberry-pi-kernel-panic-data-restore/</loc>
+    
+    <lastmod>1594021467929</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/07/09/tech-change-internal-search-to-swiftype/</loc>
+    
+    <lastmod>1594021467928</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/09/30/tech-use-javascript-to-send-email/</loc>
+    
+    <lastmod>1594021467928</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/12/27/tech-related-articles-and-generate-api-files-in-hexo/</loc>
+    
+    <lastmod>1594021467927</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/11/11/tech-use-strict-in-js/</loc>
+    
+    <lastmod>1594021467921</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/11/19/tech-preventDefault-and-stopPropagation-in-JS/</loc>
+    
+    <lastmod>1594021467918</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/10/29/tech-javascript-sorting-algorithm-2/</loc>
+    
+    <lastmod>1594021467902</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/06/20/tech-python-script-analyse-ips-in-nginx-access-log/</loc>
+    
+    <lastmod>1594021467757</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/12/26/other-2015-12-26-blog-migration/</loc>
+    
+    <lastmod>1594021467756</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2020/06/30/tech-gitment-and-gittalk/</loc>
+    
+    <lastmod>1594021448228</lastmod>
     
   </url>
   
   <url>
     <loc>https://taoalpha.github.io/blog/2020/07/02/travel-working-holiday-visa-2/</loc>
     
-    <lastmod>1593847820338</lastmod>
+    <lastmod>1594021448194</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2020/07/01/travel-working-holiday-visa/</loc>
+    
+    <lastmod>1594021448194</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2020/07/04/travel-working-holiday-visa-3/</loc>
+    
+    <lastmod>1594021448194</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/12/26/other-2015-12-26-Summary-of-the-year/</loc>
+    
+    <lastmod>1594021442363</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://taoalpha.github.io/blog/2015/11/27/other-2015-11-27-thanksgiving/</loc>
+    
+    <lastmod>1594021428839</lastmod>
     
   </url>
   
@@ -72,13 +219,6 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2020/06/30/tech-gitment-and-gittalk/</loc>
-    
-    <lastmod>1593596905575</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/galog/index.html</loc>
     
     <lastmod>1593596505604</lastmod>
@@ -100,13 +240,6 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2015/11/11/tech-use-strict-in-js/</loc>
-    
-    <lastmod>1593516346719</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/2015/05/29/tech-use-jekyll-plugin-with-github-page/</loc>
     
     <lastmod>1593516346719</lastmod>
@@ -115,13 +248,6 @@
   
   <url>
     <loc>https://taoalpha.github.io/blog/2016/08/27/tech-type-check-in-js/</loc>
-    
-    <lastmod>1593516346718</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/09/30/tech-use-javascript-to-send-email/</loc>
     
     <lastmod>1593516346718</lastmod>
     
@@ -163,13 +289,6 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2015/12/27/tech-related-articles-and-generate-api-files-in-hexo/</loc>
-    
-    <lastmod>1593516346712</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/2015/07/01/tech-rendering-a-web-page-step-by-step/</loc>
     
     <lastmod>1593516346712</lastmod>
@@ -184,37 +303,9 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2015/10/14/tech-raspberry-pi-kernel-panic-data-restore/</loc>
-    
-    <lastmod>1593516346708</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/2015/08/20/tech-raspberry-pi-as-nas-and-crawlers/</loc>
     
     <lastmod>1593516346707</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/06/20/tech-python-script-analyse-ips-in-nginx-access-log/</loc>
-    
-    <lastmod>1593516346706</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/11/19/tech-preventDefault-and-stopPropagation-in-JS/</loc>
-    
-    <lastmod>1593516346705</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/12/07/tech-my-first-cli-tool-with-nodejs/</loc>
-    
-    <lastmod>1593516346704</lastmod>
     
   </url>
   
@@ -282,27 +373,6 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2015/10/29/tech-javascript-sorting-algorithm-2/</loc>
-    
-    <lastmod>1593516346696</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/10/29/tech-javascript-sorting-algorithm-1/</loc>
-    
-    <lastmod>1593516346696</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/11/03/tech-javascript-lru-cache/</loc>
-    
-    <lastmod>1593516346693</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/2016/06/17/tech-javascript-module-system/</loc>
     
     <lastmod>1593516346693</lastmod>
@@ -331,23 +401,9 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2015/10/30/tech-javascript-array-operation-cost/</loc>
-    
-    <lastmod>1593516346689</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/2016/01/11/tech-es6-quiz-with-answer/</loc>
     
     <lastmod>1593516346688</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/11/06/tech-es6-general-summary/</loc>
-    
-    <lastmod>1593516346686</lastmod>
     
   </url>
   
@@ -373,13 +429,6 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2015/09/07/tech-django-with-bower-and-pipeline/</loc>
-    
-    <lastmod>1593516346682</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/2016/04/29/tech-defineproperty-in-javascript/</loc>
     
     <lastmod>1593516346681</lastmod>
@@ -397,13 +446,6 @@
     <loc>https://taoalpha.github.io/blog/2016/08/13/tech-deep-copy-in-javascript/</loc>
     
     <lastmod>1593516346680</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/07/09/tech-change-internal-search-to-swiftype/</loc>
-    
-    <lastmod>1593516346679</lastmod>
     
   </url>
   
@@ -527,23 +569,9 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2015/06/28/readings-coffeescript-programming-with-jquery-rails-and-nodejs/</loc>
-    
-    <lastmod>1521130728702</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/2015/06/18/readings-javascript-the-definitive-guide-2/</loc>
     
     <lastmod>1521130728702</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/06/30/readings-coffeescript-programming-with-jquery-rails-and-nodejs-2/</loc>
-    
-    <lastmod>1521130728693</lastmod>
     
   </url>
   
@@ -1024,30 +1052,9 @@
   </url>
   
   <url>
-    <loc>https://taoalpha.github.io/blog/2015/12/26/other-2015-12-26-Summary-of-the-year/</loc>
-    
-    <lastmod>1520807905521</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://taoalpha.github.io/blog/2015/12/27/other-2015-12-26-Close-old-website-and-related-services/</loc>
     
     <lastmod>1520807901491</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/12/26/other-2015-12-26-blog-migration/</loc>
-    
-    <lastmod>1520807895113</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://taoalpha.github.io/blog/2015/11/27/other-2015-11-27-thanksgiving/</loc>
-    
-    <lastmod>1520807865074</lastmod>
     
   </url>
   

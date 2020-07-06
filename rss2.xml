@@ -9,8 +9,30 @@
     <atom:link href="/blog/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>Here is my new blog based on hexo.</description>
-    <pubDate>Sat, 04 Jul 2020 09:46:35 GMT</pubDate>
+    <pubDate>Mon, 06 Jul 2020 10:01:23 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title>给新计算机毕业生在工作选择上的一些建议</title>
+      <link>https://taoalpha.github.io/blog/2020/07/06/thoughts-recommendation-to-new-grads-on-job-choices/</link>
+      <guid>https://taoalpha.github.io/blog/2020/07/06/thoughts-recommendation-to-new-grads-on-job-choices/</guid>
+      <pubDate>Mon, 06 Jul 2020 13:42:36 GMT</pubDate>
+      <description>
+      
+        
+        
+          
+          
+            &lt;p&gt;作为经历过两次毕业以及分别在中美两段工作经历的人, 我一直很想写点关于这个话题的东西, 聊聊自己的一些看法. 尤其是这么多年下来, 我也算是在中美大中小公司都呆过的人了, 感觉还是能说说一些自己的经验和感受的.&lt;/p&gt;
+&lt;h2 id=&quot;个人经历-2009-2020&quot;&gt;&lt;a
+          
+        
+      
+      </description>
+      
+      
+      <comments>https://taoalpha.github.io/blog/2020/07/06/thoughts-recommendation-to-new-grads-on-job-choices/#disqus_thread</comments>
+    </item>
     
     <item>
       <title>打工度假 (三)</title>
@@ -309,21 +331,6 @@
       
       
       <comments>https://taoalpha.github.io/blog/2016/01/19/tech-sorting-algorithm-in-javascript-median-sort-and-quicksort/#disqus_thread</comments>
-    </item>
-    
-    <item>
-      <title>Add a reading progressbar to your blog</title>
-      <link>https://taoalpha.github.io/blog/2016/01/16/tech-add-a-reading-progressbar-to-your-blog/</link>
-      <guid>https://taoalpha.github.io/blog/2016/01/16/tech-add-a-reading-progressbar-to-your-blog/</guid>
-      <pubDate>Sat, 16 Jan 2016 12:00:00 GMT</pubDate>
-      <description>
-      
-        how to add a reading progressbar to your blog
-      
-      </description>
-      
-      
-      <comments>https://taoalpha.github.io/blog/2016/01/16/tech-add-a-reading-progressbar-to-your-blog/#disqus_thread</comments>
     </item>
     
   </channel>

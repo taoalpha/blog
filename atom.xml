@@ -6,7 +6,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="https://taoalpha.github.io/blog/"/>
-  <updated>2020-07-04T09:46:35.002Z</updated>
+  <updated>2020-07-06T10:01:23.385Z</updated>
   <id>https://taoalpha.github.io/blog/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>给新计算机毕业生在工作选择上的一些建议</title>
+    <link href="https://taoalpha.github.io/blog/2020/07/06/thoughts-recommendation-to-new-grads-on-job-choices/"/>
+    <id>https://taoalpha.github.io/blog/2020/07/06/thoughts-recommendation-to-new-grads-on-job-choices/</id>
+    <published>2020-07-06T13:42:36.000Z</published>
+    <updated>2020-07-06T10:01:23.385Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;作为经历过两次毕业以及分别在中美两段工作经历的人, 我一直很想写点关于这个话题的东西, 聊聊自己的一些看法. 尤其是这么多年下来, 我也算是在中美大中小公司都呆过的人了, 感觉还是能说说一些自己的经验和感受的.&lt;/p&gt;
+&lt;h2 id=&quot;个人经历-2009-2020&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="job" scheme="https://taoalpha.github.io/blog/tags/job/"/>
+    
+      <category term="工作选择" scheme="https://taoalpha.github.io/blog/tags/%E5%B7%A5%E4%BD%9C%E9%80%89%E6%8B%A9/"/>
+    
+  </entry>
+  
+  <entry>
     <title>打工度假 (三)</title>
     <link href="https://taoalpha.github.io/blog/2020/07/04/travel-working-holiday-visa-3/"/>
     <id>https://taoalpha.github.io/blog/2020/07/04/travel-working-holiday-visa-3/</id>
     <published>2020-07-04T13:29:54.000Z</published>
-    <updated>2020-07-04T09:46:35.002Z</updated>
+    <updated>2020-07-06T07:44:08.194Z</updated>
     
     <summary type="html">
     
@@ -53,7 +81,7 @@
     <link href="https://taoalpha.github.io/blog/2020/07/02/travel-working-holiday-visa-2/"/>
     <id>https://taoalpha.github.io/blog/2020/07/02/travel-working-holiday-visa-2/</id>
     <published>2020-07-02T17:34:24.000Z</published>
-    <updated>2020-07-04T07:30:20.338Z</updated>
+    <updated>2020-07-06T07:44:08.194Z</updated>
     
     <summary type="html">
     
@@ -110,7 +138,7 @@
     <link href="https://taoalpha.github.io/blog/2020/07/01/travel-working-holiday-visa/"/>
     <id>https://taoalpha.github.io/blog/2020/07/01/travel-working-holiday-visa/</id>
     <published>2020-07-01T13:24:52.000Z</published>
-    <updated>2020-07-04T07:30:27.241Z</updated>
+    <updated>2020-07-06T07:44:08.194Z</updated>
     
     <summary type="html">
     
@@ -135,7 +163,7 @@
     <link href="https://taoalpha.github.io/blog/2020/06/30/tech-gitment-and-gittalk/"/>
     <id>https://taoalpha.github.io/blog/2020/06/30/tech-gitment-and-gittalk/</id>
     <published>2020-06-30T18:30:00.000Z</published>
-    <updated>2020-07-01T09:48:25.575Z</updated>
+    <updated>2020-07-06T07:44:08.228Z</updated>
     
     <summary type="html">
     
@@ -466,29 +494,6 @@
       <category term="sort" scheme="https://taoalpha.github.io/blog/tags/sort/"/>
     
       <category term="algorithm" scheme="https://taoalpha.github.io/blog/tags/algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Add a reading progressbar to your blog</title>
-    <link href="https://taoalpha.github.io/blog/2016/01/16/tech-add-a-reading-progressbar-to-your-blog/"/>
-    <id>https://taoalpha.github.io/blog/2016/01/16/tech-add-a-reading-progressbar-to-your-blog/</id>
-    <published>2016-01-16T12:00:00.000Z</published>
-    <updated>2020-06-30T11:25:46.672Z</updated>
-    
-    <summary type="html">
-    
-      how to add a reading progressbar to your blog
-    
-    </summary>
-    
-    
-      <category term="tech" scheme="https://taoalpha.github.io/blog/categories/tech/"/>
-    
-    
-      <category term="css" scheme="https://taoalpha.github.io/blog/tags/css/"/>
-    
-      <category term="progress" scheme="https://taoalpha.github.io/blog/tags/progress/"/>
     
   </entry>
   
